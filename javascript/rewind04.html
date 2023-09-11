@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+// 1부터 100까지 홀수만 나오게 출력
+        
+        //for문
+        {
+            for(i=1; i<=100; i+=2){
+                console.log(i)
+            }
+        }
+        // while문
+        {
+            let i = 1
+            while(i<=100){
+                console.log(i);
+                i+=2
+            }
+        }
+        //for + if문
+        {
+            for(i=1; i<=100; i++){
+                if(i % 2 === 1)
+                console.log(i);
+            }
+        }
+        
+        // 1부터 100까지(5의 배수만)
+        {
+            for(i=5; i<=100; i+=5){
+                console.log(i)
+            }
+        }
+        {
+            let i = 5
+            while(i<=95){
+                console.log(i)
+                i+=5
+            }
+        }
+        {
+            for(i=5; i<=100; i++){
+                if(i % 5 === 0)
+                console.log(i)
+            }
+        }
+
+// 1부터 100까지 document사용해서 홀수는 빨강, 짝수는 파랑으로 변경)
+        {
+            for(let i = 1; i <= 20; i++){
+                if(i % 2 === 0){
+                    document.write("<span style='color:red'>"+i+"</span>", "<br>");
+                }else{
+                    document.write("<span style='color:blue'>"+i+"</span>", "<br>"); 
+                }
+                
+            }
+        }
+
+
+
+// 배열 안의 짝수만 나오게..
+        {
+          const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
+          
+          
+          for(let i=1; i<arr.length; i+=2){
+            
+            console.log(arr[i])
+          }
+        }
+
+
+        
+// 1부터 100까지 나오게 출력
+
+        {   
+            //초기값 0
+            for(let i=0; i<100; i++){
+                console.log(i+1);
+            }
+            for(let i=1; i<101; i++){
+                console.log(i);
+            }
+        }
+
+        // 2부터 55까지 출력(초기값 0)
+        {
+            for(let i=0; i<54; i++){
+                console.log(i+2);
+            }
+        }
+        // 1부터 100까지 짝수만 : for문
+        {
+            for(let i=2; i<=100; i+=2){
+                console.log(i);
+            }
+        }
+        // 1부터 100까지 짝수만 : while문    <<for문과 똑같은데 위치만 다름.
+        let i = 2;
+        while (i <=100){
+            console.log(i);
+            i += 2;
+        }
+        // 1부터 100까지 짝수만 : for문 + if문
+        for(let i=1; i<=100; i++){
+            if(i % 2 === 0){
+                console.log(i);
+            }
+        }
+
+        // 1부터 100까지 짝수는 파랑 홀수는 빨강
+        {
+            for(let i=1; i<=100; i++){
+                if(i % 2 == 0){         //<span>은 의미 없는 그냥 그거 ㅇㅋ? 알아보기 " ' " " ' " 이런식으로 사용.
+                    document.write("<span style='color:blue'>"+i+"</span>", "<br>");
+                } else {
+                    document.write("<span style='color:red'>"+i+"</span>", "<br>");
+                }
+            }
+        }
+    </script>
+</body>
+</html>

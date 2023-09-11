@@ -1,0 +1,338 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>퀴즈 이펙트02</title>
+    <link rel="stylesheet" href="assets/css/quiz.css">
+    <link rel="stylesheet" href="assets/css/animaition.css">
+   
+</head>
+<body>
+    <header id="header">
+        <h1>Quiz</h1>
+        <nav>
+            <ul>
+                <li><a href="quizEffect01.html">1</a></li> 
+                <li class="active"><a href="quizEffect02.html">2</a></li> 
+                <li><a href="quizEffect03.html">3</a></li> 
+                <li><a href="quizEffect04.html">4</a></li> 
+                <li><a href="quizEffect05.html">5</a></li> 
+                <li><a href="quizEffect06.html">6</a></li>
+                <li><a href="quizEffect07.html">7</a></li> 
+            </ul>
+        </nav>
+    </header>
+    <!--//header-->
+    <main id="main">
+        <div class="quiz_wrap">
+            <div class="quiz">
+                <div class="quiz_header">
+                    <span class="quiz_date"></span>
+                    <span class="quiz_type"></span>
+                </div>
+                <div class="quiz_main">
+                    <div class="quiz_question">
+                        <em></em>.
+                        <span></span>
+                    </div>
+                    <div class="quiz_animation">
+                        <div class="wrapper">
+                            <div class="card-container">
+                                <div class="dog">
+                                    <div class="head">
+                                        <div class="ears"></div>
+                                        <div class="face"></div>
+                                        <div class="eyes">
+                                            <div class="teardrop"></div>
+                                        </div>
+                                        <div class="nose"></div>
+                                        <div class="mouth">
+                                            <div class="tongue"></div>
+                                        </div>
+                                        <div class="chin"></div>
+                                    </div>
+                                    <div class="body">
+                                        <div class="tail"></div>
+                                        <div class="legs"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="quiz_input">
+                        <input type="text" placeholder="정답을 입력해주세요.">
+                    </div>
+                    <div class="quiz_answer">
+                        
+                    </div>
+                    <div class="quiz_desc">
+                        
+                    </div>
+                </div>
+                <div class="quiz_footer">
+                    <button class="quiz_confirm">정답 확인하기</button>
+                </div>
+            </div>
+
+            <div class="quiz">
+                <div class="quiz_header">
+                    <span class="quiz_date"></span>
+                    <span class="quiz_type"></span>
+                </div>
+                <div class="quiz_main">
+                    <div class="quiz_question">
+                        <em></em>.
+                        <span></span>
+                    </div>
+                    <div class="quiz_animation">
+                        <div class="wrapper">
+                            <div class="card-container">
+                                <div class="dog">
+                                    <div class="head">
+                                        <div class="ears"></div>
+                                        <div class="face"></div>
+                                        <div class="eyes">
+                                            <div class="teardrop"></div>
+                                        </div>
+                                        <div class="nose"></div>
+                                        <div class="mouth">
+                                            <div class="tongue"></div>
+                                        </div>
+                                        <div class="chin"></div>
+                                    </div>
+                                    <div class="body">
+                                        <div class="tail"></div>
+                                        <div class="legs"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="quiz_input">
+                        <input type="text" placeholder="정답을 입력해주세요.">
+                    </div>
+                    <div class="quiz_answer">
+                        
+                    </div>
+                    <div class="quiz_desc">
+                        
+                    </div>
+                </div>
+                <div class="quiz_footer">
+                    <button class="quiz_confirm">정답 확인하기</button>
+                </div>
+            </div>
+
+            <div class="quiz">
+                <div class="quiz_header">
+                    <span class="quiz_date"></span>
+                    <span class="quiz_type"></span>
+                </div>
+                <div class="quiz_main">
+                    <div class="quiz_question">
+                        <em></em>.
+                        <span></span>
+                    </div>
+                    <div class="quiz_animation">
+                        <div class="wrapper">
+                            <div class="card-container">
+                                <div class="dog">
+                                    <div class="head">
+                                        <div class="ears"></div>
+                                        <div class="face"></div>
+                                        <div class="eyes">
+                                            <div class="teardrop"></div>
+                                        </div>
+                                        <div class="nose"></div>
+                                        <div class="mouth">
+                                            <div class="tongue"></div>
+                                        </div>
+                                        <div class="chin"></div>
+                                    </div>
+                                    <div class="body">
+                                        <div class="tail"></div>
+                                        <div class="legs"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="quiz_input">
+                        <input type="text" placeholder="정답을 입력해주세요.">
+                    </div>
+                    <div class="quiz_answer">
+                        
+                    </div>
+                    <div class="quiz_desc">
+                        
+                    </div>
+                </div>
+                <div class="quiz_footer">
+                    <button class="quiz_confirm">정답 확인하기</button>
+                </div>
+            </div>
+        </div>
+    </main>
+    <!--//main-->
+
+    <footer id="footer">
+        <a href="mailto:wolves941110@gmail.com">wolves941110@gmail.com</a>
+    </footer>
+    <!--//footer-->
+
+    <script>
+        // 선택자 (위치)
+        const quizWrap = document.querySelector(".quiz_wrap");
+        const quizDate = quizWrap.querySelectorAll(".quiz_date");
+        const quizType = quizWrap.querySelectorAll(".quiz_type");
+        const quizNum = quizWrap.querySelectorAll(".quiz_question em");
+        const quizQuestion = quizWrap.querySelectorAll(".quiz_question span");
+        const quizAnswer = quizWrap.querySelectorAll(".quiz_answer");
+        const quizDesc = quizWrap.querySelectorAll(".quiz_desc");
+        const quizConfirm = quizWrap.querySelectorAll(".quiz_confirm");
+        const quizInput = quizWrap.querySelectorAll(".quiz_input input");
+        const quizAnimation = quizWrap.querySelectorAll(".quiz_animation")
+
+        // 문제 정보 (배열에 객체를 만들어서!)
+
+        const quizInfo = [
+            {
+                infoDate : "2016년 7월",
+                infoType : "웹디자인 기능사",
+                infoNum : "1",
+                infoQuestion : "먼저 본 색의 영향으로 나중에 보는 색이 다르게 보이는 현상은?",
+                infoAnswer : "계시대비",
+                infoDesc : "시간적인 차이를 두고, 2개의 색을 순차적으로 볼 때에 생기는 색의 대비현상입니다.",
+            }, 
+            {
+                infoDate : "2016년 7월",
+                infoType : "웹디자인 기능사",
+                infoNum : "2",
+                infoQuestion : "쓴맛을 나타내는 색은 무엇인가?",
+                infoAnswer : "파랑",
+                infoDesc : "파랑은 쓴맛, 여름, 시원함, 냉정, 차가움, 추위, 평정, 성실함, 생동감 등을 나타냅니다."
+
+            }, 
+            {
+                infoDate : "2016년 7월",
+                infoType : "웹디자인 기능사",
+                infoNum : "3",
+                infoQuestion : "웹 페이지 제작에 따른 외부 스타일시트 확장자는?",
+                infoAnswer : "*.css",
+                infoDesc : "*.stc : Adobe Contribute 소프트웨어에서 연결 정보를 저장하는 데 사용하는 연결 파일",
+            }
+        ];
+
+        // 문제 출력 (화면에 보이게.. innerText와 비슷한 효과. 비슷한 비율로 쓰임) (노가다)
+        //quizDate[0].textContent = quizInfo[0].infoDate;
+        //quizDate[1].textContent = quizInfo[1].infoDate;
+        //quizDate[2].textContent = quizInfo[2].infoDate;
+
+        //quizType[0].textContent = quizInfo[0].infoType;
+        //quizType[1].textContent = quizInfo[1].infoType;
+        //quizType[2].textContent = quizInfo[2].infoType;
+
+        //quizNum[0].textContent = quizInfo[0].infoNum;
+        //quizNum[1].textContent = quizInfo[1].infoNum;
+        //quizNum[2].textContent = quizInfo[2].infoNum;
+
+        //quizQuestion[0].textContent = quizInfo[0].infoQuestion;
+        //quizQuestion[1].textContent = quizInfo[1].infoQuestion;
+        //quizQuestion[2].textContent = quizInfo[2].infoQuestion;
+
+        //quizAnswer[0].textContent = quizInfo[0].infoAnswer;
+        //quizAnswer[1].textContent = quizInfo[1].infoAnswer;
+        //quizAnswer[2].textContent = quizInfo[2].infoAnswer;
+
+        //quizDesc[0].textContent = quizInfo[0].infoDesc;
+        //quizDesc[1].textContent = quizInfo[1].infoDesc;
+        //quizDesc[2].textContent = quizInfo[2].infoDesc;
+
+        //for()로 변경
+
+        for(let i=0; i<quizInfo.length; i++){
+            quizDate[i].textContent = quizInfo[i].infoDate;
+            quizType[i].textContent = quizInfo[i].infoType;
+            quizNum[i].textContent = quizInfo[i].infoNum;
+            quizQuestion[i].textContent = quizInfo[i].infoQuestion;
+            quizAnswer[i].textContent = quizInfo[i].infoAnswer;
+            quizDesc[i].textContent = quizInfo[i].infoDesc;
+        }
+
+        //forEach 
+        //quizInfo.forEach((el, i) => {
+        //    quizDate[i].textContent = quizInfo[i].infoDate;
+        //    quizType[i].textContent = quizInfo[i].infoType;
+        //    quizNum[i].textContent = quizInfo[i].infoNum;
+        //    quizQuestion[i].textContent = quizInfo[i].infoQuestion;
+        //    quizAnswer[i].textContent = quizInfo[i].infoAnswer;
+        //    quizDesc[i].textContent = quizInfo[i].infoDesc;
+        //});
+
+        //for in (객체에서 사용하기때문에 부적합)
+        //for in (잘 어울리진않음)
+        //for(let i in quizInfo){
+        //    quizDate[i].textContent = quizInfo[i].infoDate;
+        //    quizType[i].textContent = quizInfo[i].infoType;
+        //    quizNum[i].textContent = quizInfo[i].infoNum;
+        //    quizQuestion[i].textContent = quizInfo[i].infoQuestion;
+        //    quizAnswer[i].textContent = quizInfo[i].infoAnswer;
+        //    quizDesc[i].textContent = quizInfo[i].infoDesc;
+        //}
+
+        // 정답 해설 숨기기 (노가다) classList와 비슷하지만 조금 다른 style.display로도 쓸 수 있음
+        //quizAnswer[0].style.display = "none";
+        //quizAnswer[1].style.display = "none";
+        //quizAnswer[2].style.display = "none";
+
+        //quizDesc[0].style.display = "none";
+        //quizDesc[1].style.display = "none";
+        //quizDesc[2].style.display = "none";
+
+        // for()
+        for(i=0; i<quizInfo.length; i++){
+            quizAnswer[i].style.display = "none";  
+            quizDesc[i].style.display = "none";
+        }
+
+        // forEach()
+        //quizInfo.forEach((el,i) => {
+        //    quizAnswer[i].style.display = "none";  
+        //    quizDesc[i].style.display = "none";
+        //})
+
+        // for in
+        //for(let i in quizInfo){
+        //    quizAnswer[i].style.display = "none";  
+        //    quizDesc[i].style.display = "none";
+        //}
+
+        // 정답확인 (다중이에는 forEach가 나음)
+        quizConfirm.forEach(function(btn, num){    //확인하기 버튼과 인덱스
+            btn.addEventListener("click", function(){
+                const userAnswer = quizInput[num].value.trim().toLowerCase();
+                const correctAnswer = quizInfo[num].infoAnswer.trim().toLowerCase();
+                alert(userAnswer) //인덱스만큼 밸류
+
+                if(userAnswer == quizInfo[num].infoAnswer){
+                    quizAnimation[num].classList.add("like")
+                } else {
+                    quizAnimation[num].classList.add("dislike")
+                }
+            
+                quizAnswer[num].style.display = "block";
+                quizDesc[num].style.display = "block";
+                quizConfirm[num].style.display = "none";
+                quizInput[num].style.display = "none";
+            }); 
+        })
+        
+
+
+
+        // 정처기 50문제 , 웹디 50문제 만들기!
+    </script>
+</body>
+</html>

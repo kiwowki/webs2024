@@ -1,0 +1,233 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+a {
+    color: #000;
+    text-decoration: none;
+}
+li {
+    list-style: none;
+}
+
+#header {
+    padding: 40px;
+    text-align: center;
+    border-bottom: 1px dashed #dcdcdc;
+}
+#header h1 {
+    font-size: 4vmax;
+    padding: 0 40px 40px;
+}
+#header h1 a {
+    text-decoration: none;
+    color: #cfce75;
+    font-family: "GmarketSans";
+}
+#header nav ul li {
+    list-style: none;
+    display: inline;
+}
+#header nav ul li a {
+    display: inline-block;
+    text-decoration: none;
+    color: #000000;
+    border: 1px solid #cfce75;
+    padding: 10px 20px;
+    margin-bottom: 5px;
+    font-family: "nanumSquareNeo";
+}
+#header nav ul li.active a {
+    background-color: #cfce75;
+    color: #fff;
+}
+#header nav ul li a:hover {
+    background-color: #cfce75;
+    color: #fff;
+}
+#main {
+    min-height: 500px;
+}
+#footer {
+    padding: 40px;
+    text-align: center;
+    border-top: 1px dashed #dcdcdc;
+}
+#footer a {
+    color: #cfce75;
+    text-decoration: none;
+}
+#footer a:hover {
+    text-decoration: underline;
+    text-underline-position: under;
+}
+
+/* main__menu */
+.main__menu {
+    padding: 40px;
+    border-bottom: 1px dashed #dcdcdc;
+}
+.main__menu ul li a {
+    font-family: "nanumSquareNeo";
+    line-height: 1.8;
+    color: #cfce75;
+}
+.main__menu ul li a:hover {}
+.main__menu ul li a strong {
+    position: relative;
+    padding: 0 5px;
+}
+.main__menu ul li a strong::before {
+    content: '';
+    width: 100%;
+    height: 50%;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    background-color: #f2bdbd56;
+    transition: all 0.3s;
+    border-radius: 30px;
+    display: block;
+}
+.main__menu ul li a:hover strong::before {
+    height: 100%;
+}
+
+/* main__sample */
+.main__sample {
+    padding: 40px;
+}
+.main__sample .sample {
+    margin-bottom: 100px;
+}
+.main__sample .sample h3 {
+    font-size: 24px;
+    font-weight: 500;
+    margin-bottom: 10px;
+    font-family: "GmarketSans";
+    line-height: 1.4;
+}
+.main__sample .sample p {
+    color: #666;
+    margin-bottom: 10px;
+    line-height: 1.5;
+    font-weight: 500;
+    font-family: "nanumSquareNeo";
+}
+.main__sample .sample .desc {
+    background-color: #f8f8d3;
+    padding: 13px 10px 13px 20px;
+    border-left: 5px solid #000000;
+    margin-bottom: 10px;
+    font-family: "nanumSquareNeo";
+}
+.main__sample .sample .result{
+    font-family: "nanumSquareNeo";
+}
+
+.main__sample .sample .result summary {
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.main_desc {
+    padding: 40px;
+    font-family: "nanumSquareNeo";
+}
+
+.main_desc > div{
+    margin-bottom: 100px;
+}
+
+.main_desc h2 {
+    font-family: “GmarketSans”;
+    font-weight: 300;
+    margin-bottom: 10px;
+    line-height: 1.4;
+}
+.main_desc p {
+    background-color: #f8f8d3;
+    padding: 20px;
+    border-left: 5px solid rgb(0, 0, 0);
+    margin-bottom: 10px;
+}
+.main_desc ul {
+    margin-bottom: 10px;
+}
+.main_desc li {
+    line-height: 1.6;
+    position: relative;
+    padding-left: 12px;
+}
+.main_desc li::before {
+    content: '';
+    width: 4px;
+    height: 4px;
+    background-color: #cac872;
+    position: absolute;
+    left: 0;
+    top: 10px;
+}
+.main_desc a {
+    display: block;
+    padding: 20px;
+    border: 1px dashed #cac872;
+    text-align: center;
+    font-size: 20px;
+}
+.main_desc a:hover {
+    background-color: #cfce75;
+    color: #fff;
+}
+
+/* table */
+.table table {
+    width: 100%;
+    border-top: 1px solid #cacaca;
+    margin-bottom: 50px;
+    text-align: center;
+    border-spacing: 0;
+}
+
+.table table caption {
+    text-align: left;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.table table tr th {
+    border-bottom: 1px solid #cacaca;
+    border-right: 1px solid #cacaca;
+    padding: 10px;
+    background-color: #616596;
+}
+
+.table table tr td {
+    border-bottom: 1px solid #cacaca;
+    border-right: 1px solid #cacaca;
+    padding: 10px;
+}
+
+.table table tr td.left {
+    text-align: left;
+}
+
+.table table tr td:last-child {
+    border-right: 0px;
+}
+
+.table table tr td:last-child {
+    border-right: 0px;
+}
+
+@media (max-width: 800px){
+    .main__menu {
+        padding: 20px;
+    }
+    .main__sample {
+        padding: 20px;
+    }
+    .main_desc {
+        padding: 20px;
+    }
+}

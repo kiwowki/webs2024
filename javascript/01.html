@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>01</title>
+</head>
+<body>
+    <script>
+        // 1부터 100까지 홀수만 나오게 출력
+        //for문
+        {
+            for(i=1; i<=100; i+=2){
+                console.log(i)
+            }
+        }
+        // while문
+        {
+            let i = 1
+            while(i<=100){
+                console.log(i);
+                i+=2
+            }
+        }
+        //for + if문
+        {
+            for(i=1; i<=100; i++){
+                if(i % 2 === 1)
+                console.log(i);
+            }
+        }
+        
+        // 1부터 100까지(5의 배수만)
+        {
+            for(i=5; i<=100; i+=5){
+                console.log(i)
+            }
+        }
+        {
+            let i = 5
+            while(i<=95){
+                console.log(i)
+                i+=5
+            }
+        }
+        {
+            for(i=5; i<=100; i++){
+                if(i % 5 === 0)
+                console.log(i)
+            }
+        }
+
+        // 1부터 100까지 document사용해서 홀수는 빨강, 짝수는 파랑으로 변경)
+        {
+            for(i=1; i<=100; i++){
+                if(i % 2 == 0){
+            }
+        
+            }
+        }
+
+
+
+        // 배열 안의 짝수만 나오게..
+        {
+          const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
+          
+          
+          for(let i=0; i<arr.length; i++){
+            
+            console.log(arr[i])
+          }
+        }
+
+
+        // 05. 배열 : 데이터 불러오기 : for()   <<리액트에서 아주 많이 씀
+        {
+            const arr = [100, 200, 300, 400, 500, 600, 700, 800, 900];
+
+
+            //아는대로 100~900 출력해보기
+            console.log(arr[0]);
+            console.log(arr[1]);
+            console.log(arr[2]);
+            console.log(arr[3]);
+            console.log(arr[4]);
+            console.log(arr[5]);
+            console.log(arr[6]);
+            console.log(arr[7]);
+            console.log(arr[8]);
+
+            //for문으로 출력하기(한 번에 출력)    <<변수 이름은 상관없긴한데 보통 i로 씀
+            //(초깃값(arr[0]이니까 0); 조건식; 증감값(1씩 증가된다. let의 변경(0->1...8/9가 되면 종료)))
+            
+            for(let i=0; i<9; i++){      // ++i 는 전치 연산자(죽은 문법). 항상 뒤에 씀 정처기엔 나옴..
+                console.log(arr[i]);
+            }     
+            // 1부터 100까지 나오게 출력
+
+            {   
+                //초기값 0
+                for(let i=0; i<100; i++){
+                    console.log(i+1);
+                }
+                for(let i=1; i<101; i++){
+                    console.log(i);
+                }
+            }
+
+            // 2부터 55까지 출력(초기값 0)
+            {
+                for(let i=0; i<54; i++){
+                    console.log(i+2);
+                }
+            }
+            // 1부터 100까지 짝수만 : for문
+            {
+                for(let i=2; i<=100; i+=2){
+                    console.log(i);
+                }
+            }
+            // 1부터 100까지 짝수만 : while문    <<for문과 똑같은데 위치만 다름.
+            let i = 2;
+            while (i <=100){
+                console.log(i);
+                i += 2;
+            }
+            // 1부터 100까지 짝수만 : for문 + if문
+            for(let i=1; i<=100; i++){
+                if(i % 2 === 0){
+                    console.log(i);
+                }
+            }
+
+            {
+                for(let i=1; i<=100; i++){
+                    if(i % 2 == 0){         //<span>은 의미 없는 그냥 그거 ㅇㅋ? 알아보기 " ' " " ' " 이런식으로 사용.
+                        document.write("<span style='color:blue'>"+i+"</span>", "<br>");
+                    } else {
+                        document.write("<span style='color:red'>"+i+"</span>", "<br>");
+                    }
+                }
+            }
+
+        }
+
+        {
+
+            // 구구단
+            {
+                for(let i = 2; i <= 9; i++) {
+                    console.log(i + '단');
+                    for(let j = 1; j <= 9; j++) {
+                        console.log(i + ' * ' + j + ' = ' + (i*j));
+                    }
+                }
+            }
+
+            {
+                for(let i = 8; i<=8; i++){
+                    console.log(i + "단")
+                    for(let j = 1; j<=9; j++){
+                        console.log(i + " * " + j + " = " + [i * j])
+                    }
+
+                }
+            }
+            {
+                                    for(let i=8; i==8; i++){
+                                        document.write(i + " 단")
+                                        for(let j = 1; j < 10; j++){
+                                            document.write(i + " * " + j + " = " + (i * j))
+                                        }
+                                    }
+                                }
+        }
+        {
+        const obj = {
+                a: 100,
+                b: {x: 200, y: 300},
+                d: "javascript"
+        }
+
+        const { a, b: {x, y}, d } = obj; 
+
+        console.log(a);
+        console.log(x);
+        console.log(y);
+        console.log(d);
+}   
+    </script>
+</body>
+</html>

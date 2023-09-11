@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>02 정리용</title>
+</head>
+<body>
+
+    <script>
+
+        // 01. for()
+        // 02. forEach()
+        // 03. for of
+        // 04. for in
+        // 05. map()
+        // 06. filter()
+        // 07. 1~100까지 합
+        // 08. 구구단
+        // 09. 테이블 만들기
+
+        
+        //1~100 홀 짝
+        //구구단
+        //테이블
+
+    </script>
+
+    <script>
+
+
+
+
+        {
+            const arr = [10, 20, 30, 40, 50, 60, 70, 80, 90]
+            // 01. for()
+            {
+                for(i=0; i<arr.length; i++){
+                    document.write(arr[i] ,", ");
+                }
+            }
+            // 02. forEach()
+            {
+                arr.forEach((el) => {
+                    document.write(el ,", ");
+                });
+            }
+            // 03. for of
+            {
+                for(let el of arr){
+                    document.write(el ,", ");
+                }
+            }
+            // 04. for in
+            {
+                for(let el in arr){
+                    document.write(arr[el] ,", ");
+                }
+            }
+            // 05. map()
+            {
+                arr.map((el) => {
+                    document.write(el ,", ");
+                });
+            }
+            // 06. filter()
+            {
+                arr.filter((el) => {
+                    document.write(el ,", ");
+                });
+            }
+        }
+        document.write("<br><br>")    
+
+            // 07. 1~100까지 합
+            {
+                let sum = 0
+                for(i=1; i<=100; i++){
+                sum += i
+                }
+                document.write(sum)
+            }
+            document.write("<br><br>")  
+            // 08. 구구단 8단
+            {
+                for(i=1; i<=9; i++)
+            
+                document.write("8X" + i + " = " + 8*i + "<br>")
+            }
+            // 09. 테이블 만들기 (10*10)
+            {
+                let table = "<table class='table'>"
+            
+                for(i=1; i<=10; i++){
+                table += "<tr>"
+            
+                    for(j=1; j<=10; j++){
+                        table += "<td>1</td>"
+                    }
+            
+                table += "</tr>"
+                }
+                table += "</table>"
+
+                document.write(table)
+            }
+
+
+
+
+            
+//1~100 홀짝 출력
+            // 1부터 100까지 나오게 출력
+
+            {   
+                //초기값 0
+                for(let i=0; i<100; i++){
+                    console.log(i+1);
+                }
+                for(let i=1; i<101; i++){
+                    console.log(i);
+                }
+            }
+
+            // 2부터 55까지 출력(초기값 0)
+            {
+                for(let i=0; i<54; i++){
+                    console.log(i+2);
+                }
+            }
+            // 1부터 100까지 짝수만 : for문
+            {
+                for(let i=2; i<=100; i+=2){
+                    console.log(i);
+                }
+            }
+            // 1부터 100까지 짝수만 : while문    <<for문과 똑같은데 위치만 다름.
+            let i = 2;
+            while (i <=100){
+                console.log(i);
+                i += 2;
+            }
+            // 1부터 100까지 짝수만 : for문 + if문
+            for(let i=1; i<=100; i++){
+                if(i % 2 === 0){
+                    console.log(i);
+                }
+            }
+
+            // 1부터 100까지 짝수는 파랑 홀수는 빨강
+            {
+                for(let i=1; i<=100; i++){
+                    if(i % 2 == 0){         //<span>은 의미 없는 그냥 그거 ㅇㅋ? 알아보기 " ' " " ' " 이런식으로 사용.
+                        document.write("<span style='color:blue'>"+i+"</span>", "<br>");
+                    } else {
+                        document.write("<span style='color:red'>"+i+"</span>", "<br>");
+                    }
+                }
+            }        
+
+
+
+
+//구구단
+            // 2~9단
+            {
+                for(let i = 2; i <= 9; i++) {
+                    console.log(i + '단');
+                    for(let j = 1; j <= 9; j++) {
+                        console.log(i + ' * ' + j + ' = ' + (i*j));
+                    }
+                }
+            }
+            // 8단만
+            {
+                for(let i = 8; i<=8; i++){
+                    console.log(i + "단")
+                    for(let j = 1; j<=9; j++){
+                        console.log(i + " * " + j + " = " + [i * j])
+                    }
+
+                }
+            }
+            // 8단만 출력
+            {
+                for(let i=8; i==8; i++){
+                    document.write(i + " 단<br>")
+                    for(let j = 1; j < 10; j++){
+                        document.write(i + " * " + j + " = " + (i * j) + "<br>")
+                    }
+                }
+            }            
+
+
+
+//테이블            
+            // 가로5, 세로10의 테이블에 1~50 숫자 쓰기
+            {
+                let num = 1;
+
+                let table = "<table class='table'>";
+
+                for(let i=1; i<=10; i++){
+                    table += "<tr>";
+
+                    for(let j=1; j<=5; j++){
+                        table += "<td>"+ num +"</td>";
+                        num++
+                    }
+
+                    table += "</tr>";
+                }
+                table += "</table>";
+
+                document.write(table);
+            }
+
+            // 가로5, 세로10의 테이블에 짝수 50칸 채우기
+
+
+            {
+                let table = "<table class='table'>";
+                let k = 2;
+                
+                for(let i=1; i<=10; i++){
+                    table += "<tr>";
+
+                        for(let j=1; j<=5; j++){
+                            table += "<td>"+ k +"</td>"
+                            k += 2;
+                        }
+
+                    table += "</tr>";
+                }
+
+                table += "</table>";
+
+                document.write(table);
+            }
+
+    
+
+
+    </script>
+</body>
+</html>
