@@ -1,0 +1,2767 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>퀴즈 이펙트04-1</title>
+
+    <link rel="stylesheet" href="assets/css/quiz.css">
+    <link rel="stylesheet" href="assets/css/ani.css">
+
+
+    <style>
+        .quiz_score {
+            position: fixed;
+            left: 20px;
+            bottom: 20px;
+            width: 70px;
+            height: 50px;
+            line-height: 50px;
+            border-radius: 10px;
+            background-color: #000000;
+            color: #ffeded;
+            text-align: center;
+            font-size: 20px;
+        }
+
+    </style>
+
+</head>
+<body>
+    <header id="header">
+        <h1>
+            <a href="../index.html">Quiz</a>
+        </h1>
+        <nav>
+            <ul>
+                <li class="active"><a href="quizEffect04.html">4-1</a></li>
+            </ul>
+        </nav>
+    </header>
+    <!-- //header -->
+
+    <main id="main">
+        <div class="quiz_wrap"></div>
+        <div class="quiz_score">0</div>
+    </main>
+    <!-- //main -->
+
+    <footer id="footer">
+        <a href="mailto:wolves941110@gmail.com">wolves941110@gmail.com</a>
+    </footer>
+    <!-- //footer -->
+
+    <script>
+        // 선택자 
+        const quizWrap = document.querySelector(".quiz_wrap"); 
+        const quizScore = document.querySelector(".quiz_score");
+        let totalScore = 0;
+
+        // 문제 정보
+        const quizInfo = [
+            {
+                infoDate : "2006년 5회",
+                infoType : "정보처리 기능사",
+                infoQuestion : "이항(binary) 연산에 해당하는 것은?",
+                infoChoice : {
+                    1: "COMPLEMENT",
+                    2: "AND",
+                    3: "ROTATE",
+                    4: "SHIFT"
+                },
+                infoAnswer : "2",
+                infoDesc : "단항연산 : ROTATE, SHIFT, MOVE, NOT(COMPLEMENT)"
+            },
+            {
+                infoDate : "2006년 5회",
+                infoType : "정보처리 기능사",
+                infoQuestion : "프로그램이 컴퓨터의 기종에 관계없이 수행될 수 있는 성질을 의미하는 것은?",
+                infoChoice : {
+                    1: "가용성",
+                    2: "신뢰성",
+                    3: "호환성",
+                    4: "안전성"
+                },
+                infoAnswer : "3",
+                infoDesc : "컴퓨터의 기종에 관계없이 동작하므로 호환성입니다. 호환성이란 까스활명수, 까스명수, 베아제등 이름은 틀리지만 소화제의 기능을 하는것처럼 기종에 관계없이 동작할수 있는 것들을 말합니다."
+            },
+            {
+                infoDate : "2006년 5회",
+                infoType : "정보처리 기능사",
+                infoQuestion : "제어장치가 앞의 명령 실행을 완료한 후, 다음에 실행 할 명령을 기억장치로부터 가져오는 동작을 완료할 때까지의 주기를 무엇이라고 하는가?",
+                infoChoice : {
+                    1: "fetch cycle",
+                    2: "transfer cycle",
+                    3: "search time",
+                    4: "run time"
+                },
+                infoAnswer : "1",
+                infoDesc : "제어장치가 앞의 명령을 실행하고, 다음에 실행할 명령을 기억장치(메모리)로부터 가져오는 동작을 명령사이클 또는 인스트럭션 사이클 이라고 합니다. 이 주기에서는 명령어를 가져오고 해독하며 실행하는 단계가 있습니다. 명령어를 가지고 오는것은 fetch cycle 이라고 합니다."
+            },
+            {
+                infoDate : "23년 1회",
+                infoType : "정보처리 기능사",
+                infoQuestion : "현재 실행 중인 명령어를 기억하고 있는 베어 방치 내의 레지스터는?",
+                infoChoice : {
+                    1: "누산기(Accumulator)",
+                    2: "인덱스 레지스터",
+                    3: "메모리 레지스터",
+                    4: "명령어 레지스터"
+                },
+                infoAnswer : "4",
+                infoDesc : "명령어 레지스터(IR:incstruction register)는 중앙 처리기의 제어 부분에 의해서 해독되어 현재 실행 중인 명령어를 기억하는 레지스터입니다."
+            },
+            {
+                infoDate : "23년 1회",
+                infoType : "정보처리 기능사",
+                infoQuestion : "누산기(Accumulator)에 대한 설명으로 적절한 것은?",
+                infoChoice : {
+                    1: "산술 연산 또는 노리 연산의 결과를 일시적으로 기억하는 장치이다.",
+                    2: "연산 명령이 주어지면 연산 준비를 하는 장치이다.",
+                    3: "연산 명령의 순서를 기억하는 장치이다.",
+                    4: "연산 부호를 해독하는 해독 장치이다."
+                },
+                infoAnswer : "1",
+                infoDesc : "누산기는 산술 및 논리 연산의 결과를 일시적으로 기억하는 연산 장치의 핵심 레지스터로 연산의 중심이 되는 레지스터. / 프로그램 카운터 : 다음에 수행할 명령어의 번지(주소)를 보관 / 인덱스 레지스터 : 인덱스 주소 지정시 사용되는 레지스터."
+            },            
+            {
+                infoDate : "22년 2회",
+                infoType : "정보처리 기능사",
+                infoQuestion : "연산의 중심이 되는 레지스터는?",
+                infoChoice : {
+                    1: "Flip-Flop",
+                    2: "General Register",
+                    3: "Address Register",
+                    4: "Accumulator"
+                },
+                infoAnswer : "4",
+                infoDesc : "flip-flop : 1비트의 정보를 기억할 수 있는 최소의 기억 소자."
+            },
+            {
+                infoDate : "22년 3회",
+                infoType : "정보처리 기능사",
+                infoQuestion : "불 대수의 정리 중 옳지 않은 것은?",
+                infoChoice : {
+                    1: "A · A = A",
+                    2: "A · 1 = A",
+                    3: "A + A = 1",
+                    4: "1 + A = A"
+                },
+                infoAnswer : "3",
+                infoDesc : "대충 A는 0.5보다 작은 수라고 생각하고 결과값이 1보다 적으면 버려서 값을 구하면 쉬움. 불대수(Boole Algebra)는 논리와 집합 이론을 기반으로 하는 수학적 구조로, 논리 연산과 논리 관계를 다루는 대수적인 접근 방법입니다. 불대수는 주로 이진 논리(0과 1 또는 참과 거짓)를 다루는데 사용되며, 디지털 회로 및 논리적 추론과 관련된 컴퓨터 과학 및 전자 공학 분야에서 중요한 개념입니다. "
+            },
+            {
+                infoDate : "20년 2회",
+                infoType : "정보처리 기능사",
+                infoQuestion : "입력 단자와 출력 단자가 반대가 되는, 즉 '0'이면 '1', '1'이면 '0'이 되는 회로는?",
+                infoChoice : {
+                    1: "AND 회로",
+                    2: "OR 회로",
+                    3: "NOT 회로",
+                    4: "Flip-Flop 회로"
+                },
+                infoAnswer : "3",
+                infoDesc : "NOT회로는 인버터(Inverter)라고도 불립니다. 입력값의 반대값이 출력되는 게이트로 2진수 1의 보수를 구하는데 사용됩니다."
+            },
+            {
+                infoDate : "23년 1회",
+                infoType : "정보처리 기능사",
+                infoQuestion : "반가산기(Half-Adder)의 논리 회로도에서 자리올림이 발생하는 회로는?",
+                infoChoice : {
+                    1: "Exclusive",
+                    2: "OR",
+                    3: "NOT",
+                    4: "AND"
+                },
+                infoAnswer : "4",
+                infoDesc : "XOR은 A,B의 합을 구하는 회로이고, AND회로는 자리올림수를 얻는 회로이다."
+            },
+            {
+                infoDate : "21년 1회",
+                infoType : "정보처리 기능사",
+                infoQuestion : "1비트(bit) 기억 장치로 가장 적합한 것은?",
+                infoChoice : {
+                    1: "누산기",
+                    2: "레지스터",
+                    3: "계전기",
+                    4: "플립플롭"
+                },
+                infoAnswer : "4",
+                infoDesc : "1비트를 기억할 수 있는 최소의 기억 소자는 플립플롭이다."
+            },
+            {
+                infoDate : "22년 1회/4회",
+                infoType : "정보처리 기능사",
+                infoQuestion : "다음 중 플립플롭의 종류가 아닌 것은?",
+                infoChoice : {
+                    1: "R-S",
+                    2: "J-K",
+                    3: "D",
+                    4: "R"
+                },
+                infoAnswer : "4",
+                infoDesc : "R은 없다."
+            },
+            {
+                infoDate : "22년 1회/4회",
+                infoType : "정보처리 기능사",
+                infoQuestion : "JK 플립플롭에서 보수가 출력되기 위한 입력 값 J, K의 상태는?",
+                infoChoice : {
+                    1: "J = 0, K = 1",
+                    2: "J = 0, K = 0",
+                    3: "J = 1, K = 1",
+                    4: "J = 1, K = 0"
+                },
+                infoAnswer : "3",
+                infoDesc : "J = K = 1이 되면 반전. J = 0, K = 0 -> 전 상태 불변 / J = 0, K = 1 -> 0 / J = 1, K = 0 -> 1 / JK 플립플롭은 다른 모든 플립플롭의 기능을 대용할 수 있으므로 응용 범위가 넓고 집적 회로화되어, 가장 널리 사용되는 플립플롭이다."
+            },
+            {
+                infoDate : "21년 1회",
+                infoType : "정보처리 기능사",
+                infoQuestion : "다른 모든 플립플롭의 기능을 대용할 수 있으므로 응용 범위가 넓고 집적 회로화되어, 가장 널리 사용되는 플립플롭은?",
+                infoChoice : {
+                    1: "T 플립플롭",
+                    2: "JK 플립플롭",
+                    3: "D 플립플롭",
+                    4: "RS 플립플롭"
+                },
+                infoAnswer : "2",
+                infoDesc : "T : JK를 하나로 묶어서 T로 표시 / D : 한 개의 입력을 가지며, RS 플립플롭에 NOT 게이트를 추가해서 구현할 수 있음 / RS Reset단자와 Set 단자의 신호에 따라 2진수 1자리를 기억",
+            },
+            {
+                infoDate : "16년 상시",
+                infoType : "정보처리 기능사",
+                infoQuestion : "RS 플립플롭에서 S = 1, R =1이면 출력은 어떤 상태가 되는가?",
+                infoChoice : {
+                    1: "불능(Not Allowed)",
+                    2: "1로 Set됨",
+                    3: "0으로 Set됨",
+                    4: "부정이 된다"
+                },
+                infoAnswer : "1",
+                infoDesc : "불능, 부정(Not Allowed). S = 0, R = 0이면 출력은 전 상태 불변이 됨.",
+            },
+            {
+                infoDate : "23년 1회",
+                infoType : "정보처리 기능사",
+                infoQuestion : "RS 플립플롭에서 S = 0, R =0이면 출력 Q의 상태는?",
+                infoChoice : {
+                    1: "0으로 Reset됨.",
+                    2: "불변 상태이다.",
+                    3: "1로 Set된다.",
+                    4: "부정이 된다"
+                },
+                infoAnswer : "1",
+                infoDesc : "전 문제에 설명있음"
+            },            
+            {
+                infoDate : "20년 2회",
+                infoType : "정보처리 기능사",
+                infoQuestion : "2진수 1011을 그레이 코드(Gray Code)로 변환한 것은?",
+                infoChoice : {
+                    1: "0111",
+                    2: "1110",
+                    3: "0100",
+                    4: "1010"
+                },
+                infoAnswer : "2",
+                infoDesc : "첫 자리는 그대로 가져오고, 앞 뒷자리를 합해서 1이 되면 1을 도출."
+            },
+            {
+                infoDate : "20년 2회/4회",
+                infoType : "정보처리 기능사",
+                infoQuestion : "2진수 0110을 그레이 코드(Gray Code)로 변환한 것은?",
+                infoChoice : {
+                    1: "0010",
+                    2: "0111",
+                    3: "0101",
+                    4: "1110"
+                },
+                infoAnswer : "3",
+                infoDesc : "첫 자리는 그대로 가져오고, 앞 뒷자리를 합해서 1이 되면 1을 도출."
+            },
+            {
+                infoDate : "20년 2회",
+                infoType : "정보처리 기능사",
+                infoQuestion : "인스트럭션(Instruction)을 가장 바르게 나타낸 것은?",
+                infoChoice : {
+                    1: "오류 검색 코드 형식",
+                    2: "자료의 표현과 주소 지정 방식",
+                    3: "주프로그램과 부프로그램",
+                    4: "명령 코드부와 번지부로 구성"
+                },
+                infoAnswer : "4",
+                infoDesc : "명령어의 형식은 명령 코드부(OP-Code)와 번지부(Operand)로 구성됨"
+            },
+            {
+                infoDate : "15년 상시",
+                infoType : "정보처리 기능사",
+                infoQuestion : "Instruction의 구성에서 처음 바이트에 기억되는 것은?",
+                infoChoice : {
+                    1: "Length",
+                    2: "Operand",
+                    3: "OP-Code",
+                    4: "Comma"
+                },
+                infoAnswer : "3",
+                infoDesc : "OP-Code(연산자부, 명령 코드부)가 처음 기억된다."
+            },
+            {
+                infoDate : "20년 4회",
+                infoType : "정보처리 기능사",
+                infoQuestion : "주소 지정 방식 중 기억 장치에 접근할 피연산자가 없는 것으로 산술에 필요한 명령어는 스택 구조 형태에서 처리하도록 하는 것은?",
+                infoChoice : {
+                    1: "2-주소 형식",
+                    2: "1-주소 형식",
+                    3: "0-주소 형식",
+                    4: "3-주소 형식"
+                },
+                infoAnswer : "3",
+                infoDesc : "1-주소형식(=ACC(누산기) 구조) : 주소(오퍼랜드부)가 하나 존재/2-주소 형식(범용 레지스터 구조) : 주소부가 2개인 가장 일반적인 형식/3-주소 형식(범용 레지스터 구조) : 명령어에 오퍼랜드부가 3개 존재하므로 원래의 값이 보존됨",
+            },
+            {
+                infoDate : "21년 4회",
+                infoType : "정보처리 기능사",
+                infoQuestion : "0-주소 명령은 연산시 어떤 자료 구조를 이용하는가?",
+                infoChoice : {
+                    1: "QUEUE",
+                    2: "DEQUE",
+                    3: "STACK",
+                    4: "TREE"
+                },
+                infoAnswer : "3",
+                infoDesc : "0-주소 형식=스택구조 : 명령어에 오퍼랜드부 없이데이터가 명령어 자체에 있는 방식(연산자만 존재)",
+            },
+            {
+                infoDate : "23년 2회",
+                infoType : "정보처리 기능사",
+                infoQuestion : "명령어 내의 오퍼랜드 부분의 주소가 실제 데이터의 주소를 가지고 있는 포인터의 주소를 나타내는 방식으로 데이터 처리에 대한 유연성이 좋으나 주소 참조 횟수가 많다는 단점이 있는 주소 지정 방식은?",
+                infoChoice : {
+                    1: "즉시 주소 지정",
+                    2: "계산에 의한 주소 지정",
+                    3: "간접 주소 지정",
+                    4: "직접 주소 지정"
+                },
+                infoAnswer : "3",
+                infoDesc : "간접 주소 지정 : 명령어의 주소 부분으로 지정한 기억 장소의 내용이 실제 데이터가 있는 곳의 주소로 사용됨(메모리 참조 2회 이상) / 직접 주소 지정 : 주소 부분에 있는 값이 실제 데이터가 있는 주기억 장치 내의 주소를 나타냄(메모리 참조 1회). 단순한 변수 등을 액세스하는데 사용됨.",
+            },
+            {
+                infoDate : "21년 4회",
+                infoType : "정보처리 기능사",
+                infoQuestion : "동시에 여러 개의 입출력 장치를 제어할 수 있는 채널은?",
+                infoChoice : {
+                    1: "Simplex Channel",
+                    2: "Register Channel",
+                    3: "Selector Channel",
+                    4: "Multiplexer Channel"
+                },
+                infoAnswer : "4",
+                infoDesc : "멀티플렉서 채널 : 저속의 여러 입출력 장치를 여러개의 서브 채널이 있어서 동시에 조작 가능한 채널 / 셀렉터 채널 : 주기억 장치와 고속의 입출력 장치 간에 데이터를 전송하는 프로세서로 한 번에 한 개의 장치를 선택하여 동작 / 블록 멀티플렉서 채널 : 블록 단위로 이동시키는 멀티플렉서 채널로서 셀렉터 채널과 멀티 플렉서 채널의 복합 형태 ",
+            },
+            {
+                infoDate : "22년 4회",
+                infoType : "정보처리 기능사",
+                infoQuestion : "입출력 장치의 동작 속도와 번자계산기 내부의 동작 속도를 맞추는데 사용되는 레지스터는?",
+                infoChoice : {
+                    1: "시프트 레지스터",
+                    2: "시퀀스 레지스터",
+                    3: "어드레스 레지스터",
+                    4: "버퍼 레지스터"
+                },
+                infoAnswer : "4",
+                infoDesc : "읽거나 기록한 데이터를 일시적으로 기억하는 레지스터로 입출력 장치나 전자계산기 내부의 동작속도를 맞추기 위해 사용됨. Buffer가 완충역할을 하는 의미로 기능을 익히면 됩니다.",
+            },
+            {
+                infoDate : "21년 1회",
+                infoType : "정보처리 기능사",
+                infoQuestion : "데이터베이스 디자인 단계를 순서대로 적은 것으로 옳은 것은? (1) 데이터베이스의 목적을 정의 / (2) 데이터베이스에서 필요한 테이블을 정의 / (3) 테이블에서 필요한 필드를 정의 / (4) 테이블 간의 관계를 정의",
+                infoChoice : {
+                    1: "1 4 2 3",
+                    2: "1 3 2 4",
+                    3: "1 2 4 3",
+                    4: "1 2 3 4"
+                },
+                infoAnswer : "4",
+                infoDesc : "데이터베이스 디자인 단계에 대한 순서를 묻는 형식의 문제가 출제되므로 각 단계의 이해와 숙지가 필요합니다.",
+            },            
+            {
+                infoDate : "20년 3회",
+                infoType : "정보처리 기능사",
+                infoQuestion : "다음의 데이터베이스 설계 항목들을 순서대로 옳게 나열한 것은? (가)요구 조건 분석 (나)물리적 설계 (다)논리적 설계 (라)개념적 설계 (마)구현",
+                infoChoice : {
+                    1: "가 나 다 라 마",
+                    2: "가 나 라 다 마",
+                    3: "가 다 나 라 마",
+                    4: "가 라 다 나 마"
+                },
+                infoAnswer : "4",
+                infoDesc : "데이터베이스의 설계 단계이다."
+            },
+            {
+                infoDate : "15년 상시",
+                infoType : "정보처리 기능사",
+                infoQuestion : "데이터베이스 관리 시스템(DBMS)의 필수 기능에 해당하지 않는 것은?",
+                infoChoice : {
+                    1: "제어 기능",
+                    2: "정의 기능",
+                    3: "조작 기능",
+                    4: "처리 기능"
+                },
+                infoAnswer : "4",
+                infoDesc : "필수 기능은 정의 기능(물리적 구조 정의), 조작 기능(데이터베이스와 사용자 간의 상호 작용 수단(데이터 요청, 변경 등)을 제공), 제어 기능(데이터베이스의 내용을 항상 정확하게 유지하여 데이터의 무결성이 파괴되지 않도록 함)이다."
+            },
+            {
+                infoDate : "23년 1회",
+                infoType : "정보처리 기능사",
+                infoQuestion : "3단계 스키마(Schema)의 종류가 아닌 것은?",
+                infoChoice : {
+                    1: "개념 스키마",
+                    2: "외부 스키마",
+                    3: "관계 스키마",
+                    4: "내부 스키마"
+                },
+                infoAnswer : "3",
+                infoDesc : "스키마 : 데이터베이스를 구성하는 개체, 속성, 관계의 형식과 상호 관계 전체를 정의하는 것. 종류에는 외부 스키마, 개념 스키마, 내부 스키마가 있다."
+            },
+            {
+                infoDate : "16년 상시",
+                infoType : "정보처리 기능사",
+                infoQuestion : "DBA의 역할로 거리가 먼 것은?",
+                infoChoice : {
+                    1: "스키마 정의",
+                    2: "데이터 사전의 유지 관리",
+                    3: "저장 구조와 접근 방법 선정",
+                    4: "응용 프로그램의 설계 및 개발"
+                },
+                infoAnswer : "4",
+                infoDesc : "DBA(데이터베이스 관리자)의 권한과 임무 : 데이터베이스를 구성하는 정보 내용 정의, 데이터베이스의 생성과 삭제, 데이터의 저장 구조와 접근 방법 결정, 시스템의 보안성과 무결성 책임, 백업과 회복을 위한 정책 결정, 스키마의 정의. 응용 프로그램의 개발은 응용 프로그래머의 몫입니다."
+            },
+            {
+                infoDate : "21년 3회",
+                infoType : "정보처리 기능사",
+                infoQuestion : "데이터베이스 개체의 속성 중 하나의 속성이 가질 수 있는 모든 값의 집합을 무엇이라고 하는가?",
+                infoChoice : {
+                    1: "객체(Object)",
+                    2: "속성(Attribute)",
+                    3: "도메인(Domain)",
+                    4: "카디널리티(Cardinality)"
+                },
+                infoAnswer : "3",
+                infoDesc : "관계 데이터베이스에서 하나의 애트리뷰트가 취할 수 있는 같은 타입의 원자 값들의 집합을 무엇이라고 하는가? 라고도 물을 수 있음. 도메인(Domain) : 애트리뷰트가 취할 수 있는 값들의 집합.",
+            },
+            {
+                infoDate : "18년 상시",
+                infoType : "정보처리 기능사",
+                infoQuestion : "SQL 명령어 중 DML에 해당하지 않는 것은?",
+                infoChoice : {
+                    1: "INSERT",
+                    2: "ALTER",
+                    3: "UPDATE",
+                    4: "DELETE"
+                },
+                infoAnswer : "2",
+                infoDesc : "DML : 데이터 조작 언어로, 테이블 내의 레코드를 검색, 삽입, 갱신, 삭제하고자 할 때 사용하는 데이터 조작 언어."
+            },
+            {
+                infoDate : "21년 1회",
+                infoType : "정보처리 기능사",
+                infoQuestion : "SQL 명령어 중 데이터 정의문(DDL)에 해당하는 것은?",
+                infoChoice : {
+                    1: "UPDATE",
+                    2: "CREATE",
+                    3: "SELECT",
+                    4: "DELETE"
+                },
+                infoAnswer : "2",
+                infoDesc : "DDL : 데이터 정의 언어로, 데이터를 입력하기 위한 테이블을 정의하거나 정보를 참조하기 위한 뷰를 정의하기 위한 언어."
+            },
+            {
+                infoDate : "20년 3회",
+                infoType : "정보처리 기능사",
+                infoQuestion : "SQL문의 형식으로 적당하지 않은 것은?",
+                infoChoice : {
+                    1: "SELECT-FROM-WHERE",
+                    2: "UPDATE-FROM-WHERE",
+                    3: "INSERT-INTO-VALUES",
+                    4: "DELETE-FROM-WHERE"
+                },
+                infoAnswer : "2",
+                infoDesc : "INSERT : 삽입문으로 테이블에 새로운 데이터(행)을 삽입하며 INSERT-INTO-VALUES의 유형을 가짐. / UPDATE : 갱신문으로 테이블에 저장되어 있는 데이터를 갱신하며 UPDATE-SET-WHERE의 유형을 가짐. 올바른 UPDATE문은 UPDATE-SET-WHERE 이다."
+            },
+            {
+                infoDate : "21년 1회",
+                infoType : "정보처리 기능사",
+                infoQuestion : "SQL문의 형식으로 옳지 않은 것은?",
+                infoChoice : {
+                    1: "INSERT-SET-WHERE",
+                    2: "UPDATE-SET-WHERE",
+                    3: "DELETE-FROM-WHERE",
+                    4: "SELECT-FROM-WHERE"
+                },
+                infoAnswer : "1",
+                infoDesc : "INSERT-INTO-VALUES 가 올바른 형식입니다."
+            },
+            {
+                infoDate : "21년 2회",
+                infoType : "정보처리 기능사",
+                infoQuestion : "WAL의 SELECT문에서 특정열의 값을 기준으로 정렬할 때 사용하는 절은?",
+                infoChoice : {
+                    1: "SORT BY절",
+                    2: "ORDER BY절",
+                    3: "ORDER TO절",
+                    4: "SORT 절"
+                },
+                infoAnswer : "2",
+                infoDesc : "올바른 옵션은 'ORDER BY절'입니다. 'ORDER BY' 절은 SQL에서 데이터 정렬에 사용되는 표준적인 구문입니다. 다른 보기는 사용되지 않는 SQL절입니다."
+            },            
+            {
+                infoDate : "23년 2회",
+                infoType : "정보처리 기능사",
+                infoQuestion : "생성된 테이블을 삭제할 때 사용하는 SQL 명령은?",
+                infoChoice : {
+                    1: "DROP",
+                    2: "CLEAR",
+                    3: "KILL",
+                    4: "DELETE"
+                },
+                infoAnswer : "1",
+                infoDesc : "DROP : 데이터베이스, 테이블, 뷰 등의 삭제. DELETE(삭제문)은 테이블에 저장되어 있는 행을 삭제하며 DELETE-FROM-WHERE의 유형을 가짐.",
+            },
+            {
+                infoDate : "13년 상시",
+                infoType : "정보처리 기능사",
+                infoQuestion : "SQL에서 DROP문의 옵션 중 'RESTRICT'의 역할에 대한 설명으로 가장 적절한 것은?",
+                infoChoice : {
+                    1: "제거할 요소들을 기록 후 제거한다",
+                    2: "제거할 요소가 참조 중일 경우에만 제거한다.",
+                    3: "제거할 요소들에 대한 예비조치(Back Up) 작업을 한다.",
+                    4: "제거할 요소가 참조 중이면 제거하지 않는다."
+                },
+                infoAnswer : "4",
+                infoDesc : "RESTRICT : 제거 또는 삭제 대상으로 지정된 테이블, 뷰, 행 등에 대해 이를 참조하는 데이터 객체가 존재하면 제거를 하지않는다.(꺼리는 중)"
+            },
+            {
+                infoDate : "22년 4회",
+                infoType : "정보처리 기능사",
+                infoQuestion : "다음 SQL 명령문의 의미로 가장 적절한 것은? -DROP RABLE 성적 CASCADE-",
+                infoChoice : {
+                    1: "성적 테이블과 이 테이블을 참조하는 다른 테이블도 함께 제거하시오.",
+                    2: "성적 테이블이 다른 테이블에 의해 참조 중이면 제거하지 마시오.",
+                    3: "성적 테이블만 제거 하시오.",
+                    4: "성적 테이블의 인덱스만 제거하시오."
+                },
+                infoAnswer : "1",
+                infoDesc : "CASCADE : 제거 대상의 제거와 함께 이를 참조하는 다른 데이터 객체에 대해서도 제거 작업이 실시 됨."
+            },
+            {
+                infoDate : "20년 4회",
+                infoType : "정보처리 기능사",
+                infoQuestion : "테이블 구조를 변경하는데 사용하는 SQL 명령은?",
+                infoChoice : {
+                    1: "ALTER TABLE",
+                    2: "MODIFY",
+                    3: "DROP TABLE",
+                    4: "CREATE INDEX"
+                },
+                infoAnswer : "1",
+                infoDesc : "ALTER : 데이터 정의 언어(DDL) 중 하나로, 데이터베이스, 테이블의 구조 변경을 한다."
+            },
+            {
+                infoDate : "15년 상시",
+                infoType : "정보처리 기능사",
+                infoQuestion : "급여 테이블에 데이터를 입력한 후 시간 외 수당 필드가 누락되어 이를 추가하고자 할 경우에 사용하는 SQL 명령으로 옳은 것은?",
+                infoChoice : {
+                    1: "ALTER TABLE",
+                    2: "ADD TABLE",
+                    3: "MODIFY TABLE",
+                    4: "MAKE TABLE"
+                },
+                infoAnswer : "1",
+                infoDesc : "SQL에서 'MODIFY' 키워드는 일반적으로 사용되지 않습니다. 'MODIFY'는 'ALTER TABLE' 문 안에서 일부 DBMS에서 사용되는 구문 중 하나입니다. 그러나 이것은 특정 DBMS에 제한된 것이며 표준 SQL의 일부가 아닙니다."
+            },
+            {
+                infoDate : "23년 1회",
+                infoType : "정보처리 기능사",
+                infoQuestion : "SQL에서 데이터 검색을 할 경우 검색된 결과 값의 중복 레코드를 제거하기 위해 사용되는 옵션은?",
+                infoChoice : {
+                    1: "DISTINCT",
+                    2: "*",
+                    3: "ALL",
+                    4: "CASCADE"
+                },
+                infoAnswer : "1",
+                infoDesc : "사전적 의미는 '별개의, 다른, 독특한' 입니다."
+            },
+            {
+                infoDate : "20년 3회",
+                infoType : "정보처리 기능사",
+                infoQuestion : "수치 계산과 관련된 업무에서 계산의 어려움과 비효율성을 개선하여 전표의 작성, 처리, 관리를 쉽게 할 수 있도록 한 것은?",
+                infoChoice : {
+                    1: "스프레드시트",
+                    2: "데이터베이스",
+                    3: "프레젠테이션",
+                    4: "워드프로세서"
+                },
+                infoAnswer : "1",
+                infoDesc : "데이터베이스 : 자료 관리를 위한 응용 프로그램. / 프레젠테이션 :  각종 그림이나 도표, 그래프 등을 이용하여 많은 사람에게 효과적으로 의미를 전달할 때 사용되는 응용 프로그램. / 워드프로세서 : 문서 작성을 위한 응용 프로그램.",
+            },
+            {
+                infoDate : "19년 상시",
+                infoType : "정보처리 기능사",
+                infoQuestion : "스프레드시트의 기능으로 거리가 먼 것은?",
+                infoChoice : {
+                    1: "수치 계산 기능",
+                    2: "슬라이드 쇼 기능",
+                    3: "문서 작성 기능",
+                    4: "그래프 기능"
+                },
+                infoAnswer : "2",
+                infoDesc : "동영상 처리와 슬라이드 쇼 기능은 프레젠테이션의 기능입니다. 스프레드시트도 그림, 클립아트, 지도와 같은 다양한 개체가 삽입 가능합니다."
+            },
+            {
+                infoDate : "13년 상시",
+                infoType : "정보처리 기능사",
+                infoQuestion : "스프레드시트에서 기본 입력 단위를 무엇이라고 하는가?",
+                infoChoice : {
+                    1: "툴 바",
+                    2: "셀",
+                    3: "블록",
+                    4: "탭"
+                },
+                infoAnswer : "2",
+                infoDesc : "셀(Cell) : 행과 열이 만나서 이루는 사각형. 여러 개의 셀 중에서 현재 작업 중인 셀을 활성 셀이라고 하며 셀 포인터를 이동하여 활성 셀을 변경합니다.",
+            },
+            {
+                infoDate : "20년 3회",
+                infoType : "정보처리 기능사",
+                infoQuestion : "스프레드시트 작업에서 반복되거나 복잡한 단계를 수행하는 작업을 일괄적으로 자동화시켜 처리하는 방법에 해당하는 것은?",
+                infoChoice : {
+                    1: "필터",
+                    2: "검색",
+                    3: "정렬",
+                    4: "매크로"
+                },
+                infoAnswer : "4",
+                infoDesc : "매크로(Macro) : 자주 사용하는 명령, 반복적인 작업 등을 매크로로 기록하여 해당 작업이 필요할 때마다 바로 가기 키나 실행 단추를 눌러 쉽고 빠르게 작업을 수행하는 기능입니다.",
+            },            
+            {
+                infoDate : "22년 3회",
+                infoType : "정보처리 기능사",
+                infoQuestion : "기업체의 발표회나 각종 회의 등에서 빔 프로젝트 등을 이용하여 제품에 대한 소개나 회의 내용을 요약 정리하여 청중에게 효과적으로 전달하기 위한 도구를 의미하는 것은?",
+                infoChoice : {
+                    1: "데이터베이스",
+                    2: "프레젠테이션",
+                    3: "스프레드시트",
+                    4: "워드프로세서"
+                },
+                infoAnswer : "2",
+                infoDesc : "프레젠테이션입니다."
+            },
+            {
+                infoDate : "21년 3회",
+                infoType : "정보처리 기능사",
+                infoQuestion : "프레젠테이션을 구성하는 내용을 하나의 화면 단위로 나타낸 것을 의미하는 것은?",
+                infoChoice : {
+                    1: "포인트",
+                    2: "서식 파일",
+                    3: "슬라이드",
+                    4: "워드프로세서"
+                },
+                infoAnswer : "3",
+                infoDesc : "쪽 이라고도 합니다.",
+            },
+            {
+                infoDate : "21년 1회",
+                infoType : "정보처리 기능사",
+                infoQuestion : "운영체제의 성능 평가에 대한 설명으로 옳지 않은 것은?",
+                infoChoice : {
+                    1: "사용 가능도는 시스템을 얼마나 빨리 사용할 수 있는가의 정도를 나타낸다",
+                    2: "처리 능력은 수치가 높을수록 좋다.",
+                    3: "응답 시간은 수치가 높을수록 좋다",
+                    4: "신뢰도는 시스템이 주어진 문제를 얼마나 정확하게 해결하는가를 나타내는 척도이다."
+                },
+                infoAnswer : "3",
+                infoDesc : "응답 시간은 수치가 높거나 증가한다면 느려지는 것임으로 적합하지않습니다."
+            },
+            {
+                infoDate : "15년 상시",
+                infoType : "정보처리 기능사",
+                infoQuestion : "운영체제를 제어 프로그램과 처리 프로그램으로 분류했을 때 제어 프로그램에 해당하지 않는 것은?",
+                infoChoice : {
+                    1: "감시프로그램(Supervisor Program)",
+                    2: "데이터 관리 프로그램(Data Management Program)",
+                    3: "문제 프로그램(Problem program)",
+                    4: "작업 제어 프로그램(Job Control Program)"
+                },
+                infoAnswer : "3",
+                infoDesc : "제어 프로그램(Control Program) : 감시 프로그램, 작업 관리 프로그램, 데이터 관리 프로그램 / 처리 프로그램(Progressing Program) : 언어 번역, 서비스, 문제 처리 프로그램"
+            },
+            {
+                infoDate : "21년 3회",
+                infoType : "정보처리 기능사",
+                infoQuestion : "온라인 실시간 시스템의 조회 방식에 적합한 업무는?",
+                infoChoice : {
+                    1: "객관식 채점 업무",
+                    2: "좌석 예약 업무",
+                    3: "봉급 계산 업무",
+                    4: "성적 처리 업무"
+                },
+                infoAnswer : "2",
+                infoDesc : "좌석 예약과 같이 데이터 발생과 동시에 즉시 처리해야 하는 경우의 자료 처리 시스템을 실시간 처리 시스템(Real Time Program System)이라고 합니다. 다른 보기는 일괄 처리 방식으로 처리하는 것이 적합합니다."
+            },
+            {
+                infoDate : "19년 상시",
+                infoType : "정보처리 기능사",
+                infoQuestion : "페이지 데체 알고리즘에서 계수기를 두어 가장 오랫동안 참조되지 않은 페이지를 교체할 페이지로 선택하는 방법은?",
+                infoChoice : {
+                    1: "FIFO",
+                    2: "LRU",
+                    3: "LFU",
+                    4: "OPT"
+                },
+                infoAnswer : "2",
+                infoDesc : "FIFO(Fisrt In Out) : 주기억 장치 내에 가장 먼저 들어오느 가장 오래된 페이지를 교체할 페이지로 선택하는 기법 / LRU(Least Recently Used) : 가장 오랫동안 사용되지 않은 페이지를 교체할 페이지로 선택하는 기법 / LFU(Least Frequently Used) : 사용된 횟수가 가장 적은 페이지를 교체할 페이지로 선택하는 기법 / OPT(OPTimal relacement) : 최적화 기법으로, 앞으로 오랫동안 사용되지 않거나 사용도가 낮을 페이지를 선택하여 교체하는 기법"
+            },
+            {
+                infoDate : "21년 4회",
+                infoType : "정보처리 기능사",
+                infoQuestion : "프로세스 스케줄링 방법 중 가장 먼저 CPU를 요청한 프로세스에게 가장 먼저 CPU를 할당하여 실행 할 수 있게 하는 방법은?",
+                infoChoice : {
+                    1: "FIFO",
+                    2: "FILO",
+                    3: "LFU",
+                    4: "LRU"
+                },
+                infoAnswer : "1",
+                infoDesc : "스케줄링 기법과 페이지 교체 기법은 자주 출제되는 내용입니다. FIFO(Fisrt In Out) : 주기억 장치 내에 가장 먼저 들어오느 가장 오래된 페이지를 교체할 페이지로 선택하는 기법"
+            },
+            {
+                infoDate : "22년 2회",
+                infoType : "정보처리 기능사",
+                infoQuestion : "도스(MS-DOS)에서 파일의 이름을 알파벳 순으로 표시하는 명령어는?",
+                infoChoice : {
+                    1: "DIR/ON",
+                    2: "DIR/OS",
+                    3: "DIR/OA",
+                    4: "DIR/OD"
+                },
+                infoAnswer : "1",
+                infoDesc : "DIR : Directory로, 디스크 내의 파일 목록, 파일에 대한 정보, 파일의 수, 파일의 크기, 생성 날짜와 시간, 디스크 정보를 표시해 주는 내부 명령어입니다. OD(date) : 날짜순 / OE(extension) : 확장자의 알파벳순 / ON(name) : 이름순으로 정렬 / OS(size) : 크기순으로 정렬"
+            },
+            {
+                infoDate : "20년 2회",
+                infoType : "정보처리 기능사",
+                infoQuestion : "현재 디렉터리의 내용을 확인하기 위하여 도스의 DIR 명령을 사용하는 경우 화면에 가장 많은 파일을 표형할 수 있는 명령 방식은?",
+                infoChoice : {
+                    1: "DIR/W",
+                    2: "DIR/P",
+                    3: "DIR",
+                    4: "DIR*.*"
+                },
+                infoAnswer : "1",
+                infoDesc : "W(Wide) : 파일명, 확장자만 한 줄에 5개씩 표시. 화면에 많은 양의 내용이 보임 / /P(Pause) : 한 화면씩 표시 / /O(Order) : 정렬 방식대로 표시 / /S(Sundirectory) : 지정한 디렉터리와 하위 디렉터리의 파일까지 모두 표시 / /A(All) : 숨김 파일과 비 숨김 파일들을 모두 표시"
+            },
+            {
+                infoDate : "22년 4회",
+                infoType : "정보처리 기능사",
+                infoQuestion : "하드 디스크의 분할을 설정하고 논리적 드라이브 번호를 할당하는 DOS의 외부 명령어는?",
+                infoChoice : {
+                    1: "FDISK",
+                    2: "CHKDSK",
+                    3: "RECOVERY",
+                    4: "DISKCOMP"
+                },
+                infoAnswer : "1",
+                infoDesc : "하드 디스크 파티션의 논리적 분할과 삭제 작업을 수행, 논리적 드라이브 번호를 할당하는 명령어. 하드디스크에만 사용이 가능하고 플로피 디스크에는 적용되지않습니다."
+            },            
+            {
+                infoDate : "19년 상시",
+                infoType : "정보처리 기능사",
+                infoQuestion : "도스에서 특정 파일의 감추기 속성의 읽기 속성을 지정할 수 있는 명령은?",
+                infoChoice : {
+                    1: "MORE",
+                    2: "FDISK",
+                    3: "ATRRTIB",
+                    4: "DEFRAG"
+                },
+                infoAnswer : "3",
+                infoDesc : "파일 속성을 지정 및 해제하는 명령어 입니다. / MORE : 한 화면 단위의 내용 출력으로 파이프(|) 기호와 함께 사용 / DEFRAG : 단편화 현상을 제거하는 명령어"
+            },
+            {
+                infoDate : "22년 2회",
+                infoType : "정보처리 기능사",
+                infoQuestion : "도스에서 감추어진 파일의 속성을 해제하는 명령은?",
+                infoChoice : {
+                    1: "ATRRTIB / +A",
+                    2: "ATRRTIB / -A",
+                    3: "ATRRTIB / -H",
+                    4: "ATRRTIB / +H"
+                },
+                infoAnswer : "3",
+                infoDesc :  "+는 속성 설정, -는 속성 해제입니다. / R(Read Only) : 읽기 전용 속성 / A(Archive) : 저장 기능 속성 / S(System) : 시스템 파일 속성 / H(Hidden) : 숨김 속성",
+            },
+            {
+                infoDate : "20년 3회",
+                infoType : "정보처리 기능사",
+                infoQuestion : "Windows에서 새로운 하드웨어를 장착하고 시스템을 가동하면 자동으로 하드웨어를 인식하고 실행하는 기능은?",
+                infoChoice : {
+                    1: "Interrupt 기능",
+                    2: "Auto & Play 기능",
+                    3: "Plug & play 기능",
+                    4: "Aoto & Play 기능"
+                },
+                infoAnswer : "3",
+                infoDesc : "Plug & Play : 새로운 하드웨어 설치 및 설정을 자동으로 처리."
+            },
+            {
+                infoDate : "22년 4회",
+                infoType : "정보처리 기능사",
+                infoQuestion : "Windows에서 Plug & Play란?",
+                infoChoice : {
+                    1: "컴퓨터에 전원을 켜자마자 바로 시작되는 것",
+                    2: "운영체제가 주변 기기를 자동 인식하는 것",
+                    3: "전원을 끈 상태에서도 컴퓨터가 작동되는 것",
+                    4: "전원을 그냥 꺼도 운영체제가 모든 응용 프로그램의 마무리 작업을 수행하는 것"
+                },
+                infoAnswer : "2",
+                infoDesc : "'운영체제가 주변 기기를 자동 인식하는 것' 이 올바른 설명입니다."
+            },
+            {
+                infoDate : "21년 2회",
+                infoType : "정보처리 기능사",
+                infoQuestion : "Windows의 단축키 중 활성창을 닫고 프로그램을 종료하는 것은?",
+                infoChoice : {
+                    1: "Ctrl + Esc",
+                    2: "Ctrl + A",
+                    3: "Alt + F4",
+                    4: "Alt + Tab"
+                },
+                infoAnswer : "3",
+                infoDesc : "예, 그 알트에프포 입니다."
+            },
+            {
+                infoDate : "23년 1회",
+                infoType : "정보처리 기능사",
+                infoQuestion : "Windows에서 파일 삭제 시 휴지통 폴더로 이동하지 않고 복원이 불가능한 삭제에 사용되는 키 입력은?",
+                infoChoice : {
+                    1: "Alt + Delete",
+                    2: "Shift + Delete",
+                    3: "Ctrl + Delete",
+                    4: "Tab + Delete"
+                },
+                infoAnswer : "2",
+                infoDesc : "컨+슆+딜 = 프로그램을 강제로 종료하거나 시스템을 종료시킬 수 있음."
+            },
+            {
+                infoDate : "21년 4회",
+                infoType : "정보처리 기능사",
+                infoQuestion : "Windows의 메모장을 이용하여 문서를 작성하고 저장했을 때의 기본적인 파일 확장자명으로 옳은 것은?",
+                infoChoice : {
+                    1: "hwp",
+                    2: "txt",
+                    3: "doc",
+                    4: "bmp"
+                },
+                infoAnswer : "2",
+                infoDesc : "doc : MS-WORD 확장자 / bmp : 그림판 확장자",
+            },
+            {
+                infoDate : "20년 2회",
+                infoType : "정보처리 기능사",
+                infoQuestion : "Windows의 탐색기에서 비연속적인 여러 개의 파일을 선택하는 방법은?",
+                infoChoice : {
+                    1: "Ctrl을 누른 상태에서 선택하려는 파일들을 왼쪽 마우스 버튼을 클릭하여 선택한다.",
+                    2: "Shift를 누른 상태에서 선택하려는 파일들을 왼쪽 마우스 버튼을 클릭하여 선택한다.",
+                    3: "Alt를 누른 상태에서 선택하려는 파일들을 왼쪽 마우스 버튼을 클릭하여 선택한다.",
+                    4: "Shift를 누른 상태에서 선택하려는 파일들을 왼쪽 마우스 버튼을 클릭하여 선택한다."
+                },
+                infoAnswer : "1",
+                infoDesc : "비연속적인 파일 선택은 Ctrl입니다."
+            },
+            {
+                infoDate : "18년 상시",
+                infoType : "정보처리 기능사",
+                infoQuestion : "Windows의 탐색기에서 연속적인 여러 개의 파일을 한꺼번에 선택할 때 마우스와 함께 사용하는 키는?",
+                infoChoice : {
+                    1: "Alt",
+                    2: "Shift",
+                    3: "Ctrl",
+                    4: "Tab"
+                },
+                infoAnswer : "2",
+                infoDesc : "연속적인 파일 선택은 Shift입니다."
+            },
+            {
+                infoDate : "16년 상시",
+                infoType : "정보처리 기능사",
+                infoQuestion : "Windows의 휴지통에 대한 설명으로 옳지 않은 것은?",
+                infoChoice : {
+                    1: "삭제한 파일을 임시 저장하며 휴지통 내에 파일을 다시 복구할 수 있다.",
+                    2: "휴지통의 크기를 변경시킬 수 없다.",
+                    3: "파일 삭제 시 휴지통에 보관히지 않고 즉시 삭제할지의 여부를 지정할 수 있다.",
+                    4: "파일 삭제 시 삭제 확인 메시지를 보이지 않게 지정할 수 있다."
+                },
+                infoAnswer : "2",
+                infoDesc : "필요시 삭제 이전의 상태로 복원이 가능하고 각각의 드라이브마다 휴지통 설정이 가능하며 휴지통의 크기를 지정할 수 있음."
+            },            
+            {
+                infoDate : "22년 1회",
+                infoType : "정보처리 기능사",
+                infoQuestion : "UNIX 시스템에서 주로 사용한 프로그래밍 언어는?",
+                infoChoice : {
+                    1: "Pascal",
+                    2: "Fortran",
+                    3: "C",
+                    4: "Basic"
+                },
+                infoAnswer : "3",
+                infoDesc : "UNIX의 특징 : 시분할 온라인 대화식 시스템. C 언어 기반으로 제작된 운영체제로 확징성과 이식성이 우수함."
+            },
+            {
+                infoDate : "16년 상시",
+                infoType : "정보처리 기능사",
+                infoQuestion : "운영체제에서 가장 기초적인 시스템 기능을 담당하는 부분으로 관리자(Supervisor), 제어 프로그램(Control Program) 핵(Nucleus) 등으로 부르며 프로세스 관리, CPU 제어, 입출력 제어, 기억 장치 관리 등의 기능을 수행하는 것은?",
+                infoChoice : {
+                    1: "커널(Kernel)",
+                    2: "파일 시스템(Flie system)",
+                    3: "인터페이스(Interface)",
+                    4: "데이터 관리(Data Control)"
+                },
+                infoAnswer : "1",
+                infoDesc : "Unix 운영체제의 가장 핵심적인 부분으로 항상 주기억 장치에 상주하며 시스템의 자원관리, 프로세스 관리, 입출력 관리, 파일 관리, 메모리 관리, 시스템 호출, 프로세스 간 통신 관리 등을 수행합니다."
+            },
+            {
+                infoDate : "21년 1회",
+                infoType : "정보처리 기능사",
+                infoQuestion : "유닉스 명령어 중 DOS의 DIR과 같은 역할을 하는 명령은?",
+                infoChoice : {
+                    1: "ls",
+                    2: "cd",
+                    3: "pwd",
+                    4: "cp"
+                },
+                infoAnswer : "1",
+                infoDesc : "지정한 디렉터리 파일을 보여주는 명령. / cd : 디렉터리 경로 변경 / pwd : 현재 디렉터리의 경로를 표시 / cp : 파일 복사 명령"
+            },
+            {
+                infoDate : "21년 2회",
+                infoType : "정보처리 기능사",
+                infoQuestion : "다음 중 Linux에 대한 설명으로 옳지 않은 것은?",
+                infoChoice : {
+                    1: "대화식 시분할 운영체제이다.",
+                    2: "대부분 C 언어로 작성되어 있다.",
+                    3: "두 사람 이상의 사용자가 동시에 시스템을 사용할 수 있다.",
+                    4: "동시에 여러 작업을 수행하는 다중 작업(Multi-Tasking을 지원하지 않는다.)"
+                },
+                infoAnswer : "4",
+                infoDesc : "Multi-Tasking, Multi-User 시스템입니다."
+            },
+            {
+                infoDate : "23년 1회",
+                infoType : "정보처리 기능사",
+                infoQuestion : "다음 중 파일이나 디렉터리를 복사할 때 사용하는 명령은?",
+                infoChoice : {
+                    1: "ls",
+                    2: "cp",
+                    3: "copy",
+                    4: "dup"
+                },
+                infoAnswer : "2",
+                infoDesc : "copy의 cp입니다. Linux의 명령은 UNIX 명령처럼 단어의 의미가 기능을 나타내며 명령어의 기능이 같으므로 UNIX 명령을 복습한다는 자세로 공부하십쇼."
+            },
+            {
+                infoDate : "22년 1회",
+                infoType : "정보처리 기능사",
+                infoQuestion : "다음 중 파일이나 디렉터리를 삭제할 때 사용하는 명령은?",
+                infoChoice : {
+                    1: "ls",
+                    2: "cp",
+                    3: "rm",
+                    4: "mv"
+                },
+                infoAnswer : "3",
+                infoDesc : "rm : 삭제 명령어. / ls : 파일 목록 표시 / mv : 파일이나 디렉터리 이동 또는 이름 변경"
+            },
+            {
+                infoDate : "22년 2회",
+                infoType : "정보처리 기능사",
+                infoQuestion : "Linux에서 파일에 대한 정보를 가지고 있는 i-node의 내용으로 볼 수 없는 것은?",
+                infoChoice : {
+                    1: "파일의 크기",
+                    2: "최종 수정 시간",
+                    3: "소유자",
+                    4: "파일 경로명"
+                },
+                infoAnswer : "4",
+                infoDesc : "i-node : 파일 소유자의 식별 번호 및 그룹 번호, 데이터 블록 주소, 파일 크기, 파일 형태(Type), 파일이 만들어진 시간, 파일이 가장 최근에 사용된 시간, 파일이 변경된 가장 최근의 시간, 파일 링크 수 등을 알 수 있습니다. 파일 경로명은 알 수 없습니다."
+            },
+            {
+                infoDate : "21년 1회",
+                infoType : "정보처리 기능사",
+                infoQuestion : "다음의 설명이 의미하는 것은? /A situation that two ot motr pocessee are unable to ptoceed because each is wating for the device in usw by other program./",
+                infoChoice : {
+                    1: "Database",
+                    2: "Compliler",
+                    3: "Deadlock",
+                    4: "Spooling"
+                },
+                infoAnswer : "3",
+                infoDesc : "두 개 또는 그 이상의 프로세스들이 다른 프로그램에 의해 사용되고 있는 장치를 기다리기 때문에 처리가 진행되지 않는 상태를 데드락(Deadlock)이라고 합니다."
+            },
+            {
+                infoDate : "20년 2회",
+                infoType : "정보처리 기능사",
+                infoQuestion : "정보 통신 시스템의 구성 요소 중 데이터 처리계에 해당하는 것은?",
+                infoChoice : {
+                    1: "단말 장치",
+                    2: "데이터 전송 회선",
+                    3: "통신 제어 장치",
+                    4: "중앙 컴퓨터"
+                },
+                infoAnswer : "4",
+                infoDesc : "데이터 처리계 : 데이터를 처리하는 컴퓨터를 의미하며 중앙 처리 장치(CPU)와 주변 장치로 구성됨"
+            },
+            {
+                infoDate : "21년 4회",
+                infoType : "정보처리 기능사",
+                infoQuestion : "정보 통신 시스템의 구성 요소 중 데이터 전송계에 해당되지 않는 것은?",
+                infoChoice : {
+                    1: "모뎀 장치",
+                    2: "데이터 전송 회선",
+                    3: "중앙 처리 장치",
+                    4: "통신 제어 장치"
+                },
+                infoAnswer : "3",
+                infoDesc : "중앙 처리 장치는 데이터 처리계입니다. / 데이터 전송계 : 데이터의 입출력 및 송신을 담당하는 장치로 단말 장치, 데이터 전송 회선, 통신 제어 장치로 구성됨."
+            },            
+            {
+                infoDate : "23년 3회",
+                infoType : "정보처리 기능사",
+                infoQuestion : "다음 중 정지 위성의 위치는 지구 적도 상공 약 몇 [km]인가?",
+                infoChoice : {
+                    1: "25,000",
+                    2: "36,000",
+                    3: "45,000",
+                    4: "56,000"
+                },
+                infoAnswer : "2",
+                infoDesc : "무궁화 위성과 같은 정지형 통신 위성의 위치에 대한 설명입니다.",
+            },
+            {
+                infoDate : "21년 3회",
+                infoType : "정보처리 기능사",
+                infoQuestion : "광섬유 케이블의 일반적인 특징으로 옳지 않은 것은?",
+                infoChoice : {
+                    1: "빛을 사용함으로써 전기적인 간섭이 없다.",
+                    2: "높은 전송 속도와 대역폭을 갖는다.",
+                    3: "동축 케이블보다 전송 신호의 손실이 적다.",
+                    4: "설치 시에 접속과 연결이 매우 용이하다."
+                },
+                infoAnswer : "4",
+                infoDesc : "규소를 주재료로 하며 빛의 반사 현상을 이용합니다. 온도 변화에 안정적이며 신뢰성이 높고 에러 발생률이 가장 적습니다. 전력 유도에 영향을 받지 않으므로 잡음이나 누화가 거의 없고 신호 감쇠 현상이 적습니다. 광대역 전송, 작은 크기와 무게, 적은 감쇠도, 보다 넓은 리피터 간격과 같은 전송 특징이 있습니다. 빛을 이용하여 전송하므로 보안성이 뛰어납니다. 하지만 설치 시에 휘거나 꺾기가 어려워 접속과 연결이 용이하지는 않습니다."
+            },
+            {
+                infoDate : "20년 3회",
+                infoType : "정보처리 기능사",
+                infoQuestion : "광케이블이 일반 전화용 평형 케이블과 비교하여 이점이 아닌 것은?",
+                infoChoice : {
+                    1: "전송 용량이 커서 많은 신호를 한 번에 전송할 수 있다.",
+                    2: "케이블 간의 누화는 무시될 수 있을 정도이다.",
+                    3: "주파수에 따른 신호 감쇄나 전송 지연의 변화가 크다.",
+                    4: "통신 신호의 전파 속도가 빠르다."
+                },
+                infoAnswer : "3",
+                infoDesc : "광섬유 케이블의 장단점에 대해 자주 출제되므로 숙지하시길 바랍니다. 자세한 설명은 위의 문제에 있습니다."
+            },
+            {
+                infoDate : "21년 1회",
+                infoType : "정보처리 기능사",
+                infoQuestion : "정보 통신 신호의 전송이 양쪽에서 가능하나, 동시 전송은 불가능하고 한 쪽 방향으로만 전송이 교대로 이루어지는 통신 방식은?",
+                infoChoice : {
+                    1: "반송 주파수 통신 방식",
+                    2: "반이중 통신 방식",
+                    3: "단방향 통신 방식",
+                    4: "전이중 통신 방식"
+                },
+                infoAnswer : "2",
+                infoDesc : "단방향 통신 : 한쪽 방향으로만 정보 전송이 가능(TV. Radio) / 반이중 통신 : 양쪽 방향 통신이 가능하지만 동시에는 불가능한 형태(무전기) / 전이중 통신 : 양쪽 방향으로 동시에 정보의 전송이 가능한 경우(전화)"
+            },
+            {
+                infoDate : "20년 4회",
+                infoType : "정보처리 기능사",
+                infoQuestion : "데이터 통신에서 서로 다른 방향에서 동시에 송수신을 할 수 있는 것은?",
+                infoChoice : {
+                    1: "이중 시스템(Dual System)",
+                    2: "반이중 시스템(Half Duplex System)",
+                    3: "전이중 시스템(Full Duplex System)",
+                    4: "단향 시스템(Simplex System)"
+                },
+                infoAnswer : "3",
+                infoDesc : "전이중 시스템의 설명입니다."
+            },
+            {
+                infoDate : "22년 3회",
+                infoType : "정보처리 기능사",
+                infoQuestion : "변조 속도가 2,400[Baud]이고 쿼드비트(Quadbit)를 사용하는 경우 전송 속도는 몇 [bps]인가?",
+                infoChoice : {
+                    1: "1,600",
+                    2: "2,400",
+                    3: "4,800",
+                    4: "9,600"
+                },
+                infoAnswer : "4",
+                infoDesc : "2400*4(쿼드비트) = 9600",
+            },
+            {
+                infoDate : "18년 상시",
+                infoType : "정보처리 기능사",
+                infoQuestion : "신호의 변조 속도가 1,600[Baud]이고, 트리비트(Tribit)인 경우 전송 속도(bps)는?",
+                infoChoice : {
+                    1: "1,600",
+                    2: "2,400",
+                    3: "4,800",
+                    4: "9,600"
+                },
+                infoAnswer : "3",
+                infoDesc : "1600*3(트리비트 = 4800)"
+            },
+            {
+                infoDate : "20년 2회/3회",
+                infoType : "정보처리 기능사",
+                infoQuestion : "에러 검출 후 재전송(ARQ) 에러 제어 방식에 속하지 않는 것은?",
+                infoChoice : {
+                    1: "Stop-and-Wait",
+                    2: "Go-Back-N",
+                    3: "선택적 재전송",
+                    4: "전진 에러 수정(FEC)"
+                },
+                infoAnswer : "4",
+                infoDesc : "ARQ(Automatic Repeat reQuest) : 자동 재전송 방식. 정지-대기(Stop-and-Wait)ARQ, 연속적(Go-Back-N)ARQ, 선택적(Selective)ARQ, 적응적(Adaptive)ARQ가 있다."
+            },
+            {
+                infoDate : "21년 1회/2회",
+                infoType : "정보처리 기능사",
+                infoQuestion : "오류를 검출한 후 재전송하는 방식으로 옳지 않은 것은?",
+                infoChoice : {
+                    1: "정지-대기 ARQ",
+                    2: "연속적 ARQ",
+                    3: "적응적 ARQ",
+                    4: "이산적 ARQ"
+                },
+                infoAnswer : "4",
+                infoDesc : "이산적 ARQ는 없습니다."
+            },
+            {
+                infoDate : "21년 1회",
+                infoType : "정보처리 기능사",
+                infoQuestion : "다음 중 반송파(Carrier Signal) 주파수를 변환시키는 변조 방식은?",
+                infoChoice : {
+                    1: "AM(Amlitude modulation)",
+                    2: "FM(Frequncy modulation)",
+                    3: "PM(phase modulation)",
+                    4: "PCM(Pulse Code modulation)"
+                },
+                infoAnswer : "2",
+                infoDesc : "FM : 반송파의 주파수 변조 / AM : 반송파의 진폭을 변조 / PM : 반송파의 위상을 변조(예 : 무->유선통신) / PCM : 아날로그 신호를 디지털 펄스로 변환하여 전송하고 수신측에서 이를 다시 본래의 아날로그 신호로 환원시키는 방식.",
+            },            
+            {
+                infoDate : "20년 2회",
+                infoType : "정보처리 기능사",
+                infoQuestion : "RS-232C용 케이블 커넥터인 25핀에서 DTE와 DCE간에 데이터의 송신과 수신용 핀 번호가 순서대로 옳은 것은?",
+                infoChoice : {
+                    1: "2번, 3번",
+                    2: "7번, 8번",
+                    3: "14번, 16번",
+                    4: "20번, 21번"
+                },
+                infoAnswer : "1",
+                infoDesc : "2번 핀 : 송신 데이터 / 3번 핀 : 수신 데이터 / 4번 핀 : 송신 요구 / 5번 핀 : 송신 준비 완료. / 이 커넥터는 데이터 단말 장비 (Data Terminal Equipment, DTE)와 데이터 회선 종료 장비 (Data Circuit-terminating Equipment, DCE) 간에 데이터 통신을 할 때 주로 사용됩니다. RS-232C는 오래된 통신 표준 중 하나로, 컴퓨터, 모뎀, 프린터, 통신 장비 등의 장치 간에 데이터를 주고받을 때 사용되었습니다."
+            },
+            {
+                infoDate : "21년 3회",
+                infoType : "정보처리 기능사",
+                infoQuestion : "다음 중 데이터 단말 장치와 디지털 통신 회선 사이에 있는 DCE로 적합한 것은?",
+                infoChoice : {
+                    1: "통신 제어 장치",
+                    2: "멀티플렉서",
+                    3: "MODEM",
+                    4: "DSU"
+                },
+                infoAnswer : "4",
+                infoDesc : "통신 제어 장치 : 데이터 전송 회선과 컴퓨터 사이를 연결하고 통신 회선과 중앙 처리 장치를 결합하여 데이터의 처리를 제어. / 멀티플렉서 : 2n개의 입력을 받아들여 하나의 출력선으로 처리를 제어 / 모뎀: 변조와 복조의 합성어로 변조는 디지털 신호를 아날로그 신호로 변환하는 과정, 복조는 아날로그 신호를 디지털 신호로 변환하는 과정을 의미"
+            },
+            {
+                infoDate : "23년 1회",
+                infoType : "정보처리 기능사",
+                infoQuestion : "데이터 회선 종단 장치(DCE)로써 디지털 전송 선로에 이용되는 것은?",
+                infoChoice : {
+                    1: "DSU",
+                    2: "MODEM",
+                    3: "CCU",
+                    4: "FEP"
+                },
+                infoAnswer : "1",
+                infoDesc : "DSU(Digital Service Unit) : 디지털 방식으로 전송하는 장비. 디지털 신호를 변조하지 않고 디지털 전송로를 이용하여 고속 전송하는 장치이다. / FEP(Front End Prcessing) : 메인 프레임의 통신 제어를 위해 설계된 전용 컴퓨터"
+            },
+            {
+                infoDate : "21년 1회",
+                infoType : "정보처리 기능사",
+                infoQuestion : "OSI 7계층 참조 모델 중 논리적 링크라고 불리는 가상 회로와 관련 있는 것은?",
+                infoChoice : {
+                    1: "데이터 링크 계층",
+                    2: "네트워크 계층",
+                    3: "응용 계층",
+                    4: "세션 계층"
+                },
+                infoAnswer : "2",
+                infoDesc : "OSI 참조 모델(7계층) : 컴퓨터 네트워크 및 통신 시스템을 설계하고 이해하기 위한 프레임 워크 또는 추상화 모델. 복잡한 통신 시스템을 더 쉽게 이해하고 설계할 수 있도록 도와줍니다. 1-물리 계층, 2-데이터 링크 계층, 네트워크 계층, 4-전송 계층, 5-세션 계층, 6-표현 계층, 7-응용 계층 / 3-네트워크 계층 : 하위층인 제3계층 - 응용 프로세스가 존재하는 시스템 간 데이터의 교환 기능, 복수 망인 경우 중계 시스템에 대한 경로 선택 및 중계 기능을 제공, 데이터그램 또는 가상 회선 개설."
+            },
+            {
+                infoDate : "22년 4회",
+                infoType : "정보처리 기능사",
+                infoQuestion : "OSI 7계층 참조 모델에서 인접 개방형 시스템 간의 데이터 전송, 에러 검출, 오류 회복 등을 취급하는 계층은?",
+                infoChoice : {
+                    1: "물리적 계층",
+                    2: "데이터 링크 계층",
+                    3: "응용 계층",
+                    4: "세션 계층"
+                },
+                infoAnswer : "2",
+                infoDesc : "데이터 링크 계층 : 하위층인 제2계층 - 인접 통신 기기 사이의 연결 및 데이터 전송 기능과 관리를 규정. 동기화, 오류제어, 흐름 제어 등의 기능을 사용, 데이터 블록을 인접 노드 간에 오류 없이 전송, 정보의 프레일화 및 순서 제어, 전송 확인, 오류 검출 및 복구, 흐름 제어, 데이터 링크의 접속과 단절 등"
+            },
+            {
+                infoDate : "21년 3회",
+                infoType : "정보처리 기능사",
+                infoQuestion : "30개의 교환국을 망형으로 상호 결선하려면 국간 필요한 회선 수는?",
+                infoChoice : {
+                    1: "225",
+                    2: "240",
+                    3: "435",
+                    4: "450"
+                },
+                infoAnswer : "3",
+                infoDesc : "망형 통신 회선의 링크 수 : n(n-1)/2 따라서 30*29/2 = 270/2 = 435"
+            },
+            {
+                infoDate : "14년 상시",
+                infoType : "정보처리 기능사",
+                infoQuestion : "회선망 구성에 있어서 10개의 스테이션(국)을 전부 망형으로 구성하려면 몇 회선이 필요한가?",
+                infoChoice : {
+                    1: "85",
+                    2: "65",
+                    3: "45",
+                    4: "25"
+                },
+                infoAnswer : "3",
+                infoDesc : "10*9/2 = 90/2 = 45"
+            },
+            {
+                infoDate : "16년 상시",
+                infoType : "정보처리 기능사",
+                infoQuestion : "다음 중 정보 통신 교환망에 해당되지 않는 것은?",
+                infoChoice : {
+                    1: "회선 교환망",
+                    2: "패킷 교환망",
+                    3: "메시지 교환망",
+                    4: "비트 교환망"
+                },
+                infoAnswer : "4",
+                infoDesc : "정보 통신 교환망 :  다양한 통신 장치 및 네트워크를 연결하고 상호 연동시키는 중요한 역할을 하는 통신 인프라입니다. 종류에는 회선 교환망(통화를 위한 전용 회선을 설정), 메시지 교환망(이메일과 같은 데이터를 메시지 단위로 전송), 패킷 교환망(데이터를 작은 데이터조각(패킷)으로 분할하고 패킷을 개별적으로 전송. 인터넷같은 네트워크에서 주로 사용하며 효율성과 확장성 제공)이 있습니다."
+            },
+            {
+                infoDate : "기출1-6",
+                infoType : "정보처리 기능사",
+                infoQuestion : "2진수 (10001010)를 2의 보수로 옳게 표현한 것은?",
+                infoChoice : {
+                    1: "01110101",
+                    2: "01110110",
+                    3: "10001011",
+                    4: "10000110"
+                },
+                infoAnswer : "2",
+                infoDesc : "2의 보수 및 1의 보수는 컴퓨터에서 음수와 양수를 표현하는 데 사용되는 두 가지 방법 중 일부입니다. 이러한 방법은 이진수 표현을 사용하여 숫자를 나타냅니다. 2의 보수 = 1의 보수 + 1 / 10001010 -> 01110101(1의 보수) + 1 -> 0111011 0"
+            },   
+            {
+                infoDate : "기출3-7",
+                infoType : "정보처리 기능사",
+                infoQuestion : "2진수 (101010101010)₂을 10진수로 변환하면?",
+                infoChoice : {
+                    1: "(2730)10",
+                    2: "(2630)10",
+                    3: "(2740)10",
+                    4: "(2640)10"
+                },
+                infoAnswer : "1",
+                infoDesc : "2^11+2^9+2^7+2^5+2^3+2^1 = 2730"
+            },            
+            {
+                infoDate : "기출2-17",
+                infoType : "정보처리 기능사",
+                infoQuestion : "-14를 부호화된 2의 보수로 표현하면?",
+                infoChoice : {
+                    1: "10001110",
+                    2: "11100011",
+                    3: "11110010",
+                    4: "11111001"
+                },
+                infoAnswer : "3",
+                infoDesc : "-14를 부호화 -> 10001110 - 2의 보수 > 1(첫 번째 부호 비트는 그대로)1110001 - +1 > 11110010"
+            },
+            {
+                infoDate : "기출1-20",
+                infoType : "정보처리 기능사",
+                infoQuestion : "8비트 컴퓨터에서 10진수 -13을 부호화 절대치 방식으로 표현한 것은?",
+                infoChoice : {
+                    1: "10001101",
+                    2: "10001110",
+                    3: "11111110",
+                    4: "01111101"
+                },
+                infoAnswer : "1",
+                infoDesc : "부호화 절대치 : 최상위 1비트를 양수는 0, 음수는 1로 표현(1000)하고 나머지 비트는 절대치로 표현(13:1101)",
+            },
+            {
+                infoDate : "기출2-13",
+                infoType : "정보처리 기능사",
+                infoQuestion : "16진수 4CD를 8진수로 변환하면?",
+                infoChoice : {
+                    1: "(2315)8",
+                    2: "(2325)8",
+                    3: "(2335)8",
+                    4: "(2336)8"
+                },
+                infoAnswer : "1",
+                infoDesc : "16진수는 0부터 9까지의 숫자와 A부터 F까지의 알파벳을 사용하여 표현됩니다(A=10...F=15). / 16진수 4CD를 2진수로 변환한 다음 다시 8진수로 변환하기 위해 뒤에서 3자리씩 끊어서 2진수로 나타냅니다. / 4 C D -2진수로 변환> 0100 1100 1101 -8진수로 변환> 010 011 001 101 -> 2315"
+            },
+            {
+                infoDate : "기출2-3",
+                infoType : "정보처리 기능사",
+                infoQuestion : " 16진수 2C를 10진수로 변환한 것으로 옳은 것은?",
+                infoChoice : {
+                    1: "41",
+                    2: "42",
+                    3: "43",
+                    4: "44"
+                },
+                infoAnswer : "4",
+                infoDesc : "2C -10진수로> 2 와 12 -> (2 * 16^1) + (12 * 16^0) = (2 * 16) + 12 = 32 + 12 = 44"
+            },
+            {
+                infoDate : "기출4-42",
+                infoType : "정보처리 기능사",
+                infoQuestion : "4Mhz의 대역폭에서 FM을 이용하여 부호화할 경우 대역폭은(Mhz)?(단, FCC는 무시한다.)",
+                infoChoice : {
+                    1: "8",
+                    2: "16",
+                    3: "40",
+                    4: "80"
+                },
+                infoAnswer : "3",
+                infoDesc : "FM신호는 원래 신호폭의 10배 대역폭을 필요로 하므로, FM의 대역폭은 40Mhz임."
+            },
+
+
+
+
+
+
+
+
+
+
+// 웹디자인 기능사 //
+
+
+
+
+
+
+
+
+
+
+
+            {
+                infoDate : "17년 3월",
+                infoType : "웹디자인 기능사",
+                infoQuestion : "디자인(Design)의 의미를 설명한 것으로 틀린 것은?",
+                infoChoice : {
+                    1: "디자인이란 프랑스어의 '데생'에서 유래되었다.",
+                    2: "도안, 밑그림, 그림, 소묘, 계획, 설계, 목적이란 의미를 기술하고 있다.",
+                    3: "디자인은 De(이탈)와 Sign(형상)의 합성어로 기존 것을 파괴하고 새로운 재화를 창출한다는 의미가 포함된다.",
+                    4: "디자인은 기존의 것을 유지하며 실용적 가치보다는 예술적 가치의 기준이다."
+                },
+                infoAnswer : "4",
+                infoDesc : "미적인 것과 실용적인 것을 통합하여 가시적으로 표현한 것이 디자인입니다."
+            },
+            {
+                infoDate : "15년 7월",
+                infoType : "웹디자인 기능사",
+                infoQuestion : "디자인의 조건 중 의자를 디자인할 경우, 사용자의 신체치수와 생김새, 체중이나 감촉에 대한 재료와 구조의 상태가 적합한지 등을 고려하는 것은?",
+                infoChoice : {
+                    1: "심미성",
+                    2: "독창성",
+                    3: "합목적성",
+                    4: "경제성"
+                },
+                infoAnswer : "3",
+                infoDesc : "디자인이 대상과 용도, 목적에 맞게 이루어져 있는 것을 합목적성이라고 하며 기능성과 실용성이 모두 갖추어진 것을 뜻합니다."
+            },
+            {
+                infoDate : "21년 4월",
+                infoType : "웹디자인 기능사",
+                infoQuestion : "일반적인 디자인의 조건을 나열한 것으로 옳은 것은?",
+                infoChoice : {
+                    1: "합목적성, 유행성, 질서성, 독창성",
+                    2: "합목적성, 심미성, 독창성, 경제성",
+                    3: "합목적성, 심미성, 경제성, 국제성",
+                    4: "합목적성, 창조성, 심미성, 질서성"
+                },
+                infoAnswer : "2",
+                infoDesc : "디자인의 조건 : 이성적, 합리적, 객관적 미적 의식 - 합목적성, 경제성 / 감성적, 비합리성, 주관적 미적 의식 - 심미성, 독창성 / 모두의 조화롭게 갖추는 - 질서성"
+            },
+            {
+                infoDate : "18년 6월",
+                infoType : "웹디자인 기능사",
+                infoQuestion : "다음 중 디자인의 의미로 합당하지 않는 것은?",
+                infoChoice : {
+                    1: "디자인이라는 말은 라틴어인 데시그나레(Desingnare)에서 유래되었다.",
+                    2: "디자인이란 하나의 그림 또는 모형으로서 그것을 전개시키려는 계획 및 설계이다.",
+                    3: "오늘날과 근접한 디자인의 의미는 미술공예운동을 통해서이다.",
+                    4: "프랑스어 데셍(Dessin)과도 어원을 같이 한다."
+                },
+                infoAnswer : "3",
+                infoDesc : "디자인이라는 용어는 1920~30년대 근대 디자인 운동 이후부터 사용됐습니다. 40년대도 아니고, 미술공예운동도 아닙니다."
+            },
+            {
+                infoDate : "18년 7월",
+                infoType : "웹디자인 기능사",
+                infoQuestion : "CIP(Corportate Identity Program)의 베이직 시스템에 속하는 것은?",
+                infoChoice : {
+                    1: "심벌마크, 로고타입, 전용서체",
+                    2: "로고타입, 전용색상, 서식류",
+                    3: "서식류, 제품포장, 캐릭터",
+                    4: "유니폼, 간판(표지), 시그니처"
+                },
+                infoAnswer : "1",
+                infoDesc : "아이덴티티 작업에서 기업을 위한 이미지 통합전략을 CIP라고 한다. CIP의 분류 : 베이직 시스템 - 심벌마크, 로고타입, 엠블럼과 캐릭터, 전용색채, 전용서체 / 어플리케이션 시스템 - 서식류(명함, 봉투), 유니폼 등"
+            },
+            {
+                infoDate : "17년 6월",
+                infoType : "웹디자인 기능사",
+                infoQuestion : "다음 중 시각 디자인에 속하지 않는 것은?",
+                infoChoice : {
+                    1: "텍스타일 디자인",
+                    2: "패키지 디자인",
+                    3: "POP 디자인",
+                    4: "타이포그래피"
+                },
+                infoAnswer : "1",
+                infoDesc : "텍스타일 디자인은 공업(제품)디자인 중 2차원 평면 디자인에 포함됩니다. / 시각디자인의 종류 : 아이덴티티(2차원 평면 디자인), 타이포그래피(2차원 평면 디자인.텍스트를 효과적으로 표현. 글꼴 및 레이아웃과 관련), 레터링 디자인(2차원 평면 디자인.특정 글자나 문장을 아티스틱하게 디자인 하고 강조. 손글씨나 디지털 고유한 글자), POP 디자인(3차원 입체 디자인.가게 내부의 판넬 등), 패키지 디자인(3차원 입체 디자인) 등이 있습니다."
+            },
+            {
+                infoDate : "17년 1월",
+                infoType : "웹디자인 기능사",
+                infoQuestion : "커뮤니케이션 디자인에 대한 설명으로 틀린 것은?",
+                infoChoice : {
+                    1: "라틴어 'Communicate'를 어원으로 한다.",
+                    2: "두 개 이상의 개체가 기호를 매개로 무언가를 공유하는 것이다.",
+                    3: "운동과 시선을 중시하는 디자인이다.",
+                    4: "사람과 사람 사이에 기호에 의해서 의미를 전달하는 과정이다."
+                },
+                infoAnswer : "3",
+                infoDesc : "커뮤니케이션 디자인은 2차원 평면 디자인으로, 정보와 아이디어를 시각적, 그래픽, 그리고 문서화된 형태로 전달하는 디자인 분야입니다. 이 디자인 분야는 다양한 매체와 도구를 사용하여 메시지를 효과적으로 전달하고 시각적으로 매력적으로 만드는 것을 목표로 합니다. "
+            },
+            {
+                infoDate : "16년 7월",
+                infoType : "웹디자인 기능사",
+                infoQuestion : "시각 커뮤니케이션의 4대 매체가 아닌 것은?",
+                infoChoice : {
+                    1: "포스터 디자인",
+                    2: "신문 광고",
+                    3: "잡지 광고",
+                    4: "패키지 디자인"
+                },
+                infoAnswer : "4",
+                infoDesc : "4대 매체에는 포스터, 신문광고, 잡지광고, TV광고가 있습니다."
+            },
+            {
+                infoDate : "16년 10월",
+                infoType : "웹디자인 기능사",
+                infoQuestion : "촉각적 질감에 대한 설명으로 틀린 것은?",
+                infoChoice : {
+                    1: "촉각적 질감에는 장식적 질감, 자연적 질감, 기계적 질감이 있다.",
+                    2: "촉각적 질감은 눈으로 볼 수 있을 뿐 아니라 손으로 만져서 느낄 수 있는 질감이다.",
+                    3: "촉각적 질감은 2차원 디자인의 표면과 함께 3차원의 약각(Relief)으로 확대하는 것이다.",
+                    4: "촉각적 질감의 연출 방법에는 자연 재료 사용, 재료 변형, 재료 복합 등이 있다."
+                },
+                infoAnswer : "1",
+                infoDesc : "1번은 시각적 질감의 설명으로, 눈에 보이는 질감을 말합니다."
+            },
+            {
+                infoDate : "12년 2월",
+                infoType : "웹디자인 기능사",
+                infoQuestion : "입체 디자인의 상관 요소에 해당하지 않는 것은?",
+                infoChoice : {
+                    1: "위치(Position)",
+                    2: "형태(Shape)",
+                    3: "방향(Direction)",
+                    4: "공간(Space)"
+                },
+                infoAnswer : "2",
+                infoDesc : "형태는 눈으로 지각할 수 있는 실제적 요소인 시각 요소입니다. / 상관 요소 : 디자인 요소들이 결합되었을 경우 연관되어 느껴지는 요소. 위치 - 한정된 공간 안에서 형태, 다른 요소, 보는 사람 등과 관련 / 방향 - 한정된 공간에서 나타나는 시각적 동세(선이 주는 수평 수직 사선 방향) / 공간 - 원근감 / 중량감 - 무게감(요소의 크기에 따라 느껴지는 무겁거나 가벼운 느낌)"
+            },
+            {
+                infoDate : "17년 3원",
+                infoType : "웹디자인 기능사",
+                infoQuestion : "선의 종류에 따른 느낌으로 잘못 설명한 것은?",
+                infoChoice : {
+                    1: "사선 : 동적인 상태, 불안함",
+                    2: "수평선 : 정지 상태, 안정감",
+                    3: "수직선 : 유연, 풍부한 감정",
+                    4: "곡선 : 우아, 섬세"
+                },
+                infoAnswer : "3",
+                infoDesc : "수직선의 느낌은 높이감, 상승, 엄숙함 등이 있습니다."
+            },
+            {
+                infoDate : "16년 7월",
+                infoType : "웹디자인 기능사",
+                infoQuestion : "디자인의 기본 요소 중 형과 형태에 관한 설명으로 옳지 않은 것은?",
+                infoChoice : {
+                    1: "기본 형태에는 점, 선, 면, 입체가 있다.",
+                    2: "형태는 일정한 크기, 색채, 질감을 가진다.",
+                    3: "형에는 현실적 형과 이념적 형이 있다.",
+                    4: "이념적 형은 그 자체만으로 조형이 될 수 있다."
+                },
+                infoAnswer : "4",
+                infoDesc : "형은 단순히 우리 눈에 보이는 모양이며, 그 자체만으로는 조형이 될 수 없습니다. 아마도.."
+            },
+            {
+                infoDate : "19년 6월",
+                infoType : "웹디자인 기능사",
+                infoQuestion : "착시에 대한 설명으로 옳은 것은?",
+                infoChoice : {
+                    1: "눈에 의한 생리적 작용에 따라 형태나 색채 등이 실제와 다르게 지각되는 것을 말한다.",
+                    2: "각 부분 사이에 강한 힘과 약한 힘이 규칙적으로 연속될 때 생기는 것을 말한다.",
+                    3: "시각상 힘의 안정을 주면 보는 사람에게 안정감을 주고 명쾌한 감정을 느끼게 하는 것을 말한다.",
+                    4: "부분과 전체 사이에 디자인 요소들이 잘 어울려서 균형을 유지하는 상태를 느끼게 하는 것을 말한다."
+                },
+                infoAnswer : "1",
+                infoDesc : "착시의 종류에는 길이, 대비, 분할, 각도와 방향, 수평-수직, 상방거리 과대 착시 등이 있습니다."
+            },
+            {
+                infoDate : "17년 1월",
+                infoType : "웹디자인 기능사",
+                infoQuestion : "형태에 관한 시각의 기본 법칙을 내포한 게슈탈트 심리적 원리가 옳은 것은?",
+                infoChoice : {
+                    1: "연속성, 근접성, 유사성, 폐쇄성",
+                    2: "유사성, 연속성, 개방성, 폐쇄성",
+                    3: "근접성, 개방성, 전경과 배경의 법칙",
+                    4: "유사성, 이성적, 개방성, 접근성(근접성)"
+                },
+                infoAnswer : "1",
+                infoDesc : "형태는 심리적인 원리에 의해 지각된다는 게슈탈트 법칙입니다. 형태는 근접, 유사, 폐쇄, 연속된 속성을 가진 형태들이 심리적으로 보기 좋다고 합니다."
+            },
+            {
+                infoDate : "17년 6월",
+                infoType : "웹디자인 기능사",
+                infoQuestion : "두 개 이상의 요소 사이에서 부분과 부분 또는 전체 사이에 시각상 힘의 안정을 주면 안정감과 명쾌한 감정을 느끼게 하는 디자인의 원리는?",
+                infoChoice : {
+                    1: "균형",
+                    2: "조화",
+                    3: "비례",
+                    4: "율동"
+                },
+                infoAnswer : "1",
+                infoDesc : "균형 : 기본적으로 대칭, 비대칭, 비례, 주도와 종속으로 나뉩니다. 시각적 균형의 요소에는 색상, 명암, 크기, 질감, 위치 등이 있습니다."
+            },
+            {
+                infoDate : "17년 8월",
+                infoType : "웹디자인 기능사",
+                infoQuestion : "각 부분 사이에 시각적인 강한 힘과 약한 힘이 규칙적으로 연속될 때 생기는 디자인의 원리는?",
+                infoChoice : {
+                    1: "조화",
+                    2: "율동",
+                    3: "균형",
+                    4: "강조"
+                },
+                infoAnswer : "2",
+                infoDesc : "율동은 반복과 교차(형태나 색채를 주기적, 규칙적으로 배열함 / 교차 : 두 개 이상의 요소를 교체), 점이(=점층. 크기, 색채 등에 점진적인 변화를 주어 동적인 효과를 주는 것)와 방사(수면 위에 생기는 동심원) 로 나뉩니다. "
+            },
+            {
+                infoDate : "21년 4월",
+                infoType : "웹디자인 기능사",
+                infoQuestion : "다음이 설명하고 있는 디자인 원리는? / -조형의 모든 부분에 나타나는 시각상의 힘 -주도적인 것을 끌어당기는 상대적인 힘 /",
+                infoChoice : {
+                    1: "주도와 종속",
+                    2: "비례와 균형",
+                    3: "리듬과 율동",
+                    4: "유사와 대비"
+                },
+                infoAnswer : "1",
+                infoDesc : "공간을 지배하는 주도적인 부분과 상관적인 부분의 힘이 조화를 이루는 것. 주도 : 시각상의 통합하고 지배하는 힘 / 종속 : 주도적인 것을 끌어당기는 상대적인 힘"
+            },
+            {
+                infoDate : "18년 7월",
+                infoType : "웹디자인 기능사",
+                infoQuestion : "해질 무렵 정원을 바라보면 어두워짐에 따라 꽃의 빨간색은 거무스레해지고, 그것에 비해 나뭇잎의 녹색은 점차 뚜렷해짐을 볼 수 있다. 이것과 관련된 현상을 무엇이라고 하는가?",
+                infoChoice : {
+                    1: "지각 향상성",
+                    2: "푸르킨예 현상",
+                    3: "착시 현상",
+                    4: "게슈탈트의 시지각 원리"
+                },
+                infoAnswer : "2",
+                infoDesc : "푸르킨예 현상 : 암순응될 때 파랑과 빨강의 명도 차이가 생기는 현상. 박명시(눈으로 들어가는 빛의 강도가 낮을 때 물체의 상이 흐리게 나타나는 시각 상태) 때 이 현상이 일어남."
+            },
+            {
+                infoDate : "16년 10월",
+                infoType : "웹디자인 기능사",
+                infoQuestion : "빛의 스펙트럼에서 인간의 눈에 색상 기호로 인지되는 파장의 범위는?",
+                infoChoice : {
+                    1: "180nm~780nm",
+                    2: "180nm~1080nm",
+                    3: "380nm~780nm",
+                    4: "380nm~1080nm"
+                },
+                infoAnswer : "3",
+                infoDesc : "눈에 보이는 범위인 380nm~780nm 파장에 속하는 빛을 가시관선이라고 합니다. 적외선은 780nm 이상의 긴 파장, 자외선은 380nm 이하의 짧은 파장"
+            },
+            {
+                infoDate : "15년 1월",
+                infoType : "웹디자인 기능사",
+                infoQuestion : "다음 중 색의 3속성이 아닌 것은?",
+                infoChoice : {
+                    1: "색상",
+                    2: "명도",
+                    3: "채도",
+                    4: "대비"
+                },
+                infoAnswer : "4",
+                infoDesc : "색의 3속성에는 색삭, 명도, 채도가 있습니다."
+            },
+            {
+                infoDate : "15년 1월",
+                infoType : "웹디자인 기능사",
+                infoQuestion : "색광혼합의 결과가 잘못된 것은?",
+                infoChoice : {
+                    1: "RED+GREEN=YELLOW",
+                    2: "GREEN+BLUE=CYAN",
+                    3: "RED+GREEN+BLUE=BLACK",
+                    4: "RED+BLUE=MAGENTA"
+                },
+                infoAnswer : "3",
+                infoDesc : "색광 혼합은 혼합할 수록 밝아집니다. 따라서 RGB를 혼합하면 흰색이 됩니다."
+            },
+            {
+                infoDate : "18년 3월",
+                infoType : "웹디자인 기능사",
+                infoQuestion : "관용색명의 특징으로 볼 수 없는 것은?",
+                infoChoice : {
+                    1: "시대나 유행에 따라서 다소 변하기도 하므로 정확한 색의 전달이 어렵다.",
+                    2: "무수히 많은 색 이름과 그 어원을 가지고 있어서 한꺼번에 습득하기가 어렵다.",
+                    3: "어느 특정한 색을 여러가지 언어로 표현하고 있기 때문에 복잡하고 혼동하기 쉽다.",
+                    4: "몇 가지의 기본적인 색 이름에 수식어, 색상의 형용사를 덧붙여서 부른다."
+                },
+                infoAnswer : "4",
+                infoDesc : "관용색명은 귤색, 밤색, 무지개색, 코발트 블루오 같이 고유한 이름을 이용해 표현하는 색명입니다. 명도, 채도에 대한 수식어를 덧붙여서 부르는 색명은 일반색명 입니다."
+            },
+            {
+                infoDate : "20년 2월",
+                infoType : "웹디자인 기능사",
+                infoQuestion : "색입체를 단순화한 각 부분의 명칭이 맞는 것은?(단, A는 입체의 상하, B는 입체의 가로방향, C는 입체의 둘레를 의미)",
+                infoChoice : {
+                    1: "A-색상, B-채도, C-명도",
+                    2: "A-채도, B-명도, C-색상",
+                    3: "A-명도, B-색상, C-채도",
+                    4: "A-명도, B-채도, C-색상"
+                },
+                infoAnswer : "4",
+                infoDesc : "먼셀 표색계의 먼셀 색입체에 따르면 A-명도, B-채도, C-색상을 나타냅니다."
+            },
+            {
+                infoDate : "16년 10월",
+                infoType : "웹디자인 기능사",
+                infoQuestion : "먼셀의 표색계에서 색상을 표시하는 기호로 맞는 것은?",
+                infoChoice : {
+                    1: "C/HV",
+                    2: "HC/V",
+                    3: "HV/C",
+                    4: "CV/G"
+                },
+                infoAnswer : "3",
+                infoDesc : "H(Hue) : 색상 / V(Value) : 명도 / C(Chroma) : 채도 를 축약해 HV/C 라고 합니다."
+            },
+            {
+                infoDate : "17년 3월",
+                infoType : "웹디자인 기능사",
+                infoQuestion : "다음이 설명하고 있는 표색계는? / -헤링의 4원색설을 기본으로 한다. -색상 분할을 원주의 4등분이 서로 보색이 되도록 하였다. -8가지 기본색을 다시 각각 3색상으로 나누어 24색상환으로 환성하였따.",
+                infoChoice : {
+                    1: "CIE 표색계",
+                    2: "NCS 표색계",
+                    3: "오스트발트 표색계",
+                    4: "DIN 표색계"
+                },
+                infoAnswer : "3",
+                infoDesc : "오스트발트 표색계의 오스트발트 색입체에 대한 설명입니다. / CIE 표색계 : 1931년 국제조명위원회에서 고안한 국제적 기준."
+            },
+            {
+                infoDate : "18년 6월",
+                infoType : "웹디자인 기능사",
+                infoQuestion : "다음 중 주목성에 대한 설명으로 잘못된 것은?",
+                infoChoice : {
+                    1: "명시성이 높은 색은 어느 정도 주목성이 높다.",
+                    2: "따뜻한 난색은 차가운 한색보다 주목성이 높다.",
+                    3: "초록색이 빨강보다 주목성이 더 높다.",
+                    4: "주목성은 색의 3속성과 관계가 있다."
+                },
+                infoAnswer : "3",
+                infoDesc : "따뜻한 색, 명도와 채도가 높은 색일수록 주목성이 높으므로 빨강이 초록보다 주목성이 높다."
+            },
+            {
+                infoDate : "18년 3월",
+                infoType : "웹디자인 기능사",
+                infoQuestion : "색의 3속성 중 우리 눈이 가장 예민하고 강하게 반응하는 대비는?",
+                infoChoice : {
+                    1: "명도대비",
+                    2: "색상대비",
+                    3: "보색대비",
+                    4: "채도대비"
+                },
+                infoAnswer : "1",
+                infoDesc : "색의 3속성에 보색대비는 들어가지않습니다."
+            },
+            {
+                infoDate : "16년 10월",
+                infoType : "웹디자인 기능사",
+                infoQuestion : "주위색의 영향으로 인접색에 가깝게 느껴지는 경우를 무엇이라고 하는가?",
+                infoChoice : {
+                    1: "등색잔상",
+                    2: "색의 명시도",
+                    3: "연변대비",
+                    4: "동화현상"
+                },
+                infoAnswer : "4",
+                infoDesc : "동화현상은 대비와 달리 오히려 주변 색상에 가깝게 느껴지는 현상입니다. 다른 색의 영향을 받아 인접되어 있거나 둘러싸여있는 색상과 비슷하게 보이는 것으로 자극이 지속되는 잔상효과를 말합니다."
+            },
+            {
+                infoDate : "16년 7월",
+                infoType : "웹디자인 기능사",
+                infoQuestion : "다음 중 쓴맛을 나타내는 색은?",
+                infoChoice : {
+                    1: "검정",
+                    2: "주황",
+                    3: "회색",
+                    4: "파랑"
+                },
+                infoAnswer : "4",
+                infoDesc : "파랑 : 맥박 저하, 자신감, 창의력 향상, 식욕 저하(쓴맛), 피로 회복, 불안감, 불면증 감소 등의 효과가 있습니다."
+            },
+            {
+                infoDate : "17년 3월",
+                infoType : "웹디자인 기능사",
+                infoQuestion : "저드(D.B.judd)의 '색체 조화론'에 해당하지 않는 것은?",
+                infoChoice : {
+                    1: "질서의 원리",
+                    2: "모호성의 원리",
+                    3: "친근성의 원리",
+                    4: "유사성의 원리"
+                },
+                infoAnswer : "2",
+                infoDesc : "저드의 색채조화 원리 : 질서의 원리, 유사(친숙)의 원리, 동류(친근)의 원리, 명료성(비모호성)의 원리, 대비의 원리가 있습니다."
+            },
+            {
+                infoDate : "16년 10월",
+                infoType : "웹디자인 기능사",
+                infoQuestion : "인터넷의 발전을 시대 순으로 올바르게 나열한 것은?",
+                infoChoice : {
+                    1: "ARPANET -> NSFNET -> TCP/IP 표준 -> WWW",
+                    2: "ARPANET -> TCP/IP 표준 -> NSFNET -> WWW",
+                    3: "TCP/IP 표준 -> ARPANET -> NSFNET -> WWW",
+                    4: "TCP/IP 표준 -> NSFNET -> ARPANET -> WWW"
+                },
+                infoAnswer : "2",
+                infoDesc : "인터넷의 시초인 ARPANET의 시작(1969) -> TCP/IP를 인터넷 표준 프로토콜로 채택, 인터넷 개념 정립(1982) -> 미국과학재단(NSF)에서 슈퍼컴퓨터센터 간의 통신을 위해 NSFNET의 초기 구축 및 운영 시작(1986) -> 인터넷 서비스 WWW(World Wide Web) 시작(1992)"
+            },
+            {
+                infoDate : "21년 4월",
+                infoType : "웹디자인 기능사",
+                infoQuestion : "인터넷 프로토콜(IP)에 대한 설명으로 옳지 않은 것은?",
+                infoChoice : {
+                    1: "IP는 연결형 서비스를 제공하므로 신뢰성있는 서비스를 제공한다.",
+                    2: "IP는 TCP, UDP, ICMP, IGMP 데이터를 전송하는 중요한 역할을 수행한다.",
+                    3: "IP 데이터그램은 목적지 호스트의 인터넷 주소를 포함한다.",
+                    4: "IP 동작 중 IP 데이터그램의 상실, IP 데이터그램의 중복과 같은 오류를 발생하기도한다."
+                },
+                infoAnswer : "1",
+                infoDesc : "IP(Internet Protocol)는 비연결형 서비스를 제공합니다. 즉, IP는 데이터를 전송하기 위해 목적지로의 연결 설정이나 확인을 수행하지 않으며, 데이터그램 형태로 데이터를 전송합니다. 이는 IP가 패킷 전송을 빠르게 하기 위해 단순한 전송 계층 프로토콜로서 동작하며, 패킷이 순서대로 도착하고 완전하게 전송되는지에 대한 신뢰성을 보장하지 않는다는 것을 의미합니다."
+            },
+            {
+                infoDate : "20년 10월",
+                infoType : "웹디자인 기능사",
+                infoQuestion : "IPv4 주소에서 각 클래스별 첫 8bit의 값이 옳은 것은?",
+                infoChoice : {
+                    1: "A: 0000 0000 ~ 0111 1110 / B: 1000 0001 ~ 1011 1111",
+                    2: "A: 0000 0000 ~ 0111 1111 / B: 1000 0000 ~ 1011 1111",
+                    3: "A: 0000 0001 ~ 0111 1110 / B: 1000 0000 ~ 1011 1111",
+                    4: "A: 0000 0001 ~ 0111 1111 / B: 1000 0001 ~ 1011 1111"
+                },
+                infoAnswer : "3",
+                infoDesc : "A : 10진수 - 1~126 -> 0000 0001~0111 1110 / B : 10진수 - 128~191 -> 1000 0000~1011 1111 / C : 10진수 - 192~223 -> 1100 0000~1101 1111"
+            },
+            {
+                infoDate : "17년 8월",
+                infoType : "웹디자인 기능사",
+                infoQuestion : "다음 중 URL 형식에서 :// 앞에 오는 것은?",
+                infoChoice : {
+                    1: "프로토콜",
+                    2: "IP주소",
+                    3: "접속 포트번호",
+                    4: "디렉터리명"
+                },
+                infoAnswer : "1",
+                infoDesc : " 웹 서비스를 위한 프로토콜로 사용되는 http가 와야합니다."
+            },
+            {
+                infoDate : "12년 10월",
+                infoType : "웹디자인 기능사",
+                infoQuestion : "상호작용을 지원하는 웹 페이지 제작을 위한 CGI의 설명으로 틀린 것은?",
+                infoChoice : {
+                    1: "웹 브라우저와 웹 서버, 응용 프로그램 간의 일종의 인터페이스이다.",
+                    2: "방명록이나 카운터, 게시판 등에 사용된다.",
+                    3: "사용자에게 일방적인 정보 제공을 하기 위해 사용된다.",
+                    4: "HTML의 FORM 태그를 이용하여 CGI프로그램으로 데이터를 전달한다."
+                },
+                infoAnswer : "3",
+                infoDesc : "CGI(Common Gateway Interface) : 클라이언트 요청에 대해 웹 서버가 응답할 수 있도록 하는 인터페이스. 상호작용이 가능하다."
+            },
+            {
+                infoDate : "16년 10월",
+                infoType : "웹디자인 기능사",
+                infoQuestion : "정보 검색 연산자의 설명으로 옳은 것은?",
+                infoChoice : {
+                    1: "OR : 연산자 좌우 검색어 중 하나라도 들어 있는 자료를 찾는다.",
+                    2: "구절 검색 : 연산자 앞 쪽의 검색어는 포함하고, 뒤 쪽 검색어는 포함하지 않은 자료를 찾는다.",
+                    3: "AND : 두 개 이상의 단어가 순서대로 연속해서 나오는 것을 찾는다.",
+                    4: "NOT : 연산자 좌우의 검색어를 모두 만족 시키는 자료를 찾는다."
+                },
+                infoAnswer : "1",
+                infoDesc : "AND(&) : 좌 우 두 키워드가 모두 포함되어있으면 된다. 연속될 필요 없음. / NOT(!) : 키워드 정보를 제외하고 검색 / ''(쌍따옴표임.) : '' 안의 구문을 포함하는 정보를 검색"
+            },
+            {
+                infoDate : "20년 4월",
+                infoType : "웹디자인 기능사",
+                infoQuestion : "주제별 검색엔진으로 카테고리에 의한 체계적인 링크 정보를 제공하는 검색엔진은?",
+                infoChoice : {
+                    1: "메타 검색엔진",
+                    2: "디렉터리형 검색엔진",
+                    3: "하이브리드형 검색엔진",
+                    4: "에이전트 검색엔진"
+                },
+                infoAnswer : "2",
+                infoDesc : "검색엔진 : 주제별(디렉터리) 검색엔진, 단어별(키워드, 주제어) 검색엔진, 메타 검색엔진(자체 데이터베이스 없이 여러 개의 검색엔진에서 검색)이 있음."
+            },
+            {
+                infoDate : "21년 4월",
+                infoType : "웹디자인 기능사",
+                infoQuestion : "외부 네트워크로부터 내부 네트워크를 보호하기 위해 이들 사이에서 전달되는 모든 신호를 판독하여 특정 패킷만을 통과시키거나 차단시키며, 내부의 IP 주소가 외부로 유출되는 것을 방지하는 역할을 하는 것은?",
+                infoChoice : {
+                    1: "프록시(Proxy)",
+                    2: "방화벽(Firewall)",
+                    3: "도메인네임서버(DNS)",
+                    4: "허브(Hub)"
+                },
+                infoAnswer : "2",
+                infoDesc : "방화벽에 대한 설명입니다. / 프록시 : LAN과 외부 네트워크 사이에서 방화벽 및 캐시 역할을 수행. 한 번 읽은 내용은 중간에 경유한 프록시 서버가 받아두었던 내용을 읽어들임으로써 시간을 단축."
+            },
+            {
+                infoDate : "20년 10월",
+                infoType : "웹디자인 기능사",
+                infoQuestion : "동시 접속자 수가 많아서 서비스 요펑에 응답할 수 없는 경우에 발생하는 웹 브라우저 오류 메시지는?",
+                infoChoice : {
+                    1: "HTTP 403 Forbidden",
+                    2: "HTTP 404 Not Found",
+                    3: "HTTP 500 Internal Server Error",
+                    4: "HTTP 503 Service Unavailable"
+                },
+                infoAnswer : "4",
+                infoDesc : "403 오류 : 접근 금지된 파일을 요청해서 허가해 줄 수 없는 경우 / 404 : 존재하지않는 파일을 요청한 경우, URL을 잘못 입력한 경우 / 500 : URL의 잘못된 명시로 발생 / 503 : 동접자 수가 많아서 서비스 요청에 응답할 수 없는 경우"
+            },
+            {
+                infoDate : "20년 4월",
+                infoType : "웹디자인 기능사",
+                infoQuestion : "다음 설명하고 있는 네트워크 통신망은? / 일반 사업장에서 가장 많이 사용되고 다수의 사용자 컴퓨터가 지리적으로 좁은 지역에 분포되며, 대개 한 겅물 내에서 연결되는 근거리 통신망이다. /",
+                infoChoice : {
+                    1: "LAN",
+                    2: "MAN",
+                    3: "WAN",
+                    4: "VAN"
+                },
+                infoAnswer : "1",
+                infoDesc : "LAN : 근거리 통신망(보통 1KM~수KM 내외) / MAN : LAN보다 넓은 대도시 지역에서 LAN들을 연결 / WAN : MAN보다 넓은 광대역 지역 / VAN : 부가가치 통신망"
+            },
+            {
+                infoDate : "21년 4월",
+                infoType : "웹디자인 기능사",
+                infoQuestion : "OSI 7계층에서 다음 설명과 관련 있는 계층은? / 정보의 표현 방식 관리, 암호화, 정보압축 등의 기능을 수행 /",
+                infoChoice : {
+                    1: "전송 계층",
+                    2: "표현 계층",
+                    3: "세션 계층",
+                    4: "응용 계층"
+                },
+                infoAnswer : "2",
+                infoDesc : "표현 계층 : 데이터 표현 기법의 차이 해결, 압축, 인코딩, 암호화 담당"
+            },
+            {
+                infoDate : "17년 3월",
+                infoType : "웹디자인 기능사",
+                infoQuestion : "데이터 통신에서 결선 방식(토폴로지)을 분류할 때 하나의 전송 채널을 사용하며, 분산 제어 처리 방식을 적용하며, 구조적으로 Point-To-Point 방식으로 T자형 네트워크를 구성하는 것은?",
+                infoChoice : {
+                    1: "성형(Star) 방식",
+                    2: "링형(Ring) 방식",
+                    3: "버스형(Bus) 방식",
+                    4: "나무형(Tree) 방식"
+                },
+                infoAnswer : "3",
+                infoDesc : "선형 : 모든 단말기들이 중앙에 1:1로 연결 / 링형 : 단말기들이 하나의 링을 형성 / 버스형 : 전체 단말기들이 한 개의 정송 선로에 연결된 형태 / 트리형 : 허브를 사용하여 여러 대의 단말기들을 연결"
+            },
+
+            {
+                infoDate : "12년 10월",
+                infoType : "웹디자인 기능사",
+                infoQuestion : "웹 페이지 제작 시 배경 색상 설정이 흰색으로 지정되지 않는 것은?",
+                infoChoice : {
+                    1: "BODY bgcolor='#ffffff'",
+                    2: "BODY bgcolor='white'",
+                    3: "BODY bgcolor='ffffff'",
+                    4: "BODY bgcolor='#000000'"
+                },
+                infoAnswer : "4",
+                infoDesc : "#000000은 검은색으로 지정하는 코드입니다."
+            },
+            {
+                infoDate : "20년 2월",
+                infoType : "웹디자인 기능사",
+                infoQuestion : "HTML 태그의 설명으로 틀린 것은?",
+                infoChoice : {
+                    1: "I /I : 이탤릭체를 보여준다.",
+                    2: "OL /OL : 순서를 매기지 않은 목록을 작성할 때 사용한다.",
+                    3: "CENTER /SENTER : 태그 사이에 있는 문단을 가운데로 정렬한다.",
+                    4: "BR : 줄을 바꿀 때에 사용한다."
+                },
+                infoAnswer : "2",
+                infoDesc : "OL /OL : Ordered List로 순서가 있는 숫자 목록 작성입니다. / UL /UL : Unordered List로 순서가 없는 기호 목록 작성입니다."
+            },
+            {
+                infoDate : "18년 3월",
+                infoType : "웹디자인 기능사",
+                infoQuestion : "HTML의 특징으로 옳지 않은 것은?",
+                infoChoice : {
+                    1: "HTML은 Markup 언어이다.",
+                    2: "HTML 문서는 ASCII 코드로 구성된 일반적인 텍스트 파일이다.",
+                    3: "HTML 문서는 사용자가 정의한 태그를 이용해 작성될 수 있다.",
+                    4: "HTML은 컴퓨터 시스템이나 운영체제에 독립적이다."
+                },
+                infoAnswer : "3",
+                infoDesc : "XML의 특징에 대한 설명이다."
+            },
+            {
+                infoDate : "17년 1월",
+                infoType : "웹디자인 기능사",
+                infoQuestion : "HTML의 table 태그 중 테이블의 테두리 두께를 지정하는 속성은?",
+                infoChoice : {
+                    1: "border",
+                    2: "celpadding",
+                    3: "width",
+                    4: "spacing"
+                },
+                infoAnswer : "1",
+                infoDesc : "spacing : 셀과 셀 사이의 간격"
+            },
+            {
+                infoDate : "13년 1월",
+                infoType : "웹디자인 기능사",
+                infoQuestion : "HTML 작성 시 프레임(Frame)의 크기를 설정하기 위한 방법이 아닌 것은?",
+                infoChoice : {
+                    1: "백분율로 구분하는 방법",
+                    2: "픽셀 수로 성정하는 방법",
+                    3: "파일 크기로 성정하는 방법",
+                    4: "상대 비율로 설정하는 방법"
+                },
+                infoAnswer : "3",
+                infoDesc : "분할 정도 값 : 픽셀 수, 백분율, 상대 비율"
+            },
+            {
+                infoDate : "20년 6월",
+                infoType : "웹디자인 기능사",
+                infoQuestion : "다음 설명에 해당하는 것은? /W3C에서 1996년 HTML을 대체할 목적으로 제안한 것으로 웹상에서 구조화된 문서를 전송 가능하도록 설계된 언어이다. 사용자가 새로운 태그를 정의할 수 있는 기능을 제공한다./",
+                infoChoice : {
+                    1: "CSS",
+                    2: "DHTML",
+                    3: "SOAP",
+                    4: "XML"
+                },
+                infoAnswer : "4",
+                infoDesc : "XML : 웹 문서를 기술하기 위한 국제 표준 언어이다. HTML과 달리 사용자가 태그를 지정할 수 있어서 태그 확장이 가능하다."
+            },
+            {
+                infoDate : "20년 6월",
+                infoType : "웹디자인 기능사",
+                infoQuestion : "별도의 Plug In 프로그램 없어도 웹 브라우저에서 재생 가능한 것은?",
+                infoChoice : {
+                    1: "MOV 파일",
+                    2: "PDF 문서",
+                    3: "VRML 파일",
+                    4: "XML 문서"
+                },
+                infoAnswer : "4",
+                infoDesc : "XML 문서 : XML 문서는 웹 브라우저에서 기본적으로 지원되며, 데이터를 구조화하고 표시하는 데 사용됩니다. 별도의 플러그인 없이도 웹 브라우저에서 표시할 수 있습니다. / MOV 파일 : 동영상 파일로서 웹 브라우저에서 별도의 동영상 플러그인 또는 내장 동영상 플레이어가 필요 / PDF 문서 : PDF 문서는 웹 브라우저에서 보여주기 위해서는 PDF 플러그인이나 내장 PDF 뷰어가 필요 / VRML 파일 : VRML(Virtual Reality Modeling Language) 파일은 3D 가상 현실 환경을 나타내기 위한 파일로, 웹 브라우저에서 별도의 3D 그래픽 플러그인이 필요"
+            },
+            {
+                infoDate : "14년 1월",
+                infoType : "웹디자인 기능사",
+                infoQuestion : "다음 중 자바스크립트의 변수로 사용할 수 없는 것은?",
+                infoChoice : {
+                    1: "_java",
+                    2: "return",
+                    3: "Hello2",
+                    4: "BasiC"
+                },
+                infoAnswer : "2",
+                infoDesc : "변수명 : 영문 대소문자, 숫자, 밑줄을 사용. 특수기호나 공백문자는 사용 못함. 변수명의 첫 글자는 반드시 영문자나 밑줄로 시작. 예약어는 변수명으로 사용 불가. 대소문자 구분함."
+            },
+            {
+                infoDate : "19년 6월",
+                infoType : "웹디자인 기능사",
+                infoQuestion : "자바스크립트에 관한 설명으로 틀린 것은?",
+                infoChoice : {
+                    1: "웹 서버에 주는 부담이 적다",
+                    2: "소스코드를 감출 수 없다",
+                    3: "컴파일 방식의 언어이다.",
+                    4: "운영체제의 제약을 받지 않는다."
+                },
+                infoAnswer : "3",
+                infoDesc : "스크립트 언어(=컴파일(프로그래밍 언어로 작성된 소스 코드를 컴퓨터가 이해하고 실행할 수 있는 기계어 코드 또는 중간 코드로 변환하는 과정)을 하지 않고 바로 실행시킬 수 있는 언어)입니다."
+            },
+            {
+                infoDate : "21년 4월",
+                infoType : "웹디자인 기능사",
+                infoQuestion : "자바스크립트의 장점으로 볼 수 없는 것은?",
+                infoChoice : {
+                    1: "컴파일 과정을 거치지 않기 때문에 신속한 개발을 할 수 있다.",
+                    2: "웹상에서 인터렉티브한 웹 페이지를 만드는데 많이 사용된다.",
+                    3: "어떤 운영체제와 하드웨어에서도 작동하는 이식성이 높은 언어이다.",
+                    4: "자바스크립트를 이용한 응용 프로그램은 브라우저가 제한하는 기능적 한계를 벗어날 수 있다."
+                },
+                infoAnswer : "4",
+                infoDesc : "챗gpt는 4번도 맞는 말이래요..그나마 덜 확실한 거니 4번."
+            },
+            {
+                infoDate : "17년 6월",
+                infoType : "웹디자인 기능사",
+                infoQuestion : "다음 중 자바스크립트의 변수에 대한 설명으로 틀린 것은?",
+                infoChoice : {
+                    1: "데이터의 형을 구분하여 선언하여야 한다.",
+                    2: "변수명의 첫 문자는 영문자 또는 _로 시작한다.",
+                    3: "변수명은 영문자의 대문자와 소문자를 구분한다.",
+                    4: "예약어는 변수명으로 사용할 수 없다."
+                },
+                infoAnswer : "1",
+                infoDesc : "JavaScript에서는 변수를 선언할 때 명시적으로 데이터 형을 지정하지 않습니다. 변수의 데이터 형은 변수에 할당된 값에 따라 동적으로 결정됩니다. 이러한 특성을 '동적 타입 언어'라고 합니다. 그에 반해 JAVA, C#는 정적 타입 언어로 변수를 명시적으로 지정합니다."
+            },
+            {
+                infoDate : "12년 10월",
+                infoType : "웹디자인 기능사",
+                infoQuestion : "자바스크립트의 내장함수에 해당되지 않는 것은?",
+                infoChoice : {
+                    1: "fun define()",
+                    2: "eval()",
+                    3: "parselnt()",
+                    4: "escape()"
+                },
+                infoAnswer : "1",
+                infoDesc : "eval() : 문자열로 입력된 수식을 계산 / parselnt() : 문자열을 정수로 변환 / escape() : 문자의 ASCII값을 변환"
+            },
+            {
+                infoDate : "18년 10월",
+                infoType : "웹디자인 기능사",
+                infoQuestion : "자바스크립트 내에서 사용되는 배열 객체에 대한 설명으로 옳지 않은 것은?",
+                infoChoice : {
+                    1: "concat() - 두 개 이상의 배열을 결합하여 하나의 배열 객체를 생성하여 반환한다.",
+                    2: "join() - 배열 객체의 각 원소들을 하나의 문자열로 만들어 반환한다.",
+                    3: "sort() - 배열의 각 원소들을 내림차순으로 정렬하여 반환한다.",
+                    4: "slice() - 배열의 원소들 가운데 일부를 새로운 배열로 만들어 반환한다."
+                },
+                infoAnswer : "3",
+                infoDesc : "sort(조건) : 배열 요소들을 '조건'대로 정렬(조건이 없는 경우 오름차순 정렬)"
+            },
+            {
+                infoDate : "10년 1월",
+                infoType : "웹디자인 기능사",
+                infoQuestion : "JAVA 스크립트 언어의 배열 객체에서 두 개 이상의 배열을 결합하여 하나의 배열 객체를 생성하여 반환하는 메소드(Method)는?",
+                infoChoice : {
+                    1: "concat()",
+                    2: "join()",
+                    3: "reverse()",
+                    4: "slice()"
+                },
+                infoAnswer : "1",
+                infoDesc : "join() : 배열 요소들을 하나의 문자열로 반환 / reverse() : 배열의 값을 역순으로 반환 / slice(a,e) : 배열 중에서 a~e까지의 요소로 새로운 배열 생성"
+            },
+            {
+                infoDate : "15년 10월",
+                infoType : "웹디자인 기능사",
+                infoQuestion : "자바스크립트 내에서 사용되는 String 객체에 대한 설명으로 틀린 것은?",
+                infoChoice : {
+                    1: "replace() - 임의의 문자열에서 지정한 문자를 다른 문자로 변경한다.",
+                    2: "match() - 임의의 문자열에서 지정한 문자가 나타나는 첫 번째 위치 값을 반환한다.",
+                    3: "split() - 임의의 문자열을 지정한 문자열이 나타나는 위치들을 나누어 두 개 이상의 문자열 배열로 만들어 반환한다.",
+                    4: "toUpperCase() - 문자열에 존재하는 대문자를 모두 소문자로 변환하여 반환한다."
+                },
+                infoAnswer : "4",
+                infoDesc : "대문자로 반환하는 메서드. "
+            },
+            {
+                infoDate : "12년 7월",
+                infoType : "웹디자인 기능사",
+                infoQuestion : "자바스크립트로 배경색을 초록색으로 지정하려면 다음 중 어떤 문장을 사용해야 하는가?",
+                infoChoice : {
+                    1: "window.bgColor='green';",
+                    2: "window.background='green';",
+                    3: "document.bgColor='green';",
+                    4: "document.background='green';"
+                },
+                infoAnswer : "3",
+                infoDesc : "배경색을 바꾸는 객체는  body 정보를 관리하는 document객체이다."
+            },
+            {
+                infoDate : "12년 10월",
+                infoType : "웹디자인 기능사",
+                infoQuestion : "HTML 문서의 입력 양식 필드에서 값이 바뀌었을 때 처리해주는 자바스크립트의 이벤트 함수는?",
+                infoChoice : {
+                    1: "onChange()",
+                    2: "onClick()",
+                    3: "onLoad()",
+                    4: "onSelect()"
+                },
+                infoAnswer : "1",
+                infoDesc : "이벤트 핸들러 중 onChange()에 대한 설명이다."
+            },
+            {
+                infoDate : "16년 10월",
+                infoType : "웹디자인 기능사",
+                infoQuestion : "자바스크립트에서 일정한 시간마다 브라우저 상태를 파악하거나 동작을 수행하는 데 사용되는 함수는?",
+                infoChoice : {
+                    1: "window.setlnterval()",
+                    2: "window.setTimer()",
+                    3: "window.timer()",
+                    4: "window.setTime()"
+                },
+                infoAnswer : "1",
+                infoDesc : "setlnterval() : 일정 시간마다 지정된 처리를 반복 호출 / setTimeout() : 일정 시간 후 지정된 처리를 호출"
+            },
+            {
+                infoDate : "16년 7월",
+                infoType : "웹디자인 기능사",
+                infoQuestion : "자바스크립트에서 현재 활성화된 창을 닫는 명령어가 아닌 것은?",
+                infoChoice : {
+                    1: "self.close()",
+                    2: "this.close()",
+                    3: "window.close()",
+                    4: "opener.close()"
+                },
+                infoAnswer : "4",
+                infoDesc : "opener : 현재 창을 열게 한 부모 창 참조하는 속성입니다. self,window : 자기 자신의 창"
+            },
+            {
+                infoDate : "12년 2월",
+                infoType : "웹디자인 기능사",
+                infoQuestion : "컴퓨터그래픽스의 역사 중 1960년대에 등장한 출력 장치는?",
+                infoChoice : {
+                    1: "래스터 스캔형 CRT",
+                    2: "리프레시형 CRT",
+                    3: "X-Y 플로터",
+                    4: "스토레이지형 CRT"
+                },
+                infoAnswer : "2",
+                infoDesc : "X-Y 플로터 : 1세대 1946년 ~ 1950년 말 / 리프레시형 CRT : 2세대 1950년 말~1960년 중반 / 스토리지형 CRT : 3세대 60년 말~70년 초 / 래스터 스캔형 CRT : 4세대 70년~80년 말"
+            },
+            {
+                infoDate : "19년 6월",
+                infoType : "웹디자인 기능사",
+                infoQuestion : "다음 설명은 컴퓨터 그래픽스의 역사 중 몇 세대를 의미하는가? / tv와 영화에 컴퓨터 그래픽스가 이용되면서 사실적 생동감 있는 표현을 중요하게 생각했다. 제조업분야에 CAD와 CAM을 도입하였다. 만델브로가 프랙탈 이론을 발표했다. 마이크로 소프트가 설립되었다./",
+                infoChoice : {
+                    1: "제2세대",
+                    2: "제3세대",
+                    3: "제4세대",
+                    4: "제5세대"
+                },
+                infoAnswer : "2",
+                infoDesc : "1960년대 말~1970년 초의 3세대로, 스토리지형 CRT 시대. 벡터 스캔형 CRT 보급, CRT 3차원 표시, 와이어 프레임의 입체 표현 가능, 만델브로가 프랙탈 기술 첫 발표. 등이 있다."
+            },
+            {
+                infoDate : "14년 1월",
+                infoType : "웹디자인 기능사",
+                infoQuestion : "컴퓨터 그래픽스 시스템에 사용되는 입력 장치로 적합하지 않은 것은?",
+                infoChoice : {
+                    1: "마우스",
+                    2: "플로터",
+                    3: "스캐너",
+                    4: "터치스크린"
+                },
+                infoAnswer : "2",
+                infoDesc : "플로터는 컴퓨터 그래픽스 하드웨어 중 출력장치이다."
+            },
+            {
+                infoDate : "15년 1월",
+                infoType : "웹디자인 기능사",
+                infoQuestion : "곡선(곡면)이나 사선(사면)을 표현할 때 바탕과 이미지 사이의 경계를 부드럽게 처리해 주는 것은?",
+                infoChoice : {
+                    1: "매핑",
+                    2: "앨리어싱",
+                    3: "안티앨리어싱",
+                    4: "디더링"
+                },
+                infoAnswer : "3",
+                infoDesc : "디더링 : 제한된 컬러로 다양한 컬러를 표현한다."
+            },
+            {
+                infoDate : "17년 1월",
+                infoType : "웹디자인 기능사",
+                infoQuestion : "해상도(Resolution)에 관한 설명 중 옳은 것은?",
+                infoChoice : {
+                    1: "이미지를 표현하는데 몇 개의 픽셀 또는 도트로 나타내었는지 그 정도를 의미한다.",
+                    2: "작은 화소 단위를 말한다.",
+                    3: "해상도가 높을수록 이미지의 질은 떨어진다.",
+                    4: "해상도는 bps로 나타낸다."
+                },
+                infoAnswer : "1",
+                infoDesc : "이미지, 모니터 해상도는 PPI(Pixel Per Inch)로 나타낸다."
+            },
+            {
+                infoDate : "17년 3월",
+                infoType : "웹디자인 기능사",
+                infoQuestion : "다음이 설명하고 있는 그래픽 파일 포맷은? / 연합 사진 영상 전문가 그룹에서 개발한 파일 포맷이다. 24bit의 1600만여 가지의 색상을 표현할 수 있다. 주로 멀티미디어 분야 및 인터넷상에서 사진 등을 압축할 때 사용한다.",
+                infoChoice : {
+                    1: "GIF",
+                    2: "PNG",
+                    3: "JPEG",
+                    4: "BMP"
+                },
+                infoAnswer : "3",
+                infoDesc : "JPEG(*.JPG)에 대한 설명이다. / GIF(*.GIF) : 컬러 수가 최대 256색으로 제한. 빠른 전송 속도 때문에 웹용 이미지로 사용. 투명한 이미지, 애니메이션 표현 가능. 색상수 극복하고자 디더링 기법 활용."
+            },
+            {
+                infoDate : "16년 1월",
+                infoType : "웹디자인 기능사",
+                infoQuestion : "다음 웹 디자인 과정을 올바르게 나열한 것은? / A-그림, 동영상, 소리파일 제작 B-주제 결정 C-웹 사이트에 업로드 D-웹 에디터로 작성 E-스토리보드 제작",
+                infoChoice : {
+                    1: "B A D E C",
+                    2: "B D A E C",
+                    3: "B E A D C",
+                    4: "B A D C E"
+                },
+                infoAnswer : "3",
+                infoDesc : "B E - 사전 제작 단계 / A D E - 제작 단계 / 이후에 후반 제작 단계로 사이트 홍보, 홍보 콘텐츠 제작 등이 진행된다."
+            },
+            {
+                infoDate : "21년 4월",
+                infoType : "웹디자인 기능사",
+                infoQuestion : "사용자 인터페이스(UI) 디자인 시 일반적으로 고려해야 할 사항으로 부적절한 것은?",
+                infoChoice : {
+                    1: "사용 편리성 : 배우기 쉽고, 기억하기 쉬워야 한다.",
+                    2: "심미적 구성 : 시각적인 커뮤니케이션을 통해 사용자의 정보 흡수와 작업 수행을 도와야 한다.",
+                    3: "개인성 : 사용자의 경험이나 개인 선호도, 능력의 차이를 두고 개인의 특성에 맞도록 한다.",
+                    4: "일관성 : 전체 구조 및 그래픽 요소를 일관성 있게 디자인해야 한다."
+                },
+                infoAnswer : "3",
+                infoDesc : "UI에서 고려할 사항 : 목적성, 직관성, 편리성, 일관성, 심미성. 개인성은 포함되지않습니다."
+            },
+            {
+                infoDate : "17년 6월",
+                infoType : "웹디자인 기능사",
+                infoQuestion : "웹 디자인 프로세스 Pre-Production 중 단계에 해당되지 않는 것은?",
+                infoChoice : {
+                    1: "디자인 계획 수립",
+                    2: "동영상 제작",
+                    3: "콘셉트 구상",
+                    4: "디자인 구체화"
+                },
+                infoAnswer : "2",
+                infoDesc : "제작은 사전 제작 단계가 아닌 제작단계에서 실행합니다."
+            },
+            {
+                infoDate : "14년 10월",
+                infoType : "웹디자인 기능사",
+                infoQuestion : "웹 페이지 작성 시 레이아웃을 디자인할 때 적합하지 않은 것은?",
+                infoChoice : {
+                    1: "단순하고 간결하며, 사용자가 쉽게 콘텐츠를 찾을 수 있도록 구성한다.",
+                    2: "콘텐츠의 연결이 일관성 있고 논리적이어야 한다.",
+                    3: "세부 콘텐츠를 먼저 배치한 후에 중요한 콘텐츠를 배치한다.",
+                    4: "텍스트와 그래픽 요소를 적절히 조화시킨다."
+                },
+                infoAnswer : "3",
+                infoDesc : "중요한 콘텐츠를 먼저 배치한 후 세부 사항을 결정한다."
+            },
+            {
+                infoDate : "18년 7월",
+                infoType : "웹디자인 기능사",
+                infoQuestion : "페이지 수가 많고 담고 있는 정보가 복잡한 웹 페이지일수록 그 구성과 형태를 얼마나 잘 체계화하고 적절한 장소에 위치시키느냐에 따라 쉬운 정보검색을 할 수 있다. 이를 가능하게 하는 디자인 작업은?",
+                infoChoice : {
+                    1: "스토리보드",
+                    2: "시나리오",
+                    3: "내비게이션 디자인",
+                    4: "스토리텔링"
+                },
+                infoAnswer : "3",
+                infoDesc : "내비게이션 : 사용자가 웹 페이지를 쉽게 이동하고 탐색할 수 있도록 콘텐츠를 체계적으로 분류하여 연결시킨 구조 또는 인터페이스 디자인을 말한다."
+            },
+            {
+                infoDate : "12년 2월",
+                infoType : "웹디자인 기능사",
+                infoQuestion : "다음 설명에 적합한 3D 형상 모델링은? / 물체를 구성하는 모든 면에 대한 장점과 연결선의 좌표로 입체를 표현하는 방법. 면의 구분이 가능하고 은폐선과 은폐면의 제거를 하여 물체의 사실감을 높이거나 자유곡면을 표현하는 데 적합. 모든 면에 데이터를 입력하기 때문에 용량이 커짐 /",
+                infoChoice : {
+                    1: "와이어프레임 모델링",
+                    2: "표면 모델링",
+                    3: "솔리드 모델링",
+                    4: "매개변수 모델링"
+                },
+                infoAnswer : "2",
+                infoDesc : "표면(서페이스)모델 : 오브젝트 포면의 모든 면에 데이터를 입력. / 와이어프레임 모델링 : 골격만 선으로 표현 / 솔리드 모델링 : 내부까지 채워진 입체를 이용한 모델링"
+            },
+            {
+                infoDate : "18년 1월",
+                infoType : "웹디자인 기능사",
+                infoQuestion : "다음이 설명하고 있는 기법은? / 단순한 모양에서 점차적으로 복잡한 형상을 구축해 나가는 기법. 바다 물결, 소용돌리, 담배연기, 산, 강 등을 표현하는 기법 /",
+                infoChoice : {
+                    1: "프랙탈",
+                    2: "고체",
+                    3: "표면",
+                    4: "와이어프레임"
+                },
+                infoAnswer : "1",
+                infoDesc : "프랙탈 모델 : 단순한 모양에서 시작해 복잡한 기하학적 형상을 구축"
+            },
+            {
+                infoDate : "12년 10월",
+                infoType : "웹디자인 기능사",
+                infoQuestion : "눈이 부시지 않고 조도가 균일하며, 그림자가 없는 부드러운 빛을 내어 침실이나 병실 등 휴식 공간에 사용되는 조명 방법은?",
+                infoChoice : {
+                    1: "전반확산조명",
+                    2: "간접조명",
+                    3: "직접조명",
+                    4: "반간접조명"
+                },
+                infoAnswer : "2",
+                infoDesc : "간접 조명 : 빛을 천장이나 벽쪽으로 비추어지게 하는 것 / 반간접 조명 : 하향으로 빛이 비추어지게 하는 것."
+            },
+            {
+                infoDate : "20년 6월",
+                infoType : "웹디자인 기능사",
+                infoQuestion : "다음 중 애니메이션에 대한 설명으로 틀린 것은?",
+                infoChoice : {
+                    1: "움직임이 없는 그림이나 사진 등에 생명이 있는 움직임을 부여하는 기술이다.",
+                    2: "라틴어의 아니마투스(Animatus)에서 유래되었다.",
+                    3: "연속된 그림을 통하여 계속 이어지게 보이는 2차원만의 영역을 의미한다.",
+                    4: "애니메이션에서 사용되는 프레임은 낱개의 정지된 이미지를 말한다."
+                },
+                infoAnswer : "3",
+                infoDesc : "애니메이션은 단순히 2차원 영역에서만 발생하는 것이 아니며, 3D 애니메이션과 같이 3차원 공간에서도 발생할 수 있습니다."
+            },
+            {
+                infoDate : "19년 6월",
+                infoType : "웹디자인 기능사",
+                infoQuestion : "중요한 장면이 들어가는 프레임이란 의미로, 트위닝을 삽입할 수 있는 것은?",
+                infoChoice : {
+                    1: "플립북",
+                    2: "키프레임",
+                    3: "레이어",
+                    4: "셀"
+                },
+                infoAnswer : "2",
+                infoDesc : "키프레임에 대한 설명입니다. / 플립북 : 책이나 종이 묶음에 변해가는 동작을 페이지마다 그리는 기법."
+            },
+            {
+                infoDate : "21년 4월",
+                infoType : "웹디자인 기능사",
+                infoQuestion : "오려낸 그림을 2차원 평면상에서 한 프레임씩 움직이면서 촬영하는 스톱 애니메이션을 말한다. 클레이 애니메이션이나 인형 애니메이션과 비슷하지만 3차원이 아닌 2차원이라는 점에서 구분되는 애니메이션은?",
+                infoChoice : {
+                    1: "셀 애니메이션",
+                    2: "종이 애니메이션",
+                    3: "모래 애니메이션",
+                    4: "컷 아웃 애니메이션"
+                },
+                infoAnswer : "4",
+                infoDesc : "셀 애니메이션 : 배경은 그대로 두고 캐릭터만 움직이는 초창기 애니메이션 기법"
+            },
+            {
+                infoDate : "20년 6월",
+                infoType : "웹디자인 기능사",
+                infoQuestion : "혼합하는 색의 수가 많을수록 채도가 낮아지는 혼합은?",
+                infoChoice : {
+                    1: "병치혼합",
+                    2: "가법혼합",
+                    3: "회전혼합",
+                    4: "감산혼합"
+                },
+                infoAnswer : "4",
+                infoDesc : "감산혼합은 프린터와 관련이 있습니다. 모니터에서 작업한 결과물을 프린트하게 되면 감산혼합에 의해 색상이 표현됩니다. 감산혼합이 색료의 혼합인 것과 색료를 혼합할 때 어떤 색상이 나타나게 되는지 기억해야합니다."
+            },
+            {
+                infoDate : "21년 4월",
+                infoType : "웹디자인 기능사",
+                infoQuestion : "전자우편을 송신할 때 사용되는 프로토콜은?",
+                infoChoice : {
+                    1: "TCP/IP",
+                    2: "SMTP",
+                    3: "POP",
+                    4: "IMAP"
+                },
+                infoAnswer : "2",
+                infoDesc : "SMTP(Small Mail Tranfer Protocol) : 전자우편의 송신 담당 / IMAP(Internet Message Acess Protocol) : 전자우편의 수신 담당"
+            },
+            {
+                infoDate : "20년 4월",
+                infoType : "웹디자인 기능사",
+                infoQuestion : "TCP/IP 프로토콜에 대한 설명으로 옳은 것은?",
+                infoChoice : {
+                    1: "IP는 에러를 검사하여 에러가 있을 때 송신측으로 재전송을 요구한다.",
+                    2: "TCP는 통신 경로를 담당한다.",
+                    3: "TCP/IP 프로토콜이 설치된 컴퓨터에서 인터넷을 이용할 수 있다.",
+                    4: "TCP/IP는 파일전송 프로토콜로써 재전송 기능이 없다."
+                },
+                infoAnswer : "3",
+                infoDesc : "TCP/IP가 설치된 컴퓨터 간에는 클라이언트/서버 모델을 사용하여 통신합니다."
+            },
+            {
+                infoDate : "20년 4월",
+                infoType : "웹디자인 기능사",
+                infoQuestion : "TCP/IP 프로토콜의 전송 계층에 해당하는 TCP에 대한 설명으로 틀린 것은?",
+                infoChoice : {
+                    1: "프레임 단위로 데이터를 전송한다.",
+                    2: "데이터 전송에 대한 신뢰성이 있다.",
+                    3: "에러 검출 방법이 존재한다.",
+                    4: "연결 지향형 프로토콜이다."
+                },
+                infoAnswer : "1",
+                infoDesc : "패킷 형태로 데이터를 전송합니다."
+            },
+            {
+                infoDate : "21년 4월",
+                infoType : "웹디자인 기능사",
+                infoQuestion : "OSI 7-layer에서 다음 설명과 관련 있는 계층은? / 정보의 표현 방식 관리, 암호화, 정보압축 등으 기능을 수행 /",
+                infoChoice : {
+                    1: "전송 계층",
+                    2: "표현 계층",
+                    3: "세션 계층",
+                    4: "응용 계층"
+                },
+                infoAnswer : "2",
+                infoDesc : "표현 계층에 대한 설명입니다."
+            },
+            {
+                infoDate : "20년 4월",
+                infoType : "웹디자인 기능사",
+                infoQuestion : "URL을 표기하는 일반적인 형식으로 옳은 것은?",
+                infoChoice : {
+                    1: "프로토콜://파일경로/파일명",
+                    2: "프로토콜://호스트주소[:포트번호]/파일경로/파일명",
+                    3: "포트번호://프로토콜/파일경로/파일명",
+                    4: "포트번호://프로토콜/호스트주소/파일결로/파일명"
+                },
+                infoAnswer : "2",
+                infoDesc : "URL : 인터넷상의 자원들에 대한 주소를 표기하는 표준방법. 프로토콜(인터넷 서비스)://호스트주소(또는 IP 주소)[:포트번호]/파일경로/파일명"
+            },
+            {
+                infoDate : "20년 4월",
+                infoType : "웹디자인 기능사",
+                infoQuestion : "인터넷 방화벽에 대한 설명으로 올바른 것은?",
+                infoChoice : {
+                    1: "컴퓨터 프로그램에 잠입하여 컴퓨터로 하여금 본래 목적 이외의 처리를 하도록 하는 프로그램이다.",
+                    2: "접근을 허가 받지 않은 정보 시스템에 불법으로 침투하거나 허가되지 않은 권한을 불법으로 갖는 경우를 말함",
+                    3: "사용자에게 소프트웨어를 합법적으로 사용할 수 있는 권한을 부여하는 것을 말한다.",
+                    4: "내부 네트워크에 대한 접근을 제어하고, 집중화된 보안성을 향상시킬 수 있다."
+                },
+                infoAnswer : "4",
+                infoDesc : "프록시 : LAN과 외부 네트워크 사이에서 방화벽 및 캐시 역할을 수행하는 것. / 프록시와 비교해서 암기하기."
+            },
+            {
+                infoDate : "10년 10월",
+                infoType : "웹디자인 기능사",
+                infoQuestion : "인터넷 관리 기관 중 국내 IP 주소 할당, 도메인 등록 및 네트워크 정보 관리 등의 업무를 담당하여 처리하는 기관으로 옳은 것은?",
+                infoChoice : {
+                    1: "RIPE-NCC",
+                    2: "KRNIC",
+                    3: "InterNIC",
+                    4: "APNIC"
+                },
+                infoAnswer : "2",
+                infoDesc : "KRNIC : 한국인터넷정보센터로, 현재 한국 인터넷진흥원(KISA)의 산하기관임. / NIC : 국가별 인터넷 레지스트리에 해당하는 기관으로 각 국의 도메인 이름을 등록하고 관리하는 기관."
+            },
+            {
+                infoDate : "19년 6월",
+                infoType : "웹디자인 기능사",
+                infoQuestion : "일반적으로 웹 브라우저에는 화면에 나타나는 데이터를 하드디스크의 일정한 공간에 자동으로 저장하여, 나중에 사용자가 해당 사이트에 다시 접속할 때 저장된 내용을 자동으로 불러와 사이트에 다시 접속할 때 저장된 내용을 자동으로 불러와 사이트 접속과 데이터 전송에 소요되는 시간을 절약하게 하는 기능이 있다. 이를 무엇이라 하는가?",
+                infoChoice : {
+                    1: "Messenger",
+                    2: "Cashe",
+                    3: "Driver",
+                    4: "Reload"
+                },
+                infoAnswer : "2",
+                infoDesc : "캐시에 대한 설명입니다."
+            },
+            {
+                infoDate : "20년 10월",
+                infoType : "웹디자인 기능사",
+                infoQuestion : "자바스크립트 언어에 대한 설명으로 틀린 것은?",
+                infoChoice : {
+                    1: "자바스크립트 언어에서 변수명은 숫자 및 특수 문자로 시작할 수 없다.",
+                    2: "자바스크립트 언어는 html과 웹 브라우저와는 상호작용할 수 있지만, VRML같은 인터넷 자원과는 상호작용할 수 없다.",
+                    3: "자바스크립트 언어는 대-소문자를 구분한다.",
+                    4: "함수 eval()은 자바스크립트의 내장함수이다."
+                },
+                infoAnswer : "2",
+                infoDesc : "HTML 문서 내에 SCRIPT라는 태그를 이용해 삽입. 웹에 3차원적인 가상현실을 구현하는 언어인 VRML과도 상호 연동 가능하다. / 변수의 시작은 반드시 영문자나 밑줄로 시작해야한다."
+            },
+            {
+                infoDate : "18년 10월",
+                infoType : "웹디자인 기능사",
+                infoQuestion : "웹 페이지에서 빛의 3원색으로 표현하는 컬러 시스템은?",
+                infoChoice : {
+                    1: "HSB",
+                    2: "GUI",
+                    3: "CMYK",
+                    4: "RGB"
+                },
+                infoAnswer : "4",
+                infoDesc : "RGB : RED, GREEN, BLUE의 광원색을 이용해 색상을 표현하는 방식. / HSB : 색의 세가지 속성인 Hue(색상), Brightness(명도), Saturation(채도)를 바탕으로 색상을 표현. CMYK : Cyan, Magenta, Yellow, Black의 색상을 이용해 인쇄하기 위한 색상 방식"
+            },
+            {
+                infoDate : "21년 4월",
+                infoType : "웹디자인 기능사",
+                infoQuestion : "웹에서 타이포그래피를 적용 시 고려할 사항으로 틀린 것은?",
+                infoChoice : {
+                    1: "페이지마다 다양한 서체 사용",
+                    2: "가독성, 판독성을 고려한 서체 사용",
+                    3: "웹 페이지의 여백과 문장의 정렬",
+                    4: "사이트의 내용과 컨셉에 어울리는 서체 사용"
+                },
+                infoAnswer : "1",
+                infoDesc : "페이지마다 다양한 서체를 사용하면 가독성이 떨어지게됩니다."
+            },
+            {
+                infoDate : "05년 10월",
+                infoType : "웹디자인 기능사",
+                infoQuestion : "서체의 가독성은 떨어지지만 눈에 쉽게 띄는 특징이 있어 제목용으로 많이 쓰이는 서체는?",
+                infoChoice : {
+                    1: "명조체",
+                    2: "고딕체",
+                    3: "필기체",
+                    4: "엽서체"
+                },
+                infoAnswer : "2",
+                infoDesc : "고딕체는 두께가 두꺼워 제목용으로 많이 쓰입니다."
+            },
+            {
+                infoDate : "09년 7월",
+                infoType : "웹디자인 기능사",
+                infoQuestion : "내비게이션에 관한 설명 중 가장 거리가 먼 것은?",
+                infoChoice : {
+                    1: "일관성 있는 내비게이션을 만들어야 한다.",
+                    2: "로딩 속도를 고려해야 한다.",
+                    3: "최대한 많은 메뉴를 만들어야 한다.",
+                    4: "링크가 끊어진 페이지가 없어야 한다."
+                },
+                infoAnswer : "3",
+                infoDesc : "가독성과 접근성이 떨어지게 되는 설명입니다."
+            },
+            {
+                infoDate : "10년 1월",
+                infoType : "웹디자인 기능사",
+                infoQuestion : "웹 인터페이스 디자인에서 강조되는 특성이 아닌 것은?",
+                infoChoice : {
+                    1: "사용자 편의성",
+                    2: "일관성",
+                    3: "독창성",
+                    4: "강제성"
+                },
+                infoAnswer : "4",
+                infoDesc : "강제성은 특성이 아닙니다."
+            },
+            {
+                infoDate : "09년 7월",
+                infoType : "웹디자인 기능사",
+                infoQuestion : "사이트의 가상 결로를 예상하여 기획하는 것으로 웹 사이트의 설계도이며 구체적인 작업 지침서 역할을 하는 것은?",
+                infoChoice : {
+                    1: "시안",
+                    2: "레이아웃",
+                    3: "내비게이션",
+                    4: "스토리보드"
+                },
+                infoAnswer : "4",
+                infoDesc : "스토리보드 : 화면에 대한 계획을 그림과 설명을 이용해 시각화, 한눈에 알아보기 쉽게 표현합니다."
+            },
+            {
+                infoDate : "13년 10월",
+                infoType : "웹디자인 기능사",
+                infoQuestion : "웹 사이트 제작 과정 중 기획 단계에 설정될 내용이 아닌 것은?",
+                infoChoice : {
+                    1: "전체 사이트 구조",
+                    2: "메인 색상 분위기",
+                    3: "메뉴 구성",
+                    4: "이미지 편집"
+                },
+                infoAnswer : "4",
+                infoDesc : "제작 단계에서 설정될 내용입니다."
+            },
+            {
+                infoDate : "20년 10월",
+                infoType : "웹디자인 기능사",
+                infoQuestion : "어느 특정 분야에서 우수한 상대를 표적 삼아 성과 차이를 비교하여 이를 극복하기 위해 상대의 뛰어난 점을 배우면서 자기혁신을 추구하는 기법을 무엇이라 하는가?",
+                infoChoice : {
+                    1: "벤치마킹",
+                    2: "UI 디자인",
+                    3: "프로모션",
+                    4: "컨셉개발"
+                },
+                infoAnswer : "1",
+                infoDesc : "벤치마킹 : 시행착오를 줄이게 하며 시장 흐름의 이해를 돕고 경쟁력을 강화합니다."
+            },
+            {
+                infoDate : "10년 7월",
+                infoType : "웹디자인 기능사",
+                infoQuestion : "웹에서 타이포를 이용한 애니메이션을 구현할 수 있는 프로그램으로 적절하지 않는 것은?",
+                infoChoice : {
+                    1: "Swish",
+                    2: "Photoshop",
+                    3: "Flash",
+                    4: "Flax"
+                },
+                infoAnswer : "2",
+                infoDesc : "포토샵은 해당되지않습니다."
+            },
+            {
+                infoDate : "10년 7월",
+                infoType : "웹디자인 기능사",
+                infoQuestion : "로고(LOGO)를 제작하기에 적합한 소프트웨어는?",
+                infoChoice : {
+                    1: "3D MAX",
+                    2: "Word Processor",
+                    3: "Edit Plus",
+                    4: "Illustrator"
+                },
+                infoAnswer : "4",
+                infoDesc : "수학적인 계산을 이용해 이미지를 표현하는 일러트스레티너 또는 플래시 등이 적합합니다."
+            },
+            {
+                infoDate : "10년 7월",
+                infoType : "웹디자인 기능사",
+                infoQuestion : "동영상 관련 포맷 방식이 아닌 것은?",
+                infoChoice : {
+                    1: "*.wav",
+                    2: "*.asf",
+                    3: "*.avi",
+                    4: "*.rm"
+                },
+                infoAnswer : "1",
+                infoDesc : ".wav는 컴퓨터용 오디오 파일입니다."
+            },
+            {
+                infoDate : "19년 6월",
+                infoType : "웹디자인 기능사",
+                infoQuestion : "3차원적 이미지를 최종적으로 이미지화 하는 것으로 사실감을 부여하기 위해서 색상과 질감을 입히고 빛과 카메라의 위치를 조작하는 과정은?",
+                infoChoice : {
+                    1: "모델링(Modeling)",
+                    2: "모핑(Morphing)",
+                    3: "렌더링(Rendering)",
+                    4: "시뮬레이션(Simulation)"
+                },
+                infoAnswer : "3",
+                infoDesc : "렌더링 : 모델링된 오브젝트의 표면을 처리하는 것. 그림자나 색채의 변화와 같은 3차원적인 질감을 더해 현실감을 추가하는 과정. / 모델링 : 오브젝트를 3차원 좌표계를 사용해 모양을 디자인하는 과정."
+            },
+
+
+        ];
+
+        // 문제 출력
+        const updateQuiz = () => {
+            const quizArray = [];
+        
+            quizInfo.forEach((quiz, index) => {
+                quizArray.push(`
+                    <div class="quiz">
+                        <div class="quiz_header">${quiz.infoDate} ${quiz.infoType}</div>
+                        <div class="quiz_main">
+                            <div class="quiz_question">${index+1}. ${quiz.infoQuestion}</div>
+                            <div class="quiz_choice">
+                                <label for="choice1-${index}">
+                                    <input type="radio" id="choice1-${index}" name="choice${index}" value="1">
+                                    <span>${quiz.infoChoice[1]}</span>
+                                </label>
+                                <label for="choice2-${index}">
+                                    <input type="radio" id="choice2-${index}" name="choice${index}" value="2">
+                                    <span>${quiz.infoChoice[2]}</span>
+                                </label>
+                                <label for="choice3-${index}">
+                                    <input type="radio" id="choice3-${index}" name="choice${index}" value="3">
+                                    <span>${quiz.infoChoice[3]}</span>
+                                </label>
+                                <label for="choice4-${index}">
+                                    <input type="radio" id="choice4-${index}" name="choice${index}" value="4">
+                                    <span>${quiz.infoChoice[4]}</span>
+                                </label>
+                            </div>
+                            <div class="quiz_answer none">${quiz.infoAnswer}</div>
+                            <div class="quiz_desc none">${quiz.infoDesc}</div>
+                        </div>
+                        <div class="quiz_footer">
+                            <button class="quiz_confirm" data-index="${index}">정답 확인하기</button>
+                        </div>
+                    </div>
+                `);
+            });
+
+            quizWrap.innerHTML = quizArray.join(" ");
+        }
+        
+        // 정답 확인
+        const answerQuiz = (index) => {
+            const quizChoices = document.querySelectorAll(`.quiz_choice input[name="choice${index}"]:checked`);
+            const answerElement = quizWrap.querySelectorAll(".quiz_answer")[index];
+            const descElement = quizWrap.querySelectorAll(".quiz_desc")[index];
+            const quizElement = quizWrap.querySelectorAll(".quiz")[index];
+
+            if (quizChoices.length > 0) {
+                const userAnswer = quizChoices[0].value;
+
+                if (userAnswer === quizInfo[index].infoAnswer) {
+                    answerElement.textContent = "정답입니다!";
+                    quizElement.classList.add("good");
+                    totalScore++;
+                    quizScore.innerHTML = totalScore;
+                } else {
+                    answerElement.textContent = "오답입니다!";
+                    quizElement.classList.add("bad");
+                    descElement.classList.remove("none");
+                    answerElement.classList.remove("none");
+                }
+            }
+        }
+
+        // 페이지가 로드된 후 실행
+        document.addEventListener("DOMContentLoaded", () => {
+            updateQuiz();
+
+            const confirmButtons = document.querySelectorAll(".quiz_confirm");
+            confirmButtons.forEach((button, index) => {
+                button.addEventListener("click", () => {
+                    answerQuiz(index);
+                });
+            });
+        });
+    </script>
+</body>
+</html>

@@ -308,7 +308,8 @@ body::after {
     content:"💯 설명 :";
 }
 .quiz_footer {}
-.quiz_confirm {
+.quiz_confirm,
+.quiz_next {
     background-color: #000000;
     color: rgb(255, 248, 34);
     text-align: center;
