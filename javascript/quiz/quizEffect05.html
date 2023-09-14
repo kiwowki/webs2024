@@ -169,28 +169,30 @@
         // 정답 확인하기
         const checkAnswer = () => {
             const selectedChoice = quizWrap.querySelector("input[name='choice']:checked");
-            const userAnswer = selectedChoice ? selectedChoice.value : null;                // 사용자가 클릭한 정답
+
+            
+            
+            if (!selectedChoice) {
+                alert("답을 선택하세요.");
+                return;     //종료의 return
+            }
+
+            const userAnswer = selectedChoice.value;                    // 사용자가 클릭한 정답
             const correctAnswer = quizInfo[currentIndex].infoAnswer;    // 정답지의 정답
             const quizElement = quizWrap.querySelector(".quiz");
             const descElement = quizWrap.querySelector(".quiz_desc");
             const answerElement = quizWrap.querySelector(".quiz_answer")
             
-            
-            
-            if(userAnswer !== null){
-                if(userAnswer === correctAnswer){
-                    quizElement.classList.add("good");
-                } else {
-                    quizElement.classList.add("bad");
-                    answerElement.classList.remove("none");
-                }
+            if(userAnswer === correctAnswer){
+                quizElement.classList.add("good");
 
-                descElement.classList.remove("none");
             } else {
-                console.log(userAnswer);
-                alert("정답을 선택하세요.");
+                quizElement.classList.add("bad");
+                answerElement.classList.remove("none");
             }
+            descElement.classList.remove("none");
         }
+
         
         // (페이지가 로드된 후)실행
         document.addEventListener("DOMContentLoaded", () => {
