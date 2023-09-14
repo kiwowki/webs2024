@@ -17,10 +17,10 @@
         "incorrect_answers": [
             "operand",
             "length",
-            "question mark"
+            "question mark" 
         ],
-        "desc": "명령어의 구성명령어 코드부 + 주소부 (한글),<br> OP-code + Operand (영문)"
-    },
+        "desc": "명령어의 구성명령어 코드부 + 주소부 (한글),<br> OP-code + Operand (영문)" 
+    }, 
     {
         "subject": "정보처리 기능사",
         "question": "반가산기(Half-Adder)의 논리회로도에서 자리올림이 발생하는 회로는?",

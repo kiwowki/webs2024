@@ -87,20 +87,18 @@
         const quizWrap = document.querySelector(".quiz_wrap");
 
         // 문제 데이터
-        const quizInfo = [];
+        const quizInfo = {
+            question: '',
+            desc: ''
+        };
 
         // 문제 가져오기
         const fetchQuiz = () => {
             fetch("https://kiwowki.github.io/webs2024/json/gineungsaJC2011_05.json")
                 .then(res => res.json())  // fetch의 체인기능
                 .then(items => {
-                    console.log(items[0].question);
-                    quizInfo[0] = items[0].question;
-                    console.log(quizInfo)
-                    
-                    console.log(items[0].desc);
-                    quizInfo[0] = items[0].desc;
-                    console.log(quizInfo)
+                    quizInfo.question = items[0].question;
+                    quizInfo.desc = items[0].desc;
 
                     updataQuiz();
                 })
@@ -115,9 +113,9 @@
                 <div class="quiz">
                     <div class="quiz_header">정보처리 기능사</div>
                     <div class="quiz_main">
-                        <div class="quiz_question">${quizInfo[0]}</div>
+                        <div class="quiz_question">${quizInfo.question}</div>
                     </div>
-                    <div class="quiz_desc">${quizInfo[0]}</div>
+                    <div class="quiz_desc">${quizInfo.desc}</div>
                 </div>
             `;
 
