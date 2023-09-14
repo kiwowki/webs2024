@@ -480,27 +480,36 @@ body::after {
 }
 
 @media (max-width: 600px){
-    #header h1 {
+    #header {
+        flex-direction: column;
+    }
+    #header h1 a{
         padding: 15px;
+    }
+    #header nav {
+        padding-right: 0;
+        margin-bottom: 20px;
     }
     #header nav li a {
         width: 30px;
         height: 30px;
         padding: 7px;
     }
+    .quiz_wrap {
+        padding: 0 16px;
+        margin-top: 0;
+    }
     .quiz_wrap > .quiz {
         width: 100%;
         padding: 20px;
-    }
-    .quiz_wrap {
-        padding: 16px;
-        margin-top: 0;
     }
     .quiz_header {
         margin-bottom: 10px;
     }
     .quiz_question {
         margin-bottom: 10px;
+        line-height: 1.5;
+        font-size: 20px;
     }
     .quiz_question em {
         font-size: 20px;
@@ -522,5 +531,8 @@ body::after {
     }
     .quiz_desc {
         padding: 14px;
+    }
+    .quiz_choice label span {
+        padding: 13px;
     }
 }
