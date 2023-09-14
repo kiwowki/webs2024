@@ -196,7 +196,6 @@ body::after {
 }
 .quiz_date {
     display: inline-block;
-    margin-right: 5px;
     color: #9e9211
 }
 .quiz_type {
