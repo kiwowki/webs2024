@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>퀴즈 이펙트05</title>
-
     <link rel="stylesheet" href="assets/css/quiz.css">
 
 
@@ -174,7 +173,6 @@
             
             if (!selectedChoice) {
                 alert("답을 선택하세요.");
-                return;     //종료의 return
             }
 
             const userAnswer = selectedChoice.value;                    // 사용자가 클릭한 정답
@@ -185,7 +183,6 @@
             
             if(userAnswer === correctAnswer){
                 quizElement.classList.add("good");
-
             } else {
                 quizElement.classList.add("bad");
                 answerElement.classList.remove("none");

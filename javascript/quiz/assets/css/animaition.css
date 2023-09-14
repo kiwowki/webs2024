@@ -16,7 +16,6 @@
 
 .card-container {
     position: relative;
-    width: 360px;
     margin: auto;
     padding-top: 125px;
     border-radius: 3%;
@@ -38,13 +37,11 @@
 .card-container::before {
     top: 3%;
     width: 93%;
-    background: rgba(255, 253, 242, 0.7);
 }
 
 .card-container::after {
     top: 5.5%;
     width: 85%;
-    background: rgba(223, 211, 180, 0.35);
 }
 
 .dog .head,
