@@ -182,7 +182,7 @@
 }
 
 .dog .mouth::before {
-    transform: translateX(-89%) rotate(45deg);
+    transform: translateX(-92%) rotate(45deg);
 }
 
 .dog .mouth::after {
