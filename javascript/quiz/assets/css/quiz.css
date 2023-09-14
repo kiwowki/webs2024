@@ -216,7 +216,7 @@ body::after {
 .quiz_question span {
     font-size: 24px;
     line-height: 1.5;
-    font-weight: 200;
+    font-weight: 400;
 }
 .quiz_img {
     margin-bottom: 10px;
