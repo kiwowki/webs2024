@@ -4,11 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="author" content="white_wolves">
+    <meta name="author" content="kiwowki">
     <meta name="description" content="웹 퍼블리셔를 위한 정보 공유 사이트입니다.">
-    <meta name="keywords"
-        content="강서현, 웹 퍼블리셔, 웹 표준, 웹 접근성, 화려한 디자인, white_wolves, publisher, css3, html, markup, design, Webstoryboy">
-    <title> | white_wolves | Class</title>
+    <meta name="keywords" content="강서현, 웹 퍼블리셔, 웹 표준, 웹 접근성, 화려한 디자인, kiwowki, publisher, css3, html, markup, design, kiwowki">
+    <title>강서현스토리 | kiwowki | Class</title>
 
     <!-- Bootstrap core CSS -->
     <link href="../assets/css/bootstrap.css" rel="stylesheet">
@@ -28,15 +27,15 @@
     <!-- Facebook meta tags -->
     <meta property="og:type" content="article" />
     <meta property="og:title" content="강서현" />
-    <meta property="og:url" content="https://webstoryboy.co.kr/" />
+    <meta property="og:url" content="https://kiwowki.co.kr/" />
     <meta property="og:image" content="http://richclub8.dothome.co.kr/assets/ico/icon.png" />
-    <meta property="og:site_name" content="웹스토리보이" />
+    <meta property="og:site_name" content="강서현" />
     <meta property="og:description" content="웹과 관련된 정보를 제공합니다." />
 
     <!-- twitter meta tags -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:site" content="@webstoryboy" />
-    <meta name="twitter:title" content="웹스토리보이" />
+    <meta name="twitter:site" content="@kiwowki" />
+    <meta name="twitter:title" content="강서현" />
     <meta name="twitter:description" content="웹과 관련된 정보를 제공합니다." />
     <meta property="twitter:image" content="http://richclub8.dothome.co.kr/assets/ico/icon.png" />
 
@@ -54,47 +53,24 @@
 	<![endif]-->
 </head>
 
-<body>
-    <a class="sr-only" href="#content">Skip to main content</a>
-
-    <header class="navbar navbar-inverse navbar-static-top bs-docs-nav" role="banner">
-        <div class="container">
-            <div class="navbar-header">
-                <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a href="../index.html" class="navbar-brand">강서현'S &lt;/doc&gt;</a>
-            </div>
-            <nav class="collapse navbar-collapse bs-navbar-collapse pull-right" role="navigation">
-                <ul class="nav navbar-nav">
-                    <li><a href="https://websinssa.tistory.com/">Tistory</a></li>
-                    <li><a href="https://codepen.io/webstoryboy">Codepen</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
-
     <div class="bs-header bgs1" id="content">
         <div class="container">
             <h1>MySQL v1.0 &lt;/doc&gt;</h1>
-            <p><a href="https://webstoryboy.co.kr" target="_blank">white_wolves.co.kr</a></p>
+            <p><a href="https://kiwowki.co.kr" target="_blank">kiwowki.co.kr</a></p>
         </div>
     </div>
 
     <div class="container bs-docs-container">
         <div class="row">
-
             <div class="col-md-9">
                 <h2 class="page-header">MySQL</h2>
+                
                 <div class="bs-docs-section">
                     <h3 id="intro1" class="page-header">MySQL</h3>
                     <p class="lead">MySQL은 오픈 소스 관계형 데이터베이스 관리 시스템(RDBMS)입니다.</p>
                     <p>
                         MySQL은 다중 사용자, 다중 스레드 RDBMS로서, 데이터의 안정성과 보안성을 제공합니다.
-                        MySQL은 대부분의 운영 체제에서 작동하며, 웹 애플리케이션 개발, 데이터 분석, 빅 데이터, 클라우드 기반 애플리케이션 등에 많이 사용됩니다.
+                        MySQL은 대부분의 운영 체제에서 작동하며, 웹 애플리케이션 개발, 데이터 분석, 빅 데이터, 클라우드 기반 애플리케이션 등에 많이 사용됩니다.  
                     </p>
                     <p>
                         MySQL은 SQL(Structured Query Language)을 사용하여 데이터를 관리합니다.
@@ -114,186 +90,173 @@
 
                 <div class="bs-docs-section">
                     <h3 id="intro2" class="page-header">MySQL 설치</h3>
-                    MAMP란 웹 사이트를 개발할 때 쓰이는 기술 스택인 MacOS, Apadche, MySQL, PHP의 약어이자 솔루션 스택입니다.
-                    <li><a href="https://www.mamp.info/en/downloads/" target="_blank">https://www.mamp.info/en/downloads/</a></li>
+                    MAMP란 웹 사이트를 개발할 때 쓰이는 기술 스택인 MacOS, Apache, MySQL, PHP의 약어이자 솔루션 스택입니다.
+                    <a href="https://www.mamp.info/en/downloads/" target="_blank">https://www.mamp.info/en/downloads/</a>
                 </div>
                 <!-- //intro2 -->
 
                 <div class="bs-docs-section">
                     <h3 id="intro3" class="page-header">MySQL 실행</h3>
-                    <div class="bs-callouw bs-callout-info">
-                        경로 : cd C:\MAMP\bin\mysql\bin<br>
-                        전역 변수인 num과 str을 함수에 직접 전달하여 함수가 이 값을 사용합니다. 이렇게 하면 함수가 외부에서 정의된 변수를 활용할 수 있게 됩니다.전역 변수인 num과 str을 함수에 직접 전달하여 함수가 이 값을 사용합니다. 이렇게 하면 함수가 외부에서 정의된 변수를 활용할 수 있게 됩니다.
+                    <div class="bs-callout bs-callout-info">
+                        윈도우 : cd C:\MAMP\bin\mysql\bin<br>
+                        로그인 : mysql -uroot -proot
                     </div>
-<pre><code class="Language-js">mysql: [Warning] Using a password on the command line interface can be insecure.
-Welcome to the MySQL monitor.  Commands end with ; or \g.
-Your MySQL connection id is 6
-Server version: 5.7.24 MySQL Community Server (GPL)
 
-Copyright (c) 2000, 2018, Oracle and/or its affiliates. All rights reserved.
-
-Oracle is a registered trademark of Oracle Corporation and/or its
-affiliates. Other names may be trademarks of their respective
-owners.
-
-Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.                    
-</code></pre>
-
+                    <div class="bs-callout bs-callout-info">
+                        맥 : cd /Applications/MAMP/Library/bin<br>
+                        로그인 : ./mysql -uroot -proot
+                    </div>
                 </div>
                 <!-- //intro3 -->
-                전역 변수인 num과 str을 함수에 직접 전달하여 함수가 이 값을 사용합니다. 이렇게 하면 함수가 외부에서 정의된 변수를 활용할 수 있게 됩니다.전역 변수인 num과 str을 함수에 직접 전달하여 함수가 이 값을 사용합니다. 이렇게 하면 함수가 외부에서 정의된 변수를 활용할 수 있게 됩니다.
+
                 <div class="bs-docs-section">
                     <h3 id="intro4" class="page-header">데이터베이스</h3>
-
-                    <h4 id="intro4-1" class="page-header">데이터베이스 보기</h4>
+                    <h4 id="inrot4-1" class="page-header">데이티베이스 보기</h4>
                     <div class="bs-callout bs-callout-info">
                         show databases;
                     </div>
 
-                    <h4 id="intro4-2" class="page-header">데이터베이스 만들기</h4>
+                    <h4 id="inrot4-2" class="page-header">데이티베이스 만들기</h4>
                     <div class="bs-callout bs-callout-info">
-                        create database 데이터베이스 이름;
+                        create database 데이터베이스이름
                     </div>
 
-                    <h4 id="intro4-3" class="page-header">데이터베이스 사용</h4>
+                    <h4 id="inrot4-3" class="page-header">데이티베이스 사용</h4>
                     <div class="bs-callout bs-callout-info">
-                        use 데이터베이스 이름;
+                        use 데이터베이스이름
                     </div>
 
-                    <h4 id="intro4-4" class="page-header">데이터베이스 삭제</h4>
+                    <h4 id="inrot4-4" class="page-header">데이티베이스 삭제</h4>
                     <div class="bs-callout bs-callout-info">
-                        drop database 이름;
+                        drop database 데이터베이스이름
                     </div>
-
                 </div>
                 <!-- //intro4 -->
 
                 <div class="bs-docs-section">
                     <h3 id="intro5" class="page-header">테이블</h3>
-                    <h4 id="intro5-1" class="page-header">테이블 만들기</h4>
+                    <h4 id="inrot5-1" class="page-header">테이블 만들기</h4>
                     <div class="bs-callout bs-callout-info">
                         create table 테이블 이름
                     </div>
-<pre><code class="Language-js">
-    create table members(
-    memberID int(10) unsigned auto_increment,
-    youEmail varchar(40) NOT NULL,
-    youName varchar(10) NOT NULL,
-    youPass varchar(50) NOT NULL,
-    youAge int(5) NOT NULL,
-    regTime int(20) NOT NULL,
-    PRIMARY KEY(memberID)
-) charset=utf8;
-</code></pre>
+<div class="code-toolbar"><pre class="language-js" tabindex="0"><code class="language-js">create table <span class="token function">members</span><span class="token punctuation">(</span>
+    memberID <span class="token function">int</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span> unsigned auto_increment<span class="token punctuation">,</span>
+    youEmail <span class="token function">varchar</span><span class="token punctuation">(</span><span class="token number">40</span><span class="token punctuation">)</span> <span class="token constant">NOT</span> <span class="token constant">NULL</span><span class="token punctuation">,</span>
+    youName <span class="token function">varchar</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span> <span class="token constant">NOT</span> <span class="token constant">NULL</span><span class="token punctuation">,</span>
+    youPass <span class="token function">varchar</span><span class="token punctuation">(</span><span class="token number">50</span><span class="token punctuation">)</span> <span class="token constant">NOT</span> <span class="token constant">NULL</span><span class="token punctuation">,</span>
+    youAge <span class="token function">int</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span> <span class="token constant">NOT</span> <span class="token constant">NULL</span><span class="token punctuation">,</span>
+    regTime <span class="token function">int</span><span class="token punctuation">(</span><span class="token number">20</span><span class="token punctuation">)</span> <span class="token constant">NOT</span> <span class="token constant">NULL</span><span class="token punctuation">,</span>
+    <span class="token constant">PRIMARY</span> <span class="token constant">KEY</span><span class="token punctuation">(</span>memberID<span class="token punctuation">)</span>
+<span class="token punctuation">)</span> charset<span class="token operator">=</span>utf8<span class="token punctuation">;</span>
+</code></pre><div class="toolbar"></div></div>
 
-                    <h4 id="intro5-2" class="page-header">테이블 전체보기</h4>
+                    <h4 id="inrot5-2" class="page-header">테이블 전체보기</h4>
                     <div class="bs-callout bs-callout-info">
                         show tables;
                     </div>
-<pre><code class="Language-js">
-    mysql> show tables;
-    +---------------+
-    | Tables_in_aaa |
-    +---------------+
-    | members       |
-    +---------------+
-    1 row in set (0.00 sec)
-</code></pre>
+<div class="code-toolbar"><pre class="language-js" tabindex="0"><code class="language-js">mysql<span class="token operator">&gt;</span> show tables<span class="token punctuation">;</span>
+<span class="token operator">+</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">-</span><span class="token operator">+</span>
+<span class="token operator">|</span> Tables_in_aaa <span class="token operator">|</span>
+<span class="token operator">+</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">-</span><span class="token operator">+</span>
+<span class="token operator">|</span> members       <span class="token operator">|</span>
+<span class="token operator">+</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">-</span><span class="token operator">+</span>
+<span class="token number">1</span> row <span class="token keyword">in</span> <span class="token function">set</span> <span class="token punctuation">(</span><span class="token number">0.00</span> sec<span class="token punctuation">)</span>
+</code></pre><div class="toolbar"></div></div>
 
-                    <h4 id="intro5-2" class="page-header">테이블 보기</h4>
+                    <h4 id="inrot5-3" class="page-header">테이블 보기</h4>
                     <div class="bs-callout bs-callout-info">
                         desc 테이블 이름;
                     </div>
-<pre><code class="Language-js">
-    mysql> desc members;
-    +----------+------------------+------+-----+---------+----------------+
-    | Field    | Type             | Null | Key | Default | Extra          |
-    +----------+------------------+------+-----+---------+----------------+
-    | memberID | int(10) unsigned | NO   | PRI | NULL    | auto_increment |
-    | youEmail | varchar(40)      | NO   |     | NULL    |                |
-    | youName  | varchar(10)      | NO   |     | NULL    |                |
-    | youPass  | varchar(50)      | NO   |     | NULL    |                |
-    | youAge   | int(5)           | NO   |     | NULL    |                |
-    | regTime  | int(20)          | NO   |     | NULL    |                |
-    +----------+------------------+------+-----+---------+----------------+
-    6 rows in set (0.00 sec)
-</code></pre>
+<div class="code-toolbar"><pre class="language-js" tabindex="0"><code class="language-js">mysql<span class="token operator">&gt;</span> desc members<span class="token punctuation">;</span>
+<span class="token operator">+</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">+</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">+</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">+</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">-</span><span class="token operator">+</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">-</span><span class="token operator">+</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">+</span>
+<span class="token operator">|</span> Field    <span class="token operator">|</span> Type             <span class="token operator">|</span> Null <span class="token operator">|</span> Key <span class="token operator">|</span> Default <span class="token operator">|</span> Extra          <span class="token operator">|</span>
+<span class="token operator">+</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">+</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">+</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">+</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">-</span><span class="token operator">+</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">-</span><span class="token operator">+</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">+</span>
+<span class="token operator">|</span> memberID <span class="token operator">|</span> <span class="token function">int</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span> unsigned <span class="token operator">|</span> <span class="token constant">NO</span>   <span class="token operator">|</span> <span class="token constant">PRI</span> <span class="token operator">|</span> <span class="token constant">NULL</span>    <span class="token operator">|</span> auto_increment <span class="token operator">|</span>
+<span class="token operator">|</span> youEmail <span class="token operator">|</span> <span class="token function">varchar</span><span class="token punctuation">(</span><span class="token number">40</span><span class="token punctuation">)</span>      <span class="token operator">|</span> <span class="token constant">NO</span>   <span class="token operator">|</span>     <span class="token operator">|</span> <span class="token constant">NULL</span>    <span class="token operator">|</span>                <span class="token operator">|</span>
+<span class="token operator">|</span> youName  <span class="token operator">|</span> <span class="token function">varchar</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span>      <span class="token operator">|</span> <span class="token constant">NO</span>   <span class="token operator">|</span>     <span class="token operator">|</span> <span class="token constant">NULL</span>    <span class="token operator">|</span>                <span class="token operator">|</span>
+<span class="token operator">|</span> youPass  <span class="token operator">|</span> <span class="token function">varchar</span><span class="token punctuation">(</span><span class="token number">50</span><span class="token punctuation">)</span>      <span class="token operator">|</span> <span class="token constant">NO</span>   <span class="token operator">|</span>     <span class="token operator">|</span> <span class="token constant">NULL</span>    <span class="token operator">|</span>                <span class="token operator">|</span>
+<span class="token operator">|</span> youAge   <span class="token operator">|</span> <span class="token function">int</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span>           <span class="token operator">|</span> <span class="token constant">NO</span>   <span class="token operator">|</span>     <span class="token operator">|</span> <span class="token constant">NULL</span>    <span class="token operator">|</span>                <span class="token operator">|</span>
+<span class="token operator">|</span> regTime  <span class="token operator">|</span> <span class="token function">int</span><span class="token punctuation">(</span><span class="token number">20</span><span class="token punctuation">)</span>          <span class="token operator">|</span> <span class="token constant">NO</span>   <span class="token operator">|</span>     <span class="token operator">|</span> <span class="token constant">NULL</span>    <span class="token operator">|</span>                <span class="token operator">|</span>
+<span class="token operator">+</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">+</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">+</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">+</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">-</span><span class="token operator">+</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">-</span><span class="token operator">+</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">+</span>
+<span class="token number">6</span> rows <span class="token keyword">in</span> <span class="token function">set</span> <span class="token punctuation">(</span><span class="token number">0.01</span> sec<span class="token punctuation">)</span>
+</code></pre><div class="toolbar"></div></div>
 
-                    <h4 id="intro5-4" class="page-header">테이블 삭제</h4>
+                    <h4 id="inrot5-4" class="page-header">테이블 삭제</h4>
                     <div class="bs-callout bs-callout-info">
                         drop table 테이블 이름;
+                    </div>
+
+                    <h4 id="inrot5-5" class="page-header">테이블 초기화</h4>
+                    <div class="bs-callout bs-callout-info">
+                        TRUNCATE table 테이블 이름;
                     </div>
                 </div>
                 <!-- //intro5 -->
 
                 <div class="bs-docs-section">
                     <h3 id="intro6" class="page-header">테이블 데이터</h3>
-                    <h4 id="intro6-1" class="page-header">테이블 입력하기</h4>
+                    <h4 id="inrot6-1" class="page-header">테이블 입력하기</h4>
                     <div class="bs-callout bs-callout-info">
                         INSERT INTO 테이블명(필드명) VALUES
                     </div>
-<pre><code class="Language-js">
-    INSERT INTO members(youEmail, youName, youPass, youAge, regTime) VALUES("wolves941110@gmail.com", "강서현", "0000", "30", "20230913");
-    INSERT INTO members(youEmail, youName, youPass, youAge, regTime) VALUES(“webstoryboy@naver.com”, “황상연“, “9876”, “10", “20230913”);
-    INSERT INTO members(youEmail, youName, youPass, youAge, regTime) VALUES("lee.jiyoung492@gmail.com", "이지영", "0106", "27", "20230913");
-    INSERT INTO members(youEmail, youName, youPass, youAge, regTime) VALUES("capitaljs10@gmail.com", "윤지성", "9876", "10", "20230913");
-    INSERT INTO members(youEmail, youName, youPass, youAge, regTime) VALUES("jeongsaeyeong@gmail.com", "정새영", "1234", "21", "20230913");
-    INSERT INTO members(youEmail, youName, youPass, youAge, regTime) VALUES("chfhrdk@gmail.com","권초록","1234","28","20230913");
-    INSERT INTO members(youEmail, youName, youPass, youAge, regTime) VALUES("hongjihyeon1004@gmail.com", "홍지현", "1111", "40", "20230913");
-    INSERT INTO members(youEmail, youName, youPass, youAge, regTime) VALUES("tmddnrla1@naver.com", "김승우", "7768", "29", "20230913");
-    INSERT INTO members(youEmail, youName, youPass, youAge, regTime) VALUES("dbwls9038@naver.com", "정유진", "8151", "27", "20230913");
-    INSERT INTO members(youEmail, youName, youPass, youAge, regTime) VALUES("answlsgh95@gmail.com", "문진호", "9999", "23","20230913");
-    INSERT INTO members(youEmail, youName, youPass, youAge, regTime) VALUES("adorabelness1215@naver.com", "이혜민", "0624", "28", "20230913");
-    INSERT INTO members(youEmail, youName, youPass, youAge, regTime) VALUES("duddls6552@naver.com", "문영인", "1234", "23", "20230913");
-    INSERT INTO members(youEmail, youName, youPass, youAge, regTime) VALUES("audgns722@naver.com","이명훈", "1212", "30", "20230913");
-    INSERT INTO members(youEmail, youName, youPass, youAge, regTime) VALUES("elese0821@naver.com", "이원영", "0821", "27", "20230913");
-    INSERT INTO members(youEmail, youName, youPass, youAge, regTime) VALUES("kmdojs@gmail.com", "오종석", "1234", "32", "20230913");
-    INSERT INTO members(youEmail, youName, youPass, youAge, regTime) VALUES("imdoob@naver.com", "임종한", "3125", "19", "20230913");
-    INSERT INTO members(youEmail, youName, youPass, youAge, regTime) VALUES("rlanrider@gmail.com", "김우주", "1234", "20", "20230913");
-    INSERT INTO members(youEmail, youName, youPass, youAge, regTime) VALUES("yunyoungsik91@gmail.com", "윤영식", "1234", "32", "20230913");
-    INSERT INTO members(youEmail, youName, youPass, youAge, regTime) VALUES("97.eugene.s@gmail.com", "서유진", "9876", "26", "20239012");
-    INSERT INTO members(youEmail, youName, youPass, youAge, regTime) VALUES("jhyjhy968@gmail.com", "정해연", "1234", "27", "20230913");
-    INSERT INTO members(youEmail, youName, youPass, youAge, regTime) VALUES("hee031812@gmail.com", "김희진", "9099", "29", "20230913");
-</pre></code>
-                    <h4 id="intro6-2" class="page-header">테이블 불러오기</h4>
+<div class="code-toolbar"><pre class="language-js" tabindex="0"><code class="language-js"><span class="token constant">INSERT</span> <span class="token constant">INTO</span> <span class="token function">members</span><span class="token punctuation">(</span>youEmail<span class="token punctuation">,</span> youName<span class="token punctuation">,</span> youPass<span class="token punctuation">,</span> youAge<span class="token punctuation">,</span> regTime<span class="token punctuation">)</span> <span class="token constant">VALUES</span><span class="token punctuation">(</span><span class="token string">"kiwowki@naver.com"</span><span class="token punctuation">,</span> <span class="token string">"황상연"</span><span class="token punctuation">,</span> <span class="token string">"9876"</span><span class="token punctuation">,</span> <span class="token string">"10"</span><span class="token punctuation">,</span> <span class="token string">"20230913"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token constant">INSERT</span> <span class="token constant">INTO</span> <span class="token function">members</span><span class="token punctuation">(</span>youEmail<span class="token punctuation">,</span> youName<span class="token punctuation">,</span> youPass<span class="token punctuation">,</span> youAge<span class="token punctuation">,</span> regTime<span class="token punctuation">)</span> <span class="token constant">VALUES</span><span class="token punctuation">(</span><span class="token string">"lee.jiyoung492@gmail.com"</span><span class="token punctuation">,</span> <span class="token string">"이지영"</span><span class="token punctuation">,</span> <span class="token string">"0106"</span><span class="token punctuation">,</span> <span class="token string">"27"</span><span class="token punctuation">,</span> <span class="token string">"20230913"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token constant">INSERT</span> <span class="token constant">INTO</span> <span class="token function">members</span><span class="token punctuation">(</span>youEmail<span class="token punctuation">,</span> youName<span class="token punctuation">,</span> youPass<span class="token punctuation">,</span> youAge<span class="token punctuation">,</span> regTime<span class="token punctuation">)</span> <span class="token constant">VALUES</span><span class="token punctuation">(</span><span class="token string">"capitaljs10@gmail.com"</span><span class="token punctuation">,</span> <span class="token string">"윤지성"</span><span class="token punctuation">,</span> <span class="token string">"9876"</span><span class="token punctuation">,</span> <span class="token string">"10"</span><span class="token punctuation">,</span> <span class="token string">"20230913"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token constant">INSERT</span> <span class="token constant">INTO</span> <span class="token function">members</span><span class="token punctuation">(</span>youEmail<span class="token punctuation">,</span> youName<span class="token punctuation">,</span> youPass<span class="token punctuation">,</span> youAge<span class="token punctuation">,</span> regTime<span class="token punctuation">)</span> <span class="token constant">VALUES</span><span class="token punctuation">(</span><span class="token string">"wolves941110@gmail.com"</span><span class="token punctuation">,</span> <span class="token string">"강서현"</span><span class="token punctuation">,</span> <span class="token string">"0000"</span><span class="token punctuation">,</span> <span class="token string">"30"</span><span class="token punctuation">,</span> <span class="token string">"20230913"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token constant">INSERT</span> <span class="token constant">INTO</span> <span class="token function">members</span><span class="token punctuation">(</span>youEmail<span class="token punctuation">,</span> youName<span class="token punctuation">,</span> youPass<span class="token punctuation">,</span> youAge<span class="token punctuation">,</span> regTime<span class="token punctuation">)</span> <span class="token constant">VALUES</span><span class="token punctuation">(</span><span class="token string">"jeongsaeyeong@gmail.com"</span><span class="token punctuation">,</span> <span class="token string">"정새영"</span><span class="token punctuation">,</span> <span class="token string">"1234"</span><span class="token punctuation">,</span> <span class="token string">"21"</span><span class="token punctuation">,</span> <span class="token string">"20230913"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token constant">INSERT</span> <span class="token constant">INTO</span> <span class="token function">members</span><span class="token punctuation">(</span>youEmail<span class="token punctuation">,</span> youName<span class="token punctuation">,</span> youPass<span class="token punctuation">,</span> youAge<span class="token punctuation">,</span> regTime<span class="token punctuation">)</span> <span class="token constant">VALUES</span><span class="token punctuation">(</span><span class="token string">"chfhrdk@gmail.com"</span><span class="token punctuation">,</span> <span class="token string">"권초록"</span><span class="token punctuation">,</span> <span class="token string">"1234"</span><span class="token punctuation">,</span> <span class="token string">"28"</span><span class="token punctuation">,</span> <span class="token string">"20230913"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token constant">INSERT</span> <span class="token constant">INTO</span> <span class="token function">members</span><span class="token punctuation">(</span>youEmail<span class="token punctuation">,</span> youName<span class="token punctuation">,</span> youPass<span class="token punctuation">,</span> youAge<span class="token punctuation">,</span> regTime<span class="token punctuation">)</span> <span class="token constant">VALUES</span><span class="token punctuation">(</span><span class="token string">"hongjihyeon1004@gmail.com"</span><span class="token punctuation">,</span> <span class="token string">"홍지현"</span><span class="token punctuation">,</span> <span class="token string">"1111"</span><span class="token punctuation">,</span> <span class="token string">"40"</span><span class="token punctuation">,</span> <span class="token string">"20230913"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token constant">INSERT</span> <span class="token constant">INTO</span> <span class="token function">members</span><span class="token punctuation">(</span>youEmail<span class="token punctuation">,</span> youName<span class="token punctuation">,</span> youPass<span class="token punctuation">,</span> youAge<span class="token punctuation">,</span> regTime<span class="token punctuation">)</span> <span class="token constant">VALUES</span><span class="token punctuation">(</span><span class="token string">"tmddnrla1@naver.com"</span><span class="token punctuation">,</span> <span class="token string">"김승우"</span><span class="token punctuation">,</span> <span class="token string">"7768"</span><span class="token punctuation">,</span> <span class="token string">"29"</span><span class="token punctuation">,</span> <span class="token string">"20230913"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token constant">INSERT</span> <span class="token constant">INTO</span> <span class="token function">members</span><span class="token punctuation">(</span>youEmail<span class="token punctuation">,</span> youName<span class="token punctuation">,</span> youPass<span class="token punctuation">,</span> youAge<span class="token punctuation">,</span> regTime<span class="token punctuation">)</span> <span class="token constant">VALUES</span><span class="token punctuation">(</span><span class="token string">"dbwls9038@naver.com"</span><span class="token punctuation">,</span> <span class="token string">"정유진"</span><span class="token punctuation">,</span> <span class="token string">"8151"</span><span class="token punctuation">,</span> <span class="token string">"27"</span><span class="token punctuation">,</span> <span class="token string">"20230913"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token constant">INSERT</span> <span class="token constant">INTO</span> <span class="token function">members</span><span class="token punctuation">(</span>youEmail<span class="token punctuation">,</span> youName<span class="token punctuation">,</span> youPass<span class="token punctuation">,</span> youAge<span class="token punctuation">,</span> regTime<span class="token punctuation">)</span> <span class="token constant">VALUES</span><span class="token punctuation">(</span><span class="token string">"answlsgh95@gmail.com"</span><span class="token punctuation">,</span> <span class="token string">"문진호"</span><span class="token punctuation">,</span> <span class="token string">"9999"</span><span class="token punctuation">,</span> <span class="token string">"23"</span><span class="token punctuation">,</span><span class="token string">"20230913"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token constant">INSERT</span> <span class="token constant">INTO</span> <span class="token function">members</span><span class="token punctuation">(</span>youEmail<span class="token punctuation">,</span> youName<span class="token punctuation">,</span> youPass<span class="token punctuation">,</span> youAge<span class="token punctuation">,</span> regTime<span class="token punctuation">)</span> <span class="token constant">VALUES</span><span class="token punctuation">(</span><span class="token string">"adorabelness1215@naver.com"</span><span class="token punctuation">,</span> <span class="token string">"이혜민"</span><span class="token punctuation">,</span> <span class="token string">"0624"</span><span class="token punctuation">,</span> <span class="token string">"28"</span><span class="token punctuation">,</span> <span class="token string">"20230913"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token constant">INSERT</span> <span class="token constant">INTO</span> <span class="token function">members</span><span class="token punctuation">(</span>youEmail<span class="token punctuation">,</span> youName<span class="token punctuation">,</span> youPass<span class="token punctuation">,</span> youAge<span class="token punctuation">,</span> regTime<span class="token punctuation">)</span> <span class="token constant">VALUES</span><span class="token punctuation">(</span><span class="token string">"duddls6552@naver.com"</span><span class="token punctuation">,</span> <span class="token string">"문영인"</span><span class="token punctuation">,</span> <span class="token string">"1234"</span><span class="token punctuation">,</span> <span class="token string">"23"</span><span class="token punctuation">,</span> <span class="token string">"20230913"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token constant">INSERT</span> <span class="token constant">INTO</span> <span class="token function">members</span><span class="token punctuation">(</span>youEmail<span class="token punctuation">,</span> youName<span class="token punctuation">,</span> youPass<span class="token punctuation">,</span> youAge<span class="token punctuation">,</span> regTime<span class="token punctuation">)</span> <span class="token constant">VALUES</span><span class="token punctuation">(</span><span class="token string">"audgns722@naver.com"</span><span class="token punctuation">,</span> <span class="token string">"이명훈"</span><span class="token punctuation">,</span> <span class="token string">"1212"</span><span class="token punctuation">,</span> <span class="token string">"30"</span><span class="token punctuation">,</span> <span class="token string">"20230913"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token constant">INSERT</span> <span class="token constant">INTO</span> <span class="token function">members</span><span class="token punctuation">(</span>youEmail<span class="token punctuation">,</span> youName<span class="token punctuation">,</span> youPass<span class="token punctuation">,</span> youAge<span class="token punctuation">,</span> regTime<span class="token punctuation">)</span> <span class="token constant">VALUES</span><span class="token punctuation">(</span><span class="token string">"elese0821@naver.com"</span><span class="token punctuation">,</span> <span class="token string">"이원영"</span><span class="token punctuation">,</span> <span class="token string">"0821"</span><span class="token punctuation">,</span> <span class="token string">"27"</span><span class="token punctuation">,</span> <span class="token string">"20230913"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token constant">INSERT</span> <span class="token constant">INTO</span> <span class="token function">members</span><span class="token punctuation">(</span>youEmail<span class="token punctuation">,</span> youName<span class="token punctuation">,</span> youPass<span class="token punctuation">,</span> youAge<span class="token punctuation">,</span> regTime<span class="token punctuation">)</span> <span class="token constant">VALUES</span><span class="token punctuation">(</span><span class="token string">"kmdojs@gmail.com"</span><span class="token punctuation">,</span> <span class="token string">"오종석"</span><span class="token punctuation">,</span> <span class="token string">"1234"</span><span class="token punctuation">,</span> <span class="token string">"32"</span><span class="token punctuation">,</span> <span class="token string">"20230913"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token constant">INSERT</span> <span class="token constant">INTO</span> <span class="token function">members</span><span class="token punctuation">(</span>youEmail<span class="token punctuation">,</span> youName<span class="token punctuation">,</span> youPass<span class="token punctuation">,</span> youAge<span class="token punctuation">,</span> regTime<span class="token punctuation">)</span> <span class="token constant">VALUES</span><span class="token punctuation">(</span><span class="token string">"imdoob@naver.com"</span><span class="token punctuation">,</span> <span class="token string">"임종한"</span><span class="token punctuation">,</span> <span class="token string">"3125"</span><span class="token punctuation">,</span> <span class="token string">"19"</span><span class="token punctuation">,</span> <span class="token string">"20230913"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token constant">INSERT</span> <span class="token constant">INTO</span> <span class="token function">members</span><span class="token punctuation">(</span>youEmail<span class="token punctuation">,</span> youName<span class="token punctuation">,</span> youPass<span class="token punctuation">,</span> youAge<span class="token punctuation">,</span> regTime<span class="token punctuation">)</span> <span class="token constant">VALUES</span><span class="token punctuation">(</span><span class="token string">"rlanrider@gmail.com"</span><span class="token punctuation">,</span> <span class="token string">"김우주"</span><span class="token punctuation">,</span> <span class="token string">"1234"</span><span class="token punctuation">,</span> <span class="token string">"20"</span><span class="token punctuation">,</span> <span class="token string">"20230913"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token constant">INSERT</span> <span class="token constant">INTO</span> <span class="token function">members</span><span class="token punctuation">(</span>youEmail<span class="token punctuation">,</span> youName<span class="token punctuation">,</span> youPass<span class="token punctuation">,</span> youAge<span class="token punctuation">,</span> regTime<span class="token punctuation">)</span> <span class="token constant">VALUES</span><span class="token punctuation">(</span><span class="token string">"yunyoungsik91@gmail.com"</span><span class="token punctuation">,</span> <span class="token string">"윤영식"</span><span class="token punctuation">,</span> <span class="token string">"12345"</span><span class="token punctuation">,</span> <span class="token string">"32"</span><span class="token punctuation">,</span> <span class="token string">"20230913"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token constant">INSERT</span> <span class="token constant">INTO</span> <span class="token function">members</span><span class="token punctuation">(</span>youEmail<span class="token punctuation">,</span> youName<span class="token punctuation">,</span> youPass<span class="token punctuation">,</span> youAge<span class="token punctuation">,</span> regTime<span class="token punctuation">)</span> <span class="token constant">VALUES</span><span class="token punctuation">(</span><span class="token string">"97.eugene.s@gmail.com"</span><span class="token punctuation">,</span> <span class="token string">"서유진"</span><span class="token punctuation">,</span> <span class="token string">"9876"</span><span class="token punctuation">,</span> <span class="token string">"26"</span><span class="token punctuation">,</span> <span class="token string">"20239012"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token constant">INSERT</span> <span class="token constant">INTO</span> <span class="token function">members</span><span class="token punctuation">(</span>youEmail<span class="token punctuation">,</span> youName<span class="token punctuation">,</span> youPass<span class="token punctuation">,</span> youAge<span class="token punctuation">,</span> regTime<span class="token punctuation">)</span> <span class="token constant">VALUES</span><span class="token punctuation">(</span><span class="token string">"jhyjhy968@gmail.com"</span><span class="token punctuation">,</span> <span class="token string">"정해연"</span><span class="token punctuation">,</span> <span class="token string">"1234"</span><span class="token punctuation">,</span> <span class="token string">"27"</span><span class="token punctuation">,</span> <span class="token string">"20230913"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token constant">INSERT</span> <span class="token constant">INTO</span> <span class="token function">members</span><span class="token punctuation">(</span>youEmail<span class="token punctuation">,</span> youName<span class="token punctuation">,</span> youPass<span class="token punctuation">,</span> youAge<span class="token punctuation">,</span> regTime<span class="token punctuation">)</span> <span class="token constant">VALUES</span><span class="token punctuation">(</span><span class="token string">"hee031812@gmail.com"</span><span class="token punctuation">,</span> <span class="token string">"김희진"</span><span class="token punctuation">,</span> <span class="token string">"9099"</span><span class="token punctuation">,</span> <span class="token string">"29"</span><span class="token punctuation">,</span> <span class="token string">"20230913"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre><div class="toolbar"></div></div>
+
+                    <h4 id="inrot6-2" class="page-header">테이블 불러오기</h4>
                     <div class="bs-callout bs-callout-info">
-                        SELECT 필드명 FROM 테이블 이름;
+                        SELECT 필드명 FROM 테이블명
                     </div>
                     <h5>모든 필드명 불러오기</h5>
-<pre><code class="Language-js">SELECT * FROM members;</pre></code>
+<div class="code-toolbar"><pre class="language-js" tabindex="0"><code class="language-js"><span class="token constant">SELECT</span> <span class="token operator">*</span> <span class="token constant">FROM</span> members<span class="token punctuation">;</span></code></pre><div class="toolbar"></div></div>
                     <h5>이름 필드명 불러오기</h5>
-<pre><code class="Language-js">SELECT youNAme FROM members;</pre></code>
+<div class="code-toolbar"><pre class="language-js" tabindex="0"><code class="language-js"><span class="token constant">SELECT</span> youName <span class="token constant">FROM</span> members<span class="token punctuation">;</span></code></pre><div class="toolbar"></div></div>
                     <h5>이름, 나이 필드명 불러오기</h5>
-<pre><code class="Language-js">SELECT youNAme, youAge FROM members;</pre></code>
+<div class="code-toolbar"><pre class="language-js" tabindex="0"><code class="language-js"><span class="token constant">SELECT</span> youName<span class="token punctuation">,</span> youAge <span class="token constant">FROM</span> members<span class="token punctuation">;</span></code></pre><div class="toolbar"></div></div>
                     <h5>이메일, 이름, 나이 필드명 불러오기</h5>
-<pre><code class="Language-js">SELECT youEmail, youNAme, youAge FROM members;</pre></code>
+<div class="code-toolbar"><pre class="language-js" tabindex="0"><code class="language-js"><span class="token constant">SELECT</span> youEmail<span class="token punctuation">,</span> youName<span class="token punctuation">,</span> youAge <span class="token constant">FROM</span> members<span class="token punctuation">;</span></code></pre><div class="toolbar"></div></div>
 
                     <div class="bs-callout bs-callout-info">
-                        SELECT 필드명 FROM 테이블 이름 WHERE 조건;
+                        SELECT 필드명 FROM 테이블명 WHERE 조건
                     </div>
-                    <h5>멤버 아이디가 1번인 모든 회원 불러오기</h5>
-<pre><code class="Language-js">SELECT * FROM members WHERE memberID = 1;</pre></code>
-                    <h5>멤버 아이디가 10번인 회원의 이름과 이메일 불러오기</h5>
-<pre><code class="Language-js">SELECT youNAme, youEmail FROM members WHERE memberID = 10;</pre></code>
+                    <h5>멤버 아이디가 1번인 모든 회원 데이터 불러오기</h5>
+<div class="code-toolbar"><pre class="language-js" tabindex="0"><code class="language-js"><span class="token constant">SELECT</span> <span class="token operator">*</span> <span class="token constant">FROM</span> members <span class="token constant">WHERE</span> memberID <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span></code></pre><div class="toolbar"></div></div>
+                    <h5>멤버 아이디가 10번 회원의 이름과 이메일 불러오기</h5>
+<div class="code-toolbar"><pre class="language-js" tabindex="0"><code class="language-js"><span class="token constant">SELECT</span> youName<span class="token punctuation">,</span> youEmail <span class="token constant">FROM</span> members <span class="token constant">WHERE</span> memberID <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">;</span></code></pre><div class="toolbar"></div></div>
                     <h5>나이가 30이상 회원의 모든 데이터 불러오기</h5>
-<pre><code class="Language-js">SELECT * FROM members WHERE youAge >= 30;</pre></code>
+<div class="code-toolbar"><pre class="language-js" tabindex="0"><code class="language-js"><span class="token constant">SELECT</span> <span class="token operator">*</span> <span class="token constant">FROM</span> members <span class="token constant">WHERE</span> youAge <span class="token operator">&gt;=</span> <span class="token number">30</span><span class="token punctuation">;</span></code></pre><div class="toolbar"></div></div>
                     <h5>나이가 30인 회원을 제외하고 모든 회원 불러오기</h5>
-<pre><code class="Language-js">SELECT * FROM members WHERE youAge &lt;> 30;</pre></code>
-                    <h4 id="intro6-3" class="page-header">테이블 수정하기</h4>
-                    <h4 id="intro6-4" class="page-header">테이블 삭제하기</h4>
-                    
+<div class="code-toolbar"><pre class="language-js" tabindex="0"><code class="language-js"><span class="token constant">SELECT</span> <span class="token operator">*</span> <span class="token constant">FROM</span> members <span class="token constant">WHERE</span> youAge <span class="token operator">&lt;</span><span class="token operator">&gt;</span> <span class="token number">30</span><span class="token punctuation">;</span></code></pre><div class="toolbar"></div></div>
+
+                    <h4 id="inrot6-3" class="page-header">테이블 수정하기</h4>
+                    <h4 id="inrot6-4" class="page-header">테이블 삭제하기</h4>
                 </div>
                 <!-- //intro6 -->
 
                 <div class="bs-docs-section">
                     <h3 id="intro7" class="page-header">테이블 수정</h3>
-                    <h4 id="intro7-1" class="page-header">필드 추가하기</h4>
-                    <h4 id="intro7-2" class="page-header">필드 수정하기</h4>
-                    <h4 id="intro7-3" class="page-header">필드 삭제하기</h4>
-                    <h4 id="intro6-4" class="page-header">필드 초기화</h4>
-                    <div class="bs-callout bs-callout-info">
-                        TRUNCATE table 테이블 이름;
-                    </div>
+                    <h4 id="inrot7-1" class="page-header">필드 추가하기</h4>
+                    <h4 id="inrot7-2" class="page-header">필드 수정하기</h4>
+                    <h4 id="inrot7-3" class="page-header">필드 삭제하기</h4>
                 </div>
                 <!-- //intro7 -->
 
@@ -301,18 +264,16 @@ Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
                     <h3 id="intro8" class="page-header">테이블 합치기</h3>
                 </div>
                 <!-- //intro8 -->
-                <!-- //row -->
-
             </div>
             <!-- //col-md-9 -->
 
             <div class="col-md-3">
-                <div class="bs-sidebar hidden-print affix-top" role="complementary">
+                <div class="bs-sidebar hidden-print affix-bottom" role="complementary" style="position: relative; top: 30.625px;">
                     <ul class="nav bs-sidenav">
-                        <li class="active"><a href="#intro1">MYSQL</a></li>
-                        <li><a href="#intro2">MySQL 설치</a></li>
-                        <li><a href="#intro3">MySQL 실행</a></li>
-                        <li><a href="#intro4">데이터베이스</a>
+                        <li class=""><a href="#intro1">MYSQL</a></li>
+                        <li class=""><a href="#intro2">MySQL 설치</a></li>
+                        <li class=""><a href="#intro3">MySQL 실행</a></li>
+                        <li class=""><a href="#intro4">데이터베이스</a>
                             <ul class="nav bs-sidenav">
                                 <li><a href="#intro4-1">데이터베이스 보기</a></li>
                                 <li><a href="#intro4-2">데이터베이스 만들기</a></li>
@@ -320,7 +281,7 @@ Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
                                 <li><a href="#intro4-4">데이터베이스 삭제</a></li>
                             </ul>
                         </li>
-                        <li><a href="#intro5">테이블</a>
+                        <li class=""><a href="#intro5">테이블</a>
                             <ul class="nav bs-sidenav">
                                 <li><a href="#intro5-1">테이블 만들기</a></li>
                                 <li><a href="#intro5-2">테이블 전체보기</a></li>
@@ -329,13 +290,12 @@ Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
                                 <li><a href="#intro5-5">테이블 초기화</a></li>
                             </ul>
                         </li>
-                        <li><a href="#intro6">테이블 데이터</a>
+                        <li class="active"><a href="#intro6">테이블 데이터</a>
                             <ul class="nav bs-sidenav">
                                 <li><a href="#intro6-1">테이블 입력하기</a></li>
                                 <li><a href="#intro6-2">테이블 불러오기</a></li>
                                 <li><a href="#intro6-3">테이블 수정하기</a></li>
                                 <li><a href="#intro6-4">테이블 삭제하기</a></li>
-
                             </ul>
                         </li>
                         <li><a href="#intro7">테이블 수정</a>
@@ -345,17 +305,14 @@ Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
                                 <li><a href="#intro7-3">필드 삭제하기</a></li>
                             </ul>
                         </li>
-                        <li><a href="#intro8">테이블 합치기</a></li>
+                        <li class=""><a href="#intro8">테이블 합치기</a></li>
                         <li><a href="#intro9">집계 함수</a></li>
                     </ul>
                 </div>
             </div>
-
+            <!-- //col-md-3 -->
         </div>
-        <!-- //col-md-3 -->
-
-    </div>
-    <!-- //row -->
+        <!-- //row -->
     </div>
     <!-- //container -->
 
@@ -365,11 +322,11 @@ Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
         <div class="container">
             <ul class="footer-links muted">
                 <li>Currently v2.0</li>
-                <li>&middot;</li>
-                <li><a href="http://webstoryboy.co.kr">webstoryboy</a></li>
-                <li>&middot;</li>
+                <li>·</li>
+                <li><a href="http://kiwowki.co.kr">kiwowki</a></li>
+                <li>·</li>
                 <li><a href="http://cafe.naver.com/crossbrowsing" target="_blank">publisher cafe</a></li>
-                <li>&middot;</li>
+                <li>·</li>
                 <li><a href="http://cafe.daum.net/flairdesignlink" target="_blank">designer cafe</a></li>
             </ul>
         </div>
@@ -382,6 +339,8 @@ Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
     <script src="../assets/js/bootstrap.min.js"></script>
     <script src="../assets/js/docs.min.js"></script>
     <script src="../assets/js/prism.js"></script>
-</body>
 
+
+</body>
+</body>
 </html>
