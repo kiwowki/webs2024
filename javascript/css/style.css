@@ -70,7 +70,7 @@ li {
 .main__menu ul li a {
     font-family: "nanumSquareNeo";
     line-height: 1.8;
-    color: #cfce75;
+    color: #b3b267
 }
 .main__menu ul li a:hover {}
 .main__menu ul li a strong {
@@ -84,7 +84,7 @@ li {
     position: absolute;
     left: 0;
     bottom: 0;
-    background-color: #f2bdbd56;
+    background-color: #4f4e4c40;
     transition: all 0.3s;
     border-radius: 30px;
     display: block;
