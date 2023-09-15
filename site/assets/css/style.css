@@ -268,6 +268,7 @@
     }
     .intro_img {
         width: 100%;
+        padding-bottom: 137px;
     }
     .intro_img .img3 {
         position: relative;
@@ -317,4 +318,131 @@
     .intro_img .img3 img {
         width: 100%;
     }
+}
+
+/* ___________________________________use______________________________________________ */
+#pointUse {
+    background-color: #f8f8f8;
+}
+.use_inner {
+    padding: 100px 0;
+}
+.use_inner .container {
+}
+.use_title {
+    margin-bottom: 40px;
+}
+.use_title h3 {
+    font-size: 45px;
+    line-height: 1;
+    font-weight: 800;
+}
+.use_title h3 em {
+    font-weight: 300;
+}
+.use_title h3 span {
+    font-size: 18px;
+    font-weight: 400;
+    color: #9c9c9c;
+}
+.use_img {
+    display: flex;
+    justify-content: space-between;
+}
+.use_img > div {
+    width: 32%;
+    text-align: center;
+    position: relative;
+}
+.use_img > div figure {
+    border-radius: 20px;
+    width: 100%;
+    position: relative;
+}
+.use_img > div figure img {
+    border-radius: 20px;
+}
+.use_img > div figure::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #2f2f2f55;
+    backdrop-filter: blur(10px);
+    z-index: 10;
+    border-radius: 20px;
+    opacity: 0;
+    transition: opacity 0.3s;
+    cursor: pointer;
+}
+.use_img > div figcaption {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 30px;
+    color: #ffffff;
+    z-index: 100;
+    font-weight: 800;
+    transition: opacity 0.5s;
+    opacity: 0;
+}
+.use_img > div figure:hover::after {
+    opacity: 1;
+}
+.use_img > div figure:hover figcaption {
+    opacity: 1;
+}
+.use_img > div p {
+    padding: 10px;
+    color: #9c9c9c;
+    font-size: 16px;
+}
+
+@media (max-width: 800px){
+    .use_inner {
+        padding: 80px 0;
+    }
+    .use_title h3 {
+        font-size: 34px;
+        text-align: center;
+    }
+    .use_title h3 span {
+        display: block;
+        font-size: 16px;
+        margin-top: 15px;
+    }
+    .use_img {
+        flex-direction: column;
+    }
+    .use_img > div {
+        width: 60%;
+        margin: 0 auto 40px auto;
+    }
+    .use_img > div:last-child {
+        margin-bottom: 0;
+    }
+    .use_img > div figure:hover::after {
+        opacity: 0;
+    }
+    .use_img > div figcaption {
+        position: relative;
+        color: #000000;
+        opacity: 1;
+        margin-top: 25px;
+        font-size: 18px;
+        font-weight: 500;
+    }
+    .use_img > div p {
+        padding: 0;
+    }
+}
+@media (max-width: 600px){
+    .use_img > div {
+        width: 100%;
+        margin-top: -10px;
+    }
+    
 }

@@ -46,7 +46,9 @@ input,
 select,
 table,
 textarea {
-    font-family: "nanumSquareNeo", "Malgun Gothic", "맑은 고딕" , Arial, Helvetica, sans-serif
+    font-family: "nanumSquareNeo", "Malgun Gothic", "맑은 고딕" , Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    margin-top: 6px;
 }
 
 /* 링크 초기화 */
@@ -77,11 +79,16 @@ address {
     font-style: normal;
 }
 
+/* 이미지 최적화 */
+img {
+    width: 100%;
+    vertical-align: top;
+}
 /* 이미지 대체(IR) 효과 */
 .ir {
     display: block;
     overflow: hidden;
     font-size: 0;
     line-height: 0;
-    text-indent: ;
+    text-indent: -9999999px;
 }
