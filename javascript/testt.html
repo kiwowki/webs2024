@@ -174,10 +174,11 @@
                 c:"javascript"
         }
 
-        console.log(obj.hasOwnProperty("a"));
-        console.log(obj.hasOwnProperty("b"));
-        console.log(obj.hasOwnProperty("c"));
-        console.log(obj.hasOwnProperty("d"));
+        console.log(obj.hasOwnProperty("a")); //true
+        console.log(obj.hasOwnProperty("b")); //true
+        console.log(obj.hasOwnProperty("c")); //true
+        console.log(obj.hasOwnProperty("d")); //false
+        console.log(obj.hasOwnProperty(200)); //false
 }   
 ////17. 다음을 보고 결괏값을 작성하시오!
 

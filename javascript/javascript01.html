@@ -475,7 +475,6 @@
         b: 200,
         c: "javascript";
     }
-
     console.log(obj.a);
     console.log(obj.b);
     console.log(obj.c);
@@ -511,7 +510,6 @@
             c: "jquery",
         }
     ]
-
     console.log(obj[0].a)
     console.log(obj[0].b)
     console.log(obj[0].c)
@@ -545,7 +543,6 @@
         b: {x: 200, y:[300, 400]},
         c: "javascript",
     }
-
     console.log(obj2.a);
     console.log(obj2.b.x);
     console.log(obj2.b.y[0]);
@@ -577,7 +574,6 @@
         b: {x: 200, y: {d: 300, e: { f:400, g: 500}}},
         c: "javascript",
     }
-
     console.log(obj2.a);
     console.log(obj2.b.x);
     console.log(obj2.b.y.d);
@@ -661,7 +657,6 @@
         b: {x: 200, y:300},
         c: "javascript",
     }
-
     const {a, b: {x, y}, c} = obj;
 
     console.log(a);
