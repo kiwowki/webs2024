@@ -1,0 +1,125 @@
+@font-face {
+    font-family: 'NanumMyeongjo';
+    font-weight: 400;
+    font-style: normal;
+    src: url('https://cdn.jsdelivr.net/gh/webfontworld/NanumMyeongjo/NanumMyeongjo.eot');
+    src: url('https://cdn.jsdelivr.net/gh/webfontworld/NanumMyeongjo/NanumMyeongjo.eot?#iefix') format('embedded-opentype'),
+         url('https://cdn.jsdelivr.net/gh/webfontworld/NanumMyeongjo/NanumMyeongjo.woff2') format('woff2'),
+         url('https://cdn.jsdelivr.net/gh/webfontworld/NanumMyeongjo/NanumMyeongjo.woff') format('woff'),
+         url('https://cdn.jsdelivr.net/gh/webfontworld/NanumMyeongjo/NanumMyeongjo.ttf') format("truetype");
+    font-display: swap;
+} 
+@font-face {
+    font-family: 'NanumMyeongjo';
+    font-weight: 700;
+    font-style: normal;
+    src: url('https://cdn.jsdelivr.net/gh/webfontworld/NanumMyeongjo/NanumMyeongjoBold.eot');
+    src: url('https://cdn.jsdelivr.net/gh/webfontworld/NanumMyeongjo/NanumMyeongjoBold.eot?#iefix') format('embedded-opentype'),
+         url('https://cdn.jsdelivr.net/gh/webfontworld/NanumMyeongjo/NanumMyeongjoBold.woff2') format('woff2'),
+         url('https://cdn.jsdelivr.net/gh/webfontworld/NanumMyeongjo/NanumMyeongjoBold.woff') format('woff'),
+         url('https://cdn.jsdelivr.net/gh/webfontworld/NanumMyeongjo/NanumMyeongjoBold.ttf') format("truetype");
+    font-display: swap;
+} 
+@font-face {
+    font-family: 'NanumMyeongjo';
+    font-weight: 800;
+    font-style: normal;
+    src: url('https://cdn.jsdelivr.net/gh/webfontworld/NanumMyeongjo/NanumMyeongjoExtraBold.eot');
+    src: url('https://cdn.jsdelivr.net/gh/webfontworld/NanumMyeongjo/NanumMyeongjoExtraBold.eot?#iefix') format('embedded-opentype'),
+         url('https://cdn.jsdelivr.net/gh/webfontworld/NanumMyeongjo/NanumMyeongjoExtraBold.woff2') format('woff2'),
+         url('https://cdn.jsdelivr.net/gh/webfontworld/NanumMyeongjo/NanumMyeongjoExtraBold.woff') format('woff'),
+         url('https://cdn.jsdelivr.net/gh/webfontworld/NanumMyeongjo/NanumMyeongjoExtraBold.ttf') format("truetype");
+    font-display: swap;
+} 
+* {
+    font-family: 'NanumMyeongjo';
+    
+}
+body {
+    width: 100%;
+    height: 100%;
+    background-image: url("/team_quiz/img/bgi.jpg");
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    width: 750px;
+    margin: 0 auto;
+    padding: 50px;
+}
+#main {
+    height: 800px;
+    background-color: #f6f6f6;
+    background-image: url("/team_quiz/img/bgi.jpg");
+}
+.quiz_wrap {
+    color: #000000;
+    text-align: center;
+    width: 750px;
+    height: 800px;
+    margin: 0 auto;
+}
+.age_choice {
+    flex-direction: column;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    margin: 0 auto;
+}
+.age_choice h1 {
+    font-size: 32px;
+    padding-top: 50px;
+}
+.age_choice label {
+    display: inline-block;
+    width: 690px;
+    background-color: #d9d9d9;
+    border-radius: 10px;
+    padding: 20px;
+    cursor: pointer;
+    color: #000000;
+    transition: all 0.3s;
+    padding-top: 10;
+    margin-bottom: 20px;
+    box-shadow: 1px 1px 0px #a2a2a2;
+}
+.age_choice label span {
+    font-size: 29px;
+}
+.age_choice label input {
+    position: absolute;
+    clip: rect(0 0 0 0);
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+}
+.name_input {
+    flex-direction: column;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+}
+.name_input input {
+    width: 674px;
+    height: 18px;
+    line-height: 8px;
+    transition: all 0.3s;
+    border-radius: 10px;
+    padding: 26px;
+    margin-bottom: 20px;
+    text-align: center;
+    background-color: #d9d9d9;
+    color: #000000;
+    font-size: 29px;
+    cursor: pointer;
+}
+.name_input span {
+    font-size: 15px;
+    padding-bottom: 20px;
+    color: #8a8a8a;
+}
+.name_input .btn {
+    padding: 26.5px;
+    border-radius: 10px;
+    cursor: pointer;
+}

@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GSAP scroll Effect01</title>
+
+    <link rel="stylesheet" href="https://webfontworld.github.io/NexonLv1Gothic/NexonLv1Gothic.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        a {
+            color: rgb(255, 255, 255);
+            text-decoration: none;
+        }
+        body {
+            color: rgb(255, 255, 255);
+            background-color: #000000;
+            font-family: 'NexonLv1Gothic';
+
+        }
+        #parallax_title {
+            position: fixed;
+            left: 20px;
+            top: 20px;
+            z-index: 10000;
+        }
+        #parallax_title h1 {
+            font-size: 30px;
+            border-bottom: 1px dashed #ffffff;
+            margin-bottom: 10px;
+            padding-bottom: 5px;
+            font-weight: 400;
+            display: inline-block;
+        }
+        #parallax_title p {
+            font-size: 16px;
+        }
+        #parallax_title ul {
+            margin-top: 10px;
+        }
+        #parallax_title li {
+            display: inline;
+        }
+        #parallax_title li a {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            border: 1px dashed hsl(0, 0%, 100%);
+            text-align: center;
+            line-height: 20px;
+            font-size: 12px;
+            display: inline-block;
+        }
+        #parallax_title li.active a {
+            background-color: #fff;
+            color: #000000;
+        }
+        /* parallax_cont */
+        #parallax_cont {
+            overflow: hidden;
+        }
+        .parallax_item {
+            width: 100%;
+            height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .parallax_item:nth-child(2n) {
+            background-color: #2c2c2c;
+        }
+        .parallax_item_num {
+            position: absolute;
+            right: 20px;
+            bottom: 20px;
+            font-size: 5vw;
+            line-height: 1;
+        }
+        .parallax_item_img {
+            width: 10vw;
+            height: 10vw;
+            background-color: #fff;
+            background-size: cover;
+            background-position: center;
+        }
+        .parallax_item:nth-child(1) .parallax_item_img {
+            background-image: url(img/images01-min.jpg);
+        }
+        .parallax_item:nth-child(2) .parallax_item_img {
+            background-image: url(img/images02-min.jpg);
+        }
+        .parallax_item:nth-child(3) .parallax_item_img {
+            background-image: url(img/images03-min.jpg);
+        }
+        .parallax_item:nth-child(4) .parallax_item_img {
+            background-image: url(img/images04-min.jpg);
+        }
+        .parallax_item:nth-child(5) .parallax_item_img {
+            background-image: url(img/images05-min.jpg);
+        }
+        .parallax_item:nth-child(6) .parallax_item_img {
+            background-image: url(img/images06-min.jpg);
+        }
+        .parallax_item:nth-child(7) .parallax_item_img {
+            background-image: url(img/images07-min.jpg);
+        }
+        .parallax_item:nth-child(8) .parallax_item_img {
+            background-image: url(img/images08-min.jpg);
+        }
+        .parallax_item:nth-child(9) .parallax_item_img {
+            background-image: url(img/images09-min.jpg);
+        }
+        .parallax_item_img.active {
+            filter: hue-rotate(100deg);
+        }
+    </style>
+</head>
+<body>
+    <header id="parallax_title">
+        <h1>GSAP Parallax Effect01</h1>
+        <p>GSAP scrollTrigger - 애니메이션 기본 효과</p>
+        <ul>
+            <li class="active"><a href="gsap01.html">1</a></li>
+            <li><a href="gsap02.html">2</a></li>
+            <li><a href="gsap03.html">3</a></li>
+            <li><a href="gsap04.html">4</a></li>
+            <li><a href="gsap05.html">5</a></li>
+            <li><a href="gsap06.html">6</a></li>
+            <li><a href="gsap07.html">7</a></li>
+            <li><a href="gsap08.html">8</a></li>
+            <li><a href="gsap09.html">9</a></li>
+            <li><a href="gsap10.html">10</a></li>
+            <li><a href="gsap11.html">11</a></li>
+            <li><a href="gsap12.html">12</a></li>
+            <li><a href="gsap13.html">13</a></li>
+            <li><a href="gsap14.html">14</a></li>
+            <li><a href="gsap15.html">15</a></li>
+        </ul>
+    </header>
+    <main id="parallax_cont">
+        <section id="section1" class="parallax_item">
+            <span class="parallax_item_num">01</span>
+            <div class="parallax_item_img"></div>
+        </section>
+        <!-- //section1 -->
+
+        <section id="section2" class="parallax_item">
+            <span class="parallax_item_num">02</span>
+            <div class="parallax_item_img"></div>
+        </section>
+        <!-- //section2 -->
+
+        <section id="section3" class="parallax_item">
+            <span class="parallax_item_num">03</span>
+            <div class="parallax_item_img"></div>
+        </section>
+        <!-- //section3 -->
+
+        <section id="section4" class="parallax_item">
+            <span class="parallax_item_num">04</span>
+            <div class="parallax_item_img"></div>
+        </section>
+        <!-- //section4 -->
+
+        <section id="section5" class="parallax_item">
+            <span class="parallax_item_num">05</span>
+            <div class="parallax_item_img"></div>
+        </section>
+        <!-- //section5 -->
+
+        <section id="section6" class="parallax_item">
+            <span class="parallax_item_num">06</span>
+            <div class="parallax_item_img"></div>
+        </section>
+        <!-- //section6 -->
+
+        <section id="section7" class="parallax_item">
+            <span class="parallax_item_num">07</span>
+            <div class="parallax_item_img"></div>
+        </section>
+        <!-- //section7 -->
+
+        <section id="section8" class="parallax_item">
+            <span class="parallax_item_num">08</span>
+            <div class="parallax_item_img"></div>
+        </section>
+        <!-- //section8 -->
+
+        <section id="section9" class="parallax_item">
+            <span class="parallax_item_num">09</span>
+            <div class="parallax_item_img"></div>
+        </section>
+        <!-- //section9 -->
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script>
+        const box1 = document.querySelector("#section1 .parallax_item_img");
+        const box2 = document.querySelector("#section2 .parallax_item_img");
+        const box3 = document.querySelector("#section3 .parallax_item_img");
+        const box4 = document.querySelector("#section4 .parallax_item_img");
+        const box5 = document.querySelector("#section5 .parallax_item_img");
+        const box6 = document.querySelector("#section6 .parallax_item_img");
+        const box7 = document.querySelector("#section7 .parallax_item_img");
+        const box8 = document.querySelector("#section8 .parallax_item_img");
+        const box9 = document.querySelector("#section9 .parallax_item_img");
+
+        // 01
+        gsap.to(box1, {
+            duration: 2,
+            x: 500,
+            rotation: 360,
+            borderRadius: 100,
+        });
+
+        // 02 : trigger //시발점
+        gsap.to(box2, {
+            duration: 2,
+            x: 500,
+            rotation: 360,
+            borderRadius: 100,
+            scrollTrigger: {
+                trigger: box2
+            }
+        });
+
+        // 03 : toggleActions //시발점 설정
+        gsap.to(box3, {
+            duration: 2,
+            x: 500,
+            rotation: 360,
+            borderRadius: 100,
+            scrollTrigger: {
+                trigger: box3,
+                toggleActions: "play none reverse none"  //play pause resume reverse restart reset complete
+            }
+        });
+
+        // 04 : start, end
+        gsap.to(box4, {
+            duration: 2,
+            x: 500,
+            rotation: 360,
+            borderRadius: 100,
+
+            scrollTrigger: {
+                trigger: box4,
+                start: "top 60%",
+                end: "bottom 20%",
+                toggleActions: "play none reverse none",
+                markers: false
+            }
+        });
+
+        // 05 : scrub
+        gsap.to(box5, {
+            duration: 2,
+            x: 500,
+            rotation: 360,
+            borderRadius: 100,
+            
+            scrollTrigger: {
+                trigger: box5,
+                start: "top 50%",
+                end: "bottom 20%",
+                scrub: true
+            }
+        });
+
+        // 06 : pin
+        gsap.to(box6, {
+            duration: 2,
+            x: 500,
+            rotation: 360,
+            borderRadius: 100,
+            
+            scrollTrigger: {
+                trigger: box6,
+                start: "top 50%",
+                end: "bottom 400px",
+                scrub: true,
+                pin: true
+            }
+        });
+
+        // 07 : toggleClass //active 추가
+        gsap.to(box7, {
+            duration: 2,
+            x: 500,
+            rotation: 360,
+            borderRadius: 100,
+            
+            scrollTrigger: {
+                trigger: box7,
+                start: "top center",
+                end: "bottom 20%",
+                scrub: true,
+                toggleCass: "active",
+                id: "box7",
+                markers: true
+            }
+        });
+
+        // 08 : callback    // to 함수 안에 화살표함수
+        gsap.to(box8, {
+            duration: 2,
+            x: 500,
+            rotation: 360,
+            borderRadius: 100,
+            
+            scrollTrigger: {
+                trigger: box8,
+                start: "top center",
+                end: "bottom 20%",
+                scrub: true,
+                // onEnter: () => {console.log("onEnter")},
+                // onLeave: () => {console.log("onLeave")},
+                // onEnterBack: () => {console.log("onEnterBack")},
+                // onLeaveBack: () => {console.log("onLeaveBack")},
+                onUpdate: (self) => {console.log("onUpdate", self.progress.toFixed(3))},
+                onToggle: (self) => {console.log("onToggle", self.isActive)},
+            }
+        });
+    </script>
+</body>
+</html>
