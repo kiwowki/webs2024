@@ -497,6 +497,9 @@ body::after {
     text-decoration: underline;
     text-underline-position: under;
 }
+#footer .cont {
+    text-align: left;
+}
 
 @media (max-width: 600px){
     #header {
