@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -17,8 +18,15 @@
     <link rel="stylesheet" href="assets/css/reset.css" />
     <link rel="stylesheet" href="assets/css/common.css" />
     <link rel="stylesheet" href="assets/css/style.css" />
-    
+
+    <!--  -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+
+    <style>
+        /* silder */
+    </style>
 </head>
+
 <body>
     <div id="skip">
         <a href="#header">헤더 영역 바로가기</a>
@@ -54,7 +62,38 @@
 
     <main id="main" role="main">
         <section id="sliderWrap">
-            <div class="slider_inner">
+            <div class="swiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="slider_text">
+                            <h3>서현백화점그룹의<br /><em>다양한 제휴사</em>를 만나보세요!</h3>
+                            <p>다양한 브랜드에서 적립하고 사용하는<br />즐거운 일상의 포인트 제도</p>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="slider_text">
+                            <h3>서현백화점그룹의<br /><em>다양한 제휴사</em>를 만나보세요!</h3>
+                            <p>다양한 브랜드에서 적립하고 사용하는<br />즐거운 일상의 포인트 제도</p>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="slider_text">
+                            <h3>서현백화점그룹의<br /><em>다양한 제휴사</em>를 만나보세요!</h3>
+                            <p>다양한 브랜드에서 적립하고 사용하는<br />즐거운 일상의 포인트 제도</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-pagination"></div>
+
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+
+                <div class="swiper-button">
+                    <div class="swiper-button-play"></div>
+                    <div class="swiper-button-stop"></div>
+                </div>
+            </div>
+            <!-- <div class="slider_inner">
                 <div class="slider">
                     <div class="slider_text">
                         <h3>서현백화점그룹의<br /><em>다양한 제휴사</em>를 만나보세요!</h3>
@@ -72,7 +111,7 @@
                         <a href="#" class="right"><span class="ir">다음이미지</span></a>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </section>
         <!-- </section> -->
 
@@ -139,6 +178,37 @@
                         <h3>포인트 <em>쌓기</em> <span>즐거움이 매일매일 쌓이는 포인트 플레이</span></h3>
                     </div>
                     <div class="up_slider">
+                        <!-- <div class="swiper swiper2">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide">
+                                    <img src="assets/img/up01.png" alt="H.설문">
+                                    <span>H.설문</span>
+                                    <em>간단한 설문에 혜택이 빵빵!</em>
+                                </div>
+                                <div class="swiper-slide">
+                                    <img src="assets/img/up03.png" alt="오늘의 퀴즈">
+                                    <span>오늘의 퀴즈</span>
+                                    <em>간단히 포인트 받자!</em>
+                                </div>
+                                <div class="swiper-slide">
+                                    <img src="assets/img/up02.png" alt="알파벳">
+                                    <span>알파벳</span>
+                                    <em>조합하고 완성하는 재미</em>
+                                </div>
+                                <div class="swiper-slide">
+                                    <img src="assets/img/up05.png" alt="출석룰렛">
+                                    <span>출석룰렛</span>
+                                    <em>매일 돌리면 포인트</em>
+                                </div>
+                                <div class="swiper-slide">
+                                    <img src="assets/img/up04.png" alt="포인트 워크">
+                                    <span>포인트 워크</span>
+                                    <em>걸으면서 받는 포인트</em>
+                                </div>
+                            </div>
+                            <div class="swiper-button-prev"></div>
+                            <div class="swiper-button-next"></div>
+                        </div> -->
                         <div class="img">
                             <div>
                                 <img src="assets/img/up01.png" alt="H.설문">
@@ -171,7 +241,7 @@
                             <a href="#" class="right"><span class="ir">오른쪽 이미지</span></a>
                         </div>
                     </div>
-                    
+
                 </div>
             </div>
         </section>
@@ -199,18 +269,81 @@
     </main>
     <!-- //main -->
 
+
     <footer id="footer" role="contentinfo">
-        <h2>푸터</h2>
+        <div class="footer_inner">
+            <div class="container">
+                <div class="footer_logo">
+                    <img src="assets/img/W.Point.svg" alt="W.Point">
+                </div>
+                <address class="footer_info">
+                    <ul>
+                        <li><a href="#">이용약관</a></li>
+                        <li><a href="#">위치기반서비스 이용약관</a></li>
+                        <li><a href="#">개인정보처리방침</a></li>
+                        <li><a href="#">개인정보보호센터</a></li>
+                    </ul>
+                    <ul>
+                        <li>주식회사 현대 백화점  서울시 강남구 테헤란로 98길 12  고객센터 1800-2800</li>
+                        <li>&copy; HYUNDAI DEPARTMENTS STORE GROUP Co.LTD. ALL RIGHTS RESERVED</li>
+                    </ul>
+                </address>
+                <div class="footer_sns">
+                    <ul>
+                        <li><a href="#"><span class="ir">naver</span></a></li>
+                        <li><a href="#"><span class="ir">insta</span></a></li>
+                        <li><a href="#"><span class="ir">facebook</span></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
     </footer>
     <!-- //footer -->
 
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+    <script>
+        let swiper = new Swiper(".swiper", {
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+            autoplay: {
+                delay: 2000,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            },
+        });
+
+        const btnStop = document.querySelector(".swiper-button-play")
+        const btnPlay = document.querySelector(".swiper-button-stop")
+
+        btnStop.addEventListener("click", () => {
+            swiper.autoplay.stop();
+        })
+        btnPlay.addEventListener("click", () => {
+            swiper.autoplay.start();
+        })
 
 
-
-
-
-
-
+        //slider2
+        let swiper2 = new Swiper(".swiper2", {
+            slidesPerView: 5,
+            // centeredSlides: true,
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+            autoplay: {
+                delay: 2000,
+                disableOnInteraction: false,
+            },
+        });
+ 
+    </script>
 
 </body>
+
 </html>

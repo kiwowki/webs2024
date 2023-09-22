@@ -211,7 +211,8 @@ a {
 }
 .modal_box .cont {
     background-color: #282936;
-    height: 100%;
+    height: auto;
+    max-height: 80vh;
     overflow-y: auto;
     box-sizing: border-box;
     border-bottom-left-radius: 0.5rem;
@@ -222,7 +223,6 @@ a {
 }
 .modal_box .cont > div.active {
     display: block;
-    height: 100%;
 }
 .modal_close {
     position: absolute;
