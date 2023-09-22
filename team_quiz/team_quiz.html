@@ -8,27 +8,8 @@
     <link rel="stylesheet" href="../team_quiz/css/style.css" />
 
     <style>
-        .age_choice label {
-            display: block;
-        }
-        .age_choice label input {
-            position: absolute;
-            clip: rect(0 0 0 0);
-            width: 1px;
-            height: 1px;
-            margin: -1px;
-            overflow: hidden;
-        }
-        .age_choice label input:checked+span::before {
-            box-shadow: inset 0 0 0 9px #412E91;
-            ;
-        }
-        .age_choice label input:checked+span {
-            border-color: #412E91;
-            color: #717171;
-            box-shadow: 1px 1px 5px #D4D2DB;
-            background-color: hsla(250, 23%, 95%, 0.527);
-        }
+        
+
     </style>
 </head>
 
@@ -39,19 +20,19 @@
                 <div class="age_choice">
                     <h1>당신의 나이대는?</h1>
                     <label for="choice1">
-                        <input type="radio" id="choice1" name="choice1" value="1">
+                        <input type="radio" id="choice1" name="choice" value="1">
                         <span>10대</span>
                     </label>
                     <label for="choice2">
-                        <input type="radio" id="choice2" name="choice2" value="2">
+                        <input type="radio" id="choice2" name="choice" value="2">
                         <span>20대</span>
                     </label>
                     <label for="choice3">
-                        <input type="radio" id="choice3" name="choice3" value="3">
+                        <input type="radio" id="choice3" name="choice" value="3">
                         <span>30대</span>
                     </label>
                     <label for="choice4">
-                        <input type="radio" id="choice4" name="choice4" value="4">
+                        <input type="radio" id="choice4" name="choice" value="4">
                         <span>40대</span>
                     </label>
                 </div>
@@ -61,7 +42,7 @@
                     <h1>당신의 이름은?</h1>
                     <input type="text" id="nameInput" name="userName" placeholder="황상연">
                     <span>입력하신 정보는 본 퀴즈 이외의 용도로 사용하지 않습니다.</span>
-                    <button class="btn"><span>확인</span></button>
+                    <button class="btn">확인</button>
                 </div>
             </div>
         </div>
@@ -70,29 +51,9 @@
     <script>
         // 선택자 및 퀴즈 데이터는 그대로 유지
         const quizWrap = document.querySelector(".quiz_wrap");
-        const quizInfo = [
-
-        ]
-
+        const quizInfo = document.querySelector(".age");
         let currentIndex = 0;
 
-        // 문제 출력 및 퀴즈 진행 함수
-        const updateQuiz = () => {
-            // 퀴즈 데이터가 끝났는지 확인
-            if (currentIndex >= quizInfo.length) {
-                // 퀴즈 종료 메시지 표시
-                quizWrap.innerHTML = `<h2>퀴즈가 종료되었습니다. 맞힌 개수: ${correctAnswers}개</h2>`;
-                return;
-            }
-
-            // 현재 문제를 가져옴
-            const currentQuiz = quizInfo[currentIndex];
-
-            // 문제 출력
-
-
-            quizWrap.innerHTML = quizWrapTag;
-        };
 
         // 정답 확인 함수
         const checkAnswer = () => {
@@ -102,31 +63,8 @@
                 // 선택한 답이 없을 경우 처리 (선택한 답이 없다는 메시지 등을 출력)
                 return;
             }
-
             const userAnswer = selectedChoice.value;
             const correctAnswer = quizInfo[currentIndex].answer;
-
-            if (userAnswer === correctAnswer) {
-                // 사용자 답이 정답과 일치하는 경우
-                correctAnswers++; // 맞힌 개수 증가
-            }
-
-            // 다음 문제로 이동
-            nextQuestion();
-        };
-
-        // 정답 개수를 저장할 변수를 초기화합니다.
-        let correctAnswers = 0;
-
-        // 다음 문제로 이동하는 함수 (이전과 동일)
-        const nextQuestion = () => {
-            if (currentIndex < quizInfo.length - 1) {
-                currentIndex++;
-                updateQuiz();
-            } else {
-                // 마지막 문제일 경우 퀴즈 종료 메시지 표시
-                quizWrap.innerHTML = `<h2>퀴즈가 종료되었습니다. 맞힌 개수: ${correctAnswers}개</h2>`;
-            }
         };
     </script>
 </body>
