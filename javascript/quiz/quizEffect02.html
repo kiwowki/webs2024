@@ -316,7 +316,7 @@
             btn.addEventListener("click", function(){
                 const userAnswer = quizInput[num].value.trim().toLowerCase();
                 const correctAnswer = quizInfo[num].infoAnswer.trim().toLowerCase();
-                alert(userAnswer) //인덱스만큼 밸류
+                // alert(userAnswer) //인덱스만큼 밸류
 
                 if(userAnswer == quizInfo[num].infoAnswer){
                     quizAnimation[num].classList.add("like")
