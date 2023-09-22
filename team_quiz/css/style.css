@@ -123,12 +123,13 @@ body {
     padding: 26px;
     text-align: center;
     background-color: #d9d9d9;
-    color: #000000;
+    color: #9f9f9f;
     font-size: 29px;
     cursor: pointer;
 }
 .name_input span {
     padding: 10px;
+    color: #8a8a8a;
 }
 .name_input .btn {
     padding: 23.5px;
