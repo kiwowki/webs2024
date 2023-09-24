@@ -117,7 +117,7 @@
             display: block;
             height: 0px;
             overflow: hidden;
-            transition: all 0.6ms;
+            transition: all 600ms;
         }
     </style>
 </head>
@@ -194,7 +194,7 @@
     </script> -->
     <script>
         window.onload = function(){
-            let navList = document.querySelectorAll(".nav > ul");
+            let navList = document.querySelector(".nav > ul");
 
             navList.addEventListener("mouseover", function(){
                 navList.querySelectorAll(".submenu").forEach(sub => {
@@ -203,7 +203,7 @@
             });
             navList.addEventListener("mouseout", function(){
                 navList.querySelectorAll(".submenu").forEach(sub => {
-                    sub.style.height = "0"
+                    sub.style.height = "0px"
                 })
             });
         }
