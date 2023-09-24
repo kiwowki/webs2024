@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>M-3 메뉴</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        li {
+            list-style: none;
+        }
+        a {
+            text-decoration: none;
+            color: #000;
+        }
+        #wrap {
+            width: 1200px;
+            margin: 0 auto;
+        }
+        #header {
+            width: 100%;
+            display: flex;
+        }
+        #header .logo {
+            width: 20%;
+            height: 100px;
+            background-color: #e7e7e7;
+        }
+        #header .nav {
+            width: 80%;
+            height: 100px;
+            background-color: #d1d1d1;
+        }
+        #slider {
+            width: 100%;
+            height: 300px;
+            background-color: #bdbdbd;
+        }
+        #contents {
+            width: 100%;
+            display: flex;
+        }
+        #contents .contents1 {
+            width: 33.3333%;
+            height: 200px;
+            background-color: #aaaaaa;
+        }
+        #contents .contents2 {
+            width: 33.3333%;
+            height: 200px;
+            background-color: #828181;
+        }
+        #contents .contents3 {
+            width: 33.3333%;
+            height: 200px;
+            background-color: #767575;
+        }
+        #footer {
+            width: 100%;
+            display: flex;
+        }
+        #footer .footer1 {
+            width: 15%;
+            height: 100px;
+            background-color: #6b4646;
+        }
+        #footer .footer2{
+            width: 70%;
+            height: 100px;
+            background-color: #493f3f;
+        }
+        #footer .footer3{
+            width: 15%;
+            height: 100px;
+            background-color: #0a0a0a;
+        }
+        /* nav */
+        #header {
+            position: relative;
+        }
+        #header::after {
+            content: '';
+            width: 100%;
+            height: 0;
+            background-color: #9c9999;
+            position: absolute;
+            left: 0;
+            top: 100px;
+            z-index: 1;
+            transition: all 400ms;
+
+        }
+        #header.on::after {
+            height: 166px;
+        }
+        .nav {
+            z-index: 1000;
+        }
+        .nav > ul {
+            display: flex;
+            justify-content: right;
+            margin-top: 59px;
+        }
+        .nav > ul > li {
+            position: relative;
+        }
+        .nav > ul > li > a {
+            display: inline-block;
+            padding: 10px 50px;
+            background-color: #747373;
+        }
+        .nav > ul > li > a:hover {
+            background-color: #403f3f;
+        }
+        .nav > ul > li > ul {
+            position: absolute;
+            left: 0;
+            top: 41.5px;
+            width: 100%;
+            text-align: center;
+            display: none;
+            /* background-color: #b6b1b1; */
+        }
+        .nav > ul > li > ul > li {}
+        .nav > ul > li > ul > li > a {
+            display: inline-block;
+            padding: 10px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .nav > ul > li > ul > li > a:hover {
+            background-color: #8a8888;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <div id="header" class="">
+            <div class="logo"></div>
+            <div class="nav">
+                <ul>
+                    <li><a href="#">메뉴1</a>
+                        <ul class="submenu">
+                            <li><a href="#">서브메뉴1-1</a></li>
+                            <li><a href="#">서브메뉴1-2</a></li>
+                            <li><a href="#">서브메뉴1-3</a></li>
+                            <li><a href="#">서브메뉴1-4</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">메뉴2</a>
+                        <ul class="submenu">
+                            <li><a href="#">서브메뉴2-1</a></li>
+                            <li><a href="#">서브메뉴2-2</a></li>
+                            <li><a href="#">서브메뉴2-3</a></li>
+                            <li><a href="#">서브메뉴2-4</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">메뉴3</a>
+                        <ul class="submenu">
+                            <li><a href="#">서브메뉴3-1</a></li>
+                            <li><a href="#">서브메뉴3-2</a></li>
+                            <li><a href="#">서브메뉴3-3</a></li>
+                            <li><a href="#">서브메뉴3-4</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">메뉴4</a>
+                        <ul class="submenu">
+                            <li><a href="#">서브메뉴4-1</a></li>
+                            <li><a href="#">서브메뉴4-2</a></li>
+                            <li><a href="#">서브메뉴4-3</a></li>
+                            <li><a href="#">서브메뉴4-4</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- //header -->
+
+        <div id="slider"></div>
+        <!-- //slider -->
+
+        <div id="contents">
+            <div class="contents1"></div>
+            <div class="contents2"></div>
+            <div class="contents3"></div>
+        </div>
+        <!-- //contents -->
+        
+        <div id="footer">
+            <div class="footer1"></div>
+            <div class="footer2"></div>
+            <div class="footer3"></div>
+        </div>
+        <!-- //footer -->
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script>
+        $(function(){
+            $(".nav > ul > li").mouseover(function(){
+                $(".nav > ul > li > ul").stop().fadeIn(900);
+                $("#header").addClass("on");
+            })
+            $(".nav > ul > li").mouseout(function(){
+                $(".nav > ul > li > ul").stop().fadeOut(100);
+                $("#header").removeClass("on");
+            })
+        });
+    </script>
+</body>
+</html>

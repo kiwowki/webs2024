@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>M-5 메뉴</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        li {
+            list-style: none;
+        }
+        a {
+            text-decoration: none;
+            color: #000;
+        }
+        #wrap {
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        #aside {
+            width: 200px;
+        }
+
+        #aside .logo {
+            width: 100%;
+            height: 100px;
+            background-color: #dfdddd;
+        }
+        #aside .nav {
+            width: 100%;
+            height: 550px;
+            background-color: #dfd1d1;
+        }
+
+        #main {
+            width: calc(100% - 200px);
+        }
+
+        #slider {
+            width: 100%;
+            display: flex;
+        }
+
+        #slider .image {
+            width: calc(100% - 230px);
+            height: 400px;
+            background-color: #9e9e9e;
+        }
+
+        #slider .banner {
+            width: 230px;
+            height: 400px;
+            background-color: #9e6969;
+        }
+
+        #contents {
+            width: 100%;
+            display: flex;
+        }
+
+        #contents .contents1 {
+            width: 50%;
+            height: 250px;
+            background-color: #923636;
+        }
+
+        #contents .contents2 {
+            width: 50%;
+            height: 250px;
+            background-color: #911b1b;
+        }
+
+        #footer {
+            width: 100%;
+            display: flex;
+        }
+
+        #footer .footer1 {
+            width: 20%;
+            height: 100px;
+            background-color: #464545;
+        }
+        #footer .footer2 {
+            width: 60%;
+            height: 100px;
+            background-color: #503737;
+        }
+        #footer .footer3 {
+            width: 20%;
+            height: 100px;
+            background-color: #4e1717;
+        }
+
+        /* nav */
+        .nav {
+        }
+        .nav > ul {
+        }
+        .nav > ul > li {
+            position: relative;
+        }
+        .nav > ul > li > a {
+            padding: 10px;
+            display: block;
+            text-align: center;
+            background-color: #8a7d7d;
+        }
+        .nav > ul > li > a:hover {
+            background-color: #846565;
+        }
+        .nav > ul > li > ul {
+            position: absolute;
+            right: -200px;
+            top: 0;
+            width: 200px;
+            background-color: #d2c9c9;
+            display: none;
+        }
+        .nav > ul > li > ul > li {}
+        .nav > ul > li > ul > li > a {
+            padding: 10px;
+            display: block;
+        }
+        .nav > ul > li > ul > li > a:hover {
+            background-color: #bca7a7;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <aside id="aside">
+            <h1 class="logo"></h1>
+            <nav class="nav">
+                <ul>
+                    <li><a href="#">메뉴1</a>
+                        <ul class="submenu">
+                            <li><a href="#">서브메뉴1-1</a></li>
+                            <li><a href="#">서브메뉴1-2</a></li>
+                            <li><a href="#">서브메뉴1-3</a></li>
+                            <li><a href="#">서브메뉴1-4</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">메뉴2</a>
+                        <ul class="submenu">
+                            <li><a href="#">서브메뉴2-1</a></li>
+                            <li><a href="#">서브메뉴2-2</a></li>
+                            <li><a href="#">서브메뉴2-3</a></li>
+                            <li><a href="#">서브메뉴2-4</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">메뉴3</a>
+                        <ul class="submenu">
+                            <li><a href="#">서브메뉴3-1</a></li>
+                            <li><a href="#">서브메뉴3-2</a></li>
+                            <li><a href="#">서브메뉴3-3</a></li>
+                            <li><a href="#">서브메뉴3-4</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">메뉴4</a>
+                        <ul class="submenu">
+                            <li><a href="#">서브메뉴4-1</a></li>
+                            <li><a href="#">서브메뉴4-2</a></li>
+                            <li><a href="#">서브메뉴4-3</a></li>
+                            <li><a href="#">서브메뉴4-4</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main id="main">
+            <article id="slider">
+                <div class="image"></div>
+                <div class="banner"></div>
+            </article>
+
+            <section id="contents">
+                <div class="contents1"></div>
+                <div class="contents2"></div>
+            </section>
+
+        </main>
+
+        <footer id="footer">
+            <div class="footer1"></div>
+            <div class="footer2"></div>
+            <div class="footer3"></div>
+        </footer>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script>
+        $(function(){
+            $(".nav > ul > li").mouseover(function(){
+                $(this).find(".submenu").stop().slideDown();
+            });
+            $(".nav > ul > li").mouseout(function(){
+                $(this).find(".submenu").stop().slideUp();
+            });
+        })
+    </script>
+</body>
+</html>
