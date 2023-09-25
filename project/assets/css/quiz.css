@@ -33,16 +33,14 @@
 } 
 * {
     font-family: 'NanumMyeongjo';
-    
 }
 h1 {
     font-size: 30px;
-    line-height: 50px;
 }
 body {
     width: 100%;
     height: 100vh;
-    background-image: url("/project/img/bgi.jpg");
+    background-image: url("../img/bgi.jpg");
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
@@ -58,7 +56,7 @@ body {
     background-color: rgba(66, 66, 66, 0.136);
 }
 #main .quiz_wrap {
-    background-image: url("/project/img/bgi.jpg");
+    background-image: url("../img/bgi.jpg");
     color: #000000;
     text-align: center;
     width: 750px;
@@ -67,7 +65,6 @@ body {
     box-sizing: border-box;
     box-shadow: 1px 1px 0px #a2a2a2;
     background-color: rgba(66, 66, 66, 0.136);
-    
 }
 .age_choice {
     flex-direction: column;
@@ -75,7 +72,6 @@ body {
     flex-wrap: wrap;
     align-content: center;
     margin: 0 auto;
-    width: 100%;
 }
 .age_choice h1 {
     font-size: 32px;
@@ -85,7 +81,7 @@ body {
 
 }
 .age_choice label span {
-    width: 90%;
+    width: 690px;
     position: relative;
     border: 1px solid #d9d9d9;
     background-color: #d9d9d9;
@@ -128,6 +124,7 @@ body {
     display: flex;
     flex-wrap: wrap;
     align-content: center;
+    align-items: center;
 }
 .name_input input {
     width: 674px;
@@ -147,20 +144,71 @@ body {
     color: #8a8a8a;
 }
 .name_input .btn {
-    padding: 23.5px;
     border-radius: 10px;
     cursor: pointer;
+    padding: 0;
+}
+
+.name_input a {
     font-size: 20px;
     color: #8a8a8a;
+    /*a 태그의 범위 넓히기
+    버튼위에서 손가락 모양으로 바로 전환되도록*/
+    display: inline-block;
+    max-height: 100%;
+    max-width: 100%;
+    width: 730px;
+    height: 75px;
+    line-height: 75px;
+    padding: 0;
+    margin: 0;
+    border: none;
+    text-align: center;
+    text-decoration: none;
 }
-.name_input .btn span {
-    
+
+.name_input a:hover {
+    color: black;
+
 }
+
 .name_input .btn:hover {
     color: #000000;
     background-color: #9f9f9f;
 }
 
+@media (max-width:800px) {
+    #main .quiz_wrap {
+        width: 90%;
+    }
+    h1 {
+        font-size: 28px !important;
+    }
+    .age_choice h1 {
+        
+    }
+    .age_choice label span {
+        width: 70vw;
+        font-size: 22px;
+    }
+    .name_input span {
+        width: 67vw;
+        font-size: 12px;
+        align-items: center;
+    }
+    .name_input input {
+        width: 67vw;
+        font-size: 22px;
+        align-items: center;
+    }
+    
+    .name_input a {
+        width: 75vw;
+        font-size: 22px;
+        align-items: center;
+    }
+    
+}
 /*------------------------------------------ 01 ----------------------------------------*/
 #line_main {
     width: 100%;
@@ -172,19 +220,17 @@ body {
     height: 800px;
     max-width: 750px;
     max-height: 800px;
-    background-image: url("/project/img/line_bgi.jpg");
+    background-image: url("/assets/img/line_bgi.jpg");
     margin: 0 auto;
     box-sizing: border-box;
     box-shadow: 1px 1px 0px #a2a2a2;
     
 }
 .quiz01_header {
-    padding: 50px;
+    padding: 60px;
     width: 100%;
     height: 490px;
     box-sizing: border-box;
-    position: relative;
-    
 }
 .quiz_num {
     width: 60px;
@@ -197,14 +243,17 @@ body {
     background-color: #d9d9d9;
     color: #4a4a4a;
 }
-.quiz01_header img {
-    position: absolute;
-    top: 250px;
-    left: 189px;
+.quiz01_header .question {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 .quiz01_header img {
+    max-width: 100%;
+    max-height: 100%;
     width: 377px;
     height: 250px;
+    margin-top: 20px;
 }
 .quiz01_choice {
     display: grid;
@@ -252,3 +301,22 @@ body {
     box-shadow: 1px 1px 0px #505050;
     background-color: #9f9f9f;
 }
+
+@media (max-width:800px) {
+    #line_main .quiz_wrap {
+        width: 90%;
+    }
+    .question > h1 {
+        font-size: 26px !important;
+        line-height: 40px;
+        word-wrap: break-word;
+    }
+    .quiz01_header label span {
+        width: 70vw;
+        font-size: 22px;
+    }
+    .quiz01_header img {
+        left: center;
+    }
+}
+

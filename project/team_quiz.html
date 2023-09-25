@@ -49,23 +49,7 @@
     </main>
 
     <script>
-        // 선택자 및 퀴즈 데이터는 그대로 유지
-        const quizWrap = document.querySelector(".quiz_wrap");
-        const quizInfo = document.querySelector(".age");
-        let currentIndex = 0;
-
-
-        // 정답 확인 함수
-        const checkAnswer = () => {
-            const selectedChoice = document.querySelector('input[name="choice"]:checked');
-
-            if (!selectedChoice) {
-                // 선택한 답이 없을 경우 처리 (선택한 답이 없다는 메시지 등을 출력)
-                return;
-            }
-            const userAnswer = selectedChoice.value;
-            const correctAnswer = quizInfo[currentIndex].answer;
-        };
+        
     </script>
 </body>
 
