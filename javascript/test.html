@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 배열의 총 합 구하기
+        {
+            let sum = 0;
+            const aaa = [10, 20, 30, 40, 50, 60, 70, 80, 90];
+
+            for(let i=0; i<aaa.length; i++){
+                sum += aaa[i]
+                
+            }
+            console.log(sum)
+        }
+
+
+
+        // 객체 생성자 함수
+        {
+            function func(num, str){
+                this.num = num;
+                this.str = str;
+                this.result = () => {
+                    console.log(`${this.num}. ${this.str}`)
+                }
+
+            }
+            const info1 = new func(19, "함수가 실행되었습니다.")
+            const info2 = new func(20, "함수가 실행되었습니다.")
+
+            info1.result();
+            info2.result();
+        }
+        //프로토타입 함수
+        {
+            function func(num, str){
+                this.num = num;
+                this.str = str;
+            }
+            func.prototype.result = function(){
+                console.log(`${this.num}. ${this.str}`)
+            }
+            const info1 = new func(21, "함수가 실행되었습니다.")
+            const info2 = new func(22, "함수가 실행되었습니다.")
+
+            info1.result();
+            info2.result();
+        }
+        //객체 리터럴 함수
+        {
+            function func(num, str){
+                this.num = num;
+                this.str = str;
+            }
+
+            func.prototype = {
+                result : function(){
+                    console.log(`${this.num}. ${this.str}`)
+                },
+                result2 : function(){
+                    console.log(`${this.num}. ${this.str}`)
+                }
+            }
+            const info1 = new func(23, "함수가 실행되었습니다.")
+            const info2 = new func(23, "함수가 실행되었습니다.")
+
+            info1.result();
+            info2.result();
+        }
+        //클래스
+    </script>
+</body>
+</html>
