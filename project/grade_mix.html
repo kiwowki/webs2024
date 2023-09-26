@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>결과창</title>
+    <link rel="stylesheet" href="assets/css/grade.css">
+
+</head>
+
+<body>
+    <main id="main">
+        <div class="quiz__wrap">
+            <div class="quiz">
+                <p class="quiztitle">
+                    MZ언어 능력고사
+                </p>
+                <div class="quiz__header">
+                    <div class="quiz__header1">
+                        <div class="name">성명</div>
+                        <div class="youname">입력값</div>
+                    </div>
+                    <div class="quiz__header2">
+                        <div class="age">나이</div>
+                        <div class="youage">99</div>
+                    </div>
+                </div>
+                <div class="quiz__main">
+                    <!-- <div class="grade">
+                        <div class="en">A+</div>
+                        <div class="num">종합점수 : 100</div>
+                        <a href="#1페이지" class="overlay-container">
+                            <img src="/img/start1.png" alt="">
+                            <img src="assets/img/start 1.png" alt="">
+                            <div class="overlay-text">다시풀기</div>
+                        </a>
+                    </div>
+                    <div class="desc">
+                        툭 치기만 해도<br>
+                        '요즘 유행'이 자동으로 나오고,<br>
+                        주변인들과 함께<br>
+                        공유하고 즐기는 당신은<br>
+                        진정한 힙쟁이!<br>
+                        빠른 트렌드 섭렵과,<br>
+                        그때그때마다 업데이트 되는<br>
+                        당신의 SNS를 참고하는<br>
+                        주변인들도 있을 듯 하네요.<br>
+                    </div> -->
+                </div>
+
+            </div>
+        </div>
+
+    <script>
+        const quizMain = document.querySelector(".quiz__main");
+
+        const gradeInfo = [
+            {
+                en: "A+",
+                num: "종합점수 : 100",
+                desc: "툭 치기만 해도 '요즘 유행'이 자동으로 나오고, 주변인들과 함께 공유하고 즐기는 당신은 진정한 힙쟁이! 빠른 트렌드 섭렵과, 그때그때마다 업데이트 되는 당신의 SNS를 참고하는 주변인들도 있을 듯 하네요."
+            },
+            {
+                en: "B+",
+                num: "종합점수 : 70",
+                desc: "굵직굵직한 유행엔 빠삭한 당신, 최신 유행을 꽉 쥐고 있는 듯 하지만, 한발짝 느린 편이에요. 그래도 SNS에서 적극적으로 최신 트렌드를 섭렵하려 하고, 곧잘 자연스럽게 스며들어요"
+            },
+        ];
+
+        let currentIndex = 0;
+        let totalScore = 0;
+
+        const updateQuiz = (index) => {
+            let quizWrapTag = `<div class="grade">
+                <div class="en">A+</div>
+                <div class="num">종합점수 : ${totalScore}</div>
+                <a href="#1페이지" class="overlay-container">
+                    <img src="/img/start1.png" alt="">
+                    <img src="assets/img/start 1.png" alt="">
+                    <div class="overlay-text">다시풀기</div>
+                </a>
+            </div>
+            <div class="desc">
+               <span></span>
+            </div>`;
+
+            quizMain.innerHTML = quizMainTag;
+            
+            // 인풋 값이 네 개이기 때문에 각 버튼마다 클릭이벤트를 적용시켜주어야 한다.
+            // 버튼눌러서 정답 확인
+            const buttons = quizWrap.querySelectorAll(".quiz01_choice input");
+            buttons.forEach((btn) => {
+                btn.addEventListener("click", () => {
+                    const selectedChoice = quizWrap.querySelectorAll("input[name='choice']:checked");
+
+                    if (selectedChoice.length > 0) {
+                        const userAnswer = selectedChoice[0].value;
+                        
+                        if(userAnswer == quizInfo[index].answer){
+                            alert("정답");
+                            totalScore += 10;
+                        } else {
+                            alert("오답");
+                        };
+                    };
+                    // 다음 문제 넘어가기 
+                    currentIndex++;
+                    if(currentIndex < quizInfo.length){
+                        updateQuiz(currentIndex);
+                    } else if(currentIndex => quizInfo.length) {
+                        alert("모든 문제를 풀었습니다.");
+                        console.log(totalScore);
+                        if(totalScore < 100){
+                           console.log(totalScore)
+                        }
+                        window.location.href = "grade.html";
+                    };
+                });
+            });
+            
+        };
+            // 데이터 받아오기
+            // 그리고 등급 페이지 보내기
+         
+            
+
+        document.addEventListener("DOMContentLoaded", () => {
+            updateQuiz(currentIndex);   
+            
+        });
+    </script>
+</body>
+
+</html>
