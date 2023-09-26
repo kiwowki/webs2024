@@ -145,24 +145,20 @@ body {
     color: #8a8a8a;
 }
 .name_input .btn {
+    /* width: 726px;
+    padding: 26px;
+    line-height: 4px; */
+}
+.name_input .btn {
     cursor: pointer;
-    padding: 0;
-    width: 97%;
+    /* width: 97%; */
     border: 1px solid #d9d9d9;
     background-color: #d9d9d9;
     box-shadow: 1px 1px 0px #a2a2a2;
     color: #4a4a4a;
     border-radius: 5px;
     padding: 19.5px;
-    font-size: 27px;
-}
-
-.name_input .btn:hover {
-    color: #000000;
-    background-color: #9f9f9f;
-}
-
-.name_input a {
+    /* font-size: 27px; */
     font-size: 20px;
     color: #8a8a8a;
     /*a 태그의 범위 넓히기
@@ -178,6 +174,15 @@ body {
     border: none;
     text-align: center;
     text-decoration: none;
+}
+
+.name_input .btn:hover {
+    color: #000000;
+    background-color: #9f9f9f;
+}
+
+.name_input a {
+
 }
 
 .name_input a:hover {
