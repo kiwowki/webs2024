@@ -89,6 +89,7 @@
     background-color: var(--black);
 }
 
+
 /* input_style */
 .input_style {
     width: 100%;
@@ -111,7 +112,34 @@
     margin: 0 auto;
     cursor: pointer;
 }
-
+.btn_style2 {
+    width: 100%;
+    display: block;
+    background-color: var(--black);
+    color: var(--white);
+    font-size: 1.2rem;
+    border-radius: 30px;
+    padding: 1rem 3.5rem;
+    margin: 0 auto;
+    cursor: pointer;
+    border-radius: 5px;
+}
+/* list-style */
+.list-style li {
+    padding-left: 16px;
+    position: relative;
+}
+.list-style li::before {
+    content: '';
+    width: 5px;
+    height: 5px;
+    background-color: var(--black);
+    border-radius: 50%;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
 /* required */
 .required::after {
     content: ' *';
