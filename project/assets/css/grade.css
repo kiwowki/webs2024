@@ -150,10 +150,14 @@ body {
     .quiz__main .grade .num {
         font-size: 30px; /* 폰트 크기 줄이기 */
         margin-bottom: 20px; /* 하단 여백 조절 */
+        position: relative;
     }
 
     .overlay-text {
         font-size: 18px; /* 폰트 크기 줄이기 */
+    }
+    .overlay-text a {
+        position: absolute;
     }
 
     .quiz__main .desc {

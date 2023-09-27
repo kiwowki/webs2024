@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/mouse.css">
+    <link href="https://webfontworld.github.io/NexonLv1Gothic/NexonLv1Gothic.css" rel="stylesheet">
+    <style>
+        body {
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+        }
+        .mouse_wrap {
+            cursor: none;
+        }
+        .mouse_text {
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        }
+        .mouse_text p {
+            font-size: 2vw;
+            line-height: 1.9;
+            color: white;
+            font-weight: 300;
+        }
+        .mouse_text p span {
+            color: rgb(181, 179, 255);
+            border-bottom: 1px dashed rgb(181, 179, 255);
+            cursor: pointer;
+        }
+        .mouse_cursor {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 200px;
+            height: 200px;
+            z-index: 10001;
+            border-radius: 50%;
+            border: 5px solid #fff;
+            background-color: rgba(0, 0, 0, 0.3);
+            background-image: url(css/img/img03.jpg);
+            background-size: cover;
+            background-attachment: fixed;
+            background-color: center;
+        }
+    </style>
+</head>
+<body class="img03">
+    <header id="header">
+        <h1>Javascript Mouse Effect03</h1>
+        <p>마우스 이펙트 - 마우스 따라다니기(GASP)</p>
+        <ul>
+            <li><a href="mouse01.html">1</a></li>
+            <li><a href="mouse02.html">2</a></li>
+            <li class="active"><a href="mouse03.html">3</a></li>
+            <li><a href="mouse04.html">4</a></li>
+            <li><a href="mouse05.html">5</a></li>
+            <li><a href="mouse06.html">6</a></li>
+        </ul>
+    </header>
+    <main id="main">
+        <div class="mouse_wrap">
+            <div class="mouse_cursor"></div>
+            <div class="mouse_text">
+                <p>Be nice to <span>nerds</span>. Chances are you'll <span>end up working</span> for one.</p>
+                <p><span>공부벌레</span>들에게 잘 해주십시오. 나중에 <span>그 사람 밑에서</span> 일하게 될 수도 있습니다. -빌게이츠-</p>
+            </div>
+        </div>
+    </main>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script>
+        // 선택자
+        const mouseCursor = document.querySelector(".mouse_cursor");
+        const rect = mouseCursor.getBoundingClientRect();
+
+       window.addEventListener("mousemove", e => {
+        gsap.to(".mouse_cursor", {
+            duration: 0.5,
+            // left: e.pageX - mouseCursor.clientWidth/2,
+            // top: e.pageY - mouseCursor.clientHeight/2,
+            left: e.pageX - rect.width/2,
+            top: e.pageY - rect.height/2,
+            })
+       })
+
+       
+       console.log(rect)
+    </script>
+
+</body>
+</html>

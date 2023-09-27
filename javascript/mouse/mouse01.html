@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="css/mouse.css">
+    <link href="https://webfontworld.github.io/NexonLv1Gothic/NexonLv1Gothic.css" rel="stylesheet">
+    <style>
+        .mouse_wrap {
+            cursor: none;
+        }
+        .mouse_cursor {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 3px solid #fff;
+            background-color: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            user-select: none;
+            pointer-events: none;
+            transition: background-color 0.3s, border 0.3s, transform 0.3s
+        }
+        .mouse_cursor.s1 {
+            background-color: rgba(250, 0, 0, 0.0005);
+            border: 2px solid rgba(250, 0, 0, 0.1);
+            
+        }
+        .mouse_cursor.s2 {
+            background-color: rgba(0, 54, 250, 0.2);
+            border: 2px solid rgba(0, 54, 250);
+            transform: scale(2) rotateY(360deg);
+        }
+        .mouse_cursor.s3 {
+            background-color: rgba(0, 254, 148);
+            border: 2px solid rgba(0, 254, 148, 0.2);
+            transform: scale(1.5) rotateX(720deg);
+        }
+        .mouse_cursor.s4 {
+            background-color: rgba(204, 250, 0, 0.2);
+            border: 2px solid rgba(204, 250, 0);
+            transform: scale(10);
+        }
+        .mouse_cursor.s5 {
+            background-color: rgba(250, 0, 204, 0.2);
+            border: 2px solid rgba(250, 0, 204);
+            transform: skew(140deg) rotate(200deg);
+        }
+        .mouse_cursor.s6 {
+            background-color: rgba(0, 183, 250, 0.2);
+            border: 0px solid rgba(0, 183, 250);
+            border-radius: 0;
+        }
+        .mouse_cursor.s7 {
+            background-color: rgba(250, 208, 0, 0.3);
+            border: 1px solid rgba(221, 250, 0, 0.2);
+        }
+        
+        .mouse_text {
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        }
+        .mouse_text p {
+            font-size: 2vw;
+            line-height: 1.9;
+            color: white;
+            font-weight: 300;
+        }
+        .mouse_text p span {
+            color: rgb(160, 160, 230);
+            border-bottom: 1px dashed rgb(160, 160, 230);
+            cursor: pointer;
+        }
+        .mouse_info {
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            padding: 20px;
+            font-size: 16px;
+            line-height: 1.6;
+            color: #fff;
+        }
+    </style>
+</head>
+<body class="img01">
+    <header id="header">
+        <h1>Javascript Mouse Effect01</h1>
+        <p>마우스 이펙트 - 마우스 따라다니기</p>
+        <ul>
+            <li class="active"><a href="mouse01.html">1</a></li>
+            <li><a href="mouse02.html">2</a></li>
+            <li><a href="mouse03.html">3</a></li>
+            <li><a href="mouse04.html">4</a></li>
+            <li><a href="mouse05.html">5</a></li>
+            <li><a href="mouse06.html">6</a></li>
+        </ul>
+    </header>
+    <main id="main">
+        <div class="mouse_wrap">
+            <div class="mouse_cursor"></div>
+            <div class="mouse_text">
+                <p>The greatest glory <span class="s1">in living lies</span> not in never <span class="s2">falling,</span> but in rising every time <span class="s3">we fall.</span></p>
+                <p><span class="s4">인생에서</span> 가장 <span class="s5">큰 영광은</span> 넘어지지 <span class="s6">않는 것에</span> 있는 것이 아니라 <span class="s7">매번</span>일어선다는 데 있다.</p>
+            </div>
+        </div>
+        <div class="mouse_info">
+            <ul>
+                <li>clientX <span class="clientX">0</span>px</li>
+                <li>clientY <span class="clientY">0</span>px</li>
+                <li>offsetX <span class="offsetX">0</span>px</li>
+                <li>offsetY <span class="offsetY">0</span>px</li>
+                <li>pageX <span class="pageX">0</span>px</li>
+                <li>pageY <span class="pageY">0</span>px</li>
+                <li>screenX <span class="screenX">0</span>px</li>
+                <li>screenY <span class="screenY">0</span>px</li>
+            </ul>
+        </div>
+    </main>
+
+    <script>
+        window.addEventListener("mousemove", () => {
+            document.querySelector(".clientX").innerHTML = event.clientX;
+            document.querySelector(".clientY").innerHTML = event.clientY;
+            document.querySelector(".offsetX").innerHTML = event.offsetX;
+            document.querySelector(".offsetY").innerHTML = event.offsetY;
+            document.querySelector(".pageX").innerHTML = event.pageX;
+            document.querySelector(".pageY").innerHTML = event.pageY;
+            document.querySelector(".screenX").innerHTML = event.screenX;
+            document.querySelector(".screenY").innerHTML = event.screenY;
+        });
+
+        // 선택자
+        const mouseCursor = document.querySelector(".mouse_cursor");
+
+        // 마우스 좌표값을 커서에게 할당
+        window.addEventListener("mousemove", (e) => {
+            mouseCursor.style.left = e.clientX -25 + "px";
+            mouseCursor.style.top = e.clientY -25 + "px";
+        });
+
+        // s1
+        // document.querySelector(".s1").addEventListener("mouseover", () => {
+        //     mouseCursor.classList.add("s1");
+        // });
+        // document.querySelector(".s1").addEventListener("mouseout", () => {
+        //     mouseCursor.classList.remove("s1");
+        // });
+        // document.querySelector(".s2").addEventListener("mouseover", () => {
+        //     mouseCursor.classList.add("s2");
+        // });
+        // document.querySelector(".s2").addEventListener("mouseout", () => {
+        //     mouseCursor.classList.remove("s2");
+        // });
+        // document.querySelector(".s3").addEventListener("mouseover", () => {
+        //     mouseCursor.classList.add("s3");
+        // });
+        // document.querySelector(".s3").addEventListener("mouseout", () => {
+        //     mouseCursor.classList.remove("s3");
+        // });
+        // document.querySelector(".s4").addEventListener("mouseover", () => {
+        //     mouseCursor.classList.add("s4");
+        // });
+        // document.querySelector(".s4").addEventListener("mouseout", () => {
+        //     mouseCursor.classList.remove("s4");
+        // });
+
+        // // for문
+        // for(let i=1; i<=7; i++){
+        //     document.querySelector(".s"+i).addEventListener("mouseover", function(){
+        //         mouseCursor.classList.add("s"+i);
+        //     });
+        //     document.querySelector(".s"+i).addEventListener("mouseout", function(){
+        //         mouseCursor.classList.remove("s"+i);
+        //     });
+        // }
+
+
+        // forEach
+        document.querySelectorAll(".mouse_text span").forEach((span, num) => {
+                span.addEventListener("mouseover", () => {
+                mouseCursor.classList.add("s" + (num+1));
+                });
+            span.addEventListener("mouseout", () => {
+                mouseCursor.classList.remove("s" + (num+1));
+            })
+        });
+
+        // const arr = [1, 2, 3, 4, 5, 6, 7]
+        // arr.forEach(el => {
+        //     console.log(el) 
+        //     document.querySelector(".s"+el).addEventListener("mouseover", function(){
+        //         mouseCursor.classList.add("s"+el);
+        //     });
+        //     document.querySelector(".s"+el).addEventListener("mouseout", function(){
+        //         mouseCursor.classList.remove("s"+el);
+        //     });
+        // });
+        
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/mouse.css">
+    <link href="https://webfontworld.github.io/NexonLv1Gothic/NexonLv1Gothic.css" rel="stylesheet">
+    <style>
+        .mouse_wrap {
+            cursor: none;
+        }
+        .mouse_text {
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        }
+        .mouse_text p {
+            font-size: 2vw;
+            line-height: 1.9;
+            color: white;
+            font-weight: 300;
+        }
+        .mouse_text p span {
+            color: rgb(3, 0, 182);
+            border-bottom: 1px dashed rgb(3, 0, 182);
+            cursor: pointer;
+        }
+        .mouse_cursor {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 10px;
+            height: 10px;
+            z-index: 10001;
+            border-radius: 50%;
+            background-color: #dcdbdb;
+            user-select: none;
+            pointer-events: none;
+            transition: transform 0.3s;
+        }
+        .mouse_cursor2 {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 40px;
+            height: 40px;
+            z-index: 10000;
+            border-radius: 50%;
+            background-color: rgba(223, 222, 222, 0.3);
+            user-select: none;
+            pointer-events: none;
+            transition: transform 0.3s;
+        }
+        .mouse_cursor.active {
+            transform: scale(0);
+        }
+        .mouse_cursor2.active {
+            transform: scale(5);
+            background-color: rgba(120, 122, 203, 0.3);
+        }
+    </style>
+</head>
+<body class="img02">
+    <header id="header">
+        <h1>Javascript Mouse Effect02</h1>
+        <p>마우스 이펙트 - 마우스 따라다니기</p>
+        <ul>
+            <li><a href="mouse01.html">1</a></li>
+            <li class="active"><a href="mouse02.html">2</a></li>
+            <li><a href="mouse03.html">3</a></li>
+            <li><a href="mouse04.html">4</a></li>
+            <li><a href="mouse05.html">5</a></li>
+            <li><a href="mouse06.html">6</a></li>
+        </ul>
+    </header>
+    <main id="main">
+        <div class="mouse_wrap">
+            <div class="mouse_cursor"></div>
+            <div class="mouse_cursor2"></div>
+            <div class="mouse_text">
+                <p><span>Nothing is permanent</span> in this wicked world - <span>not even our troubles</span>.</p>
+                <p>이 사악한 세상에서 <span>영원한 것은 없다</span>. 우리가 겪는 <span>어려움조차도</span>.</p>
+            </div>
+        </div>
+    </main>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script>
+        // 선택자
+        const mouseCursor = document.querySelector(".mouse_cursor");
+        const mouseCursor2 = document.querySelector(".mouse_cursor2");
+
+        window.addEventListener("mousemove", (e) => {
+            // mouseCursor.style.left = e.pageX + "px";
+            // mouseCursor.style.top = e.pageY + "px";
+            // mouseCursor2.style.left = e.pageX + "px";
+            // mouseCursor2.style.top = e.pageY + "px";
+
+            gsap.to(mouseCursor, {duration: 0.3, left: e.pageX-5, top: e.pageY-5})
+            gsap.to(mouseCursor2, {duration: 0.8, left: e.pageX-20, top: e.pageY-20})
+        });
+
+        document.querySelectorAll(".mouse_text span").forEach(span => {
+            span.addEventListener("mouseenter", () => {
+                mouseCursor.classList.add("active");
+                mouseCursor2.classList.add("active");
+            })
+            span.addEventListener("mouseleave", () => {
+                mouseCursor.classList.remove("active"); 
+                mouseCursor2.classList.remove("active");
+            })
+        })
+            
+    </script>
+
+</body>
+</html>
