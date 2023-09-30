@@ -4,19 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PHP 블로그 만들기</title>
-    <link rel="stylesheet" href="../html/assets/css/style.css">
+
+    <link rel="stylesheet" href="../assets/css/style.css">
 </head>
-
-
-<body class="gray">
+<body class="gray"> 
     <?php include "../include/skip.php" ?>
-    <!-- skip -->
+    <!-- //skip -->
 
     <?php include "../include/header.php" ?>
-    <!-- header -->
+    <!-- //header -->
 
     <main id="main" role="main">
         <div class="members_inner container">
+            <h3>회원 목록</h3>
             <table>
                 <colgroup>
                     <col>
@@ -38,12 +38,12 @@
     $sql = "SELECT * FROM members";
     $result = $connect -> query($sql);
 
-    if(result){
+    if($result){
         $count = $result -> num_rows;
 
         if($count > 0){
             for($i=0; $i<$count; $i++){
-                $info = $result -> fetch_array($MYSQL_ASSOC);
+                $info = $result -> fetch_array(MYSQLI_ASSOC);
 
                 echo "<tr>";
                 echo "<td>".$info['memberID']."</td>";
@@ -51,7 +51,7 @@
                 echo "<td>".$info['youName']."</td>";
                 echo "<td>".$info['youPass']."</td>";
                 echo "<td>".$info['youPhone']."</td>";
-                echo "<td>".$info['regTime']."</td>";
+                echo "<td>".date('Y-m-d', $info['regTime'])."</td>";
                 echo "</tr>";
             }
         }
@@ -61,9 +61,9 @@
             </table>
         </div>
     </main>
-    <!-- main -->
-    
+    <!-- //main -->
+
     <?php include "../include/footer.php" ?>
-    <!-- footer -->
+    <!-- //foter -->
 </body>
 </html>

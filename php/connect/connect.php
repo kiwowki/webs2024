@@ -4,8 +4,8 @@
     $pw = "rkdtjr00!!";
     $db = "kiwowki";
     
-    // $connect = new mysqli($host, $user, $pw, $db);
-    // $connect -> set_charset("utf-8");
+    $connect = new mysqli($host, $user, $pw, $db);
+    $connect -> set_charset("utf-8");
 
     // if(mysqli_connect_errno()){
     //     echo "DATABASE Connect False";

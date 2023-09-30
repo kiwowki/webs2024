@@ -6,7 +6,7 @@
     <title>회원가입 페이지</title>
 
     <!-- CSS -->
-    <link rel="stylesheet" href="../html/assets/css/style.css">
+    <?php include "../include/head.php" ?>
 </head>
 <body class="gray">
     <?php include "../include/skip.php" ?>
@@ -19,9 +19,9 @@
         <section class="login_inner container">
             <h2>로그인</h2>
             <p>로그인을 하시면 게시글 및 댓글 작성이 가능합니다.</p>
-            <div class="login_form btStyle bmStyle">
-                <form action="#" name="#" method="post">
-                    <fieldset>
+            
+                <div class="login_form btStyle bmStyle">
+                <form action="loginSave.php" name="loginSave" method="post">    <fieldset>
                         <legend class="blind">로그인 영역</legend>
                         <div>
                             <label for="youEmail" class="required blind">이메일</label>
@@ -37,7 +37,7 @@
             </div>
             <div class="login_footer">
                 <div class="list-style">
-                    <li>회원가입을 하지 않았다면 회원가입을 먼저 해주세요. <a href="#">회원가입</a></li>
+                    <li>회원가입을 하지 않았다면 회원가입을 먼저 해주세요. <a href="join.php">회원가입</a></li>
                     <li>아이디가 기억이 나지 않는다면? <a href="#">아이디 찾기</a></li>
                     <li>비밀번호가 기억이 나지 않는다면? <a href="#">비밀번호 찾기</a></li>
                 </div>

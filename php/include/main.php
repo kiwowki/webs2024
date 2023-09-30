@@ -1,7 +1,7 @@
 <main id="main" role="main">
     <div class="intro_inner bmStyle flexStyle container">
         <div class="intro_img">
-            <img srcset="../html/assets/img/intro02.jpg 1x, ../html/assets/img/intro02@2x.jpg 2x, ../html/assets/img/intro02@3x.jpg 3x" alt="">
+            <img srcset="../assets/img/intro02.jpg 1x, ../assets/img/intro02@2x.jpg 2x, ../assets/img/intro02@3x.jpg 3x" alt="">
         </div>
         <div class="intro_text">
             어떤 일이라도 노력하고 즐기면 그 결과는 빛을 바란다고 생각합니다.

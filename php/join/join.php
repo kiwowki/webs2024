@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>회원가입 페이지</title>
 
+    <?php include "../include/head.php" ?>
     <!-- CSS -->
-    <link rel="stylesheet" href="../html/assets/css/style.css">
 </head>
 <body class="gray">
     <?php include "../include/skip.php" ?>
@@ -18,7 +18,7 @@
     <main id="main" role="main">
         <div class="intro_inner bmStyle container">
             <div class="intro_img">
-                <img srcset="../html/assets/img/intro01.jpg 1x, ../html/assets/img/intro01@2x.jpg 2x, ../html/assets/img/intro01@3x.jpg 3x" alt="">
+                <img srcset="../assets/img/intro01.jpg 1x, ../assets/img/intro01@2x.jpg 2x, ../assets/img/intro01@3x.jpg 3x" alt="">
             </div>
             <div class="intro_text">
                 회원가입을 해주시면 다양한 정보를 자유롭게 볼 수 있습니다.
