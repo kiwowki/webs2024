@@ -57,7 +57,7 @@ body {
     padding: 50px 50px 0 0;
     background-color: rgba(66, 66, 66, 0.136);
 }
-#main .quiz_wrap {
+#main .quiz__wrap1 {
     background-image: url("../img/bgi.jpg");
     color: #000000;
     text-align: center;
@@ -69,21 +69,21 @@ body {
     background-color: rgba(66, 66, 66, 0.136);
     
 }
-.age_choice {
+.age__choice {
     flex-direction: column;
     display: flex;
     flex-wrap: wrap;
     align-content: center;
     margin: 0 auto;
 }
-.age_choice h1 {
+.age__choice h1 {
     font-size: 32px;
     padding-top: 30px;
 }
-.age_choice label {
+.age__choice label {
 
 }
-.age_choice label span {
+.age__choice label span {
     width: 690px;
     position: relative;
     border: 1px solid #d9d9d9;
@@ -101,7 +101,7 @@ body {
     transition: all 0.3s;
     cursor: pointer;
 }
-.age_choice label input {
+.age__choice label input {
     position: absolute;
     clip: rect(0 0 0 0);
     width: 1px;
@@ -109,27 +109,27 @@ body {
     margin: -1px;
     overflow: hidden;
 }
-.age_choice label span:hover {
+.age__choice label span:hover {
     color: rgb(67, 67, 67);
     background-color: #b6b6b6;
 }
-.age_choice label input:checked + span::before {
+.age__choice label input:checked + span::before {
     box-shadow: inset 0 0 0 9px #9f9f9f;
 }
-.age_choice label input:checked + span {
+.age__choice label input:checked + span {
     border-color: #9f9f9f;
     color: rgb(0, 0, 0);
     box-shadow: 1px 1px 0px #505050;
     background-color: #9f9f9f;
 }
-.name_input {
+.name__input {
     flex-direction: column;
     display: flex;
     flex-wrap: wrap;
     align-content: center;
     align-items: center;
 }
-.name_input input {
+.name__input input {
     width: 674px;
     height: 23px;
     line-height: 8px;
@@ -142,12 +142,12 @@ body {
     font-size: 29px;
     cursor: pointer;
 }
-.name_input span {
+.name__input span {
     padding: 10px;
     line-height: 10px;
     color: #8a8a8a;
 }
-.name_input .btn {
+.name__input .btn {
     padding: 0;
     margin: 0;
     width: 97%;
@@ -163,19 +163,19 @@ body {
     cursor: pointer;
 }
 ​
-.name_input .btn:hover {
+.name__input .btn:hover {
     color: #000000;
     background-color: #9f9f9f;
 }
 
-/*------------------------------------------ 01 ----------------------------------------*/
-#line_main {
+/*------------------------------------------ 01~05 ----------------------------------------*/
+#line__main {
     width: 100%;
     height: 100vh;
     padding: 50px 50px 0 0;
     background-color: rgba(66, 66, 66, 0.136);
 }
-.quiz_wrap {
+.quiz__wrap {
     height: 800px;
     max-width: 750px;
     max-height: 800px;
@@ -185,7 +185,7 @@ body {
     box-shadow: 1px 1px 0px #a2a2a2;
     
 }
-.quiz01_header {
+.quiz__header {
     padding: 50px;
     width: 100%;
     height: 490px;
@@ -193,7 +193,7 @@ body {
     position: relative;
     
 }
-.quiz_num {
+.quiz__num {
     /* width: 150px;
     font-size: 20px;
     display: flex;
@@ -227,7 +227,7 @@ body {
     font-style: normal;
     color: #000000;
 }
-.quiz01_header img {
+.quiz__header img {
     position: absolute;
     top: 250px;
     left: 189px;
@@ -243,7 +243,7 @@ body {
     font-size: 30px;
     font-style: normal;
 }
-.quiz01_choice {
+.quiz__choice {
     display: grid;
     grid-template-areas: 
     "choice1 choice2"
@@ -252,7 +252,7 @@ body {
     margin: 50px auto 50px auto;  /* 가운데 정렬 */
     padding: 20px; /* 선택사항: input 요소를 감싸는 배경의 안쪽 간격 설정 */
 }
-.quiz01_choice label span {
+.quiz__choice label span {
     width: 100%;
     display: flex;
     border: 1px solid #d9d9d9;
@@ -268,7 +268,7 @@ body {
     cursor: pointer;
     padding: 18px 0 18px 0;
 }
-.quiz01_choice label input {
+.quiz__choice label input {
     position: absolute;
     clip: rect(0 0 0 0);
     width: 1px;
@@ -276,14 +276,14 @@ body {
     margin: -1px;
     overflow: hidden;
 }
-.quiz01_choice label:hover {
+.quiz__choice label:hover {
     color: rgb(67, 67, 67);
     background-color: #b6b6b6;
 }
-.quiz01_choice label input:checked + span::before {
+.quiz__choice label input:checked + span::before {
     box-shadow: inset 0 0 0 9px #9f9f9f;
 }
-.quiz01_choice label input:checked + span {
+.quiz__choice label input:checked + span {
     border-color: #9f9f9f;
     color: rgb(0, 0, 0);
     box-shadow: 1px 1px 0px #505050;
@@ -291,69 +291,69 @@ body {
 }
 
 @media (max-width:800px) {
-    #main .quiz_wrap {
+    #main .quiz__wrap {
         width: 90%;
         height: 90vh;
     }
     h1 {
         font-size: 28px;
     }
-    .age_choice h1 {
+    .age__choice h1 {
         
     }
-    .age_choice label span {
+    .age__choice label span {
         width: 70vw;
         font-size: 22px;
     }
-    .name_input span {
+    .name__input span {
         width: 67vw;
         font-size: 12px;
         align-items: center;
     }
-    .name_input input {
+    .name__input input {
         width: 67vw;
         font-size: 22px;
         align-items: center;
     }
-    .name_input .btn {
+    .name__input .btn {
         width: 77.5vw;
         align-items: center;
     }
 }
 @media (max-width:745px) {
-    #line_main .quiz_wrap {
+    #line__main .quiz__wrap {
         width: 90%;
         height: 90vh;
     }
-    .quiz01_header > h1 {
+    .quiz__header > h1 {
         font-size: 22px ;
         line-height: 40px;
         word-wrap: break-word;
     }
-    .quiz01_header label span {
+    .quiz__header label span {
         width: 70vw;
         font-size: 22px;
     }
-    .quiz01_header img {
+    .quiz__header img {
         margin: 50px 0 0 85px;
         width: 50vw;
     }
 }
 
 @media (max-width:540px){
-    .quiz01_header {
+    .quiz__header {
         padding: 30px;
     }
-    .quiz01_header img {
+    .quiz__header img {
         width: 70vw;
         margin: 60px 0 0 10px;
     }
-    .quiz01_header > h1 {
+    .quiz__header > h1 {
         font-size: 22px;
         line-height: 40px;
         word-wrap: break-word;
     }
-    .quiz01_choice {
+    .quiz__choice {
         margin: 0 auto;
     }
 }

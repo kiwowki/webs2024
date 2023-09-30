@@ -37,15 +37,15 @@ body {
     font-size: 32px;
     font-weight: 800;
 }
-.test_name {
+.test__name {
     font-size: 60px;
     color: #000;
     position: relative;
 }
-.test_name span {
+.test__name span {
     letter-spacing: 6px;
 }
-.test_name em {
+.test__name em {
     color: #8e2223;
     font-weight: 800;
 }
@@ -58,7 +58,7 @@ body {
         width: 90%;
         position: relative;
     }
-    .test_name {
+    .test__name {
         position: absolute;
         width: 80vw;
         left: 50px;
@@ -71,7 +71,7 @@ body {
         width: 90%;
         position: relative;
     }
-    .test_name {
+    .test__name {
         position: absolute;
         width: 80vw;
         left: 50px;
@@ -91,7 +91,7 @@ body {
 #left {
     width: 50%;
 }
-.text_box {
+.text__box {
     width: 300px;
     height: 60px;
     background-color: #d0d8e7;
@@ -104,7 +104,7 @@ body {
     transform: rotate(-334.68deg);
     position: relative;
 }
-.text_box::before {
+.text__box::before {
     content: '';
     position: absolute;
     top: 99%; /* 꼬리를 말풍선 아래에 위치시킵니다. */
@@ -125,19 +125,19 @@ body {
    font-size: 36px;
    color: #878E98;
 }
-.start_btn {
+.start__btn {
     margin-left: 110px;
     margin-top: 150px;
 }
-.start_btn img {
+.start__btn img {
     width: 200px;
     height: 60px;      
 /* hover를 주려면 여기다가 주어야할것 같음 */
 }
-.start_btn a {
+.start__btn a {
     position: relative;
 }    
-.start_btn a::before {
+.start__btn a::before {
     content: "시작하기";
     position: absolute;
     left: 76px;
@@ -152,9 +152,12 @@ body {
     width: 50%;
     position: relative;
 }
-.ah_ha {
+.ah__ha {
     position: absolute;
     bottom: -40px;
+    width: 100px;
+    height: 100px;
+    background-color: #ff000044;
 }
 
 @media (max-width: 850px) {
@@ -164,7 +167,7 @@ body {
         margin-top: 130px;
         margin-left: 70px;
     }
-    .text_box {
+    .text__box {
         margin-top: 150px;
         margin-left: 70px; 
         padding-top: 10px;
@@ -173,7 +176,7 @@ body {
     .text span {
         font-size: 25px;
     }
-    .start_btn {
+    .start__btn {
         margin-left: 70px;
         margin-top: 150px;
     }
@@ -185,21 +188,21 @@ body {
         margin-top: 130px;
         margin-left: 70px;
     }
-    .text_box {
+    .text__box {
         margin-top: 150px;
         margin-left: 45px; 
     }
-    .start_btn {
+    .start__btn {
         margin-left: 35px;
         margin-top: 55px;
     }
 }
 @media (max-width: 390px) {
-    .text_box {
+    .text__box {
         margin-top: 150px;
         margin-left: 10px; 
     }
-    .start_btn {
+    .start__btn {
         margin-left: 35px;
         margin-top: 55px;
     }

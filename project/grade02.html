@@ -167,7 +167,7 @@ const gradeEndTag = `
         if(gradeIndex <= 1){
             const age = urlParams.get('age');
             const name = urlParams.get('name');
-            const thirdPageUrl = `team_quiz03.html?age=${age}&name=${name}`;
+            const thirdPageUrl = `team__quiz03.html?age=${age}&name=${name}`;
             window.location.href = thirdPageUrl;
         } else {
             alert("점수를 넘지않아 접근 할 수 없습니다. 다시풀기에 도전해주세요");
@@ -177,7 +177,7 @@ const gradeEndTag = `
     prevPage.addEventListener("click", () => {
         const age = urlParams.get('age');
         const name = urlParams.get('name');
-        const thirdPageUrl = `team_quiz02.html?age=${age}&name=${name}`;
+        const thirdPageUrl = `team__quiz02.html?age=${age}&name=${name}`;
         window.location.href = thirdPageUrl;
     })
 

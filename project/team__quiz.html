@@ -15,10 +15,10 @@
 
 <body>
     <main id="main">
-        <div class="quiz_wrap">
+        <div class="quiz__wrap1">
             <form id="myForm">
                 <div class="age">
-                    <div class="age_choice">
+                    <div class="age__choice">
                         <h1>당신의 나이대는?</h1>
                         <label for="choice1">
                             <input type="radio" id="choice1" name="choice" value="10">
@@ -39,7 +39,7 @@
                     </div>
                 </div>
                 <div class="name">
-                    <div class="name_input">
+                    <div class="name__input">
                         <h1>당신의 이름은?</h1>
                         <input class="userName" type="text" id="nameInput" name="userName" placeholder="황상연"></input>
                         <span>입력하신 정보는 본 퀴즈 이외의 용도로 사용하지 않습니다.</span>
@@ -52,10 +52,10 @@
     </main>
 <script>
 
-    const quizWrap = document.querySelector(".quiz_wrap");
-    const ageChoice = quizWrap.querySelectorAll(".age_choice input");
-    const btnConfirm = quizWrap.querySelector(".name_input .btn");
-    const btnName = quizWrap.querySelector(".name_input .userName");
+    const quizWrap = document.querySelector(".quiz__wrap1");
+    const ageChoice = quizWrap.querySelectorAll(".age__choice input");
+    const btnConfirm = quizWrap.querySelector(".name__input .btn");
+    const btnName = quizWrap.querySelector(".name__input .userName");
 
     
 
@@ -80,7 +80,7 @@
             const urlParams = new URLSearchParams();
             urlParams.set('age', userAge);
             urlParams.set('name', userName);
-            const newUrl = `team_quiz01.html?${urlParams.toString()}`;
+            const newUrl = `team__quiz01.html?${urlParams.toString()}`;
             window.location.href = newUrl;
 
 

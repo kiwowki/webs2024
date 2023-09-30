@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>팀 퀴즈 프로젝트 Q.01</title>
+    <title>팀 퀴즈 프로젝트 Lv.5</title>
     <link rel="stylesheet" href="assets/css/quiz.css" />
 
     <style>
@@ -14,94 +14,75 @@
 </head>
 
 <body>
-    <main id="line_main">
-        <div class="quiz_wrap">
-            <!-- <div class="quiz01">
-                <div class="quiz01_header">
-                    <div class="quiz_num"> 1/10</div>
-                    <div class="question">
-                        <h1>Q1. 다음 중 'OO논쟁' 시리즈에 해당되는 것이 아닌 것은?</h1>
-                        <div class="img">
-                            <img src="assets/img/quiz01.jpg" alt="퀴즈01이미지">
-                        </div>
-                    </div>
-                </div>
-                <div class="quiz01_choice">
-                    <label for="choice1">
-                        <input type="radio" id="choice1" name="choice" value="1">
-                        <span></span>
-                    </label>
-                    <label for="choice2">
-                        <input type="radio" id="choice2" name="choice" value="2">
-                        <span></span>
-                    </label>
-                    <label for="choice3">
-                        <input type="radio" id="choice3" name="choice" value="3">
-                        <span></span>
-                    </label>
-                    <label for="choice4">
-                        <input type="radio" id="choice4" name="choice" value="4">
-                        <span></span>
-                    </label>
-                </div>
-            </div> -->
+    <main id="line__main">
+        <div class="quiz__wrap">
+
         </div>
     </main>
 
     <script>
-        const quizWrap = document.querySelector(".quiz_wrap");
+        const quizWrap = document.querySelector(".quiz__wrap");
 
         const quizInfo = [
             {
-                question: "인터뷰에서 중꺾마(중요한 것은 꺾이지 않는 마음)를 처음으로 말 한 사람은?",
-                choice: ["축구선수 박지성", "롤 데프트 선수", "롤 페이커 선수", "김연아"],
-                answer: "2"
+                question: "다음 중 억텐의 반댓말로 옳은 것을 고르시오",
+                choice: ["텐텐", "썬텐", "빡텐", "찐텐"],
+                answer: "4",
+                desc:"억텐은 억지텐션, 찐텐은 진짜텐션을 의미합니다"
             },
             {
-                question: "다음 중 '더글로리' 관련 유행어가 아닌 것은?",
-                choice: ["멋지다 연진아", "넌 모르잖아? 알록달록한 세상", "무슨 악취 같은거 안나니?", "나 지금 되게 신나"],
-                answer: "3"
+                question: "다음 중 갑통알의 뜻으로 옳은 것을 고르시오",
+                choice: ["갑자기 통장을 보니 알바를 해야 할 것 같다", "갑자기 통증이 알통에", "갑오징어 통째로 먹으면 알라뷰", "갑자기 통통한 알이 가득한 알탕을 먹고싶다"],
+                answer: "1",
+                desc:"'갑자기 통장을 보니 알바(아르바이트)를 해야겠다'를 줄인 말이다."
             },
             {
-                question: "다음 중 뉴진스와 관련있는 신조어가 아닌 것은?",
-                choice: ["대퓨님", "꾸에엑", "디토합니다.", "엄마엄마가"],
-                answer: "2"
+                question: "다음 중 '제당슈만'의 의미로 옳은 것을 고르시오",
+                choice: ["제일 제당 슈가 만세", "제가 당신을 꼭 슈퍼스타로 만들어 드릴게요.", "제가 당신과 슈퍼에서 만나도 될까요?", "제빵은 당연히 슈크림빵! 만들어볼까?"],
+                answer: "2",
+                desc:"팬들 사이에서 자기가 좋아하는 연예인을 응원하는 마음으로 사용되는 말입니다"
             },
             {
-                question: "부장님이 내 보고서를 보며 퀄리티가 이게 뭐냐고 화를 낸다. 맥락에 맞는 신조어로 답을 해볼까?",
-                choice: ["하지만 빨랐죠?", "우내할", "안익었는데진짜", "밈첩하다"],
-                answer: "1"
+                question: "다음 중 '제곧네'와 같은 뜻을 가진 신조어를 고르시오?",
+                choice: ["완내스", "니곧내", "냉무", "쟤같네"],
+                answer: "3",
+                desc:"제목이 곧 내용, 내용이 없다를 의미합니다"
             },
             {
-                question: "위 가수의 수 많은 별명들 사이에서의 진짜 활동명은?",
-                choice: ["카더가든", "메이트리", "가터벨트", "킨더조이"],
-                answer: "1"
+                question: "다음 중 '법블레스유'의 상황으로 맞는 것을 고르시오?",
+                choice: ["누군가 재채기를 했을 때", "동생이 화나게 했을 때", "노블리스 오블리제를 실천할 때", "친구가 취뽀했을때"],
+                answer: "2",
+                desc:"법 때문에 참는다는 의미입니다"
             },
             {
-                question: "'내일 봬요 누나' (내봬누)가 나온 연애 프로그램은?",
-                choice: ["나는솔로", "솔로지옥 시즌2", "환승연애 시즌2", "하트시그널 시즌3"],
-                answer: "3"
+                question: "MZ세대들이 사용하는'ㅈㅂㅈㅇ'의 뜻으로 옳은 것은?",
+                choice: ["제발좀요", "정보좀요", "장봐줘요", "전번좀요"],
+                answer: "2",
+                desc:"주로 게시글 작성자에게 정보를 달라는 뜻으로 ‘ㅈㅂㅈㅇ’를 덧글로 남긴다."
             },
             {
-                question: "신조어 '쿠쿠루삥뽕'을 사용할 수 있는 상황은?",
-                choice: ["친구가 연인과 이별한 상황", "연인을 그윽하게 바라보는 상황", "맛있는 음식이 눈앞에 있는 상황", "친구와 내기에서 이긴 상황"],
-                answer: "4"
-            },
-
-            {
-                question: "다음 중 '당모치'의 뜻으로 올바른 것은?",
-                choice: ["당연히 모짜렐라 치즈가 최고", "당면이랑 모짜렐라 치즈 추가", "당근은 모두 치워버려", "당연히 모든 치킨은 옳다"],
-                answer: "4"
+                question: "다음 중 레게노의 의미로 옳은 것을 고르시오",
+                choice: ["레전드", "레바논", "레전드 오브 레전드", "레미제라블"],
+                answer: "1",
+                desc:"레게노는 레전드를 잘못 읽어 생겨난 밈입니다"
             },
             {
-                question: "다음 중 'OO논쟁' 시리즈에 해당되는 것이 아닌 것은?",
-                choice: ["블루투스논쟁", "에어팟 논쟁", "소주 논쟁", "새우 논쟁"],
-                answer: "2"
+                question: "다음 중 주불의 의미로 옳은 것을 고르시오?",
+                choice: ["주식으로 불로소득", "주술 불일치", "주어 불명확", "주소 불러"],
+                answer: "4",
+                desc:"택배보낼 주소 불러의 줄임말입니다."
             },
             {
-                question: "<보기> 중 신조어의 뜻 풀이가 올바르지 않은 것을 모두 고르시오.",
-                choice: ["ㄱ, ㄹ", "ㄴ", "ㄴ, ㄷ", "ㄱ, ㄷ, ㄹ"],
-                answer: "1"
+                question: "다음 중 완내스와 같은 뜻을 가진 신조어를 고르시오",
+                choice: ["스몸비", "사바사", "취저", "스라밸"],
+                answer: "3",
+                desc:"완내스는 완전 내 스타일의 줄임말 입니다, 취저는 취향저격'을 줄인 말로 취향을 저격당한 것처럼 어떤 것이 매우 마음에 들 때 사용하는 신조어입니다"
+            },
+            {
+                question: "다음 중 '알잘딱깔센' 줄임말 안에 포함되지 않은 단어는?",
+                choice: ["알맞게", "알아서", "깔끔하게", "센스있게"],
+                answer: "1",
+                desc:"알아서 잘하는 딱 깔끔하고 센스 있는 사람이라는 뜻의 신조입니다."
             }
         ];
 
@@ -109,20 +90,20 @@
         let totalScore = 0;
 
         const updateQuiz = (index) => {
-            let quizWrapTag = `<div class="quiz01">
-                <div class="quiz01_header">
-                    <div class="quiz_num">
-                         <div class="this__level">Lv:1</div> 
+            let quizWrapTag = `<div class="quiz">
+                <div class="quiz__header">
+                    <div class="quiz__num">
+                         <div class="this__level">Lv:5</div> 
                          <div class="this__round"><em>${index + 1}</em>/10</div>
                     </div>
                     <div class="question">
                         <h1><em>Q${index + 1}.</em> ${quizInfo[index].question}</h1>
                         <div class="img">
-                            <img src="assets/img/quiz${index+1}.jpg" alt="퀴즈01이미지">
+                            <img src="assets/img/quiz${index+41}.jpg" alt="퀴즈01이미지">
                         </div>
                     </div>
                 </div>
-                <div class="quiz01_choice">
+                <div class="quiz__choice">
                     <label for="choice1-${quizInfo[index].choice[0]}">
                         <input type="radio" id="choice1-${quizInfo[index].choice[0]}" name="choice" value="1">
                         <span>${quizInfo[index].choice[0]}</span>
@@ -145,7 +126,7 @@
             
             // 인풋 값이 네 개이기 때문에 각 버튼마다 클릭이벤트를 적용시켜주어야 한다.
             // 버튼눌러서 정답 확인
-            const buttons = quizWrap.querySelectorAll(".quiz01_choice input");
+            const buttons = quizWrap.querySelectorAll(".quiz__choice input");
             buttons.forEach((btn) => {
                 btn.addEventListener("click", () => {
                     const selectedChoice = quizWrap.querySelectorAll("input[name='choice']:checked");
@@ -182,7 +163,7 @@
                         console.log(`이름: ${name}`);
 
                         // 세 번째 페이지로 이동하면서 URL 매개변수를 그대로 전달합니다.
-                        const thirdPageUrl = `grade04.html?age=${age}&name=${name}&userScore=${userScore}`;
+                        const thirdPageUrl = `grade05.html?age=${age}&name=${name}&userScore=${userScore}`;
                         window.location.href = thirdPageUrl;
 
                     };
