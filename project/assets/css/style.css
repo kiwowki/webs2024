@@ -155,9 +155,6 @@ body {
 .ah__ha {
     position: absolute;
     bottom: -40px;
-    width: 100px;
-    height: 100px;
-    background-color: #ff000044;
 }
 
 @media (max-width: 850px) {
