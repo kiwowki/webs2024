@@ -4,16 +4,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>LV.01 결과</title>
     <link rel="stylesheet" href="assets/css/grade.css">
-    <link href="https://webfontworld.github.io/NanumMyeongjo/NanumMyeongjo.css" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/reset.css">
+    <link href="https://webfontworld.github.io/NanumMyeongjo/NanumMyeongjo.css" rel="stylesheet">
 </head>
 
 <body>
     <main id="grade">
         <div class="quiz__wrap">
-            <div class="quiz__header">
+            <!-- <div class="quiz__header">
                 <p class="quiztitle">
                     <em>MZ</em>언어 능력고사
                 </p>
@@ -30,8 +30,8 @@
                 <div class="quiz__grade">
                     <div class="en">${gradeEnd[gradeIndex].gradeEn}</div>
                     <div class="box">
-                        <div class="num">종합점수 : <span class="total"></span></div>
-                        <div class="level">LV : <span class="round"></span></div>
+                        <div class="level">LV : <span>01</span></div>
+                        <div class="num">종합점수 : <span class="total"></span>점</div>
                     </div>
                     
                     <div class="overlay-container">
@@ -49,7 +49,7 @@
                     <div class="quiz__desc1">${gradeEnd[gradeIndex].graDesc}</div>
                     <div class="quiz__desc2">aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</div>
                 </div>
-            </div>
+            </div> -->
         </div>
     </main>
     <!-- //main -->
@@ -62,26 +62,28 @@
 const gradeEnd = [
     {
         gradeEn : "A+",
-        graDesc : "툭 치기만 해도 '요즘 유행'이 자동으로 나오고,<br>주변인들과 함께 공유하고 즐기는<br>당신은 진정한 힙쟁이!<br>빠른 트렌드 섭렵과,<br>그때그때마다 업데이트 되는<br>당신의 SNS를 참고하는<br> 주변인들도 있을 듯 하네요."
+        graDesc : "툭 치기만 해도 '요즘 유행'이 자동으로 나오고,<br>주변인들과 함께 공유하고 즐기는<br>당신은 진정한 힙쟁이!<br><br>빠른 트렌드 섭렵과,<br>그때그때마다 업데이트 되는<br>당신의 SNS를 참고하는<br> 주변인들도 있을 듯 합니다!"
     },
     {
         gradeEn : "B+",
-        graDesc : "굵직굵직한 유행엔 빠삭한 당신,<br>최신 유행을 꽉 쥐고 있는 듯 하지만,<br>한발짝 느린 편이에요.<br>그래도 SNS에서 적극적으로<br>최신 트렌드를 섭렵하려 하고,<br>곧잘 자연스럽게 스며들어요"
+        graDesc : "굵직굵직한 유행엔 빠삭한 당신!<br><br>최신 유행을 꽉 쥐고 있는 듯 하지만,<br>한발짝 느린 편이에요.<br>그래도 SNS에서 적극적으로<br>최신 트렌드를 섭렵하려 하고,<br>곧잘 자연스럽게 스며들어요."
     },
     {
         gradeEn : "C+",
-        graDesc : "과거 한때엔 나름 유행에<br>관심이 많았던 당신,<br>지금은 현생에 치여 점차<br>트렌드로부터 멀어지고 있는 듯 하네요 <br>“그걸 꼭 알아야 돼?”싶긴 하지만<br>가끔은 요즘 트렌드가 궁금해질 때도 있어요."
+        graDesc : "과거 한때엔 나름 유행에<br>관심이 많았던 당신!<br><br>지금은 현생에 치여 점차<br>트렌드로부터 멀어지고 있는 듯 하네요.<br>“그걸 꼭 알아야 돼?”싶긴 하지만<br>가끔은 요즘 트렌드가 궁금해질 때도 있어요."
     },
     {
         gradeEn : "&nbspF&nbsp&nbsp",
-        graDesc : "아직도 2000년대에 살고 있는 당신,<br>요즘 유행엔 눈 하나 깜빡 안 해요<br>아직도 옛날 노래,옛날 예능,옛날 드라마가 더 재밌어요<br>가끔은 요즘 유행을 이해해보려고<br>노력은 하지만 너무 어려워요"
+        graDesc : "아직도 2000년대에 살고 있는 당신!<br><br>요즘 유행엔 눈 하나 깜빡 안 해요.<br>아직도 옛날 노래, 옛날 예능, 옛날 드라마가 더 재밌어요.<br>가끔은 요즘 유행을 이해해보려고<br>노력은 하지만 너무 어렵네요.."
     },
 ]
 
 // 현재 URL의 나이(age), 이름(name), 점수(userScore)를 받아와서 추출
 const urlParams = new URLSearchParams(window.location.search);
 const score = urlParams.get('userScore');
-const level = urlParams.get('userLevel');
+const wrongQuestionNumber = urlParams.get('wrongQuestionNumber'); // 추가함
+const desc = urlParams.get('desc'); // 추가함
+
 
 
 
@@ -122,8 +124,8 @@ const gradeEndTag = `
         <div class="quiz__grade">
             <div class="en">${gradeEnd[gradeIndex].gradeEn}</div>
             <div class="box">
-                <div class="num">종합점수 : <span class="total"></span></div>
-                <div class="level">LV : <span class="round"></span></div>
+                <div class="level">LV :<em> 01</em></div>
+                <div class="num">종합점수 : <em class="total"></em>점</div>
             </div>
             
             <div class="overlay-container">
@@ -139,7 +141,7 @@ const gradeEndTag = `
         </div>
         <div class="quiz__desc">
             <div class="quiz__desc1">${gradeEnd[gradeIndex].graDesc}</div>
-            <div class="quiz__desc2">aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</div>
+            <div class="quiz__desc2">${generateWrongQuestionsDesc(wrongQuestionNumber)}</div>
         </div>
     </div>
     `;
@@ -150,8 +152,6 @@ const gradeEndTag = `
     const youName  = quizWrap.querySelector(".youname");
     const youAge = quizWrap.querySelector(".youage");
     const youTotal = quizWrap.querySelector(".total");
-    const youRound = quizWrap.querySelector(".round");
-
 
     const age = urlParams.get('age');
     const name = urlParams.get('name');
@@ -159,14 +159,19 @@ const gradeEndTag = `
     youName.innerHTML = name;
     youAge.innerHTML = age;
     youTotal.innerHTML = score;
-    youRound.innerHTML = level;
     
 
     const nextPage = document.querySelector(".overlay-level");
     const prevPage = document.querySelector(".overlay-text");
+
+
+    // 사용자가 틀린 문제의 번호에 해당하는 문제의 desc 가져오기
+
+
+
     // 다음 페이지까지 이름과 나이 정보를 전달함
     nextPage.addEventListener("click", () => {
-        if(score > 50){
+        if(score > 50 && wrongQuestionNumber){  // 틀린 문제 번호가 있는 경우에만 wrongQuestionNumber
             const age = urlParams.get('age');
             const name = urlParams.get('name');
             const thirdPageUrl = `team__quiz02.html?age=${age}&name=${name}`;
@@ -184,8 +189,8 @@ const gradeEndTag = `
 
     // 나이 이름 레벨 콘솔로 확인
     console.log(`나이대: ${age}`);
-    console.log(`이름: ${name}`);  
-    console.log(`이름: ${level}`);  
+    console.log(`이름: ${name}`);
+    
     
 </script>
 </html>

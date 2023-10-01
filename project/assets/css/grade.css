@@ -30,6 +30,7 @@ a {
 
 
 
+
 .quiz__header {
     height: 200px;
 }
@@ -37,7 +38,7 @@ a {
     text-align: center;
     font-size: 50px;
     position: absolute;
-    top: 15px;
+    top: 26px;
     width: 100%;
 }
 
@@ -88,33 +89,45 @@ a {
 .en {
     font-size: 250px;
     color: #B24238;
-    margin: 0 20px 0 30px;
+    margin: 0 20px 0 48px;
+    line-height: 320px;
 }
 .box {
     width: 100%;
     height: 75px;
-    background-color: #8f7ef056;
     display: flex;
-}
-.num {
-    width: 50%;
-    border: 3px solid #000;
-    font-size: 25px;
-    font-weight: 800;
-    margin: 0 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 .level {
-    width: 50%;
-    border: 3px solid #000;
-    font-size: 25px;
-    font-weight: 800;
+    width: 35%;
+    border: 2px solid #000;
+    background-color: #e9e8e8;
+    font-size: 28px;
+    font-weight: 600;
     margin: 0 10px;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+.level em {
+    color: #8e2223;
+    font-weight: 800;
+    margin-bottom: 2px;
+}
+.num {
+    width: 65%;
+    border: 2px solid #000;
+    background-color: #e9e8e8;
+    font-size: 28px;
+    font-weight: 600;
+    margin: 0 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.num em {
+    color: #8e2223;
+    font-weight: 800;
+    margin-bottom: 2px;
 }
 /* .overlay-container {
     position: relative;
@@ -135,23 +148,33 @@ a {
 .overlay-container {
     position: relative;
     display: inline-flex;
-    margin-left: 0;
+    margin: 102px 0 0 16px;
 }
 .overlay-container img {
     width: 150px;
+    height: 70px;
+    margin: 10px;
 }
 .overlay-container a {
     position: absolute;
-    left: 45px;
-    top: 17px;
+    left: 54px;
+    top: 29px;
     font-size: 18px;
     font-weight: 800;
 }
 .overlay-container .btn__right a {
-    left: 190px;
+    left: 221px;
 }
-
 .overlay-container a:hover {
+    color: #f70000fb;
+}
+.overlay-container .btn__right .special {
+    left: 234px;
+    top: 25px;
+    font-size: 25px;
+    color: #0019f7fb;
+}
+.overlay-container .btn__right .special:hover {
     color: #f70000fb;
 }
 
@@ -161,10 +184,16 @@ a {
     font-size: 18px;
     line-height: 25px;
     font-weight: 600;
-    margin-top: 50px;
+    padding: 50px 10px 0 15px;
+    word-break: break-all;
+}
+.quiz__desc1 {
+    padding-bottom: 30px;
+    border-bottom: 2px solid #000;
 }
 .quiz__desc2 {
-    margin-top: 10px;
+    background-color: #e9e8e8;
+    padding: 30px;
 }
 /*--------- quiz__main END ---------*/
 
