@@ -33,7 +33,7 @@
                             <span>30대</span>
                         </label>
                         <label for="choice4">
-                            <input type="radio" id="choice4" name="choice" value="40데">
+                            <input type="radio" id="choice4" name="choice" value="40대">
                             <span>40대</span>
                         </label>
                     </div>
@@ -74,7 +74,7 @@
         
         
         if(selectedAge.length > 0 && userName != "") {
-            const userAge = selectedAge[0].value;
+            const userAge = selectedAge[0].value;   // html에 value에 "대" 추가
             
             // 데이터를 URL 매개변수에 추가하여 새 URL 생성
             const urlParams = new URLSearchParams();

@@ -89,10 +89,13 @@
 
         let currentIndex = 0;
         let totalScore = 0;
+        let wrongQuestionNumber = 0;
+        let descC = [];
         
         // let wrongQuestionNumber;     // wrongQuestionNumber를 전역 스코프에서 정의
 
         const updateQuiz = (index) => {
+
             let quizWrapTag = `<div class="quiz">
                 <div class="quiz__header">
                     <div class="quiz__num">
@@ -133,94 +136,87 @@
             // 버튼 클릭 이벤트 리스너에서 사용자의 답변을 저장
             const userAnswers = [];
             const buttons = quizWrap.querySelectorAll(".quiz__choice input");
-            const wrongQuestionNumber = 0;
 
+            
+            
 
-
-            buttons.forEach((btn) => {
+            buttons.forEach((btn, index) => {
                 btn.addEventListener("click", () => {
                     const selectedChoice = quizWrap.querySelectorAll("input[name='choice']:checked");
 
+                
                     if (selectedChoice.length > 0) {
                         const userAnswer = selectedChoice[0].value;
-                        userAnswers[index] = userAnswer; // 사용자의 답변을 배열에 저장
-                        if(userAnswer == quizInfo[index].answer){
-                            
+                        userAnswers[currentIndex] = userAnswer; // 사용자의 답변을 배열에 저장
+                    
+                        if (userAnswer == quizInfo[currentIndex].answer) {
                             totalScore += 10;
-                        } else {
-
-
-
+                        } else if (userAnswer != quizInfo[currentIndex].answer) {
                             // 사용자의 답변과 정답을 비교하고 틀린 문제를 추적
-                            // const wrongQuestionNumber = index + 1;
+                            wrongQuestionNumber = currentIndex + 1;
+                            console.log(currentIndex) 
+                            console.log(wrongQuestionNumber)    // 확인
 
-                            // // 이제 wrongQuestionNumber를 활용하여 어떤 문제가 틀렸는지 알 수 있음
-                            // console.log(wrongQuestionNumber)    // 작동 확인 해봄
-
-                            // const wrongQuestion = quizInfo[wrongQuestionNumber - 1];
-                            // if (wrongQuestion.length > 0) {
-                            //     return wrongQuestion.desc;
-                            // } else {
-                            //     return "틀린 문제 없음";
-                            // }
-
-
-
-                            
+                            // 틀린 문제 설명을 배열에 추가(여러개일 수 있기 때문에 배열에 저장해야 함)
+                            descC.push(quizInfo[wrongQuestionNumber - 1].desc);
                         };
                         
+                        console.log("3-"+descC.join(",")); 
                     }
-                    // function generateWrongQuestionsDesc(wrongQuestionNumber, quizInfo) {
-                    //     const wrongQuestion = quizInfo[wrongQuestionNumber - 1];
-                        
+                    
+                    
+                    
+                    
 
 
 
-                    // 다음 문제 넘어가기 
-                    currentIndex++;
-                    if(currentIndex < quizInfo.length){
+                
+                    currentIndex++; // 다음 문제로 넘어갑니다.
+                
+                    if (currentIndex < quizInfo.length) {
                         updateQuiz(currentIndex);
-                    } else if(currentIndex => quizInfo.length) {
-                        alert("모든 문제를 풀었습니다.");
+                    } else if (currentIndex >= quizInfo.length) {
+                        //
                         
-                        // 한번 더 변수에 저장해서 가져와야 함 
+                        
+                        //
+
+
+                        alert("모든 문제를 풀었습니다.");
+                    
                         const userScore = totalScore;
                         const userWrongNum = wrongQuestionNumber;
-                        const desc = generateWrongQuestionsDesc(userWrongNum, quizInfo);
-
+                    
+                        // URL 매개변수를 조작하기 위해 URLSearchParams를 사용
                         const urlParams = new URLSearchParams(window.location.search);
-                        const score = urlParams.set('userScore', userScore);
-
-                        // age와 name 매개변수 값을 추출합니다.
+                        urlParams.set('userScore', totalScore);
+                        urlParams.set('userWrongNum', wrongQuestionNumber);
+                    
+                        // 배열로 저장한 desc를 map()함수를 이용해서 URL 매개변수에 추가
+                        urlParams.set('desc', desc.map(item => item).join(','));
+                    
                         const age = urlParams.get('age');
                         const name = urlParams.get('name');
-
-                        // 데이터를 활용하여 필요한 작업을 수행합니다.
+                    
+                        urlParams.set('age', age);
+                        urlParams.set('name', name);
+                    
                         console.log(`나이대: ${age}`);
                         console.log(`이름: ${name}`);
-                        console.log(`틀린 번호: ${userWrongNum}`);
-
-                        // 세 번째 페이지로 이동하면서 URL 매개변수를 그대로 전달합니다.
-                        const thirdPageUrl = `grade01.html?age=${age}&name=${name}&userScore=${userScore}&wrongQuestionNumber=${wrongQuestionNumber}&desc=${desc}`;
-                        window.location.href = thirdPageUrl;
-
+                    
+                        const nextPageUrl = `grade01.html?${urlParams.toString()}`;
+                        window.location.href = nextPageUrl;
                     };
-            
                 });
             });
+        };
 
-
-            
-        
-
-
-         
-            
 
         document.addEventListener("DOMContentLoaded", () => {
             updateQuiz(currentIndex);   
+        })
             
-        });
+        
     </script>
 </body>
 

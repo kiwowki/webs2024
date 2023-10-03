@@ -34,7 +34,7 @@
                 question: "MZ세대가 묶어 부르는 [네카라쿠배당토]에 포함되는 회사는?",
                 choice: ["네이처리퍼블릭", "라이엇게임즈", "당근마켓", "토마토저축은행"],
                 answer: "3",
-                desc:"네이버, 카카오, 라인플러스, 쿠팡, 배달의 민족, 당근마켓, 토스를 말하는 단어입니다."
+                desc:"네이버 카카오 라인플러스 쿠팡 배달의 민족 당근마켓 토스를 말하는 단어입니다."
             },
             {
                 question: "열심히 사는 삶을 뜻하는 MZ세대 신조어로 옳은 것을 고르시오",
@@ -88,6 +88,7 @@
 
         let currentIndex = 0;
         let totalScore = 0;
+        let desc = [];
 
         const updateQuiz = (index) => {
             let quizWrapTag = `<div class="quiz">
@@ -126,6 +127,7 @@
             
             // 인풋 값이 네 개이기 때문에 각 버튼마다 클릭이벤트를 적용시켜주어야 한다.
             // 버튼눌러서 정답 확인
+            const userAnswers = [];
             const buttons = quizWrap.querySelectorAll(".quiz__choice input");
             buttons.forEach((btn) => {
                 btn.addEventListener("click", () => {
@@ -133,47 +135,53 @@
 
                     if (selectedChoice.length > 0) {
                         const userAnswer = selectedChoice[0].value;
-                        
+                        userAnswers[index] = userAnswer; // 사용자의 답변을 배열에 저장
                         if(userAnswer == quizInfo[index].answer){
                             
                             totalScore += 10;
                         } else {
-                            
+                            // 틀린 문제 설명을 배열에 추가(여러개일 수 있기 때문에 배열에 저장)
+                            desc.push(index + 1 + "번 : " +quizInfo[index].desc);
                         };
-                    };
+                    }
                     // 다음 문제 넘어가기 
                     currentIndex++;
                     if(currentIndex < quizInfo.length){
                         updateQuiz(currentIndex);
-                    } else if(currentIndex => quizInfo.length) {
+                    } else if(currentIndex >= quizInfo.length) {
                         alert("모든 문제를 풀었습니다.");
                         
                         // 한번 더 변수에 저장해서 가져와야 함 
                         const userScore = totalScore;
 
-
+                        // URL 매개변수를 조작하기 위해 URLSearchParams를 사용
                         const urlParams = new URLSearchParams(window.location.search);
-                        const score = urlParams.set('userScore', userScore);
+
+                        // 사용자의 틀린 문제 번호와 설명을 URL에 추가
+                        urlParams.set('userScore', totalScore);
+                        
+                        // 배열로 저장한 desc를 map()함수를 이용해서 URL 매개변수에 추가(url은 문자열로만 값을 저장하므로 배열 형태로 저장하면 문제 생김)
+                        urlParams.set('desc', desc.map(item => item).join(','));
+
                         // age와 name 매개변수 값을 추출합니다.
                         const age = urlParams.get('age');
                         const name = urlParams.get('name');
+
+                        urlParams.set('age', age);
+                        urlParams.set('name', name);
+
 
                         // 데이터를 활용하여 필요한 작업을 수행합니다.
                         console.log(`나이대: ${age}`);
                         console.log(`이름: ${name}`);
 
-                        // 세 번째 페이지로 이동하면서 URL 매개변수를 그대로 전달합니다.
-                        const thirdPageUrl = `grade03.html?age=${age}&name=${name}&userScore=${userScore}`;
-                        window.location.href = thirdPageUrl;
-
+                        // 다음 페이지로 이동하면서 URL 매개변수를 그대로 전달합니다.
+                        const nextPageUrl = `grade03.html?${urlParams.toString()}`;
+                        window.location.href = nextPageUrl;
                     };
                 });
             });
-            
-        };
-            // 데이터 받아오기
-            // 그리고 등급 페이지 보내기
-         
+        };        
             
 
         document.addEventListener("DOMContentLoaded", () => {

@@ -81,8 +81,24 @@ const gradeEnd = [
 // 현재 URL의 나이(age), 이름(name), 점수(userScore)를 받아와서 추출
 const urlParams = new URLSearchParams(window.location.search);
 const score = urlParams.get('userScore');
-const wrongQuestionNumber = urlParams.get('wrongQuestionNumber'); // 추가함
-const desc = urlParams.get('desc'); // 추가함
+
+
+// // map()함수를 이용해 변환한 문자열을 다시 배열로 변환
+// const WrongNumString = urlParams.get('WrongNum');
+// let WrongNum = [];
+
+// if (WrongNumString) {           // 변수가 null인 경우 오류 발생. 오류를 방지하기 위해 if문 사용.
+//     WrongNum = WrongNumString.split(',');
+// }
+
+
+// map()함수를 이용해 변환한 문자열을 다시 배열로 변환
+const descString = urlParams.get('desc');
+let desc = [];
+
+if (descString) {           // 변수가 null인 경우 오류 발생. 오류를 방지하기 위해 if문 사용.
+  desc = descString.split(',');
+}
 
 
 
@@ -117,7 +133,7 @@ const gradeEndTag = `
         </div>
         <div class="quiz__header2">
             <div class="age">나이</div>
-            <div class="youage"></div>
+            <div class="youage">대</div>
         </div>
     </div>
     <div class="quiz__main">
@@ -141,7 +157,10 @@ const gradeEndTag = `
         </div>
         <div class="quiz__desc">
             <div class="quiz__desc1">${gradeEnd[gradeIndex].graDesc}</div>
-            <div class="quiz__desc2">${generateWrongQuestionsDesc(wrongQuestionNumber)}</div>
+            <div class="quiz__desc2">
+                <p><em>틀린 문제 번호와 해설</em><br><br>
+                    ${desc.map((description, index) => `<li>${description}</li>`).join('')}</p>
+            </div>
         </div>
     </div>
     `;
@@ -151,7 +170,7 @@ const gradeEndTag = `
     // 이름, 나이, 총점수 데이터 추출 후 삽입
     const youName  = quizWrap.querySelector(".youname");
     const youAge = quizWrap.querySelector(".youage");
-    const youTotal = quizWrap.querySelector(".total");
+    const youTotal = quizWrap.querySelector(".total");  // html에 "점" 추가
 
     const age = urlParams.get('age');
     const name = urlParams.get('name');
@@ -165,13 +184,10 @@ const gradeEndTag = `
     const prevPage = document.querySelector(".overlay-text");
 
 
-    // 사용자가 틀린 문제의 번호에 해당하는 문제의 desc 가져오기
-
-
 
     // 다음 페이지까지 이름과 나이 정보를 전달함
     nextPage.addEventListener("click", () => {
-        if(score > 50 && wrongQuestionNumber){  // 틀린 문제 번호가 있는 경우에만 wrongQuestionNumber
+        if(score > 50 ){
             const age = urlParams.get('age');
             const name = urlParams.get('name');
             const thirdPageUrl = `team__quiz02.html?age=${age}&name=${name}`;
@@ -187,10 +203,10 @@ const gradeEndTag = `
         window.location.href = thirdPageUrl;
     });
 
-    // 나이 이름 레벨 콘솔로 확인
+    // 나이 이름 틀린문제번호+설명 콘솔로 확인
     console.log(`나이대: ${age}`);
     console.log(`이름: ${name}`);
-    
+    console.log(`설명: ${desc}`);
     
 </script>
 </html>

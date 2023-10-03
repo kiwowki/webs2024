@@ -83,6 +83,14 @@ const urlParams = new URLSearchParams(window.location.search);
 const score = urlParams.get('userScore');
 console.log(score);
 
+// map()함수를 이용해 변환한 문자열을 다시 배열로 변환
+const descString = urlParams.get('desc');
+let desc = [];
+
+if (descString) {           // 변수가 null인 경우 오류 발생. 오류를 방지하기 위해 if문 사용.
+  desc = descString.split(',');
+}
+
 
 // 가져온 score를 기반으로 등급을 계산해서 gradeIndex에 저장
 const gradeIndex = calculateGrade(score);
@@ -138,7 +146,10 @@ const gradeEndTag = `
         </div>
         <div class="quiz__desc">
             <div class="quiz__desc1">${gradeEnd[gradeIndex].graDesc}</div>
-            <div class="quiz__desc2">aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</div>
+            <div class="quiz__desc2">
+                <p><em>틀린 문제 번호와 해설</em><br><br>
+                    ${desc.map((description, index) => `<li>${description}</li>`).join('')}</p>
+            </div>
         </div>
     </div>
     `;
@@ -158,8 +169,9 @@ const gradeEndTag = `
     youAge.innerHTML = age;
     youTotal.innerHTML = score;
     
-
-    const nextPage = document.querySelector(".overlay-level");
+    const prevPage = document.querySelector(".overlay-text");
+    const nextPage = document.querySelector(".overlay-graduation");
+    // const nextPage = document.querySelector(".overlay-level");
     
     // 다음 페이지까지 이름과 나이 정보를 전달함
     // nextPage.addEventListener("click", () => {
@@ -169,10 +181,25 @@ const gradeEndTag = `
     //     window.location.href = thirdPageUrl;
     // });
 
+    prevPage.addEventListener("click", () => {
+        const age = urlParams.get('age');
+        const name = urlParams.get('name');
+        const thirdPageUrl = `team__quiz05.html?age=${age}&name=${name}`;
+        window.location.href = thirdPageUrl;
+    });
+
+    nextPage.addEventListener("click", () => {
+        if(score > 80 ){
+            alert("축하합니다! MZ능력고사를 모두 통과하였습니다! 당신은 진정한 전연령 유행어 마스터!");
+        } else {
+            alert("아직 졸업하실 때가 아닙니다. 80점 이상 맞을 수 있도록 한 번 더 풀어보세요!");
+        }
+    });
 
     // 나이 이름 콘솔로 확인
     console.log(`나이대: ${age}`);
     console.log(`이름: ${name}`);  
+    console.log(`설명: ${desc}`);
     
 </script>
 </html>
