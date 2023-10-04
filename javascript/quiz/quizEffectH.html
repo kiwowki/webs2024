@@ -5,21 +5,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>정보처리 기능사 주관식</title>
+    <title>정보처리 기능사 숙제</title>
 
     <link rel="stylesheet" href="assets/css/quiz.css">
-    <link rel="stylesheet" href="../../assets/css/default.min.css">
-    <link href="https://webfontworld.github.io/Cafe24SsurroundAir/Cafe24SsurroundAir.css" rel="stylesheet">
 
     <style>
+        .quiz_desc::before {
+            content: '';
+        }
         .input_style {
             width: 100%;
             padding: 10px;
-            margin-bottom: 10px;
             border: 1px solid #ffd000;
+            margin-bottom: 20px;
         }
-        .quiz_desc::before {
-            content: ' ';
+        .quiz_desc {
+            margin-bottom: 20px;
+            text-align: center;
         }
     </style>
 </head>
@@ -40,8 +42,9 @@
     <!-- main -->
 
     <footer id="footer">
-        <a href="mailto:ooooo0516@naver.com">ooooo0516@naver.com</a>
+        <a href="mailto:wolves941110@gmail.com">wolves941110@gmail.com</a>
     </footer>
+    <!--//footer-->
 
     <script>
         // 선택자 
@@ -78,15 +81,14 @@
                             <div class="quiz_question">${index + 1}. ${quizInfo[index].infoQuiestion}</div>
                             <div class="quiz_answer none">${quizInfo[index].infoAnswer}</div>
                             ${quizInfo[index].infoDesc ? `<div class="quiz_desc">${quizInfo[index].infoDesc}</div>` : ''}
-                            <input type="text" class="input_style" name="input" id="input-${index}" placeholder="정답을 입력해주세요.">
+                            <input type="text" class="input_style" name="input" id="input-${index}" placeholder="정답을 입력해주세요." style="text-align: center">
                         </div>
                         <div class="quiz_footer">
                             <button class="quiz_confirm">정답 확인하기</button>
                             <button class="quiz_next none">다음 문제</button>
-                    </div>
+                        </div>
                     </div>
                 `;
-            ;
             quizWrap.innerHTML = quizArray;
 
 
@@ -106,26 +108,25 @@
             quizNext.addEventListener("click", () => {
                 if (currentIndex < quizInfo.length - 1) {
                     quizNext.classList.add("none");         // 다음 버튼 삭제
-                    quizConfirm.classList.remove("none");      // 정답 버튼 추가
+                    quizConfirm.classList.remove("none");   // 정답 버튼 추가
                     currentIndex++
                     fetchQuiz(currentIndex);
                 } else {
-                    alret("퀴즈가 종료되었습니다.");
+                    alert("퀴즈가 종료되었습니다.");
                 }
             });
         
         }
         const checkAnswer = () => {
             const userInput = document.getElementById(`input-${currentIndex}`);
-            const inputValue = userInput.value;        // 사용자가 입력한 정답
-            console.log(inputValue)
+            const inputValue = userInput.value.trim().toLowerCase();
+            const corretAnswer = quizInfo[currentIndex].infoAnswer.trim().toLowerCase();
+            const quizElement = quizWrap.querySelector(".quiz");
+            const answerElement = quizWrap.querySelector(".quiz_answer");
 
             if (!inputValue) {
                 alert("답안을 입력하세요.");
             }
-            const corretAnswer = quizInfo[currentIndex].infoAnswer;     // 정답지의 정답
-            const quizElement = quizWrap.querySelector(".quiz");
-            const answerElement = quizWrap.querySelector(".quiz_answer");
 
             if (inputValue === corretAnswer) {
                 quizElement.classList.add("good");
@@ -133,7 +134,6 @@
                 quizElement.classList.add("bad");
             }
         }
-
         // 페이지가 로드된 후 실행
         document.addEventListener("DOMContentLoaded", () => {
             fetchQuiz(currentIndex);

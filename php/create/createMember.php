@@ -21,7 +21,4 @@
         echo "Create Tables False";
     }
         
-        
-        
-    
 ?>

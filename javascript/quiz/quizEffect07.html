@@ -45,7 +45,7 @@
     <!--//header-->
 
     <main id="main">
-        <div class="cbt_box">
+        <div class="cbt_box none">
             <h2>기능사 시험</h2>
             <select id="cbtSelect1">
                 <option value="gineungsaJC2005_02.json">정보처리기능사 2005년 2회</option>
@@ -115,7 +115,7 @@
 
             <div class="cbt_conts">
                 <div class="cbt_quiz">
-                    <div class="cbt">
+                    <!-- <div class="cbt">
                         <div class="cbt_question">1. GoF(gang of Four)의 디자인 패턴에서 행위 패턴에 속하는 것은?</div>
                         <div class="cbt_choices">
                             <input type="radio" id="choice1">
@@ -130,7 +130,8 @@
                         <div class="cbt_desc">
                             객체지향 구성 요소에는 클래스(Class), 객체(Object), 인스턴스(Instance), 메시지(Message), 메소드(Method) 등이 있습니다.
                         </div>
-                    </div>
+                    </div> -->
+
                 </div>
             </div>
             <!-- //cbt_conts -->
@@ -138,27 +139,74 @@
             <div class="cbt_aside">
                 <div class="cbt_name">수험자 : 강서현</div>
                 <div class="cbt_submit">답안지 제출하기</div>
-                <div class="cbt_omr"></div>
-            </div>
+                <div class="cbt_omr">
+                    <!-- <div class="omr">
+                        <strong>1</strong>
+                        <input type="radio" name="omr1" id="omr1">
+                        <label for="omr1">
+                            <span class="label-inner">1</span>
+                        </label>
+                        <input type="radio" name="omr2" id="omr2">
+                        <label for="omr2">
+                            <span class="label-inner">2</span>
+                        </label>
+                        <input type="radio" name="omr3" id="omr3">
+                        <label for="omr3">
+                            <span class="label-inner">3</span>
+                        </label>
+                        <input type="radio" name="omr4" id="omr4">
+                        <label for="omr4">
+                            <span class="label-inner">4</span>
+                        </label>
+                    </div> -->
+                </div>
+                
             <!-- //cbt_aside -->
 
         </div>
     </main>
     <!--//main-->
 
-    <footer id="footer">
+    <!-- <footer id="footer">
         <a href="mailto:wolves941110@gmail.com">wolves941110@gmail.com</a>
-    </footer>
+    </footer> -->
     <!--//footer-->
 
     <script>
-        // 선택자
-        const cbtBox = document.querySelector(".cbt_box");
-        const cbtBoxStart = document.querySelector(".cbt_box_start");
+        // 문제 정보
+        let quizInfo = [];    // 모든 퀴즈 정보
 
-        cbtBoxStart.addEventListener("click", () => {
-            cbtBox.style.display = "none";
+        let quizScore = 0;    // 퀴즈 점수 처리
+        let quizCorrect = 0;  // 퀴즈 맞은 갯수
+
+        // 문제 가져오기
+        const fetchQuiz = () => {
+            fetch("https://kiwowki.github.io/webs2024/json/gineungsaJC2011_05.json")
+            .then(res => res.json())
+            .then(items => {
+               console.log(items);
+               quizInfo = items.map((item, index) => {
+                const formattedQuiz = {
+                    infoDate : "2011년 5회",
+                    
+                }
+                return formattedQuiz;
+               });
+               console.log(quizInfo)
+               updataQuiz();
+            });
+        };
+
+        quizHeader.innerHTML = quizInfo[0].infoDate
+
+
+
+        // 페이지가 로드된 후 실행
+        document.addEventListener("DOMContentLoaded", () => {
+            fetchQuiz();
         });
+
+
     </script>
 
 </body>

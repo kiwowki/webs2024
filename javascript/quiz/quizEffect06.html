@@ -63,6 +63,7 @@
 
         // 문제 정보
         let quizInfo = [];
+        let currentIndex = 0;
         let quizScore = 0;
         
         // 문제 가져오기
@@ -138,7 +139,7 @@
         }
 
         // 정답 확인
-        quizCheck.addEventListener("click", () => {
+        quizConfirm.addEventListener("click", () => {
             const quizElements = document.querySelectorAll(".quiz");
 
             quizElements.forEach((quizElement, index) => {

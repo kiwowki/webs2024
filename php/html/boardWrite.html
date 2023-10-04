@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>회원가입 페이지</title>
+    <title>게시글 작성하기</title>
 
     <!-- CSS -->
     <link rel="stylesheet" href="../assets/css/style.css">
@@ -43,45 +43,37 @@
     <!-- header -->
 
     <main id="main" role="main">
-        <div class="intro_inner bmStyle container">
-            <div class="intro_img">
-                <img srcset="../assets/img/intro01.jpg 1x, ../assets/img/intro01@2x.jpg 2x, ../assets/img/intro01@3x.jpg 3x" alt="">
+        <div class="intro_inner container bmStyle">
+            <div class="intro_img small">
+                <img srcset="../assets/img/intro03.jpg 1x, ../assets/img/intro03@2x.jpg 2x, ../assets/img/intro03@3x.jpg 3x" alt="">
             </div>
             <div class="intro_text">
-                회원가입을 해주시면 다양한 정보를 자유롭게 볼 수 있습니다.
+                <h2>게시글 작성하기</h2>
+                <p>
+                    웹디자이너, 웹 퍼블리셔, 프론트앤드 개발자를 위한 게시판입니다<br>게시글 작성은 여기서 해주세요!
+                </p>
             </div>
         </div>
-        <section class="join_inner container">
-            <h2>회원가입</h2>
-            <div class="join_form">
+        <section class="board_inner container">
+            <div class="board_write">
                 <form action="#" name="#" method="post">
                     <fieldset>
-                        <legend class="blind">회원가입 영역</legend>
+                        <legend class="blind">게시글 작성하기</legend>
                         <div>
-                            <label for="youEmail" class="required">이메일</label>
-                            <input type="email" id="youEmail" name="youEmail" placeholder="이메일을 적어주세요!" class="input_style" required>
+                            <label for="boardTitle">제목</label>
+                            <input type="text" id="boardTitle" name="boardTitle" class="input_style">
                         </div>
                         <div>
-                            <label for="youName" class="required">이름</label>
-                            <input type="text" id="youName" name="youName" placeholder="이름을 적어주세요!" class="input_style" required>
+                            <label for="boardContents">내용</label>
+                            <textarea id="boardContents" name="boardContents" rows="20" class="input_style"></textarea>
                         </div>
-                        <div>
-                            <label for="youPass" class="required">비밀번호</label>
-                            <input type="paddword" id="youPass" name="youPass" placeholder="비밀번호를 적어주세요!" class="input_style" required>
+                        <div class="board_btns">
+                            <button type="submit" class="btn_style3">저장하기</button>
                         </div>
-                        <div>
-                            <label for="youPassC" class="required">비밀번호 확인</label>
-                            <input type="paddword" id="youPassC" name="youPassC" placeholder="다시 한번 비밀번호를 적어주세요!" class="input_style" required>
-                        </div>
-                        <div>
-                            <label for="youPhone">연락처</label>
-                            <input type="text" id="youPhone" name="youPhone" placeholder="연락처를 적어주세요!" class="input_style" required>
-                        </div>
-                        <button type="submit" class="btn_style mt100">회원가입 완료</button>
                     </fieldset>
                 </form>
             </div>
-            
+
         </section>
     </main>
     <!-- main -->

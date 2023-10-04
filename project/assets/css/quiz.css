@@ -229,7 +229,6 @@ body {
     height: 550px;
     box-sizing: border-box;
     position: relative;
-    
 }
 .quiz__num {
     /* width: 150px;
@@ -334,9 +333,12 @@ body {
 
 
 @media (max-width:800px) {
+    #line__main {
+        height: 100vh;
+    }
     .quiz__wrap {
         width: 90%;
-        height: 90vh;
+        height: 100vh;
         background-image: url(../img/bgi.jpg);
     }
     .question h1 {
@@ -350,9 +352,15 @@ body {
     }
     .question img {
         width: 60vw;
+        height: 280px;
     }
     .quiz__choice label {
         font-size: 20px;
+    }
+    .quiz__header {
+        height: 500px;
+        box-sizing: border-box;
+        position: relative;
     }
 }
 
@@ -365,11 +373,12 @@ body {
     }
     .quiz__header > h1 {
         font-size: 18px;
-        line-height: 40px;
+        line-height: 35px;
         word-wrap: break-word;
+        margin-bottom: 0;
     }
     .quiz__choice {
-        margin: 0 auto;
+        margin: 50px auto;
     }
     .quiz__choice label {
         font-size: 17px;
