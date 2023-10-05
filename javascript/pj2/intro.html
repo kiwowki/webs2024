@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GSAP scroll Effect02</title>
+
+    <link rel="stylesheet" href="https://webfontworld.github.io/NexonLv1Gothic/NexonLv1Gothic.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        a {
+            color: rgb(255, 255, 255);
+            text-decoration: none;
+        }
+        body {
+            color: rgb(255, 255, 255);
+            background-color: #000000;
+            font-family: 'NexonLv1Gothic';
+
+        }
+        #parallax_title {
+            position: fixed;
+            right: 20px;
+            top: 20px;
+            z-index: 10000;
+        }
+        #parallax_title h1 {
+            position: absolute;
+            font-size: 30px;
+            border: 1px solid #ffffff;
+            border-radius: 50%;
+            margin: 30px;
+            padding-bottom: 5px;
+            font-weight: 400;
+            z-index: 1000;
+        }
+
+        /* parallax_cont */
+        #parallax_cont {
+            overflow: hidden;
+        }
+        .parallax_item {
+            width: 100%;
+            height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .parallax_item_num {
+            position: absolute;
+            right: 20px;
+            bottom: 20px;
+            font-size: 5vw;
+            line-height: 1;
+        }
+        .parallax_item_img {
+            width: 10vw;
+            height: 10vw;
+            margin: 1vw;
+            background-color: #fff;
+            background-size: cover;
+            background-position: center;
+            
+        }
+        #section10 .parallax_item_img {
+            position: absolute;
+            width: 100%;
+            height: 98vh;
+            box-shadow: 0 0 10px rgba(110, 110, 110, 0.233);
+              /* 이미지의 가장자리를 둥글게 만들기 위한 테두리 반경 설정 */
+            overflow: hidden; /* 테두리를 넘어가는 부분은 숨김 */
+        }
+        /* 이미지와 같은 크기로 가상 요소 생성 */
+        #section10 .parallax_item_img::before {
+            content: "";
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 10; /* 이미지 뒤에 위치하도록 설정 */
+        }
+        
+        .a1 {
+            width: 100%;
+            background-image: url("img/images01-min.jpg");
+        }
+        .a2 {
+            background-image: url("img/images02-min.jpg");
+        }
+        .a3 {
+            background-image: url("img/images03-min.jpg");
+        }
+        .a4 {
+            background-image: url("img/images04-min.jpg");
+        }
+        .a5 {
+            background-image: url("img/images05-min.jpg");
+        }
+        .a6 {
+            background-image: url("img/images06-min.jpg");
+        }
+        .a7 {
+            background-image: url("img/images07-min.jpg");
+        }
+    </style>
+</head>
+<body>
+    <header id="parallax_title">
+        <h1>메인화면으로</h1>
+
+    </header>
+    <main id="parallax_cont">
+
+        <section id="section10" class="parallax_item">
+            <div class="parallax_item_img a1"></div>
+            <div class="parallax_item_img a2"></div>
+            <div class="parallax_item_img a3"></div>
+            <div class="parallax_item_img a4"></div>
+            <div class="parallax_item_img a5"></div>
+            <div class="parallax_item_img a6"></div>
+            <div class="parallax_item_img a7"></div>
+        </section>
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script>
+        // 010 : 텍스트 제자리 애니메이션
+        const ani10 = gsap.timeline();
+        ani10.from("#section10 .a1", {autoAlpha: 0, duration: 1, y: 50}, "+=0.7")   //duration 나오는 속도
+            .from("#section10 .a2", {autoAlpha: 0, duration: 1, y: 50}, "+=0.7")   //"+=1" -> 다 나오고 나오게
+            .from("#section10 .a3", {autoAlpha: 0, duration: 1, y: 50}, "+=0.7")
+            .from("#section10 .a4", {autoAlpha: 0, duration: 1, y: 50}, "+=0.7")
+            .from("#section10 .a5", {autoAlpha: 0, duration: 1, y: 50}, "+=0.7")
+            .from("#section10 .a6", {autoAlpha: 0, duration: 1, y: 50}, "+=0.7")
+            .from("#section10 .a7", {autoAlpha: 0, duration: 1, y: 50}, "+=0.7")
+
+        ScrollTrigger.create({
+            animation: ani10,
+            trigger: "#section10",
+            start: "top top",
+            end: "+=6000",
+            scrub: true,
+            pin: true,
+        })
+    </script>
+</body>
+</html>
