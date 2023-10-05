@@ -30,7 +30,7 @@
 
     $boardTotalCount = $result -> fetch_array(MYSQLI_ASSOC);
     $boardTotalCount = $boardTotalCount['count(boardID)'];
-    echo $boardTotalCount;
+    // echo $boardTotalCount;
     ?>
 
     <main id="main" role="main">
