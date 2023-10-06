@@ -30,7 +30,7 @@
 
     $boardTotalCount = $result -> fetch_array(MYSQLI_ASSOC);
     $boardTotalCount = $boardTotalCount['count(boardID)'];
-    // echo $boardTotalCount;
+    
     ?>
 
     <main id="main" role="main">
@@ -110,13 +110,17 @@
 
     //             echo "<tr>";
     //             echo "<td>".$info['boardID']."</td>";
-    //             echo "<td>".$info['boardTitle']."</td>";
+    //             echo "<td><a href='boardView.php?boardID={$info['boardID']}'>".$info['boardTitle']."</a></td>";
     //             echo "<td>".$info['youName']."</td>";
     //             echo "<td>".date('Y-m-d', $info['regTime'])."</td>";
     //             echo "<td>".$info['boardView']."</td>";
     //         }
+    //     } else {
+    //         echo "<tr><td colspan='5'>게시글이 없습니다.</td></tr>";
     //     }
-    // }
+    //     } else {
+    //         echo "관리자에게 문의해주세요!";
+    //     }
 
     // 챗gpt가 알려준 거.
     if(isset($_GET['page'])){
@@ -134,7 +138,7 @@
     // 31~40 LIMIT 30, 10   ==> page4   ($viewNum * 4) - $viewNum
     
 
-    $sql = "SELECT * FROM board ORDER BY boardID DESC LIMIT {$viewLimit}, {$viewNum}";
+    $sql = "SELECT b.boardID, b.boardTitle, m.youName, b.regTime, b.boardView FROM board b JOIN members m ON(b.memberID = m.memberID) ORDER BY boardID DESC LIMIT 0, 10";
     $result = $connect -> query($sql);
 
     if($result){
@@ -146,7 +150,7 @@
 
                 echo "<tr>";
                 echo "<td>".$info['boardID']."</td>";
-                echo "<td>".$info['boardTitle']."</td>";
+                echo "<td><a href='boardView.php?boardID={$info['boardID']}'>".$info['boardTitle']."</a></td>";
                 echo "<td>".$info['youName']."</td>";
                 echo "<td>".date('Y-m-d', $info['regTime'])."</td>";
                 echo "<td>".$info['boardView']."</td>";
@@ -165,32 +169,46 @@
             </div>
             <div class="board_pages">
                 <ul>
-                <li class="first"><a href="board.php?page=1">처음으로</a></li>
-<?php if ($page > 1): ?>
-                        <li class="next"><a href="board.php?page=<?php echo $page - 1; ?>">이전</a></li>
-<?php endif; ?>
+                    
+                <!-- <li class="first"><a href="board.php?page=1">처음으로</a></li>
+
+                        <li class="next"><a href="board.php?page=">이전</a></li> -->
 
 <?php
     // 총 페이지 갯수
-    $boardTotalCount = ceil($boardTotalCount/$viewNum); //반올림 하기
+    $boardTotalCount = ceil($boardTotalCount/$viewNum);
 
-    // 1 2 3 4 5 6 "7" 8 9 10 11 12 -> 
-    $pageView = 5;  // 앞 뒤로 5개씩
+    // 1 2 3 4 5 6 [7] 8 9 10 11 12 13
+    $pageView = 5;
     $startPage = $page - $pageView;
     $endPage = $page + $pageView;
 
-    // 처음 페이지 초기화/마지막 페이지 초기화
+    // 처음 페이지 초기화 / 마지막 페이지 초기화
     if($startPage < 1) $startPage = 1;
-    if($startPage >= $boardTotalCount) $endPage = $boardTotalCount;
+    if($endPage >= $boardTotalCount) $endPage = $boardTotalCount;
 
-    for ($i = $startPage; $i <= $endPage; $i++){
+    // 처음으로/이전
+    if($page != 1){
+        $prevPage = $page -1;
+        echo "<li class='first'><a href='board.php?page=1'>처음으로</a></li>";
+        echo "<li class='next'><a href='board.php?page={$prevPage}'>이전</a></li>";
+    }
+
+    // 페이지
+    for($i=$startPage; $i<=$endPage; $i++){
         $active = "";
         if($i == $page) $active = "active";
 
         echo "<li class='{$active}'><a href='board.php?page={$i}'>${i}</a></li>";
-        $endPage = min($startPage + ($pageView * 2), $boardTotalCount);
     }
-    // 
+
+    // 마지막으로/다음
+    if($page != $boardTotalCount){
+        $nextPage = $page + 1;
+        echo "<li class='next'><a href='board.php?page={$nextPage}'>다음</a></li>";
+        echo "<li class='last'><a href='board.php?page={$boardTotalCount}'>마지막으로</a></li>";
+    }
+
     
     // for ($i = $startPage; $i <= $endPage; $i++) {
     //     if ($i == $page) {
@@ -203,6 +221,8 @@
     // }
     // echo "<li class='active'><a href='#'>${page}</a></li>";
 
+
+
 ?>
 
                     <!-- <li class="active"><a href="#">1</a></li>
@@ -212,12 +232,11 @@
                     <li><a href="#">5</a></li>
                     <li><a href="#">6</a></li>
                     <li><a href="#">7</a></li> -->
-                    <!-- <li class="next"><a href="board.php?page=<?php echo $page + 1; ?>">다음</a></li> -->
-<?php if ($page < $boardTotalCount): ?>
-                        <li class="next"><a href="board.php?page=<?php echo $page + 1; ?>">다음</a></li>
-<?php endif; ?>
+                    <!-- <li class="next"><a href="board.php?page=">다음</a></li> -->
+
+                        <!-- <li class="next"><a href="board.php?page=">다음</a></li>
                     
-                    <li class="last"><a href="board.php?page=<?php echo $boardTotalCount; ?>">마지막으로</a></li>
+                    <li class="last"><a href="board.php?page=">마지막으로</a></li> -->
                 </ul>
             </div>
         </section>

@@ -110,6 +110,10 @@
 .board_view td:first-child {
     background-color: var(--black500);
 }
+.board_view table tr:last-child td {
+    height: 500px;
+    vertical-align: top;
+}
 .board_view td.view_text {
     font-weight: 400;
 }
