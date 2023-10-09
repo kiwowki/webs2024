@@ -189,7 +189,7 @@ img {
     margin-top: 10px;
 }
 #contents .banner a:hover {
-    background-color: rgba(0, 0, 0, 0.1);
+    background-color: rgba(0, 0, 0, 1);
 }
 
 /* contents : link */
