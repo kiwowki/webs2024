@@ -713,6 +713,23 @@ body::after {
     line-height: 1.6;
     position: relative;
 }
+.cbt_question_desc {
+    border: 1px solid #eaeaea;
+    padding: 10px;
+    margin-top: 10px;
+    color: #666;
+}
+.cbt_question_img {
+    border: 1px solid #eaeaea;
+    margin-top: 10px;
+    padding: 20px;
+    text-align: center;
+}
+.cbt_question_img img {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+}
 .cbt_choices {
     margin-top: 15px;
 }
@@ -810,8 +827,44 @@ body::after {
     padding: 10px 20px;
     border-radius: 40px;
     text-align: center;
+    margin-bottom: 10px;
     cursor: pointer;
     font-weight: 600;
+}
+.cbt_giveup {
+    background-color: #ffd900;
+    color: #000000;
+    padding: 10px 20px;
+    border-radius: 40px;
+    text-align: center;
+    cursor: pointer;
+    font-weight: 600;
+}
+.cbt_answer {
+    position: relative;
+    border: 1px solid #ffd900;
+    padding: 10px 20px 10px 88px;
+    background-color: #fefefe;
+    color: #464322;
+    font-size: 14px;
+    margin-top: 10px;
+    line-height: 1.6;
+}
+.cbt_answer::before {
+    content: '';
+    position: absolute;
+    left: 11px;
+    top: 10px;
+    width: 20px;
+    height: 20px;
+    background-image: url("data:image/svg+xml,%0A%3Csvg xmlns='http://www.w3.org/2000/svg' width='192' height='192' fill='%23ffd900' viewBox='0 0 256 256'%3E%3Crect width='256' height='256' fill='none'%3E%3C/rect%3E%3Cline x1='96' y1='128' x2='160' y2='128' fill='none' stroke='%23ffd900' stroke-linecap='round' stroke-linejoin='round' stroke-width='16'%3E%3C/line%3E%3Cline x1='96' y1='160' x2='160' y2='160' fill='none' stroke='%23ffd900' stroke-linecap='round' stroke-linejoin='round' stroke-width='16'%3E%3C/line%3E%3Cpath d='M56,40H200a8,8,0,0,1,8,8V200a24,24,0,0,1-24,24H72a24,24,0,0,1-24-24V48A8,8,0,0,1,56,40Z' fill='none' stroke='%23ffd900' stroke-linecap='round' stroke-linejoin='round' stroke-width='16'%3E%3C/path%3E%3Cline x1='80' y1='24' x2='80' y2='56' fill='none' stroke='%23ffd900' stroke-linecap='round' stroke-linejoin='round' stroke-width='16'%3E%3C/line%3E%3Cline x1='128' y1='24' x2='128' y2='56' fill='none' stroke='%23ffd900' stroke-linecap='round' stroke-linejoin='round' stroke-width='16'%3E%3C/line%3E%3Cline x1='176' y1='24' x2='176' y2='56' fill='none' stroke='%23ffd900' stroke-linecap='round' stroke-linejoin='round' stroke-width='16'%3E%3C/line%3E%3C/svg%3E");
+    background-size: cover;
+}
+.cbt_answer::after {
+    content: '정답은 : ';
+    position: absolute;
+    left: 35px;
+    top: 10px;
 }
 .cbt_desc {
     position: relative;
@@ -891,6 +944,47 @@ body::after {
     color: #ffd900;
 }
 
+.cbt.good {
+    position: relative;
+}
+.cbt.good::before {
+    content: '';
+    width: 100px;
+    height: 100px;
+    border: 10px solid red;
+    border-radius: 50%;
+    position: absolute;
+    left: 20px; 
+    top: 20px;
+    z-index: 100;
+}
+.cbt.bad {
+    position: relative;
+}
+.cbt.bad::before {
+    content: '';
+    width: 150px;
+    height: 10px;
+    background-color: red;
+    position: absolute;
+    left: 0;
+    top: 80px;
+    border-radius: 30px;
+    transform: rotate(45deg);
+    z-index: 100;
+}
+.cbt.bad::after {
+    content: '';
+    width: 150px;
+    height: 10px;
+    background-color: red;
+    position: absolute;
+    left: 0;
+    top: 80px;
+    border-radius: 30px;
+    transform: rotate(-45deg);
+    z-index: 100;
+}
 @media (max-width: 1200px){
     .cbt_quiz {
         flex-direction: column;

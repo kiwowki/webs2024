@@ -64,6 +64,8 @@
                     <li><a href="#sample19">19. 객체 : 데이터 불러오기 : for in</a></li>
                     <li><a href="#sample20">20. 객체 : 데이터 불러오기 : 객체 펼침 연산자</a></li>
                     <li><a href="#sample21">21. 객체 : 데이터 불러오기 : 객체 구조 분해 할당</a></li>
+                    <li><a href="#sample21">22. 파일 : 서버 데이터 불러오기 : XMLHttpRequest</a></li>
+                    <li><a href="#sample21">23. 파일 : 서버 데이터 불러오기 : fetch API</a></li>
                 </ul>
             </div>
            <!-- //main.menu -->
@@ -1157,6 +1159,39 @@
                 sum += (el)
             })
             console.log(sum)
+        }
+
+
+        // 22. 파일 : 서버 데이터 불러오기 : XMLHttpRequest
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", "https://webstoryboy.github.io/webs2024/json/gineungsaJC2011_05.json", true);
+        
+        xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {   // 서버상태가 괜찮은 상태
+                        var responseData = xhr.responseText;
+                        var jsonData = JSON.parse(responseData);
+    
+                        console.log(jsonData);
+                } else if (xhr.readyState === 4) {      // 서버가 에러가 난 상태
+                        console.error("데이터 불러오기 오류: " + xhr.status);
+                }
+        };
+        
+        xhr.send();
+
+
+        // 23. 파일 : 서버 데이터 불러오기 : fetch API
+        {
+            fetch("https://webstoryboy.github.io/webs2024/json/gineungsaJC2011_05.json")
+                .then(response => {
+                    return response.json();
+                })
+                .then(data => {
+                    console.log(data);
+                })
+                .catch(error => {
+                    console.log(error)
+                })
         }
         </script>
 
