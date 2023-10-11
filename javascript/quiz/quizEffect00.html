@@ -44,6 +44,22 @@
     </footer>
 
     <script>
+                // 포기하기 버튼
+                cbtGiveup.addEventListener("click", () => {
+            const confirmResult = confirm("포기하시겠습니까?");
+            if (confirmResult) {
+                checkAnswers();
+                quizInfo.forEach((question, number) => {
+                    const cbtQuestion = document.querySelector(`.cbt:nth-child(${number + 1})`);
+                    const cbtDesc = cbtQuestion.querySelector(".cbt_desc");
+                    const cbtAnswer = cbtQuestion.querySelector(".cbt_answer");
+                
+                    // 모든 문제의 설명과 정답을 표시
+                    cbtDesc.classList.remove('none');
+                    cbtAnswer.classList.remove('none');
+                });
+            }
+        });
         // 선택자 
         const quizWrap = document.querySelector(".quiz_wrap");
 

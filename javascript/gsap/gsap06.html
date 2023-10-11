@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GSAP scroll Effect06</title>
+
+    <link rel="stylesheet" href="https://webfontworld.github.io/NexonLv1Gothic/NexonLv1Gothic.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        a {
+            color: rgb(255, 255, 255);
+            text-decoration: none;
+        }
+        body {
+            color: rgb(255, 255, 255);
+            background-color: #000000;
+            font-family: 'NexonLv1Gothic';
+
+        }
+        #parallax_title {
+            position: fixed;
+            left: 20px;
+            top: 20px;
+            z-index: 10000;
+        }
+        #parallax_title h1 {
+            font-size: 30px;
+            border-bottom: 1px dashed #ffffff;
+            margin-bottom: 10px;
+            padding-bottom: 5px;
+            font-weight: 400;
+            display: inline-block;
+        }
+        #parallax_title p {
+            font-size: 16px;
+        }
+        #parallax_title ul {
+            margin-top: 10px;
+        }
+        #parallax_title li {
+            display: inline;
+        }
+        #parallax_title li a {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            border: 1px dashed hsl(0, 0%, 100%);
+            text-align: center;
+            line-height: 20px;
+            font-size: 12px;
+            display: inline-block;
+        }
+        #parallax_title li.active a {
+            background-color: #fff;
+            color: #000000;
+        }
+
+        /* parallax_cont */
+        #parallax_cont {
+            max-width: 1600px;
+            width: 98%;
+            margin: 0 auto;
+        }
+        .parallax_item {
+            width: 1000px;
+            max-width: 70vw;
+            margin: 30vw auto;
+            margin-right: 0;
+            text-align: left;
+            position: relative;
+            padding-top: 15vw;
+        }
+        .parallax_item:nth-child(even){
+            margin-left: 0;
+            text-align: right;
+        }
+        .parallax_item_num {
+            font-size: 35vw;
+            position: absolute;
+            left: 5vw;
+            top: -13vw;
+            opacity: 0.7;
+            font-family: "Lato";
+            font-weight: 100;
+        }
+        .parallax_item:nth-child(even) .parallax_item_num{ 
+             /* 짝수의 자식의 넘버 */
+            left: auto; 
+            right: -5vw;
+        }
+        .parallax_item_title {
+            padding-bottom: 5px;
+            font-weight: 400;
+        }
+        .parallax_item_imgWrap {
+            position: relative;
+            width: 100%;
+            /* 어쩌고 비율.. 반응형 가능 */
+            padding-bottom: 56.25%;
+            background-color: #000000;
+            overflow: hidden;
+        }
+        .parallax_item_img {
+            position: absolute;
+            left: -5%;
+            top: -5%;
+            width: 110%;
+            height: 110%;
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-color: cover;
+            /* 채도 0 */
+            filter: saturate(0%);
+            transition: all 1s;
+        }
+        .parallax_item_img:hover {
+            filter: saturate(100%);
+            transform: scale(1.025);
+        }
+        #section1 .parallax_item_img {
+            background-image: url(img/images01-min.jpg);
+        }
+        #section2 .parallax_item_img {
+            background-image: url(img/images02-min.jpg);
+        }
+        #section3 .parallax_item_img {
+            background-image: url(img/images03-min.jpg);
+        }
+        #section4 .parallax_item_img {
+            background-image: url(img/images04-min.jpg);
+        }
+        #section5 .parallax_item_img {
+            background-image: url(img/images05-min.jpg);
+        }
+        #section6 .parallax_item_img {
+            background-image: url(img/images06-min.jpg);
+        }
+        #section7 .parallax_item_img {
+            background-image: url(img/images07-min.jpg);
+        }
+        #section8 .parallax_item_img {
+            background-image: url(img/images08-min.jpg);
+        }
+        #section9 .parallax_item_img {
+            background-image: url(img/images09-min.jpg);
+        }
+        .parallax_item_desc {
+            font-size: 4vw;
+            line-height: 1.4;
+            margin-top: -5vw;
+            margin-left: -4vw;
+            z-index: 100;
+            position: relative;
+            word-break: keep-all;
+        }
+        .parallax_item:nth-child(even) .parallax_item_desc {
+            margin-left: auto;
+            margin-right: -4vw;
+        }
+        /* option */
+        .split > span {
+            display: inline-block;
+            min-width: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header id="parallax_title">
+        <h1>GSAP Parallax Effect06</h1>
+        <p>GSAP scrollTrigger - 텍스트 효과</p>
+        <ul>
+            <li><a href="gsap01.html">1</a></li>
+            <li><a href="gsap02.html">2</a></li>
+            <li><a href="gsap03.html">3</a></li>
+            <li><a href="gsap04.html">4</a></li>
+            <li><a href="gsap05.html">5</a></li>
+            <li class="active"><a href="gsap06.html">6</a></li>
+            <li><a href="gsap07.html">7</a></li>
+            <li><a href="gsap08.html">8</a></li>
+            <li><a href="gsap09.html">9</a></li>
+            <li><a href="gsap10.html">10</a></li>
+            <li><a href="gsap11.html">11</a></li>
+            <li><a href="gsap12.html">12</a></li>
+            <li><a href="gsap13.html">13</a></li>
+            <li><a href="gsap14.html">14</a></li>
+            <li><a href="gsap15.html">15</a></li>
+        </ul>
+    </header>
+    <main id="parallax_cont">
+        <section id="section1" class="parallax_item">
+            <span class="parallax_item_num">01</span>
+            <h2 class="parallax_item_title reveal" data-delay="0.5">section1</h2>
+            <figure class="parallax_item_imgWrap">
+                <div class="parallax_item_img"></div>
+            </figure>
+            <p class="parallax_item_desc reveal" data-delay="0.8">높은 목표를 세우고, 스스로 채찍질 한다.</p>
+        </section>
+        <!-- //section1 -->
+
+        <section id="section2" class="parallax_item">
+            <span class="parallax_item_num">02</span>
+            <h2 class="parallax_item_title reveal reveal_LTR" data-delay="0.5">section2</h2>
+            <figure class="parallax_item_imgWrap reveal reveal_LTR">
+                <div class="parallax_item_img"></div>
+            </figure>
+            <p class="parallax_item_desc reveal reveal_LTR" data-delay="0.8">결과도 중요하지만, 과정을 더 중요하게 생각한다.</p>
+        </section>
+        <!-- //section2 -->
+
+        <section id="section3" class="parallax_item">
+            <span class="parallax_item_num">03</span>
+            <h2 class="parallax_item_title reveal reveal_RTL" data-delay="0.5">section3</h2>
+            <figure class="parallax_item_imgWrap reveal reveal_RTL">
+                <div class="parallax_item_img"></div>
+            </figure>
+            <p class="parallax_item_desc reveal reveal_RTL" data-delay="0.8">매 순간에 최선을 다하고, 끊임없이 변화한다.</p>
+        </section>
+        <!-- //section3 -->
+
+        <section id="section4" class="parallax_item">
+            <span class="parallax_item_num">04</span>
+            <h2 class="parallax_item_title reveal reveal_TTB" data-delay="0.5">section4</h2>
+            <figure class="parallax_item_imgWrap reveal reveal_TTB">
+                <div class="parallax_item_img"></div>
+            </figure>
+            <p class="parallax_item_desc reveal reveal_TTB" data-delay="0.8">모든 일에는 기본을 중요하게 생각한다.</p>
+        </section>
+        <!-- //section4 -->
+
+        <section id="section5" class="parallax_item">
+            <span class="parallax_item_num">05</span>
+            <h2 class="parallax_item_title reveal reveal_BTT" data-delay="0.5">section5</h2>
+            <figure class="parallax_item_imgWrap reveal reveal_BTT">
+                <div class="parallax_item_img"></div>
+            </figure>
+            <p class="parallax_item_desc reveal reveal_BTT" data-delay="0.8">열정을 잃지 않고 실패에서 실패로 걸어가는 것이 성공이다.</p>
+        </section>
+        <!-- //section5 -->
+
+        <section id="section6" class="parallax_item">
+            <span class="parallax_item_num">06</span>
+            <h2 class="parallax_item_title reveal reveal_BTT">section6</h2>
+            <figure class="parallax_item_imgWrap reveal reveal_BTT" data-delay="1">
+                <div class="parallax_item_img"></div>
+            </figure>
+            <p class="parallax_item_desc reveal reveal_TTB" data-delay="0.5">천 마디 말보단 하나의 행동이 더 값지다.</p>
+        </section>
+        <!-- //section6 -->
+
+        <section id="section7" class="parallax_item">
+            <span class="parallax_item_num">07</span>
+            <h2 class="parallax_item_title">section7</h2>
+            <figure class="parallax_item_imgWrap reveal reveal_RTL" data-delay="1">
+                <div class="parallax_item_img"></div>
+            </figure>
+            <p class="parallax_item_desc">조그만 성공에 만족하지 않으며, 방심을 경계한다.</p>
+        </section>
+        <!-- //section7 -->
+
+        <section id="section8" class="parallax_item">
+            <span class="parallax_item_num">08</span>
+            <h2 class="parallax_item_title">section8</h2>
+            <figure class="parallax_item_imgWrap reveal reveal_RTL" data-delay="1">
+                <div class="parallax_item_img"></div>
+            </figure>
+            <p class="parallax_item_desc split">나는 내가 더 노력할수록 운이 더 좋아진다는 걸 발견했다.</p>
+        </section>
+        <!-- //section8 -->
+
+        <section id="section9" class="parallax_item">
+            <span class="parallax_item_num">09</span>
+            <h2 class="parallax_item_title">section9</h2>
+            <figure class="parallax_item_imgWrap reveal reveal_LTR" data-delay="1">
+                <div class="parallax_item_img"></div>
+            </figure>
+            <p class="parallax_item_desc split">꿈이 있다면, 그 꿈을 잡고 절대 놓아주지마라.</p>
+        </section>
+        <!-- //section9 -->
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script>
+        // 단어 쪼개기(원래는 span으로 다 나눠야 했음)
+        // 01. 텍스트 나누기
+        // let text = document.querySelector(".split");
+        // let splitText = text.innerText;
+        // let splitWrap = splitText.split("").join("</span><span>");
+        //     text.innerHTML = splitWrap = "<span>" + splitWrap + "</span>";  // 맨 앞 맨 뒤에도 추가
+        // alert(splitWrap);
+
+        // 02. 모든 텍스트 분리하기
+        // document.querySelectorAll(".split").forEach(text => {
+        //     let splitWrap = text.innerText.split("").join("</span><span aria-hidden='true'>"); // 웹표준 준수하기.
+        //     text.innerHTML = splitWrap = "<span aria-hidden='true'>" + splitWrap + "</span>";
+        //     text.setAttribute("aria-label", text.innerText)
+        // })
+
+        // 03. 모든 텍스트 분리하기 : 여백 포현하기
+        document.querySelectorAll(".split").forEach(text => {
+            let theText = text.innerText;
+            let newText = "";
+
+            for(let i=0; i<text.innerText.length; i++){
+                newText += "<span aria-hidden='true'>";
+
+                    if(text.innerText[i] == " "){
+                        newText += "&nbsp"; // 반 칸만 띄우기
+                    } else {
+                        newText += text.innerText[i];
+                    }
+
+                newText += "</span>";
+            }
+            text.innerHTML = newText;
+            text.setAttribute("aria-label", theText);
+        })
+
+            //
+        gsap.utils.toArray(".split").forEach(text => {
+            gsap.from(text.querySelectorAll("span"), {  // span은 인라인 구조. 따로 인라인블록으로 구조 바꾸기
+                yPercent: 100,       // 그래서 y퍼센트가 적용이 안 됨
+                autoAlpha: 0,
+                duration: 1,
+                ease: "circ.out",
+                // stagger: 0.1,     // 노랜덤 부들거리며 나오기
+                stagger: {
+                    amount: 1,
+                    from: "random"   // 랜덤 효과
+                },
+                scrollTrigger: {
+                    trigger: text,
+                    start: "top bottom",
+                    end: "+400",
+                    markers: true
+                }
+            });
+        });
+
+        // 04. split-type 사용하기
+    </script>
+</body>
+</html>

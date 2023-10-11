@@ -99,7 +99,7 @@
             </select>
             <p>
                 당신의 이름은 <input type="text" class="cbt_select_input"> 입니다.<br>
-                <em class="cbt_select_title">정보처리기능사 2006년 2회</em> 문제를 선택했습니다.<br>
+                <em class="cbt_select_title">정보처리기능사 2005년 2회</em> 문제를 선택했습니다.<br>
                 시작하겠습니까?<br>
                 <i>총 시간은 60분이며, 60점 이상 맞아야 합격입니다.</i>
             </p>
@@ -108,7 +108,7 @@
 
         <div class="cbt_wrap none">
             <div class="cbt_header">
-                <h1 class="cbt_title"></h1>
+                <h1 class="cbt_title">정보처리기능사 2005년 2회</h1>
                 <div class="cbt_time">남은 시간 <span>60분 00초</span></div>
             </div>
             <!-- //cbt_header -->
@@ -124,6 +124,7 @@
                 <div class="cbt_name">수험자 : <span></span></div>
                 <div class="cbt_submit">답안지 제출하기</div>
                 <div class="cbt_giveup">포기하기</div>
+                <div class="cbt_again none">다시시작</div>
                 <div class="cbt_omr">
                     
                 </div>
@@ -155,6 +156,7 @@
         const cbtName = document.querySelector(".cbt_name span");
         const cbtSubmit = document.querySelector(".cbt_submit");
         const cbtGiveup = document.querySelector(".cbt_giveup");
+        const cbtAgain = document.querySelector(".cbt_again");
 
         // 문제 정보
         let quizInfo = [];          // 모든 퀴즈 정보
@@ -262,6 +264,16 @@
             cbtOmr.innerHTML = omr.join('');
         }
 
+        // 시간 표시
+        const displayTime = () => {
+            const munutes = Math.floor(remainingTime / 60); // 분
+            const seconds = remainingTime % 60; // 초
+            cbtTime.textContent = `${munutes}분 ${seconds}초`
+            const formattedMinutes = munutes < 10 ? `0${munutes}` : munutes; // 0 분 처리
+            const formattedSeconds = seconds < 10 ? `0${seconds}` : seconds; // 0 초 처리
+            cbtTime.textContent = `${formattedMinutes}분 ${formattedSeconds}초`;
+        }
+
         // 타이머 작동
         const startTimer = () => {
             timerInterval = setInterval(() => {
@@ -269,12 +281,7 @@
                         remainingTime--;
 
                         // 시간표시
-                        const munutes = Math.floor(remainingTime / 60); // 분
-                        const seconds = remainingTime % 60; // 초
-                        cbtTime.textContent = `${munutes}분 ${seconds}초`
-                        const formattedMinutes = munutes < 10 ? `0${munutes}` : munutes; // 0 분 처리
-                        const formattedSeconds = seconds < 10 ? `0${seconds}` : seconds; // 0 초 처리
-                        cbtTime.textContent = `${formattedMinutes}분 ${formattedSeconds}초`;
+                        displayTime();
 
                     } else {
                         clearInterval(timerInterval);   // 시간이 다 되면 타이머 중지
@@ -330,7 +337,6 @@
                     const selectedChoice = choices[userChoice -1];  // 빨간색
 
                     if(selectedChoice === question.infoAnswer){
-                        quizScore++;
                         quizCorrect++;
                         cbtQuestion.classList.add('good');
                     } else {
@@ -339,7 +345,9 @@
                         cbtAnswer.classList.remove('none');
                     }
                 }
-            })
+            });
+            quizScore = (quizCorrect / quizInfo.length) * 100;
+            alert(`전체 문제 ${quizInfo.length}문제 중에 ${quizCorrect}개를 맞혔습니다. 당신의 점수는 ${quizScore.toFixed(2)}점입니다.`)
         }
 
         // 선택된 보기의 인덱스를 가져오기
@@ -355,19 +363,7 @@
             }
         }
 
-        // 포기하기 버튼
-        cbtGiveup.addEventListener("click", () => {
-            checkAnswers();
-            quizInfo.forEach((question, number) => {
-                const cbtQuestion = document.querySelector(`.cbt:nth-child(${number + 1})`);
-                const cbtDesc = cbtQuestion.querySelector(".cbt_desc");
-                const cbtAnswer = cbtQuestion.querySelector(".cbt_answer");
 
-                // 모든 문제의 설명과 정답을 표시
-                cbtDesc.classList.remove('none');
-                cbtAnswer.classList.remove('none');
-            });
-        })
 
         // 페이지가 로드된 후 실행
         document.addEventListener("DOMContentLoaded", () => {
@@ -395,18 +391,83 @@
 
             // 정답 제출하기 버튼 클릭
             cbtSubmit.addEventListener("click", () => {
-                checkAnswers();
+                // checkAnswers();
 
                 // 모든 문제에 대한 체크 여부 확인
                 const allQuestionChecked = quizInfo.every((_, number) => {
                     return getSelectChoice(number) !== -1;
+                    clearInterval(timerInterval);
                 });
 
                 if(allQuestionChecked){
-                    // checkAnswers();
+                    checkAnswers();
+                    cbtSubmit.classList.add("none");
+                    cbtGiveup.classList.add("none");
+                    cbtAgain.classList.remove("none");
                 } else {
                     alert("모든 문제에 대한 답을 선택해야 합니다. 체크 되지 않은 문제가 있습니다. 정답과 해설을 보고싶다면 포기하기 버튼을 눌러주세요.")
                 }
+            })
+
+            // 포기하기 버튼
+            cbtGiveup.addEventListener("click", () => {
+                alert("포기하시겠습니까? 포기를 하면 정답과 해설을 볼 수 있습니다.")
+                checkAnswers();
+                quizInfo.forEach((question, number) => {
+                    const cbtQuestion = document.querySelector(`.cbt:nth-child(${number + 1})`);
+                    const cbtDesc = cbtQuestion.querySelector(".cbt_desc");
+                    const cbtAnswer = cbtQuestion.querySelector(".cbt_answer");
+
+                    // 모든 문제의 설명과 정답을 표시
+                    cbtQuestion.classList.add("bad");
+                    cbtDesc.classList.remove("none");
+                    cbtAnswer.classList.remove("none");
+                    cbtAgain.classList.remove("none");
+                });
+
+                // 포기하기 버튼 숨김
+                cbtGiveup.classList.add("none");
+                cbtSubmit.classList.add("none");
+                cbtAgain.classList.remove("none");
+                clearInterval(timerInterval);
+            })
+
+            // 다시풀기 버튼
+            cbtAgain.addEventListener("click", () => {
+                cbtBox.classList.remove("none");
+                cbtWrap.classList.add("none");
+
+                // 모든 정답과 해설 숨기기
+                quizInfo.forEach((question, number) => {
+                    const cbtQuestion = document.querySelector(`.cbt:nth-child(${number + 1})`);
+                    const cbtDesc = cbtQuestion.querySelector(".cbt_desc");
+                    const cbtAnswer = cbtQuestion.querySelector(".cbt_answer");
+
+                    
+                    cbtQuestion.classList.remove("good", "bad");
+                    cbtAnswer.classList.add("none");
+                    cbtDesc.classList.add("none");
+                });
+
+                // 모든 선택된 보기 초기화
+                const selectedChoices = document.querySelectorAll('input[type="radio"]:checked');
+                selectedChoices.forEach(choice => {
+                    choice.checked = false;
+                });
+
+                // 타이머 리셋
+                remainingTime = 3600;
+                displayTime();
+                clearInterval(timerInterval);
+                
+                // 점수와 정답 갯수 초기화
+                quizScore = 0;
+                quizCorrect = 0;
+                
+                // 다시풀기 숨김, 제출하기 포기하기 활성화
+                cbtGiveup.classList.remove("none");
+                cbtSubmit.classList.remove("none");
+                cbtAgain.classList.add("none");
             })
         });
     </script>
