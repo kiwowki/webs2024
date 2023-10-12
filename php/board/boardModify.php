@@ -47,12 +47,11 @@
     if($result){
         $info = $result -> fetch_array(MYSQLI_ASSOC);
 
+        echo "<div style='display:none'><label for='boardID'>번호</label><input type='text' id='boardID' name='boardID' class='input_style' value='".$info['boardID']."'></div>";
         echo "<div><label for='boardTitle'>제목</label><input type='text' id='boardTitle' name='boardTitle' class='input_style' value='".$info['boardTitle']."'></div>";
         echo "<div><label for='boardContents'>내용</label><textarea id='boardContents' name='boardContents' rows='20' class='input_style'>".$info['boardContents']."</textarea></div>";
+        echo "<div class='mt50'><label for='boardPass'>비밀번호</label><input type='password' id='boardPass' name='boardPass' class='input_style mb0' autocomplete='off' placeholder='글을 수정하려면 로그인 비밀번호를 입력하셔야 합니다.' required></div>";
     }
-
-    
-
 ?>
                         <!-- <div>
                             <label for="boardTitle">제목</label>
@@ -63,11 +62,10 @@
                             <textarea id="boardContents" name="boardContents" rows="20" class="input_style"></textarea>
                         </div> -->
 
-
-                        <div class="mt50">
+                        <!-- <div class="mt50">
                             <label for="boardPass">비밀번호</label>
                             <input type="password" id="boardPass" name="boardPass" class="input_style" autocomplete="off" placeholder="글을 수정하려면 로그인 비밀번호를 입력하셔야 합니다." required>
-                        </div>
+                        </div> -->
                         <div class="board_btns">
                             <button type="submit" class="btn_style3">수정하기</button>
                         </div>

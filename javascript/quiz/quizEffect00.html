@@ -40,28 +40,14 @@
     <!-- main -->
 
     <footer id="footer">
-        <a href="mailto:ooooo0516@naver.com">ooooo0516@naver.com</a>
+        <a href="mailto:wolves941110@gmail.com">wolves941110@gmail.com</a>
     </footer>
 
     <script>
-                // 포기하기 버튼
-                cbtGiveup.addEventListener("click", () => {
-            const confirmResult = confirm("포기하시겠습니까?");
-            if (confirmResult) {
-                checkAnswers();
-                quizInfo.forEach((question, number) => {
-                    const cbtQuestion = document.querySelector(`.cbt:nth-child(${number + 1})`);
-                    const cbtDesc = cbtQuestion.querySelector(".cbt_desc");
-                    const cbtAnswer = cbtQuestion.querySelector(".cbt_answer");
-                
-                    // 모든 문제의 설명과 정답을 표시
-                    cbtDesc.classList.remove('none');
-                    cbtAnswer.classList.remove('none');
-                });
-            }
-        });
         // 선택자 
         const quizWrap = document.querySelector(".quiz_wrap");
+        const quizDesc = quizWrap.querySelector(".quiz_desc");
+        const quizNext = quizWrap.querySelector(".quiz_next");
 
         let currentIndex = 0;
         let quizInfo = [];          // 모든 퀴즈 정보
@@ -108,8 +94,7 @@
 
             // 선택자
             const quizConfirm = quizWrap.querySelector(".quiz_confirm");
-            const quizDesc = quizWrap.querySelector(".quiz_desc");
-            const quizNext = quizWrap.querySelector(".quiz_next");
+
 
             // 정답 확인 버튼
             quizConfirm.addEventListener("click", () => {
@@ -145,8 +130,12 @@
 
             if (inputValue === corretAnswer) {
                 quizElement.classList.add("good");
+                answerElement.classList.remove("none");
+                quizDesc.classList.remove("none");
             } else {
                 quizElement.classList.add("bad");
+                answerElement.classList.remove("none");
+                quizDesc.classList.remove("none");
             }
         }
 

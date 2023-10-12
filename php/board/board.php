@@ -51,10 +51,10 @@
                         * 총 <em><?=$boardTotalCount?></em>건의 게시물이 등록되어 있습니다.
                     </div>
                     <div class="right">
-                        <form action="boardSearch.html" name="boardSearch" method="get">
+                        <form action="boardSearch.php" name="boardSearch" method="get">
                             <fieldset>
                                 <legend class="blind">게시판 검색 영역</legend>
-                                <input type="search" name="searchKeyword" id="searchKeyword"    placeholder="검색어를 입력하세요!" required>
+                                <input type="search" name="searchKeyword" id="searchKeyword" placeholder="검색어를 입력하세요!" required>
                                 <select name="searchOption" id="searchOption">
                                     <option value="title">제목</option>
                                     <option value="content">내용</option>
@@ -132,13 +132,16 @@
     $viewNum = 10;
     $viewLimit = ($viewNum * $page) - $viewNum;
 
+    
+
     // 1~10 LIMIT 0, 10     ==> page1   ($viewNum * 1) - $viewNum
     // 11~20 LIMIT 10, 10   ==> page2   ($viewNum * 2) - $viewNum
     // 21~30 LIMIT 20, 10   ==> page3   ($viewNum * 3) - $viewNum
     // 31~40 LIMIT 30, 10   ==> page4   ($viewNum * 4) - $viewNum
     
 
-    $sql = "SELECT b.boardID, b.boardTitle, m.youName, b.regTime, b.boardView FROM board b JOIN members m ON(b.memberID = m.memberID) ORDER BY boardID DESC LIMIT 0, 10";
+    $sql = "SELECT b.boardID, b.boardTitle, m.youName, b.regTime, b.boardView FROM board b JOIN members m ON(b.memberID = m.memberID) ORDER BY boardID DESC LIMIT {$viewLimit}, {$viewNum}";
+    
     $result = $connect -> query($sql);
 
     if($result){
@@ -169,11 +172,6 @@
             </div>
             <div class="board_pages">
                 <ul>
-                    
-                <!-- <li class="first"><a href="board.php?page=1">처음으로</a></li>
-
-                        <li class="next"><a href="board.php?page=">이전</a></li> -->
-
 <?php
     // 총 페이지 갯수
     $boardTotalCount = ceil($boardTotalCount/$viewNum);
@@ -208,21 +206,6 @@
         echo "<li class='next'><a href='board.php?page={$nextPage}'>다음</a></li>";
         echo "<li class='last'><a href='board.php?page={$boardTotalCount}'>마지막으로</a></li>";
     }
-
-    
-    // for ($i = $startPage; $i <= $endPage; $i++) {
-    //     if ($i == $page) {
-    //         // 현재 페이지인 경우
-    //         echo "<li class='active'><a href='#'>$i</a></li>";
-    //     } else {
-    //         // 다른 페이지인 경우
-    //         echo "<li><a href='#'>$i</a></li>";
-    //     }
-    // }
-    // echo "<li class='active'><a href='#'>${page}</a></li>";
-
-
-
 ?>
 
                     <!-- <li class="active"><a href="#">1</a></li>

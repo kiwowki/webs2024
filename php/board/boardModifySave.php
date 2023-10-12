@@ -1,69 +1,46 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
 <?php
     include "../connect/connect.php";
     include "../connect/session.php";
 
+    $boardID = $_POST['boardID'];
     $boardTitle = $_POST['boardTitle'];
     $boardContents = $_POST['boardContents'];
-    $memberID = $_SESSION['memberID'];
     $boardPass = $_POST['boardPass'];
-    
+    $memberID = $_SESSION['memberID'];
+
+    // echo $boardID, $boardTitle, $boardContents, $boardPass, $memberID;
 
     $boardTitle = $connect -> real_escape_string($boardTitle);
     $boardContents = $connect -> real_escape_string($boardContents);
-    
-    // SQL 쿼리 작성
-    $sql = "UPDATE board SET boardTitle = '{$boardTitle}', boardContents = '{$boardContents}'";
+    $boardPass = $connect -> real_escape_string($boardPass);
 
-    // SQL 쿼리 실행
+    $sql = "SELECT * FROM members WHERE memberID = {$memberID}";
     $result = $connect -> query($sql);
 
-    if ($result) {
-        // 수정이 성공한 경우
-        echo '<script>alert("수정이 완료되었습니다.");</script>';
-        echo '<script>window.location.href = "board.php";</script>';
+    if($result){
+        $info = $result -> fetch_array(MYSQLI_ASSOC);
+
+        if($info['memberID'] === $memberID && $info['youPass'] === $boardPass){
+            //수정
+            $sql = "UPDATE board SET boardTitle = '{$boardTitle}', boardContents = '{$boardContents}' WHERE boardID = '{$boardID}'";
+            $connect -> query($sql);
+            echo "<script>alert('게시글이 성공적으로 수정되었습니다.')</script>";
+            echo '<script>window.location.href = "board.php";</script>';
+        } else {
+            echo "<script>alert('비밀번호가 틀렸습니다. 다시 한번 확인해주세요!')</script>";
+            echo "<script>window.history.back()</script>";
+        }
     } else {
-        // 수정이 실패한 경우
-        echo '<script>alert("수정에 실패했습니다.");</script>';
-        echo '<script>window.history.back();</script>';
+        echo "<script>alert('관리자에게 문의하세요!')</script>";
     }
-
-    
-
-    // 게시글의 비밀번호 확인
-    // $boardID = $_SESSION['boardID']; // 이 부분을 추가하여 게시글 ID를 받아옵니다.
-
-    
-
-    // // SQL 쿼리 작성
-    // $sql = "SELECT boardPass FROM board WHERE boardID = {$boardID}";
-    // $result = $connect -> query($sql);
-
-    // if ($result) {
-    //     $info = $result -> fetch_array(MYSQLI_ASSOC);
-    //     $storedPass = $info['boardPass'];
-
-    //     // 입력한 비밀번호와 저장된 비밀번호를 비교
-    //     if (password_verify($boardPass, $storedPass)) { // 비밀번호가 일치하는 경우
-    //         $sql = "UPDATE board SET boardTitle = '{$boardTitle}', boardContents = '{$boardContents}' WHERE boardID = {$boardID}";
-    //         // SQL 쿼리 실행
-    //         $result = $connect -> query($sql);
-
-    //         if ($result) {
-    //             // 수정이 성공한 경우
-    //             echo '<script>alert("수정이 완료되었습니다.");</script>';
-    //             echo '<script>window.location.href = "board.php";</script>';
-    //         } else {
-    //             // 수정이 실패한 경우
-    //             echo '<script>alert("수정에 실패했습니다.");</script>';
-    //             echo '<script>window.history.back();</script>';
-    //         }
-    //     } else { // 비밀번호가 일치하지 않는 경우
-    //         echo '<script>alert("비밀번호가 틀렸습니다.");</script>';
-    //         echo '<script>window.history.back();</script>';
-    //     }
-    // } else {
-    //     // 쿼리 실행에 실패한 경우
-    //     echo '<script>alert("오류가 발생했습니다. 관리자에게 문의하세요.");</script>';
-    //     echo '<script>window.history.back();</script>';
-    // }
 ?>
+</body>
+</html>

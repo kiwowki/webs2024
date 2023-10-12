@@ -198,7 +198,7 @@
             <figure class="parallax_item_imgWrap">
                 <div class="parallax_item_img"></div>
             </figure>
-            <p class="parallax_item_desc reveal" data-delay="0.8">높은 목표를 세우고, 스스로 채찍질 한다.</p>
+            <p class="parallax_item_desc split" data-delay="0.8">높은 목표를 세우고, 스스로 채찍질 한다.</p>
         </section>
         <!-- //section1 -->
 
@@ -285,6 +285,7 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://unpkg.com/split-type"></script>
     <script>
         // 단어 쪼개기(원래는 span으로 다 나눠야 했음)
         // 01. 텍스트 나누기
@@ -302,47 +303,69 @@
         // })
 
         // 03. 모든 텍스트 분리하기 : 여백 포현하기
-        document.querySelectorAll(".split").forEach(text => {
-            let theText = text.innerText;
-            let newText = "";
+        // document.querySelectorAll(".split").forEach(text => {
+        //     let theText = text.innerText;
+        //     let newText = "";
 
-            for(let i=0; i<text.innerText.length; i++){
-                newText += "<span aria-hidden='true'>";
+        //     for(let i=0; i<text.innerText.length; i++){
+        //         newText += "<span aria-hidden='true'>";
 
-                    if(text.innerText[i] == " "){
-                        newText += "&nbsp"; // 반 칸만 띄우기
-                    } else {
-                        newText += text.innerText[i];
-                    }
+        //             if(text.innerText[i] == " "){
+        //                 newText += "&nbsp"; // 반 칸만 띄우기
+        //             } else {
+        //                 newText += text.innerText[i];
+        //             }
 
-                newText += "</span>";
-            }
-            text.innerHTML = newText;
-            text.setAttribute("aria-label", theText);
-        })
+        //         newText += "</span>";
+        //     }
+        //     text.innerHTML = newText;
+        //     text.setAttribute("aria-label", theText);
+        // })
 
-            //
-        gsap.utils.toArray(".split").forEach(text => {
-            gsap.from(text.querySelectorAll("span"), {  // span은 인라인 구조. 따로 인라인블록으로 구조 바꾸기
-                yPercent: 100,       // 그래서 y퍼센트가 적용이 안 됨
-                autoAlpha: 0,
-                duration: 1,
-                ease: "circ.out",
-                // stagger: 0.1,     // 노랜덤 부들거리며 나오기
-                stagger: {
-                    amount: 1,
-                    from: "random"   // 랜덤 효과
-                },
-                scrollTrigger: {
-                    trigger: text,
-                    start: "top bottom",
-                    end: "+400",
-                    markers: true
-                }
-            });
-        });
+        //     //
+        // gsap.utils.toArray(".split").forEach(text => {
+        //     gsap.from(text.querySelectorAll("span"), {  // span은 인라인 구조. 따로 인라인블록으로 구조 바꾸기
+        //         yPercent: 100,       // 그래서 y퍼센트가 적용이 안 됨
+        //         autoAlpha: 0,
+        //         duration: 1,
+        //         ease: "circ.out",
+        //         // stagger: 0.1,     // 노랜덤 부들거리며 나오기
+        //         stagger: {
+        //             amount: 1,
+        //             from: "random"   // 랜덤 효과
+        //         },
+        //         scrollTrigger: {
+        //             trigger: text,
+        //             start: "top bottom",
+        //             end: "+400",
+        //             markers: true
+        //         }
+        //     });
+        // });
 
         // 04. split-type 사용하기
+        const target = gsap.utils.toArray(".split");
+
+        target.forEach(target => {
+            let splitclient = new SplitType(target, {type: "line, word, char"});
+            let lines = splitclient.lines;
+            let words = splitclient.words;
+            let chars = splitclient.chars;
+
+            gsap.from(chars, {
+                yPercent: 100,  //문자열이 화면에 나타날 때, y (수직) 방향으로 100%의 거리만큼 이동합니다. 이것은 문자열이 아래에서 위로 올라오는 것을 나타냅니다.
+                opacity: 0, // 문자열의 초기 투명도
+                rotation: 30,
+                duration: 0.7,  // 올라오는 속도
+                stagger: 0.5,   // 부드럽게 올라오는... 속도?
+                scrollTrigger: {
+                    trigger: target,
+                    start: "top bottom",
+                    end: "+400", 
+                    markers: true
+                }
+            })
+        })
     </script>
 </body>
 </html>
