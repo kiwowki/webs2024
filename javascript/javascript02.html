@@ -865,6 +865,74 @@
                 </div>
             </div>
             <!-- // sample21 -->
+
+            <div id="sample22" class="sample">
+                <h3>22. 파일 : 서버 데이터 불러오기 : XMLHttpRequest</h3>
+                <p>XMLHttpRequest는 웹 페이지와 서버 간에 데이터를 비동기적으로 교환하기 위한 JavaScript 객체입니다. 이 객체를 사용하면 웹 페이지에서 서버로 데이터를 보낼 수 있고, 서버로부터 데이터를 받아올 수 있습니다. XMLHttpRequest를 사용하면 페이지를 새로 고치지 않고도 데이터를 동적으로 로드하거나 전송할 수 있어서 웹 애플리케이션을 개발할 때 매우 유용합니다.</p>
+<pre><code class="language-js"> {
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", "https://webstoryboy.github.io/webs2024/json/gineungsaJC2011_05.json", true);
+    
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4 && xhr.status === 200) {   // 서버상태가 괜찮은 상태
+                var responseData = xhr.responseText;
+                var jsonData = JSON.parse(responseData);
+                console.log(jsonData);
+        } else if (xhr.readyState === 4) {      // 서버가 에러가 난 상태
+                console.error("데이터 불러오기 오류: " + xhr.status);
+        }
+    };
+    
+    xhr.send();
+}
+</code></pre>  
+                <p class="desc"><br>
+                    <br>
+
+                </p>
+                <div class="result">
+                    <details>
+                        <summary>결과 확인하기</summary>
+                        <div>
+                            <br>
+                        </div>
+                    </details>
+                </div>
+            </div>
+            <!-- // sample22 -->
+
+            <div id="sample23" class="sample">
+                <h3>23. 파일 : 서버 데이터 불러오기 : fetch API</h3>
+                <p></p>
+<pre><code class="language-js"> {
+    fetch("https://webstoryboy.github.io/webs2024/json/gineungsaJC2011_05.json")
+        .then(response => {
+            return response.json();
+        })
+        .then(data => {
+            console.log(data);
+        })
+        .catch(error => {
+            console.log(error)
+        })
+}
+</code></pre>  
+                <p class="desc"><br>
+                    <br>
+
+                </p>
+                <div class="result">
+                    <details>
+                        <summary>결과 확인하기</summary>
+                        <div>
+                            <br>
+                        </div>
+                    </details>
+                </div>
+            </div>
+            <!-- // sample23 -->
+
+            
            
         </div>  
 

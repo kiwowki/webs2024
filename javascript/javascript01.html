@@ -65,17 +65,17 @@
                     <li><a href="#sample19">19. 객체 : 데이터 저장(키와 값) : 표현방법8 : 객체 + 함수가 있는 방식</a></li>
                     <li><a href="#sample20">20. 객체 : 데이터 저장(키와 값) : 표현방법9 : 객체 구조 분해 할당(리엑트)</a></li>
                     <li><a href="#sample21">21. 객체 : 데이터 저장(키와 값) : 표현방법10 : 객체 펼침연산자</a></li>
-                    <li><a href="#sample21">22. 파일 : 데이터 교환(JSON)</a></li>
+                    <li><a href="#sample22">22. 파일 : 데이터 교환(JSON)</a></li>
                     
                 </ul>
                 <ul>
-                    <li><a href="#sample22">++ 지역변수/전역변수 ++</a></li>
-                    <li><a href="#sample23">++ 연산자(산술/대입/증강/비교/논리/비트) ++</a></li>
-                    <li><a href="#sample29">++ 자료형(숫자/문자열/논리/null/undefined/Object/Array/Function) ++</a></li>
+                    <li><a href="#sample23">++ 지역변수/전역변수 ++</a></li>
+                    <li><a href="#sample24">++ 연산자(산술/대입/증강/비교/논리/비트) ++</a></li>
+                    <li><a href="#sample30">++ 자료형(숫자/문자열/논리/null/undefined/Object/Array/Function) ++</a></li>
                 </ul>
             </div>
             <!-- //main__menu -->
-            
+
             <div class="main__sample">
                 <div id="sample01" class="sample">
                     <h3>01. 변수 : 데이터 저장</h3>
@@ -711,6 +711,34 @@
                     </div>
                 </div>
                 <!-- //sample21 -->
+                <div id="sample22" class="sample">
+                    <h3>22. 파일 : 데이터 교환(JSON)</h3>
+                    <p>JSON(JavaScript Object Notation)은 데이터를 표현하고 교환하기 위한 경량의 데이터 형식입니다. JSON은 텍스트로 구성되며, 사람이 읽고 쓰기 쉽고, 기계가 해석하고 생성하기도 쉽습니다. 주로 웹 애플리케이션과 서버 간 데이터 교환 형식으로 사용됩니다.</p>
+<pre><code class="language-js">{
+    // JSON 데이터를 객체로 변환
+    const jsonSrting = '{"name": "webs", "age": "30"}';
+    const jsonObject = JSON.parse(jsonSrting);
+    console.log(jsonObject.name);
+    
+    // 객체를 json 데이터로 변환
+    const person = {name: "webs", age: 30};
+    const jsonPerson = JSON.stringify(person);
+    console.log(jsonPerson);
+}
+</code></pre>
+                    <p class="desc">JSON.parse(jsonString): 이 함수는 JSON 형식의 문자열(jsonString)을 JavaScript 객체로 변환합니다. JSON 문자열은 이중 따옴표로 묶인 키-값 쌍을 포함하며, 객체의 속성 및 값을 정의합니다. 이 함수를 사용하여 JSON 문자열을 객체로 변환하고 객체 속성에 접근할 수 있습니다.<br>
+                        JSON.stringify(obj): 이 메서드는 JavaScript 객체(obj)를 JSON 형식의 문자열로 변환합니다. 객체를 JSON 문자열로 변환하면 데이터를 전송하거나 저장하기 용이하며, 이 문자열을 나중에 다시 JSON 객체로 파싱할 수 있습니다.</p>
+                    <div class="result">
+                        <details>
+                            <summary>결과 확인하기</summary>
+                            <div>
+                                webs<br>
+                                {"name":"webs","age":30}<br>
+                            </div>
+                        </details>
+                    </div>
+                </div>
+                <!-- //sample22 -->                
 
 
                 <div id="sample22" class="sample">
