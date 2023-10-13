@@ -888,26 +888,24 @@
 </code></pre>  
                 <p class="desc">
                     주어진 URL에서 JSON 데이터를 가져와서 성공적으로 데이터를 받으면 그 데이터를 콘솔에 출력하는 XMLHttpRequest를 수행하는 간단한 JavaScript 코드입니다. 이를 통해 웹 페이지에서 외부 데이터를 비동기적으로 가져와서 처리할 수 있습니다.<br><br>
+                    "GET": HTTP 요청 메서드로, 데이터를 서버로부터 가져오기 위한 메서드를 지정합니다.<br><br>
 
-                    var xhr = new XMLHttpRequest();: XMLHttpRequest 객체를 생성합니다. 이 객체를 사용하여 서버와 통신을 수행합니다.<br>
-                    xhr.open("GET", "...", true);: XMLHttpRequest 객체를 초기화하고, 데이터를 가져올 서버의 URL 및 요청 방식을 설정합니다. 이 경우, GET 요청을 사용하여 주어진 URL에서 데이터를 가져오려고 합니다. 세 번째 매개변수 true는 비동기 요청을 활성화하는 것을 나타냅니다.<br>
-                    xhr.onreadystatechange = function () { ... }: XMLHttpRequest 객체의 상태가 변경될 때 호출되는 함수를 정의합니다. 이 함수는 서버 응답을 처리하는 역할을 합니다.<br>
-                    <br>
+                    var xhr = new XMLHttpRequest() : XMLHttpRequest 객체를 생성합니다. 이 객체를 사용하여 서버와 통신을 수행합니다.<br>
+                    xhr.open("GET", "...", true) : XMLHttpRequest 객체를 초기화하고, 데이터를 가져올 서버의 URL 및 요청 방식을 설정합니다. 이 경우, GET 요청을 사용하여 주어진 URL에서 데이터를 가져오려고 합니다. 세 번째 매개변수 true는 비동기 요청을 활성화하는 것을 나타냅니다.<br>
+                    xhr.onreadystatechange = function () { ... } : XMLHttpRequest 객체의 상태가 변경될 때 호출되는 함수를 정의합니다. 이 함수는 서버 응답을 처리하는 역할을 합니다.<br>
+                    if (xhr.readyState === 4 && xhr.status === 200) { ... } : 서버 응답이 완료되고 HTTP 상태 코드가 200 (성공) 인 경우에만 실행됩니다. 이 상태에서는 서버에서 반환한 데이터를 처리합니다.
+                    var responseData = xhr.responseText : 서버에서 받은 데이터를 변수 responseData에 저장합니다. 이 데이터는 JSON 형식의 문자열로 제공됩니다.<br>
+                    var jsonData = JSON.parse(responseData) : JSON.parse 함수를 사용하여 JSON 문자열을 JavaScript 객체로 변환합니다. responseData의 내용이 이제 JavaScript 객체로 저장됩니다.<br>
+                    else if (xhr.readyState === 4) { ... } : 서버 응답이 완료되었지만 HTTP 상태 코드가 200이 아닌 경우 에러 메시지를 콘솔에 출력합니다.<br>
+                    xhr.send() : XMLHttpRequest 객체를 사용하여 서버에 요청을 보냅니다. 이것이 서버에서 데이터를 요청하고 응답을 대기하는 부분입니다.<br><br>
+                    결론적으로, 이 코드는 주어진 URL에서 JSON 데이터를 가져와서 성공적으로 데이터를 받으면 그 데이터를 콘솔에 출력하는 XMLHttpRequest를 수행하는 간단한 JavaScript 코드입니다. 이를 통해 웹 페이지에서 외부 데이터를 비동기적으로 가져와서 처리할 수 있습니다.<br>
                 </p>
-                <div class="result">
-                    <details>
-                        <summary>결과 확인하기</summary>
-                        <div>
-                            <br>
-                        </div>
-                    </details>
-                </div>
             </div>
             <!-- // sample22 -->
 
             <div id="sample23" class="sample">
                 <h3>23. 파일 : 서버 데이터 불러오기 : fetch API</h3>
-                <p></p>
+                <p>Fetch API는 XMLHttpRequest와 유사한 기능을 제공하지만 더 간결하고 더 현대적인 방법으로 데이터를 요청하고 처리하는 데 사용됩니다.</p>
 <pre><code class="language-js"> {
     fetch("https://webstoryboy.github.io/webs2024/json/gineungsaJC2011_05.json")
         .then(response => {
@@ -921,18 +919,15 @@
         })
 }
 </code></pre>  
-                <p class="desc"><br>
-                    <br>
-
+                <p class="desc">
+                    fetch("https://webstoryboy.github.io/webs2024/json/gineungsaJC2011_05.json") : fetch 함수를 사용하여 지정된 URL에서 데이터를 가져옵니다. 이 코드는 해당 URL로 GET 요청을 보내 데이터를 요청합니다.<br>
+                    .then(response => { ... }) : fetch 함수가 Promise를 반환하므로, 이 Promise의 첫 번째 .then 블록은 HTTP 응답에 대한 처리를 정의합니다. response 매개변수에는 서버 응답이 포함됩니다.<br>
+                    return response.json() : response 객체의 .json() 메서드를 호출하여 JSON 형식의 데이터를 파싱합니다. 이 메서드도 Promise를 반환하므로 데이터가 성공적으로 파싱될 때까지 대기합니다.<br>
+                    .then(data => { ... }) : JSON 데이터 파싱이 성공하면, 이 .then 블록에서 데이터를 처리합니다. data 매개변수에는 파싱된 JSON 데이터가 포함됩니다.
+                    console.log(data) : 파싱된 JSON 데이터를 콘솔에 출력하여 확인합니다.<br>    
+                    .catch(error => { ... }): 이 .catch 블록은 프라미스 체인 중 어떤 단계에서 오류가 발생하면 실행됩니다. 오류 메시지를 콘솔에 출력하여 디버깅과 오류 처리를 도와줍니다.<br><br> 
+                    종합적으로, 이 코드는 지정된 URL에서 데이터를 가져오고, 가져온 데이터가 JSON 형식으로 파싱되면 해당 데이터를 콘솔에 출력하는 과정을 단순화한 것입니다. Fetch API는 많은 웹 애플리케이션에서 데이터 가져오기와 웹 서버와 통신하기 위해 널리 사용되며, 비동기적 작업을 처리하는 데 효과적인 방법을 제공합니다.
                 </p>
-                <div class="result">
-                    <details>
-                        <summary>결과 확인하기</summary>
-                        <div>
-                            <br>
-                        </div>
-                    </details>
-                </div>
             </div>
             <!-- // sample23 -->
 
@@ -944,7 +939,7 @@
     <!-- //main -->
 
         <footer id="footer">
-            <a href="mailto:webstoryboy@naver.com">webstoryboy@naver.com</a>
+            <a href="mailto:wolves941110@gmail.com">wolves941110@gmail.com</a>
         </footer>
         <!-- //footer -->
     </div>
