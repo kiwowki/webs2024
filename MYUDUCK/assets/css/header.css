@@ -1,0 +1,93 @@
+#header {
+    width: 100%;
+    height: 70px;
+    display: flex;
+    background-color: #2e2e2e;
+}
+.logo {
+    width: 15%;
+    height: 70px;
+    margin-left: 50px;
+}
+.logo a {
+    width: 100%;
+    font-size: 50px;
+    font-family: var(--oleo);
+    display: block;
+}
+.category {
+    width: 80%;
+    height: 70px;
+    display: flex;
+    justify-content: flex-end;
+    font-family: var(--hahm);
+}
+.category ul {
+    display: flex;
+    font-size: 22px;
+    align-items: center
+}
+.category ul li {
+    text-align: right;
+    padding: 10px 55px;
+}
+
+/* 햄버거 */
+.header_ham {
+    width: 10%;
+    height: 500px;
+    position: relative;
+}
+#hamIcon {
+    width: 8%;
+    height: 70px;
+    display: block;
+    padding: 22px 0 0 20px;
+}
+#hamIcon span {
+    width: 50px;
+    height: 8px;
+    background-color: #D7D7D7;
+    position: relative;
+    display: inline-block;
+}
+#hamIcon span::before {
+    content: '';
+    width: 50px;
+    height: 8px;
+    background-color: #D7D7D7;
+    position: absolute;
+    left: 0;
+    bottom: 15px;
+}
+#hamIcon span::after {
+    content: '';
+    width: 50px;
+    height: 8px;
+    background-color: #D7D7D7;
+    position: absolute;
+    left: 0;
+    top: 15px;
+}
+.sidemenu {
+    width: 650px;
+    height: 100vh;
+    
+    display: inline-block;
+}
+.sidemenu ul {
+    width: 200%;
+    height: 100vh;
+    background-color: #fff;
+    z-index: 1000000;
+    position: absolute;
+    top: 70px;
+    right: 0;
+}
+.sidemenu li {
+    background-color: #fff;
+}
+.sidemenu li a {
+    background-color: #fff;
+    color: var(--black);
+}
