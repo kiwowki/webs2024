@@ -1,4 +1,6 @@
-
+.none {
+    display: none;
+}
 
 /* 마진 간격 */
 .mt0 {margin-top: 0px !important;}
