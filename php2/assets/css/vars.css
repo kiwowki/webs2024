@@ -3,6 +3,9 @@
     --main-gmark: "GmarketSans";
 
     --primary-color: #eff6ff;
+    --btn: linear-gradient(to bottom, #eff6ff, #fffeef, #ffefef, #effff1);
+    --btn2: linear-gradient(to bottom, #deedff, #fffcd3, #ffd7d7, #d6ffda);
+    --btn3: linear-gradient(to bottom, #bcdafe, #faf5b2, #feb9b9, #bcffc3);
 
     --black: #000;
     --white: #fff;

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원가입 페이지</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body class="gray">
+    <div id="skip">
+        <a href="#header">헤더 영역 바로가기</a>
+        <a href="#main">콘텐츠 영역 바로가기</a>
+        <a href="#footer">푸터 영역 바로가기</a>
+    </div>
+
+    <header id="header" role="banner">
+        <div class="header_inner container">
+            <div class="left">
+                <a href="../index.html">
+                    <span class="blind">메인으로</span>
+                </a>
+            </div>
+            <div class="logo">
+                <a href="main.html">Developer Blog</a>
+            </div>
+            <div class="right">
+                <ul>
+                    <li><a href="join.html">회원가입</a></li>
+                </ul>
+            </div>
+        </div>
+        <nav class="nav_inner">
+            <ul>
+                <li><a href="join.html">회원가입</a></li>
+                <li><a href="login.html">로그인</a></li>
+                <li><a href="boardView.html">게시판</a></li>
+                <li><a href="#">블로그</a></li>
+            </ul>
+        </nav>
+    </header>
+    <!-- header -->
+
+    <main id="main" role="main">
+        <div class="intro_inner bmStyle container">
+            <div class="intro_img">
+                <img srcset="../assets/img/intro01.jpg 1x, ../assets/img/intro01@2x.jpg 2x, ../assets/img/intro01@3x.jpg 3x" alt="">
+            </div>
+            <div class="intro_text">
+                회원가입을 해주시면 다양한 정보를 자유롭게 볼 수 있습니다.
+            </div>
+        </div>
+        <section class="join_inner container">
+            <h2>이용약관</h2>
+            <div class="join_index">
+                <ul>
+                    <li class="active">1</li>
+                    <li>2</li>
+                    <li>3</li>
+                </ul>
+            </div>
+            <div class="join_agree">
+                <div class="agree_box">
+                    <h3 class="blind">강서현 블로그 이용약관</h3>
+                    <div class="scroll">
+                        <p>제1조 목적<br>
+                            본 이용약관은 [블로그 또는 웹사이트 이름] (이하 "운영자" 또는 "사이트")가 제공하는 서비스의 이용조건과 운영에 관한 제반 사항을 규정함을 목적으로 합니다.
+                            이용자는 본 약관을 숙지하고 사이트의 서비스를 이용함으로써 본 이용약관에 동의한 것으로 간주합니다.<br><br>
+
+                            제2조 용어의 정의<br>
+                            "회원"이라 함은 사이트의 약관에 동의하고 회원 가입 절차를 완료한 자로서, 사이트와 이용계약을 체결하고 사이트를 이용하는 자를 말합니다.
+                            "이용계약"이라 함은 사이트이용과 관련하여 사이트와 회원 간에 체결하는 계약을 말합니다.
+                            "회원 아이디(ID)"라 함은 회원의 식별과 회원의 서비스 이용을 위하여 회원별로 부여하는 고유한 문자와 숫자의 조합을 말합니다.<br><br>
+
+                            제3조 서비스의 제공 및 변경<br>
+                            사이트는 이용자에게 블로그 등의 컨텐츠를 제공하며, 필요한 경우 서비스 내용을 변경할 수 있습니다.
+                            사이트는 서비스 변경 시 사전 공지를 할 수 있으며, 이로 인한 이용자의 손해에 대해 사이트는 책임을 지지 않습니다.<br><br>
+
+                            제4조 계정 및 회원 가입<br>
+                            회원 가입을 원하는 자는 사이트가 요구하는 정보를 제공하고, 회원 가입 절차를 완료하여야 합니다.
+                            회원은 자신의 계정(ID)을 관리하고 비밀번호를 안전하게 보관하여야 하며, 회원의 부주의로 인한 계정 정보 유출 또는 비밀번호 분실로 인한 손해에 대한 책임은 회원 본인에게 있습니다.</p>
+                    </div>
+                    <div class="check">
+                        <label for="agreeCheck1">
+                            블로그 이용약관에 동의합니다.
+                            <input type="checkbox" name="agreeCheck1" id="agreeCheck1">
+                            <span class="indicator"></span>
+                        </label>
+                    </div>
+                </div>
+                <div class="agree_box">
+                    <h3 class="blind">강서현 블로그 개인정보취급방침</h3>
+                    <div class="scroll">
+                        <p>
+                            1. 수집하는 개인정보 항목<br>
+                            일반적으로 웹사이트나 블로그에서 수집하는 개인정보 항목은 다음과 같을 수 있습니다:<br>
+                            이름<br>
+                            이메일 주소<br>
+                            전화번호<br>
+                            로그인 정보 (아이디, 비밀번호)<br><br>
+
+                            2. 개인정보의 수집 및 이용 목적<br>
+                            운영자는 개인정보를 다음과 같은 목적으로 수집하고 사용할 수 있습니다:<br>
+                            회원 가입 및 관리<br>
+                            서비스 제공<br>
+                            계약 이행 및 요금 정산<br>
+                            고객 지원 및 문의 응답<br>
+                            보안 및 부정 이용 방지<br>
+                            마케팅 및 광고 활동<br>
+                            법적 의무의 이행<br><br>
+
+                            3. 개인정보의 보유 및 파기<br>
+                            운영자는 개인정보를 이용 목적 달성 후에는 관련 법률 및 규정에 따라 안전하게 보관하며, 이용 목적이 달성되면 지체 없이 파기합니다.<br><br>
+
+                            4. 개인정보의 제3자 제공<br>
+                            운영자는 회원의 동의 없이 개인정보를 제3자에게 제공하지 않으며, 예외적인 경우에도 법률 및 규정에 따라 개인정보를 제공할 수 있습니다.<br><br>
+
+                            5. 개인정보 보호 조치<br>
+                            운영자는 회원의 개인정보 보호를 위해 적절한 기술적, 물리적, 관리적 조치를 취하며, 개인정보 유출, 변조 또는 손상을 방지하기 위한 노력을 기울입니다.<br><br>
+
+                            6. 개인정보에 대한 권리<br>
+                            회원은 자신의 개인정보에 대한 접근, 수정, 삭제 및 이용 중단 요청을 할 수 있으며, 이러한 권리를 행사하는 방법 및 절차를 제공합니다.<br><br>
+
+                            7. 개인정보취급방침 변경<br>
+                            운영자는 개인정보취급방침을 개정할 수 있으며, 변경 사항에 대한 공지를 통해 사용자에게 통지합니다.<br><br>
+                        </p>
+                    </div>
+                    <div class="check">
+                        <label for="agreeCheck2">
+                            블로그 개인정보 수집 및 이용에 동의합니다.
+                            <input type="checkbox" name="agreeCheck2" id="agreeCheck2">
+                            <span class="indicator"></span>
+                        </label>
+                    </div>
+                </div>
+                <button>동의하기</button>
+            </div>
+        </section>
+    </main>
+    <!-- main -->
+    
+    <footer id="footer" role="contentinfo">
+        <div class="footer_inner container btStyle">
+            <div>Copyright 2023 kiwowki</div>
+            <div>blog by kang's</div>
+        </div>
+        
+    </footer>
+    <!-- footer -->
+</body>
+</html>
