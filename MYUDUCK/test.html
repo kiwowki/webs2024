@@ -1,0 +1,129 @@
+<style>
+    /* parallax_cont */
+    #parallax_cont {
+        width: 100%;
+        min-height: 100vh;
+        overflow: hidden;
+        width: 100%;
+        height: 100vh;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .parallax_item {
+        width: 1000px;
+        max-width: 70vw;
+        margin: 30vw auto;
+        margin-right: 0;
+        text-align: left;
+        position: relative;
+        padding-top: 15vw;
+    }
+
+    .parallax_item:nth-child(even) {
+        margin-left: 0;
+        text-align: right;
+    }
+
+    .parallax_item_num {
+        font-size: 35vw;
+        position: absolute;
+        left: 5vw;
+        top: -13vw;
+        opacity: 0.7;
+        font-family: "Lato";
+        font-weight: 100;
+    }
+
+    .parallax_item:nth-child(even) .parallax_item_num {
+        /* 짝수의 자식의 넘버 */
+        left: auto;
+        right: -5vw;
+    }
+
+    .parallax_item_title {
+        padding-bottom: 5px;
+        font-weight: 400;
+    }
+
+    .parallax_item_imgWrap {
+        position: relative;
+        width: 100%;
+        /* 어쩌고 비율.. 반응형 가능 */
+        padding-bottom: 56.25%;
+        background-color: #000000;
+        overflow: hidden;
+    }
+
+    .parallax_item_img {
+        position: absolute;
+        left: -5%;
+        top: -5%;
+        width: 110%;
+        height: 110%;
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-color: cover;
+        /* 채도 0 */
+        filter: saturate(0%);
+        transition: all 1s;
+    }
+
+    .parallax_item_img:hover {
+        filter: saturate(100%);
+        transform: scale(1.025);
+    }
+
+    #section1 .parallax_item_img {
+        background-image: url(img/images01-min.jpg);
+    }
+
+    #section2 .parallax_item_img {
+        background-image: url(img/images02-min.jpg);
+    }
+
+    #section3 .parallax_item_img {
+        background-image: url(img/images03-min.jpg);
+    }
+
+    #section4 .parallax_item_img {
+        background-image: url(img/images04-min.jpg);
+    }
+
+    #section5 .parallax_item_img {
+        background-image: url(img/images05-min.jpg);
+    }
+
+    #section6 .parallax_item_img {
+        background-image: url(img/images06-min.jpg);
+    }
+
+    #section7 .parallax_item_img {
+        background-image: url(img/images07-min.jpg);
+    }
+
+    #section8 .parallax_item_img {
+        background-image: url(img/images08-min.jpg);
+    }
+
+    #section9 .parallax_item_img {
+        background-image: url(img/images09-min.jpg);
+    }
+
+    .parallax_item_desc {
+        font-size: 4vw;
+        line-height: 1.4;
+        margin-top: -5vw;
+        margin-left: -4vw;
+        z-index: 100;
+        position: relative;
+        word-break: keep-all;
+    }
+
+    .parallax_item:nth-child(even) .parallax_item_desc {
+        margin-left: auto;
+        margin-right: -4vw;
+    }
+</style>

@@ -127,40 +127,80 @@
     <!-- footer -->
 
     <script>
-        const searchList = document.querySelectorAll(".search_list ul li");
-        const searchInfoNum = document.querySelector(".search_info .num");
-        const searchSelectSpans = document.querySelectorAll(".search_select span");
-        const searchListContainer = document.querySelector(".search_list ul");
+        // const searchList = document.querySelectorAll(".search_list ul li");
+        // const searchInfoNum = document.querySelector(".search_info .num");
+        // const searchSelectSpans = document.querySelectorAll(".search_select span");
+        // const searchListContainer = document.querySelector(".search_list ul");
 
-        // 초기에 ul을 숨김
-        searchListContainer.style.display = "none";
+        // // 초기에 ul을 숨김
+        // searchListContainer.style.display = "none";
+
+        // // 전체 갯수 구하기
+        // searchInfoNum.textContent = searchList.length;
+
+        // // 검색 영역
+        // searchSelectSpans.forEach(span => {
+        //     span.addEventListener("mouseup", (event) => {
+        //         const selectedText = span.textContent;
+
+        //         searchList.forEach(list => {
+        //             const strongText = list.querySelector("strong").textContent;
+
+        //             if (strongText.startsWith(selectedText)) {
+        //                 list.classList.remove("hide");
+        //             } else {
+        //                 list.classList.add("hide");
+        //             }
+        //         });
+        //         // 갯수 업데이트
+        //         const visibleItems = document.querySelectorAll(".search_list ul li:not(.hide)");
+        //         searchInfoNum.textContent = visibleItems.length;
+
+        //         searchListContainer.style.display = "block";
+        //     });
+        // });
+
+        const searchList = document.querySelectorAll(".search_list ul li");
+        const searchSelect = document.querySelectorAll(".search_select span");
+        const searchInfo = document.querySelector(".search_info");
+        const searchBox = document.querySelector(".search_box input");
+
+        let count = 0;
 
         // 전체 갯수 구하기
-        searchInfoNum.textContent = searchList.length;
+        searchInfo.textContent = "CSS 속성의 갯수는 " + searchList.length + "개 입니다.";
 
-        // 검색 영역
-        searchSelectSpans.forEach(span => {
-            span.addEventListener("mouseup", (event) => {
-                const selectedText = span.textContent;
+        searchSelect.forEach(el => {
+            el.addEventListener("click", () => {
+                const searchWord = el.innerText;        //사용자가 클릭한 알파벳
+                // console.log(searchWord);
 
-                searchList.forEach(list => {
-                    const strongText = list.querySelector("strong").textContent;
+                searchList.forEach(el => {
+                    const cssName = el.querySelector("strong").innerText;       //CSS 속성 텍스트
+                    // console.log(cssName)
 
-                    if (strongText.startsWith(selectedText)) {
-                        list.classList.remove("hide");
+                    //알파벳 첫글자 == CSS 속성의 첫글자
+                    if (searchWord.charAt(0) === cssName.charAt(0)) {
+                        el.classList.remove("hide");
+                        count++;
                     } else {
-                        list.classList.add("hide");
+                        el.classList.add("hide");
                     }
+                    searchInfo.textContent = searchWord.charAt(0) + "로 시작하는 속성은 " + count + "개입니다.";
                 });
-                // 갯수 업데이트
-                const visibleItems = document.querySelectorAll(".search_list ul li:not(.hide)");
-                searchInfoNum.textContent = visibleItems.length;
-
-                searchListContainer.style.display = "block";
+                count = 0;
             });
         });
 
+        // 전체 보기 버튼
+        const showAllButton = document.getElementById("showAll");
 
+        showAllButton.addEventListener("click", () => {
+            searchList.forEach(el => {
+                el.classList.remove("hide");
+            });
+            searchInfo.textContent = "CSS 속성의 갯수는 " + searchList.length + "개입니다.";
+        });
     </script>
 
 </body>
