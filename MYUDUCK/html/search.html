@@ -6,13 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MYUDUCK</title>
     <link rel="stylesheet" href="../assets/css/style.css">
-    <style>
-
-    </style>
 </head>
 
 <body>
-    <header id="header">
+    <header id="header" role="header">
         <h1 class="logo">
             <a href="main.html">myuduck</a>
         </h1>
@@ -58,63 +55,31 @@
         </div>
     </header>
 
-    <main id="parallax_cont">
-        <section id="section1" class="parallax_item">
-            <span class="parallax_item_num">01</span>
-            <div class="parallax_item_img"></div>
-            <div class="parallax_item_title">빨래</div>
-            <p class="parallax_item_desc">서울살이 5년차, 나영. 집세와 나이는 늘어가지만 꿈은 닳아 지워진 지 오래다.<br>
-                작가가 되고 싶었던 꿈과는 달리, 나영의 직업은 서점 직원.</p>
-        </section>
-        <!-- //section1 -->
-
-        <section id="section2" class="parallax_item">
-            <span class="parallax_item_num">02</span>
-            <div class="parallax_item_img"></div>
-            <div class="parallax_item_title">section2</div>
-            <p class="parallax_item_desc">서울살이 5년차, 나영. 집세와 나이는 늘어가지만 꿈은 닳아 지워진 지 오래다.<br>
-                작가가 되고 싶었던 꿈과는 달리, 나영의 직업은 서점 직원.</p>
-        </section>
-        <!-- //section2 -->
-
-        <section id="section3" class="parallax_item">
-            <span class="parallax_item_num">03</span>
-            <div class="parallax_item_img"></div>
-            <div class="parallax_item_title">section3</div>
-            <p class="parallax_item_desc">서울살이 5년차, 나영. 집세와 나이는 늘어가지만 꿈은 닳아 지워진 지 오래다.<br>
-                작가가 되고 싶었던 꿈과는 달리, 나영의 직업은 서점 직원.</p>
-        </section>
-        <!-- //section3 -->
-
-        <section id="section4" class="parallax_item">
-            <span class="parallax_item_num">04</span>
-            <div class="parallax_item_img"></div>
-            <div class="parallax_item_title">section4</div>
-            <p class="parallax_item_desc">서울살이 5년차, 나영. 집세와 나이는 늘어가지만 꿈은 닳아 지워진 지 오래다.<br>
-                작가가 되고 싶었던 꿈과는 달리, 나영의 직업은 서점 직원.</p>
-        </section>
-        <!-- //section4 -->
-
-        <section id="section5" class="parallax_item">
-            <span class="parallax_item_num">05</span>
-            <div class="parallax_item_img"></div>
-            <div class="parallax_item_title">section5</div>
-            <p class="parallax_item_desc">서울살이 5년차, 나영. 집세와 나이는 늘어가지만 꿈은 닳아 지워진 지 오래다.<br>
-                작가가 되고 싶었던 꿈과는 달리, 나영의 직업은 서점 직원.</p>
-        </section>
-        <!-- //section5 -->
-
-        <section id="section6" class="parallax_item">
-            <span class="parallax_item_num">06</span>
-            <div class="parallax_item_img"></div>
-            <div class="parallax_item_title">section6</div>
-            <p class="parallax_item_desc">서울살이 5년차, 나영. 집세와 나이는 늘어가지만 꿈은 닳아 지워진 지 오래다.<br>
-                작가가 되고 싶었던 꿈과는 달리, 나영의 직업은 서점 직원.</p>
-        </section>
-        <!-- //section6 -->
+    <main id="search">
+        <div class="search_inner container">
+            <div class="search_logo">
+                <img src="../assets/img/duck_all_search.png" alt="오페라글래스낀뮤덕로고">
+            </div>
+            <fieldset class="all_search">
+                <legend class="blind">전체 검색 영역</legend>
+                <input type="search" name="searchKeyword" id="searchKeyword" placeholder="검색어를 입력하세요." required>
+                <select name="searchOption" id="searchOption">
+                    <option value="all">전체</option>
+                    <option value="theater">극장</option>
+                    <option value="musical">뮤지컬</option>
+                    <option value="actor">배우</option>
+                </select>
+                <button type="submit">검색</button>
+            </fieldset>
+            <div class="category">
+                <span><a href="theater.html">극장</a></span>
+                <span><a href="musical.html">뮤지컬</a></span>
+                <span><a href="actor.html">배우</a></span>
+            </div>
+        </div>
     </main>
 
-    <footer id="footer">
+    <footer id="footer" role="contentinfo">
         <div class="footer_inner">
             <div class="footer1">
                 <img src="../assets/img/footerMyuduck2.jpg" alt="뮤덕이로고">
@@ -175,49 +140,7 @@
         });
         $(".navbar_menu li:first-child").mouseout(function () {
             $(this).find(".submenu").stop().slideUp();
-        });
-
-
-
-
-        // 03. 스냅 고정 효과 만들기 (이런건 검색해서 찾아서 복사하셈)
-
-        let panels = gsap.utils.toArray(".parallax_item");
-        let tops = panels.map(panel => ScrollTrigger.create({ trigger: panel, start: "top top" }));
-
-        panels.forEach((panel, i) => {
-            ScrollTrigger.create({
-                trigger: panel,
-                start: () => panel.offsetHeight < window.innerHeight ? "top top" : "bottom bottom",
-                pin: true,
-                pinSpacing: false
-            });
-        });
-
-        ScrollTrigger.create({
-            snap: {
-                snapTo: (progress, self) => {
-                    let panelStarts = tops.map(st => st.start),
-                        snapScroll = gsap.utils.snap(panelStarts, self.scroll());
-                    return gsap.utils.normalize(0, ScrollTrigger.maxScroll(window), snapScroll);
-                },
-                duration: 0.5
-            }
-        });
-
-        // 02. 여러개 이질감 표현하기
-        gsap.utils.toArray(".parallax_item_desc, .parallax_item_title").forEach(item => {
-            gsap.to(item, {
-                yPercent: -600,
-                duration: 0.5,
-                scrollTrigger: {
-                    trigger: item,
-                    start: "top bottom",
-                    end: "bottom top",
-                    scrub: 0.5
-                }
-            })
-        });
+        });    
     </script>
 </body>
 
