@@ -3,26 +3,44 @@
     padding: 0;
     box-sizing: border-box;
 }
+
 body {
     background-color: #000;
     color: #fff;
 }
+
+html {
+    font-size: 16px;
+    /* 루트 요소의 기본 폰트 크기를 16px로 설정 */
+}
+
 a {
     text-decoration: none;
     color: #fff;
     font-family: 'NanumSquareNeo';
 }
+
 h1 {
     color: #fff;
 }
-li, ol, ul {
+
+li,
+ol,
+ul {
     list-style: none;
 }
+
 span {
     color: #fff;
 }
+
 .none {
     display: none;
+}
+
+em,
+i {
+    font-style: normal;
 }
 
 
@@ -32,18 +50,21 @@ span {
     height: 100px;
     display: flex;
 }
+
 #header h1 a {
     font-family: 'Cafe24ClassicType';
     position: relative;
     margin-left: 20px;
 }
+
 #header ul {
     display: flex;
     position: absolute;
     right: 20px;
     top: 10px;
-    
+
 }
+
 #header ul li {
     border: 1px solid #fff;
     border-radius: 50%;
@@ -51,9 +72,11 @@ span {
     margin: 5px;
     display: flex;
 }
+
 #header ul li.active {
     background-color: #fff;
 }
+
 #header ul li.active a {
     color: #000;
 }
@@ -62,15 +85,20 @@ span {
 /* search_wrap */
 .search_wrap {
     width: 80%;
-    height: 80vh;
+    height: 83vh;
     border: 5px solid #ffea00;
-    border-top-left-radius: 10px; /* 좌상단 모서리에 둥근 모서리 적용 */
-    border-top-right-radius: 10px; /* 우상단 모서리에 둥근 모서리 적용 */
+    border-top-left-radius: 10px;
+    /* 좌상단 모서리에 둥근 모서리 적용 */
+    border-top-right-radius: 10px;
+    /* 우상단 모서리에 둥근 모서리 적용 */
     text-align: center;
-    display: flex; /* Flexbox 사용 */
+    display: flex;
+    /* Flexbox 사용 */
     flex-wrap: wrap;
-    justify-content: center; /* 수평 가운데 정렬 */
-    align-items: center; /* 수직 가운데 정렬 */
+    justify-content: center;
+    /* 수평 가운데 정렬 */
+    align-items: center;
+    /* 수직 가운데 정렬 */
     margin: 0 auto;
 }
 
@@ -79,11 +107,13 @@ span {
     width: 100%;
     height: 140px;
 }
+
 .search_title span {
     padding: 10px;
     display: inline-block;
     color: #8b8b8b;
 }
+
 .search_title h1 {
     font-family: 'Rebecca';
     font-size: 60px;
@@ -94,9 +124,10 @@ span {
 /* search_box */
 .search_box {
     width: 100%;
-    height: 115px;
+    height: 110px;
     position: relative;
 }
+
 .search_box input {
     width: 40%;
     height: 40px;
@@ -106,25 +137,28 @@ span {
     margin-bottom: 15px;
     box-sizing: border-box;
 }
-.search_box .search_btn {
+
+#searchBtn {
     height: 40px;
     padding: 3px 10px;
     background-color: #ffea00;
     border: 1px solid #ffea00;
     border-radius: 10px;
-    font-size: 18px; 
+    font-size: 18px;
     font-weight: bold;
     position: absolute;
     top: 0;
     left: 71%;
     cursor: pointer;
 }
+
 .search_box p em {
     text-decoration: underline;
     text-underline-position: under;
     font-style: normal;
     color: #ffea00;
 }
+
 .search_box_result {
     display: flex;
     width: 100%;
@@ -135,10 +169,12 @@ span {
     justify-content: center;
     font-family: 'SCoreDream';
 }
+
 .search_box_result::before {
     content: '👍';
     margin-right: 10px;
 }
+
 .search_box_result::after {
     content: '👎';
     margin-left: 10px;
@@ -148,6 +184,7 @@ span {
 .search_select {
     width: 100%;
 }
+
 .search_select span {
     width: 40px;
     height: 40px;
@@ -160,6 +197,7 @@ span {
     padding: 3px;
     cursor: pointer;
 }
+
 .search_select span:hover {
     background-color: #000;
     color: #ffffff;
@@ -171,31 +209,84 @@ span {
 /* search_info */
 .search_info {
     width: 100%;
-    height: 26px;
+    height: 35px;
     text-align: right;
     padding: 0px 40px;
     border-bottom: 3px solid #ffea00;
 }
+
 .search_info .num {
     color: #ffea00de;
 }
 
+/* search_star */
+.search_star {
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    /* Flex 컨테이너로 변경 */
+    flex-wrap: wrap;
+    /* 아이템이 여러 줄에 걸쳐 배치하도록 설정 */
+    justify-content: center;
+    /* 아이템을 수평으로 가운데 정렬 */
+}
+
+.search_star ul {}
+
+.search_star li {
+    border: 1px solid #ffea00;
+    padding: 4px 5px;
+    margin: 5px;
+    /* 마진을 왼쪽/오른쪽으로만 설정 (위/아래 마진은 유연하게 조절됨) */
+    display: inline-flex;
+    /* 아이템 각각을 inline-flex로 설정하여 가로로 쌓이게 함 */
+    justify-content: center;
+    align-items: center;
+}
+
+.search_star li span {}
+
 /* search_list */
 .search_list {
     width: 100%;
-    height: 48vh;
+    height: 50vh;
     overflow: auto;
     text-align-last: left;
-    margin: 10px 10px 10px 30px;
+    margin: 4px 10px 10px 30px;
 }
+
 .hide {
     display: none;
 }
-.search_list li {
-    display: block;
+
+.search_list ul {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
 }
+
+.search_list li {
+    width: 90%;
+    background-color: #000000;
+    border: 1px solid #ffea00;
+    border-radius: 15px;
+    color: #fff;
+    padding: 7px 15px;
+    margin: 0 40px 10px 0;
+    font-family: 'SCoreDream';
+    position: relative;
+}
+
 .search_list li.hide {
     display: none;
+}
+
+.search_list li i {
+    position: absolute;
+    top: 5px;
+    right: 15px;
+    display: inline;
+    text-align: right;
 }
 
 .search_list span {
@@ -208,16 +299,29 @@ span {
     color: #ffffff;
     cursor: pointer;
 }
+
+.search_list span.active {
+    border: 1px dashed #ffffff;
+    background-color: #ffea00;
+    color: #000;
+}
+
 /* scrollbar */
 .search_list::-webkit-scrollbar {
-    width: 5px; /* 스크롤바 너비 조정 */
+    width: 5px;
+    /* 스크롤바 너비 조정 */
 }
+
 .search_list::-webkit-scrollbar-thumb {
-    background-color: #ffea00; /* 스크롤바 염컨(Thumb) 배경 색상 */
-    border-radius: 5px; /* 스크롤바 염컨 모서리 둥글게 설정 */
+    background-color: #ffea00;
+    /* 스크롤바 염컨(Thumb) 배경 색상 */
+    border-radius: 5px;
+    /* 스크롤바 염컨 모서리 둥글게 설정 */
 }
+
 .search_list::-webkit-scrollbar-track {
-    background-color: #000; /* 스크롤바 트랙 배경 색상 */
+    background-color: #000;
+    /* 스크롤바 트랙 배경 색상 */
 }
 
 /* footer */
@@ -225,6 +329,7 @@ span {
     width: 100%;
     height: 70px;
 }
+
 #footer a {
     color: #393939;
     display: flex;
@@ -232,9 +337,28 @@ span {
     padding: 30px;
 }
 
-@media (max-width: 1000px){
+@media (max-width: 1000px) {
     .search_title h1 {
         font-size: 40px;
         padding: 21px;
+    }
+
+    .search_star li {
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 700px) {
+    .search_title {
+        height: 126px;
+    }
+
+    .search_title h1 {
+        font-size: 30px;
+        padding: 21px;
+    }
+
+    .search_star li {
+        font-size: 0.8rem;
     }
 }

@@ -40,7 +40,7 @@
             <div class="search_box">
                 <label for="searchBox" class="none">검색하기</label>
                 <input type="text" id="searchBox" name="searchBox" placeholder="CSS 속성을 검색하면 설명이 나옵니다.">
-                <button class="search_btn">검색</button>
+                <button id="searchBtn" type="button">검색</button>
                 <div class="search_box_result">
                     animation-delay는 애니메이션 지연 시간을 설정합니다.
                 </div>
@@ -138,47 +138,103 @@
         ]
 
         const searchList = document.querySelector(".search_list");
-        const searchSelect = document.querySelectorAll(".search_select span");
         const searchInfo = document.querySelector(".search_info");
         const searchBox = document.querySelector(".search_box input");
         const searchBoxResult = document.querySelector(".search_box_result");
+        const searchButton = document.getElementById("searchBtn");
         
 
         // 출력하기
-        cssProperty.map((element, index) => {
+        cssProperty.map((element, index) => {   // return 생략이라 중괄호
             searchList.innerHTML += `<span>${element.name}</span>`;
         });
+        // cssProperty.map((element, index) => {
+        //     searchList.innerHTML += `<span>${element.name}</span>`;
+        // });
 
-        // 입력하기
-        searchBox.addEventListener("keyup", () => {
-            const searchWord = searchBox.value;
-            // console.log(searchWord);
-            findProperty(searchWord);
-        });
-        const searchListSpan = document.querySelectorAll(".search_list span");
+        // 검색하기
+        function findProperty(searchKeyword){
+            const targetData = cssProperty.find((data) => data.name === searchKeyword);
+            const listItem = searchList.querySelectorAll("span")
 
-        // 버튼 누르기 (span을 어떻게.. 눌러?)
-        searchList.addEventListener("click", (event) => {
-            if (event.target.tagName === "SPAN") {
-                const searchBtn = event.target.textContent;
-                searchBox.value = searchBtn;
-                findProperty(searchBtn);
-            }
-        });
+            // active 제거
+            listItem.forEach(item => item.classList.remove("active"))
 
-        // 속성 찾기
-        function findProperty(searchData) { // map대신 find(배열7번)쓰기 거의 똑같음
-            const targetData = cssProperty.find((data) => data.name === searchData);    // 중괄호생략
-
-            if (targetData == null) {
-                searchBoxResult.textContent = "해당 속성은 존재하지 않습니다. 다시 한번 검색해주세요.";
+            if(targetData == null){
+                searchBoxResult.textContent = "해당 속성이 존재하지 않습니다.";
                 return
             } else {
                 searchBoxResult.textContent = targetData.desc;
+
+                listItem.forEach((item) => {
+                    if(item.textContent === searchKeyword){
+                        // active 추가
+                        item.classList.add("active");
+                    }
+                })
             }
         }
+
+        // 속성 클릭하기
+        document.querySelectorAll(".search_list span").forEach(span => {
+            span.addEventListener("click", () => {
+                const keyword = span.innerText;
+                findProperty(keyword);
+            })
+        })
+
+        // 검색 버튼 클릭하기
+        searchButton.addEventListener("click", () => {
+            const keyword = searchBox.value;
+            findProperty(keyword);
+        });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        // 입력하기
+        // searchBox.addEventListener("keyup", () => {
+        //     const searchWord = searchBox.value;
+        //     // console.log(searchWord);
+        //     findProperty(searchWord);
+        // });
+
+        // 버튼 누르기 (span을 어떻게.. 눌러?)
+        // const searchListSpan = document.querySelectorAll(".search_list span");
+
+        // searchList.addEventListener("click", (event) => {
+        //     if (event.target.tagName === "SPAN") {
+        //         const searchBtn = event.target.textContent;
+        //         searchBox.value = searchBtn;
+        //         findProperty(searchBtn);
+        //         item.classList.remove("active");
+        //     }
+        //     event.target.classList.add("active");
+        // });
+
+        // 속성 찾기
+        // function findProperty(searchData) { // map대신 find(배열7번)쓰기 거의 똑같음
+        //     const targetData = cssProperty.find((data) => data.name === searchData);    // 중괄호생략
+
+        //     if (targetData == null) {
+        //         searchBoxResult.textContent = "해당 속성은 존재하지 않습니다. 다시 한번 검색해주세요.";
+        //         return
+        //     } else {
+        //         searchBoxResult.textContent = targetData.desc;
+        //     }
+        // }
     </script>
-
 </body>
-
 </html>
