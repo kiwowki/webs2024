@@ -1,0 +1,277 @@
+@charset "UTF8";
+
+/* reset */
+* {
+    padding: 0;
+    margin: 0;
+    color: #333;
+}
+
+a {
+    text-decoration: none;
+    color: #333;
+}
+
+li {
+    list-style: none;
+}
+
+img {
+    width: 100%;
+    vertical-align: top;
+}
+
+.none {
+    display: none;
+}
+
+/* wrap */
+#wrap {
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    height: inherit;
+
+}
+
+#container {
+    width: 1200px;
+    height: 700px;
+}
+
+/* header */
+#header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+#header .logo {
+    width: 20%;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f7f7f7;
+}
+
+#header .logo a {
+    color: #5c2b2b;
+}
+
+#header .nav {
+    width: 80%;
+}
+
+#header .nav>ul {
+    height: 100px;
+    display: flex;
+    justify-content: right;
+    background-color: #803232;
+    align-items: flex-end;
+    
+}
+
+#header .nav>ul>li {
+    position: relative;
+}
+
+#header .nav>ul>li>a {
+    padding: 15px 55px;
+    display: inline-block;
+    color: #fff;
+}
+
+#header .nav>ul>li>a:hover {
+    background-color: #bc7676;
+    color: #000000;
+}
+
+#header .nav > ul > li > ul {
+    display: none;
+
+    width: 100%;
+    position: absolute;
+    flex-direction: column;
+}
+
+#header .nav>ul>li>ul>li {
+    width: 100%;
+    
+}
+
+#header .nav>ul>li>ul>li>a {
+    width: 100%;
+    background-color: #864c4c;
+    display: inline-block;
+    padding: 10px 0;
+    color: #fff;
+}
+
+#header .nav>ul>li>ul>li>a:hover {
+    background-color: #c58e8e;
+    color: #000000;
+}
+
+/* slider */
+#slider {
+    width: 100%;
+    height: 300px;
+    background-color: #b2b2b2;
+}
+#slider .sliderWrap {
+    width: 400%;
+    height: 100%;
+    display: flex;
+}
+#slider .sliderWrap .slider {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#slider .sliderWrap .slider .text {
+    background-color: #80323d98;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 30px 30px;
+}
+#slider .sliderWrap .slider .text h3 {
+    color: #fff;
+    font-size: 20px;
+}
+#slider .sliderWrap .slider .text p {
+    color: #fff;
+    margin-top: 5px;
+}
+#slider .sliderWrap .slider.s1 {
+    background-image: url(../images/Frame1.jpg);
+}
+#slider .sliderWrap .slider.s2 {
+    background-image: url(../images/Frame2.jpg);
+}
+#slider .sliderWrap .slider.s3 {
+    background-image: url(../images/Frame3.jpg);
+}
+
+/* main */
+#main {
+    width: 100%;
+    display: flex;
+}
+
+#main .notice_gallery {
+    width: 33.3333%;
+    height: 200px;
+   display: flex;
+}
+#main .notice_gallery .notice {
+    width: 50%;
+    background-color: #8d8c8c;
+}
+#main .notice_gallery .gallery {
+    width: 50%;
+    background-color: #773030;
+}
+
+#main .banner {
+    width: 33.3333%;
+    height: 200px;
+    background-color: #8d7171;
+}
+
+#main .link {
+    width: 33.3333%;
+    height: 200px;
+    background-color: #995151;
+}
+
+/* footer */
+#footer {
+    width: 100%;
+    display: flex;
+    background-color: #f7f7f7;
+}
+
+#footer .footer1 {
+    width: 20%;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+#footer .footer1 a {
+    color: #8d8c8c;
+}
+
+#footer .footer2 {
+    width: 60%;
+    height: 100px;
+}
+
+#footer .footer3 {
+    width: 20%;
+    height: 100px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* popup */
+.popup-view {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    height: 300px;
+    background-color: #83b882;
+    border: 4px solid #2e812d;
+    padding: 20px;
+    display: none;
+}
+
+.popup-view h3 {
+    font-size: 24px;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #2e812d;
+    color: #2e812d;
+}
+
+.popup-close {
+    display: inline-block;
+    padding: 8px 20px;
+    background-color: #2e812d;
+    color: #fff;
+    position: absolute;
+    left: 50%;
+    bottom: 20px;
+    transform: translateX(-50%);
+}

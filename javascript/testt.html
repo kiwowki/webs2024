@@ -1,274 +1,279 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
     <script>
-//1. 데이터 불러오기
-//01. 다음을 보고 결괏값을 작성하시오!
+        //1. 데이터 불러오기
+        //01. 다음을 보고 결괏값을 작성하시오!
 
-{
-        const arr = [100, 200, "javascript"];
+        {
+            const arr = [100, 200, "javascript"];
 
-        document.write(arr[0], arr[1], arr[2]); //100200javascript
-}   
-//02. 다음을 보고 결괏값을 작성하시오!
+            document.write(arr[0], arr[1], arr[2]); //100200javascript
+        }
+        //02. 다음을 보고 결괏값을 작성하시오!
 
-{
-        const arr = [100, 200, 300, 400, 500, 600, 700, 800, 900];
+        {
+            const arr = [100, 200, 300, 400, 500, 600, 700, 800, 900];
 
-        for(let i=0; i<arr.length; i++){
+            for (let i = 0; i < arr.length; i++) {
                 document.write(arr[i]);    // 100200300400500600700800900
+            }
         }
-}   
-//03. 다음을 보고 결괏값을 작성하시오!
+        //03. 다음을 보고 결괏값을 작성하시오!
 
-{
-        const arr = [100, 200, 300, 400, 500, 600, 700, 800, 900];
+        {
+            const arr = [100, 200, 300, 400, 500, 600, 700, 800, 900];
 
-        document.write(el => console.log(el));// 100200300400500600700800900
-}   
-//04. 다음을 보고 결괏값을 작성하시오!
+            document.write(el => console.log(el));// 100200300400500600700800900
+        }
+        //04. 다음을 보고 결괏값을 작성하시오!
 
-{
-        const arr = [100, 200, 300, 400, 500];
+        {
+            const arr = [100, 200, 300, 400, 500];
 
-        for(let element of arr){
+            for (let element of arr) {
                 document.write(element);// 100200300400500600700800900
-        }    
-        document.write("<br>")
-}   
-//05. 다음을 보고 결괏값을 작성하시오!
+            }
+            document.write("<br>")
+        }
+        //05. 다음을 보고 결괏값을 작성하시오!
 
-{
-        const arr = [100, 200];
+        {
+            const arr = [100, 200];
 
-        for(let element in arr){
+            for (let element in arr) {
                 document.write(element + " : " + arr[element]); // 0 : 1001 : 200
-        }
-}   document.write("<br>")
-//06. 다음을 보고 결괏값을 작성하시오!
+            }
+        } document.write("<br>")
+        //06. 다음을 보고 결괏값을 작성하시오!
 
-{
-        const arr = [100, 200, 300, 800, 900];
+        {
+            const arr = [100, 200, 300, 800, 900];
 
-        arr.map(function(element, index){
+            arr.map(function (element, index) {
                 document.write(index); //01234
-        });
-}   document.write("<br>")
-//07. 다음을 보고 결괏값을 작성하시오!
+            });
+        } document.write("<br>")
+        //07. 다음을 보고 결괏값을 작성하시오!
 
-{
-        const arr = [100, 200, 300, 400, 500, 600, 700, 800, 900];
+        {
+            const arr = [100, 200, 300, 400, 500, 600, 700, 800, 900];
 
-        const arrNum = arr.filter((el) => {
+            const arrNum = arr.filter((el) => {
                 return el >= 300;
-        });
+            });
 
-        document.write(arrNum); // 300, 400, 500, 600, 700, 800, 900
-}   
-//08. 다음을 보고 결괏값을 작성하시오!
+            document.write(arrNum); // 300, 400, 500, 600, 700, 800, 900
+        }
+        //08. 다음을 보고 결괏값을 작성하시오!
 
-{
-        const arr1 = [100, 200, 300];
-        const arr2 = [400, 500, 600];
+        {
+            const arr1 = [100, 200, 300];
+            const arr2 = [400, 500, 600];
 
-        console.log(arr1);                  // 100, 200, 300
-        console.log(...arr1);              // 1000 200 300
-        console.log(arr1 + arr2);         // 100,200,300 400,500,600     두 배열을 문자열로 결합하는 연산
-        console.log(...arr1, ...arr2);     // 100 200 300 400 500 600    두 배열을 결합하는 연산
-        console.log(...arr1, 400);       // 100 200 300 400
-        console.log(...arr1.slice(0,2));   // 인덱스[0]부터 2번째 요소까지 100 200
-}   
-//09. 다음을 보고 결괏값을 작성하시오!
+            console.log(arr1);                  // 100, 200, 300
+            console.log(...arr1);              // 1000 200 300
+            console.log(arr1 + arr2);         // 100,200,300 400,500,600     두 배열을 문자열로 결합하는 연산
+            console.log(...arr1, ...arr2);     // 100 200 300 400 500 600    두 배열을 결합하는 연산
+            console.log(...arr1, 400);       // 100 200 300 400
+            console.log(...arr1.slice(0, 2));   // 인덱스[0]부터 2번째 요소까지 100 200
+        }
+        //09. 다음을 보고 결괏값을 작성하시오!
 
-{
-        function addNum(a, b, c) {
+        {
+            function addNum(a, b, c) {
                 return a + b + c;
+            }
+            const num = [100, 250, 350];
+            const sum = addNum(...num); //결과 확인해보기 (num)은 ,가 포함되어 숫자로 인식x
+
+            console.log(sum); // 700
         }
-        const num = [100, 250, 350];
-        const sum = addNum(...num); //결과 확인해보기 (num)은 ,가 포함되어 숫자로 인식x
+        //10. 다음을 보고 결괏값을 작성하시오!
 
-        console.log(sum); // 700
-}   
-//10. 다음을 보고 결괏값을 작성하시오!
+        {
+            const [a, b, c] = [100, 200, 300];
 
-{
-        const [a, b, c] = [100, 200, 300];
-
-        console.log(a);
-        console.log(b);
-        console.log(c);
-}   
-//11. 다음을 보고 결괏값을 작성하시오!
-
-{
-        const arr = [100, 200, 300];
-        const [x, y, z] = arr;
-
-        console.log(x);
-        console.log(y);
-        console.log(z);
-}   
-//12. 다음을 보고 결괏값을 작성하시오!
-
-{
-        const num = [100, 200, 300, 400, 500, 600];
-        const [num1, num2, ...rest] = num;
-
-        console.log(num1);
-        console.log(num2);
-        console.log(...rest);
-        console.log(rest);
-}   
-//13. 다음을 보고 결괏값을 작성하시오!
-
-{
-        const obj = {
-                a: 100,
-                b: 200,
-                c:"javascript"
+            console.log(a);
+            console.log(b);
+            console.log(c);
         }
-        console.log(obj.a);
-        console.log(obj.b);
-        console.log(obj.c);
-}   
-//14. 다음을 보고 결괏값을 작성하시오!
+        //11. 다음을 보고 결괏값을 작성하시오!
 
-{
-        const obj = {
-                a: 100,
-                b: 200,
-                c:"javascript"
+        {
+            const arr = [100, 200, 300];
+            const [x, y, z] = arr;
+
+            console.log(x);
+            console.log(y);
+            console.log(z);
         }
-        console.log(Object.keys(obj));
-        console.log(Object.values(obj));
-        console.log(Object.entries(obj));   // a,100,b,200,c,javascript
-}   
-////15. 다음을 보고 결괏값을 작성하시오!
+        //12. 다음을 보고 결괏값을 작성하시오!
 
-{
-        const obj1 = { 
-                a: 100, 
-                b: 200, 
-                c: "javascript" 
-        };
-        const obj2 = { 
-                d: 300, 
-                e: 400, 
-                f: "jquery" 
-        };
-        const obj3 = Object.assign(obj1, obj2); // 합쳐주는 거
+        {
+            const num = [100, 200, 300, 400, 500, 600];
+            const [num1, num2, ...rest] = num;
 
-        console.log(obj3);  // a: 100, b:200, c: "javas"
-}       document.write(obj3.a); // 100
-////16. 다음을 보고 결괏값을 작성하시오!
-
-{
-        const obj = {
-                a: 100,
-                b: 200,
-                c:"javascript"
+            console.log(num1);
+            console.log(num2);
+            console.log(...rest);
+            console.log(rest);
         }
+        //13. 다음을 보고 결괏값을 작성하시오!
 
-        console.log(obj.hasOwnProperty("a")); //true
-        console.log(obj.hasOwnProperty("b")); //true
-        console.log(obj.hasOwnProperty("c")); //true
-        console.log(obj.hasOwnProperty("d")); //false
-        console.log(obj.hasOwnProperty(200)); //false
-}   
-////17. 다음을 보고 결괏값을 작성하시오!
-
-{
-        const obj = {
-                a: 100,
-                b: 200,
-                c:"javascript"
-        }
-        
-        console.log("a" in obj);
-        console.log("b" in obj);
-        console.log("c" in obj);
-        console.log("d" in obj);
-}   
-////18. 다음을 보고 결괏값을 작성하시오!
-
-{
-        const obj = {
+        {
+            const obj = {
                 a: 100,
                 b: 200,
                 c: "javascript"
+            }
+            console.log(obj.a);
+            console.log(obj.b);
+            console.log(obj.c);
         }
-        for(let el in obj){
-                console.log(el + " : " + obj[el]);
-        }
-}   
-////19. 다음을 보고 결괏값을 작성하시오!
+        //14. 다음을 보고 결괏값을 작성하시오!
 
-{
-        const obj1 = {
+        {
+            const obj = {
+                a: 100,
+                b: 200,
+                c: "javascript"
+            }
+            console.log(Object.keys(obj));
+            console.log(Object.values(obj));
+            console.log(Object.entries(obj));   // a,100,b,200,c,javascript
+        }
+        ////15. 다음을 보고 결괏값을 작성하시오!
+
+        {
+            {
+                const obj1 = {
+                    a: 100,
+                    b: 200,
+                    c: "javascript"
+                };
+                const obj2 = {
+                    d: 300,
+                    e: 400,
+                    f: "jquery"
+                };
+                const obj3 = Object.assign(obj1, obj2); // 합쳐주는 거
+
+                console.log(obj3);  // a: 100, b:200, c: "javas"
+            }
+
+        }
+        ////16. 다음을 보고 결괏값을 작성하시오!
+
+        {
+            const obj = {
+                a: 100,
+                b: 200,
+                c: "javascript"
+            }
+
+            console.log(obj.hasOwnProperty("a")); //true
+            console.log(obj.hasOwnProperty("b")); //true
+            console.log(obj.hasOwnProperty("c")); //true
+            console.log(obj.hasOwnProperty("d")); //false
+            console.log(obj.hasOwnProperty(200)); //false
+        }
+        ////17. 다음을 보고 결괏값을 작성하시오!
+
+        {
+            const obj = {
+                a: 100,
+                b: 200,
+                c: "javascript"
+            }
+
+            console.log("a" in obj);
+            console.log("b" in obj);
+            console.log("c" in obj);
+            console.log("d" in obj);
+        }
+        ////18. 다음을 보고 결괏값을 작성하시오!
+
+        {
+            const obj = {
+                a: 100,
+                b: 200,
+                c: "javascript"
+            }
+            for (let el in obj) {
+                console.log(el + " : " + obj[el]);
+            }
+        }
+        ////19. 다음을 보고 결괏값을 작성하시오!
+
+        {
+            const obj1 = {
                 a: 100,
                 b: 200,
                 c: "javascript",
-        }
-        const obj2 = {
+            }
+            const obj2 = {
                 d: 300,
                 e: 400,
                 f: "jquery",
+            }
+            const obj3 = { ...obj1, ...obj2 }
+            const obj4 = { ...obj1, d: "jquery" }
+            const obj5 = { ...obj1, b: 300 }
+
+            console.log(obj3); // a:100, b:200, c:"javas"
+
+            console.log(obj4); // a:100, b:200, c:"jque"
+            console.log(obj4.d); // jquery
+            console.log(obj5); // a:100, b: 300, c:"java"
         }
-        const obj3 = {...obj1, ...obj2}
-        const obj4 = {...obj1, d: "jquery"}
-        const obj5 = {...obj1, b: 300}
+        ////20. 다음을 보고 결괏값을 작성하시오!
 
-        console.log(obj3); // a:100, b:200, c:"javas"
-        document.log(obj3.a); // 100
-        console.log(obj4); // a:100, b:200, c:"jque"
-        console.log(obj4.d); // jquery
-        console.log(obj5); // a:100, b: 300, c:"java"
-}   
-////20. 다음을 보고 결괏값을 작성하시오!
-
-{
-        const obj1 = {
+        {
+            const obj1 = {
                 a: 100,
                 b: 200,
                 c: "javascript",
-        }
-        const { a, b, c } = obj1;
+            }
+            const { a, b, c } = obj1;
 
-        console.log(a);
-        console.log(b);
-        console.log(c);
+            console.log(a);
+            console.log(b);
+            console.log(c);
 
-        const { a: x, b: y, c: z } = obj1;
+            const { a: x, b: y, c: z } = obj1;
 
-        console.log(x);
-        console.log(y);
-        console.log(z);
+            console.log(x);
+            console.log(y);
+            console.log(z);
 
-        const obj2 = {
+            const obj2 = {
                 d: 100,
                 e: 200,
                 f: "javascript",
-        }.
+            }
 
-        console.log(g);
 
-        const obj3 = {
+
+            const obj3 = {
                 x1: 100,
-                y1: {a1: 100, b1: 200},
+                y1: { a1: 100, b1: 200 },
                 z1: "javascript",
+            }
+            const { x1, y1: { a1, b1 }, z1 } = obj3;
+
+            console.log(x1);
+            console.log(a1);
+            console.log(b1);
+            console.log(z1);
         }
-        const { x1, y1: {a1, b1}, z1} = obj3;
-
-        console.log(x1);
-        console.log(a1);
-        console.log(b1);
-        console.log(z1);
-}   
 
 
 
@@ -298,164 +303,164 @@
 
 
 
-// 2023.10.13
-//1. 데이터 저장하기
-//01. 다음의 결괏값을 작성하시오!
+        // 2023.10.13
+        //1. 데이터 저장하기
+        //01. 다음의 결괏값을 작성하시오!
 
-{
-        const info = {
+        {
+            const info = {
                 num: 18,
                 str: "함수가 실행되었습니다.",
                 result: () => {
-                        console.log(`${info.num}. ${info.str}`);
+                    console.log(`${info.num}. ${info.str}`);
                 }
+            }
+            info.result();
         }
-        info.result();
-}   
-//02. 다음의 결괏값을 작성하시오!
+        //02. 다음의 결괏값을 작성하시오!
 
-{
-        function Func(num, str){
+        {
+            function Func(num, str) {
                 this.num = num;
                 this.str = str;
-        }
+            }
 
-        Func.prototype.result = function(){
+            Func.prototype.result = function () {
                 console.log(`${this.num}. ${this.str}`);
+            }
+
+            const info1 = new Func(21, "함수가 실행되었습니다.");
+            const info2 = new Func(22, "함수가 실행되었습니다.");
+
+            info1.result();
+            info2.result();
         }
+        //03. 다음의 결괏값을 작성하시오!
 
-        const info1 = new Func(21, "함수가 실행되었습니다.");
-        const info2 = new Func(22, "함수가 실행되었습니다.");
-
-        info1.result();
-        info2.result();
-}   
-//03. 다음의 결괏값을 작성하시오!
-
-{
-        (() => {
+        {
+            (() => {
                 document.write("26. 함수가 실행되었습니다.");
-        })();
-}   
-//04. 다음의 결괏값을 작성하시오!
+            })();
+        }
+        //04. 다음의 결괏값을 작성하시오!
 
-{
-        function func(index){
+        {
+            function func(index) {
                 console.log("함수가 실행되었습니다." + index);
-        }
-        function callback(num){
-                for( let i=1; i<=1; i++){
-                        num(i);
+            }
+            function callback(num) {
+                for (let i = 1; i <= 1; i++) {
+                    num(i);
                 }
+            }
+            callback(func);
         }
-        callback(func);
-}   
-//05. 다음의 결괏값을 작성하시오!
+        //05. 다음의 결괏값을 작성하시오!
 
-{
-        const func1 = (str = "28. 함수가 실행되었습니다.") => {
+        {
+            const func1 = (str = "28. 함수가 실행되었습니다.") => {
                 document.write(str);
+            }
+            func1();
         }
-        func1();
-}   
-//06. 다음의 결괏값을 작성하시오!
+        //06. 다음의 결괏값을 작성하시오!
 
-{
-        function func1(num){
-                if(num < 1) return;
+        {
+            function func1(num) {
+                if (num < 1) return;
 
                 document.write("30. 함수가 실행되었습니다.");
-                func1(num - 1);   
+                func1(num - 1);
+            }
+            func1(8);       //8번
         }
-        func1(8);       //8번
-}   
-//07. 다음의 결괏값을 작성하시오!
+        //07. 다음의 결괏값을 작성하시오!
 
-{
-        function func3(num){
+        {
+            function func3(num) {
                 document.write(num + ". 함수가 실행되었습니다.");
-        }
-        function func4(callback){
-                for(let i=33; i<=38; i++){
-                        callback(i);
+            }
+            function func4(callback) {
+                for (let i = 33; i <= 38; i++) {
+                    callback(i);
                 }
+            }
+            func4(func3);   // 33~38
         }
-        func4(func3);   // 33~38
-}   
-//08. 다음의 결괏값을 작성하시오!
+        //08. 다음의 결괏값을 작성하시오!
 
-{
-        function func3( ){
-                setTimeout(( ) => {
-                        document.write("41. 함수가 실행되었습니다.");
-                }, 1000);  
-        }
-        function func4( ){
+        {
+            function func3() {
+                setTimeout(() => {
+                    document.write("41. 함수가 실행되었습니다.");
+                }, 1000);
+            }
+            function func4() {
                 document.write("42. 함수가 실행되었습니다.");   // 얘 먼저
+            }
+
+            func3();
+            func4();
         }
+        //09. 다음의 결괏값을 작성하시오!
 
-        func3( );
-        func4( );
-}   
-//09. 다음의 결괏값을 작성하시오!
+        {
+            let data = false;
 
-{
-        let data = false;
-
-        const func = new Promise((resolve, reject) => {
-                if(data){
-                        resolve("45. 함수가 실행되었습니다.");
+            const func = new Promise((resolve, reject) => {
+                if (data) {
+                    resolve("45. 함수가 실행되었습니다.");
                 } else {
-                        reject("45. 함수가 실행되지 않았습니다.");      //이걸로
+                    reject("45. 함수가 실행되지 않았습니다.");      //이걸로
                 }
-        });
+            });
 
-        func
+            func
                 .then(
-                        result => document.write(result)
+                    result => document.write(result)
                 )
                 .catch(
-                        error => document.write(error)
+                    error => document.write(error)
                 )
-}   
-//10. 다음의 결괏값을 작성하시오!
+        }
+        //10. 다음의 결괏값을 작성하시오!
 
-{
-        function func(num, name, word){
+        {
+            function func(num, name, word) {
                 this.num = num;
                 this.name = name;
                 this.word = word;
+            }
+
+            func.prototype.result = function () {
+                console.log(this.num + ". " + this.name + "가 " + this.word + "되었습니다.");
+            }
+
+            const info1 = new func("1", "함수", "실행");    // 이걸로
+            const info2 = new func("2", "자바스크립트", "실행");
+            const info3 = new func("3", "제이쿼리", "실행");
+
+            info1.result();
         }
+        //11. 다음의 결괏값을 작성하시오!
 
-        func.prototype.result = function(){
-                console.log(this.num + ". " + this.name + "가 "+ this.word + "되었습니다.");
+        {
+            const arr = [100, 200, 300, 400, 500];
+
+            const text1 = arr.join("*");
+            const text2 = arr.join("-");
+            const text3 = arr.join("");
+            const text4 = arr.join(" ");
+
+            console.log(text1);
+            console.log(text2);     // 100_200_300어쩌고
+            console.log(text3);     // 100200300400500
+            console.log(text4);     // 100 200 300 400 500
         }
+        //12. 다음의 결괏값을 작성하시오!
 
-        const info1 = new func("1", "함수", "실행");    // 이걸로
-        const info2 = new func("2", "자바스크립트", "실행");
-        const info3 = new func("3", "제이쿼리", "실행");
-
-        info1.result();
-}   
-//11. 다음의 결괏값을 작성하시오!
-
-{
-        const arr = [100, 200, 300, 400, 500];
-
-        const text1 = arr.join("*");
-        const text2 = arr.join("-");
-        const text3 = arr.join("");
-        const text4 = arr.join(" ");
-
-        console.log(text1);
-        console.log(text2);     // 100_200_300어쩌고
-        console.log(text3);     // 100200300400500
-        console.log(text4);     // 100 200 300 400 500
-}   
-//12. 다음의 결괏값을 작성하시오!
-
-{
-        function func(){
+        {
+            function func() {
                 let i = 10, j = 10, k = 30;
                 i /= j;
                 j -= i;
@@ -464,113 +469,354 @@
                 console.log(i); // 1
                 console.log(j); // 9
                 console.log(k); // 3
+            }
+            func();
         }
-        func();
-}   
-//13. 다음의 결괏값을 작성하시오!
+        //13. 다음의 결괏값을 작성하시오!
 
-{
-        let k = 0;
-        let temp;
-        for(let i=0; i<=3; i++){
+        {
+            let k = 0;
+            let temp;
+            for (let i = 0; i <= 3; i++) {
                 temp = k;
                 k++;
                 console.log(temp + "번"); // 0번 1번 2번 3번
+            }
         }
-}   
-//14. 다음의 결괏값을 작성하시오!
+        //14. 다음의 결괏값을 작성하시오!
 
-{
-        let num1 = 3;
-        let num2 = 7;
-        if(++num1 < 5 || ++num2 > 8){
+        {
+            let num1 = 3;
+            let num2 = 7;
+            if (++num1 < 5 || ++num2 > 8) {
                 console.log(num1); // 4
+            }
+            console.log(num2)  // 7
         }
-        console.log(num2)  // 7
-}   
-//15. 다음의 결괏값을 작성하시오!
+        //15. 다음의 결괏값을 작성하시오!
 
-{
-        let num = [1, 5, 1, 2, 7, 5];
+        {
+            let num = [1, 5, 1, 2, 7, 5];
 
-        for(let i=0; i<6; i++){
-                if((i+1) % 2 == 0){             // 짝수만
-                        console.log(num[i]);    // 5 2 5
+            for (let i = 0; i < 6; i++) {
+                if ((i + 1) % 2 == 0) {             // 짝수만
+                    console.log(num[i]);    // 5 2 5
                 }
+            }
         }
-}   
-//16. 다음의 결괏값을 작성하시오!
+        //16. 다음의 결괏값을 작성하시오!
 
-{
-        let num = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+        {
+            let num = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 
-        for(let i=9; i>=0; i--){
-                switch(num[i] % 2){     // 9 8 7 6 5 4 3 2 1 0
-                        case 1:
-                            console.log(num[i]);        // 9 7 5 3 1
-                            break;
-                        default:
-                            console.log("*");   // *(8일때) * * * * *
+            for (let i = 9; i >= 0; i--) {
+                switch (num[i] % 2) {     // 9 8 7 6 5 4 3 2 1 0
+                    case 1:
+                        console.log(num[i]);        // 9 7 5 3 1
+                        break;
+                    default:
+                        console.log("*");   // *(8일때) * * * * *
                 }
+            }
         }
-}   
-//17. 다음의 결괏값을 작성하시오!
+        //17. 다음의 결괏값을 작성하시오!
 
-{
-        let cnt = 0;
-        let sum = 0;
-        for(let i=0; i<=7; i++){                
-                if(i%2 == 1){
-                        cnt++;  
-                        sum = sum + i;
+        {
+            let cnt = 0;
+            let sum = 0;
+            for (let i = 0; i <= 7; i++) {
+                if (i % 2 == 1) {
+                    cnt++;
+                    sum = sum + i;
                 }
+            }
+            console.log(cnt + ", " + sum);    // 4 16
         }
-        console.log(cnt + ", "+sum);    // 4 16
-}   
-//18. 다음의 결괏값을 작성하시오!
+        //18. 다음의 결괏값을 작성하시오!
 
-{
-        let data = [70, 80, 75, 60, 90];
-        let best = 1;
-        let score = 0;
+        {
+            let data = [70, 80, 75, 60, 90];
+            let best = 1;
+            let score = 0;
 
-        for(let i=0; i<data.length; i++){
-                if(data[i]>80) {
-                        best++;
+            for (let i = 0; i < data.length; i++) {
+                if (data[i] > 80) {
+                    best++;
                 }
-                if(score < data[i]) {
-                        score = data[i];
+                if (score < data[i]) {
+                    score = data[i];
                 }
+            }
+
+            console.log(best, score)        // 2, 90
         }
+        //19. 다음의 결괏값을 작성하시오!
 
-        console.log(best, score)        // 2, 90
-}   
-//19. 다음의 결괏값을 작성하시오!
+        {
+            let a, b, result;
+            a = 7, b = 4
+            result = a & b;
 
-{
-        let a, b, result;
-        a = 7, b = 4
-        result = a & b;
+            console.log(result)
+        }
+        //20. 다음의 결괏값을 작성하시오!
 
-        console.log(result)
-}   
-//20. 다음의 결괏값을 작성하시오!
-
-{
-        function solution(a, b, c){
-                let answer="YES", max;
+        {
+            function solution(a, b, c) {
+                let answer = "YES", max;
                 let tot = a + b + c;
 
-                if(a > b) max = a;
+                if (a > b) max = a;
                 else max = b;
-                if(c > max) max = c;
-                if(tot-max <= max) answer = "NO"; 
-                
+                if (c > max) max = c;
+                if (tot - max <= max) answer = "NO";
+
                 return answer;
+            }
+
+            console.log(solution(13, 33, 17));
         }
 
-        console.log(solution(13, 33, 17));
-}   
+
+
+
+        // 10.20(금)
+        //01. 다음의 결괏값을 작성하시오.
+        {
+            let num = 0;
+
+            while (false) {
+                num++;
+                if (num == 3) {
+                    continue;
+                }
+                if (num > 10) {
+                    break;
+                }
+            }
+            console.log(num);
+        }
+        //02. 다음의 결괏값을 작성하시오.
+        {
+            let a = 6, b = 9, c = 3, result;
+            result = ++a + b++ + ++c;
+
+            console.log(result);
+            console.log(a + b + c);
+        }
+        //03. 결괏값을 작성하시오.
+        {
+            function func() {
+                let a = [];
+
+                for (i = 1; i <= 5; i++) {
+                    a += [i];
+                }
+                console.log(a);
+            }
+            func();
+        }
+        //04. 결괏값을 작성하시오.
+        {
+            let arr = [3, 4, 1, 4, 1, 3, 4, 9, 8, 3];
+
+            for (let i = 0; i < 10; i++) {
+                if (i % 3 == 2) {
+                    console.log(arr[i]);
+                }
+            }
+
+
+        }
+        //05. 결괏값을 작성하시오.
+        {
+            function func(num1, num2) {
+                if (num1 > num2) return num1
+                else return num2
+            }
+            console.log(func(17, 23) + func(50, 40))
+        }
+        //06. 결괏값을 작성하시오.
+        {
+            function func(index) {
+                console.log("함수가 실행되었습니다." + index);
+            }
+            function callback(num) {
+                for (let i = 0; i <= 5; i++) {
+                    num(i);
+                }
+            }
+            callback(func);
+        }
+        //07. 결괏값을 작성하시오.
+        {
+            for (let i = 1; i <= 5; i++) {
+                console.log(i);
+
+                if (i == 4) {
+                    break;
+                }
+            }
+        }
+        //08. 결괏값을 작성하시오.
+        {
+            const arr = [100, 200, 300, 400, 500];
+
+            const text1 = arr.join("*");
+            arr.push("600");
+            const text3 = arr.join("");
+            arr.pop();
+            const text4 = arr.join(" ");
+
+            console.log(text1);
+            console.log(text3);
+            console.log(text4);
+        }
+        //09. 다음을 결과값을 작성하시오.
+        {
+            let a, b = 10;
+
+            for (let i = 0; i < 5; i++) {
+                a = i;
+                b -= a;
+            }
+            console.log(a, b)   // 4 0
+        }
+        //10. 다음을 결과값을 작성하시오.
+        {
+            function func() {
+                let i = 10, j = 20, k = 30;
+                i /= j;
+                j -= i;
+                k %= j;
+
+                console.log(i);
+                console.log(j);
+                console.log(k);
+            }
+            func();
+        }
+        //11. 다음을 결과값을 작성하시오.
+        {
+            let k = 2;
+            let temp;
+            for (let i = 0; i <= 3; i++) {
+                temp = k;
+                k++;
+                console.log(temp + "번");       // 2 3 4 5
+            }
+        }
+        //12. 다음을 결과값을 작성하시오.
+        {
+            let num = 10;
+            num += 2;
+            num -= 3;
+            num *= 5;
+            num /= 5;
+            num %= 9;
+
+            console.log(num)
+        }
+        //13. 다음을 결과값을 작성하시오.
+        {
+            let num = [1, 5, 1, 2, 7, 5];
+            for (let i = 0; i < 6; i++) {
+                if ((i + 2) % 2 == 0) {
+                    console.log(num[i]);
+                }
+            }
+        }
+        //14. 다음을 결과값을 작성하시오.
+        {
+            let num = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+            for (let i = 0; i <= 9; i++) {
+                switch (num[i] % 2) {
+                    case 1:
+                        console.log(num[i]);
+                        break;
+                    default:
+                        console.log("**");      // **1**2 ...
+                }
+            }
+        }
+        //15. 다음을 결과값을 작성하시오.
+        {
+            let cnt = 0;
+            let sum = 0;
+            for (let i = 0; i <= 7; i++) {
+                if (i % 2 == 1) {
+                    cnt++;
+                    sum += i;
+                }
+            }
+            console.log(cnt + ", " + sum / 2);
+        }
+        //16. 다음을 결과값을 작성하시오.
+        {
+            let data = [70, 80, 75, 60, 90];
+            let best = 1;
+            let score = 0;
+
+            for (let i = 0; i < data.length; i++) {
+                if (data[i] >= 80) {
+                    best++;
+                }
+                if (score < data[i]) {
+                    score = data[i];
+                }
+            }
+
+            console.log(best, score)
+        }
+        //17. 다음을 결과값을 작성하시오.
+        {
+            let a, b, result;
+            a = 7, b = 4
+            result = a | b;
+
+            console.log(result) //7
+        }
+        //18. 다음을 결과값을 작성하시오.
+        {
+            function solution(a, b, c) {
+                let answer = "YES", max;
+                let total = a + b + c;
+
+                if (a > b) max = a;
+                else max = b;
+                if (c > max) max = c;
+                if (total - max <= max) answer = "NO";
+
+                return answer;
+            }
+
+            console.log(solution(53, 93, 107));
+        }
+        //19. 다음을 결과값을 작성하시오.
+        {
+            function solution(a, b, c) {
+                let answer;
+                if (a < b) answer = a;
+                else answer = b;
+                if (c <= answer) answer = c;
+                return answer;
+            }
+            console.log(solution(15, 12, 11));
+        }
+        //20. 다음을 결과값을 작성하시오.
+        {
+            function solution(day, arr) {
+                let answer = 0;
+                for (let x of arr) {
+                    if (x % 10 == day) answer++;
+                }
+                return answer;
+            }
+
+            arr = [25, 23, 11, 47, 53, 17, 33, 40];
+            console.log(solution(0, arr));
+        }
     </script>
 </body>
+
 </html>
