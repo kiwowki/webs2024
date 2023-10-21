@@ -16,6 +16,8 @@
     bottom: 20px;
     font-size: 5vw;
     line-height: 1;
+    z-index: 100;
+    color: #747474a2;
 }
 .parallax_item_img {
     position: absolute;
@@ -23,7 +25,6 @@
     top: 0;
     width: 100%;
     height: 100vh;
-    background-color: #fff;
     background-size: 100% 100%; 
     background-position: center;
 }
@@ -60,28 +61,21 @@
     text-align: right;
     font-size: 4vw;
     line-height: 1.4;
-    margin-top: 5vw;
+    margin-top: 40vw;
     margin-right: 4vw;
     margin-left: auto;
     z-index: 100;
-    position: fixed;
     display: flex;
     flex-wrap: wrap;
     word-break: keep-all;
-    /* width: 40%;
-    z-index: 100;
-    text-transform: uppercase;
-    display: inline-block;
-    position: absolute;
-    right: 10%;
-    bottom: 0vh; */
-    background-color: #ff0000;
+    color: #ffffffa2;
 }
 .parallax_item_title {
     width: 100%;
     font-size: 3vw;
     font-family: var(--mapo);
-    padding-bottom: 200px;
+    padding-bottom: 75px;
+    z-index: 100;
 }
 
 .parallax_item_desc {
@@ -90,14 +84,16 @@
 
 .parallax_item_desc {
     width: 100%;
+    padding-left: 45%;
     font-size: 1.5vw;
     line-height: 1.3;
     font-family: var(--nanum);
+    box-sizing: border-box;
     /* width: 600px; */
     /* margin-top: 47vw;
     margin-left: -8vw; */
-    /* z-index: 100;
-    position: absolute;
+    z-index: 100;
+    /* position: absolute;
     right: 10%;
     bottom: 8%;
     word-break: keep-all; */
