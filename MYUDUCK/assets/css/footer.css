@@ -5,6 +5,7 @@
     text-align: center;
     background-color: var(--black);
     position: relative;
+    display: inline-block;
 }
 .footer_inner {
     width: 1280px;

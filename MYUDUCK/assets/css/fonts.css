@@ -60,7 +60,7 @@
 @font-face {
     font-family: 'OleoScript';
     font-weight: 900;
-    font-style: normal;
+    font-style: bold;
     src: url('../fonts/OleoScript-Bold.woff') format('woff'),
          url('../fonts/OleoScript-Bold.ttf') format("truetype");
     font-display: swap;
@@ -68,7 +68,7 @@
 @font-face {
     font-family: 'OleoScript';
     font-weight: 400;
-    font-style: normal;
+    font-style: Regular;
     src: url('../fonts/OleoScript-Regular.woff') format('woff'),
          url('../fonts/OleoScript-Regular.ttf') format("truetype");
     font-display: swap;
