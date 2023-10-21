@@ -4,6 +4,8 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    /* 화면 크기에 상관 없이 수직 중앙 정렬 */
+    align-content: center;
 }
 
 .search_logo {

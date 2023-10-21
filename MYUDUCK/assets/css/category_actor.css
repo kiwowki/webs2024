@@ -1,6 +1,6 @@
 #category_wrap {
-    margin-top: 476px; /* 이미지의 높이에 따라 조절 (예: 400px) */
-    width: 100%;
+    margin-top: 56vh; /* 이미지의 높이에 따라 조절 (예: 400px) */
+    width: 100vw;
     margin-bottom: 70px;
     display: flex;
     flex-direction: column;
@@ -72,6 +72,12 @@
 .info_actor h2 {
     width: 100px;
 }
+.info_actor h2 a {
+    font-size: 1.25rem;
+}
+.info_actor h2 a:hover {
+    border-bottom: 1px solid #fff;
+}
 
 .info_occupation {
     width: 308px;
@@ -80,6 +86,7 @@
 }
 .info_occupation p {
     display: inline-block;
+    color: var(--black500);
 }
 
 .info_perform {
@@ -89,5 +96,6 @@
 }
 .info_perform p {
     display: inline-block;
+    color: var(--black500);
 }
 /* //actor_list */
