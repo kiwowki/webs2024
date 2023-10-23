@@ -1,0 +1,162 @@
+#header {
+    width: 100%;
+    height: 70px;
+    display: flex;
+    background-color: #2e2e2e;
+}
+.logo {
+    width: 15%;
+    height: 70px;
+    margin-left: 50px;
+}
+.logo a {
+    width: 100%;
+    font-size: 44px;
+    font-family: var(--oleo);
+    display: block;
+}
+.category {
+    width: 80%;
+    height: 70px;
+    display: flex;
+    justify-content: flex-end;
+    font-family: var(--hahm);
+}
+.category ul {
+    display: flex;
+    font-size: 22px;
+    align-items: center
+}
+.category ul li {
+    text-align: right;
+    padding: 10px 55px;
+}
+
+/* 햄버거 */
+.header_ham {
+    width: 10%;
+    height: 500px;
+    position: relative;
+}
+.ham_icon {
+    width: 8%;
+    height: 70px;
+    display: block;
+    padding: 22px 0 0 20px;
+}
+.ham_icon span {
+    width: 50px;
+    height: 8px;
+    background-color: #D7D7D7;
+    position: relative;
+    display: inline-block;
+}
+.ham_icon span::before {
+    content: '';
+    width: 50px;
+    height: 8px;
+    background-color: #D7D7D7;
+    position: absolute;
+    left: 0;
+    bottom: 15px;
+}
+.ham_icon span::after {
+    content: '';
+    width: 50px;
+    height: 8px;
+    background-color: #D7D7D7;
+    position: absolute;
+    left: 0;
+    top: 15px;
+}
+
+/* sidemenu */
+.sidemenu {
+    width: 600px;
+    height: 100vh;
+    position: absolute;
+    top: 70px;
+    right: 0;
+    display: flex;
+    flex-wrap: wrap;
+    background-color: #000000;
+    z-index: 1000000;
+}
+
+.sidemenu .top {
+    width: 100%;
+    height: 400px;
+}
+.sidemenu .top > li {
+    width: 100%;
+    height: 300px;
+}
+.sidemenu .top > li:last-child {
+    width: 100%;
+    height: 100px;
+}
+.sidemenu .top > li > a {
+    display: block;
+    width: 100%;
+    background-color: #ffffff;
+    
+}
+.sidemenu .top > li .submenu {}
+.sidemenu .top > li .submenu > li {}
+.sidemenu .top > li .submenu > li > a {}
+
+.sidemenu .btm {
+    width: 100%;
+    height: 200px;
+}
+.sidemenu .btm > li
+.sidemenu .btm > li > a {}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* .sidemenu ul {
+    width: 100%;
+    text-align: center;
+    align-items: center
+}
+.sidemenu li {
+    width: 100%;
+    height: 100px;
+    background-color: #252525;
+    display: flex;
+    align-items: center;
+}
+.sidemenu > li a {
+    width: 100%;
+}
+.sidemenu .top {
+    align-content: flex-start;
+}
+.sidemenu .top > li {
+    display: flex;
+    flex-wrap: wrap;
+}
+.sidemenu .top  >li .submenu {
+    /* display: none; */
+    /* width: 100%;
+    height: 100px;
+}
+.sidemenu .btm {
+    align-content: flex-end
+}
+.sidemenu .btm > li:last-child {
+    background-color: #000000;
+    text-align: right;
+    padding: 30px 20px;
+} */

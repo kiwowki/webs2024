@@ -1,0 +1,12 @@
+지영님 {
+
+common - container2 합침, 버튼스타일 적용함
+
+
+}
+
+해연님 {
+    category_ac_detail에 star_rating html, css 적용함
+
+
+}
