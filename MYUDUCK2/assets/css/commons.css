@@ -16,7 +16,7 @@ svg {
 /* container */
 .container {
     width: 1280px;
-    min-height: 97vh;
+    min-height: 100vh;
     height: auto;
     margin: 0 auto;
     position: relative;
@@ -51,10 +51,10 @@ svg {
     display: inline-block;
     font-size: 1rem;
     padding: 0.7rem 1rem;
-    background-color: var(--black);
+    background-color: #000000b0;
+    color: var(--white);
     border: 1px solid var(--white);
     border-radius: 10px;
-    color: var(--white);
     cursor: pointer;
 }
 .btn-style2 {
@@ -66,34 +66,42 @@ svg {
     border-radius: 10px;
     color: var(--black);
     cursor: pointer;
+    border-radius: 5px;
 }
 .btn-style3 {
     display: block;
     width: 100%;
     font-size: 1rem;
-    background-color: var(--white);
-    color: var(--black);
+    background-color: #000000b0;
+    color: var(--white);
+    border: 1px solid var(--white);
     padding: 0.8rem 2.5rem;
     cursor: pointer;
+    border-radius: 5px;
+    font-family: var(--primary-Hahmlet);
 }
 .btn-style4 {
     display: inline-block;
     width: 100%;
     font-size: 1rem;
-    background-color: rgba(0, 0, 0, 0.1);
+    background-color: #000000b0;
     color: var(--white);
+    border: 1px solid var(--white);
     padding: 0.8rem 2.5rem;
     cursor: pointer;
+    border-radius: 5px;
 }
 .btn-style5 {
     display: inline-block;
     font-size: 1rem;
     padding: 0.7rem 1rem;
-    background-color: rgba(0, 0, 0, 0.1);
-    border: none;
-    border-radius: 10px;
+    background-color: #000000b0;
     color: var(--white);
+    border: 1px solid var(--white);
+    border: none;
+    border-radius: 10px;    
     cursor: pointer;
+    border-radius: 5px;
 }
 
 /* 스크롤 스타일 */

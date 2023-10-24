@@ -1,5 +1,5 @@
 <?php
-    $host = "localhost"
+    $host = "localhost";
     $host = "localhost";
     $user = "ljy16";
     $pw = "rhqnr1159*";

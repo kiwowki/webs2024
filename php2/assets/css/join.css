@@ -161,6 +161,77 @@
     border-radius: 50px;
 }
 
+/* join_insert */
+.join_insert {
+    padding: 0 10%;
+}
+.join_insert .join {
+    margin-top: 50px;
+}
+.join_insert div label {
+    display: block;
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+}
+.join_insert div input {
+    width: 100%;
+    margin-bottom: 10px;
+}
+.join_insert div .msg {
+    color: var(--red);
+    margin-bottom: 3rem;
+}
+.join_insert .check {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.join_insert .check label {
+    width: 100%;
+}
+.join_insert .check input {
+    width: 69%;
+    height: 58px;
+}
+.join_insert .check .btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    padding: 0 2rem;
+    border-radius: 5px;
+    cursor: pointer;
+    height: 58px;
+    background: var(--red3);
+    color: #000000;
+    border: 1px solid var(--black);
+}
+.join_btn {
+    margin-top: 70px;
+    text-align: center;
+}
+.join_btn a {
+    display: inline-block;
+}
+@media (max-width: 800px){
+    .join_insert {
+        padding: 0;
+    }
+}
+@media (max-width: 600px){
+    .join_insert .check {
+        flex-direction: column;
+    }
+    .join_insert .check input {
+        width: 100%;
+        height: 47px;
+    }
+    .join_insert .check .btn {
+        width: 100%;
+        height: 47px;
+        margin-bottom: 10px;
+    }
+}
 
 /* join_result */
 .join_result {
@@ -179,8 +250,8 @@
     width: 30%;
 }
 .join_inner button {
-    margin-top: 20px;
-    background: var(--btn2);
+    /* margin-top: 20px; */
+    background: var(--red3);
     color: #000000;
     border: 1px solid var(--black);
 }

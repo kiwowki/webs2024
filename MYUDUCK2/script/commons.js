@@ -1,4 +1,3 @@
-
 // 사이드바가 작동하면 화면 어두워짐
 const navbarBurger = document.querySelector('.navbar_burger');
 const navbarburgerback = document.querySelector('.navbar_burger_back');
@@ -11,7 +10,7 @@ navbarBurger.addEventListener('click', () => {
 });
 
 navbarburgerback.addEventListener('click', () => {
-    navbarMenu.classList.remove('active');
+    navbarMenu.classList.remove('active'); 
     navbarOverlay.classList.remove('active');
 });
 
@@ -24,12 +23,13 @@ navbarOverlay.addEventListener('click', () => {
 
 
 // 서브메뉴 슬라이드업다운
-$(".navbar_menu li:first-child").mouseover(function () {
+$(".navbar_menu li").mouseover(function () {
     $(this).find(".submenu").stop().slideDown();
 });
-$(".navbar_menu li:first-child").mouseout(function () {
+$(".navbar_menu li").mouseout(function () {
     $(this).find(".submenu").stop().slideUp();
 });
+
 
  // 03. 스냅 고정 효과 만들기 (이런건 검색해서 찾아서 복사하셈)
 

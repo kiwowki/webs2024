@@ -21,6 +21,19 @@
     background: linear-gradient(to bottom, #eff6ff, #fffeef, #ffefef, #effff1);
 }
 
+.blue {
+    color: var(--blue) !important;
+}
+.red {
+    color: var(--red) !important;
+}
+.green {
+    color: var(--green) !important;
+}
+.yellow {
+    color: var(--yellow) !important;
+}
+
 /* container */
 .container {
     max-width: 1260px;

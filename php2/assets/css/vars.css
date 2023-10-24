@@ -4,13 +4,37 @@
 
     --primary-color: #eff6ff;
     --btn: linear-gradient(to bottom, #eff6ff, #fffeef, #ffefef, #effff1);
-    --btn2: linear-gradient(to bottom, #deedff, #fffcd3, #ffd7d7, #d6ffda);
+    --btn2-1: linear-gradient(to bottom, #deedff, #fffcd3, #ffd7d7, #d6ffda);
+    --btn2-2: linear-gradient(to bottom, #deedff, #fffcd3);
+    --btn2-3: linear-gradient(to bottom, #deedff, #ffd7d7);
+    --btn2-4: linear-gradient(to bottom, #fffcd3, #ffd7d7);
+    --btn2-5: linear-gradient(to bottom, #ffd7d7, #d6ffda);
     --btn3: linear-gradient(to bottom, #bcdafe, #faf5b2, #feb9b9, #bcffc3);
 
-    --black: #000;
-    --white: #fff;
-    --red: #f00;
 
+    --blue: #006eff;
+    --blue1: #eff6ff;
+    --blue2: #deedff;
+    --blue3: #bcdafe;
+
+    --yellow: #ffee00;
+    --yellow1: #fffeef;
+    --yellow2: #fffcd3;
+    --yellow3: #faf5b2;
+
+    --red: #ff0000;
+    --red1: #ffefef;
+    --red2: #ffd7d7;
+    --red3: #feb9b9;
+
+    --green: #00ff1e;
+    --green1: #effff1;
+    --green2: #d6ffda;
+    --green3: #bcffc3;
+
+    --white: #fff;
+    
+    --black: #000;
     --black100: #333;
     --black200: #555;
     --black300: #777;
