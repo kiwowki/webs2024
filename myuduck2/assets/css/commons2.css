@@ -69,6 +69,7 @@
     border-radius: 10px;
     color: var(--white);
     cursor: pointer;
+    border-radius: 5px;
 }
 .btn-style2 {
     display: inline-block;
@@ -79,6 +80,7 @@
     border-radius: 10px;
     color: var(--black);
     cursor: pointer;
+    border-radius: 5px;
 }
 .btn-style3 {
     display: block;
@@ -88,6 +90,7 @@
     color: var(--black);
     padding: 0.8rem 2.5rem;
     cursor: pointer;
+    border-radius: 5px;
 }
 .btn-style4 {
     display: inline-block;

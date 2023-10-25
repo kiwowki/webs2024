@@ -58,6 +58,7 @@ svg {
     border-radius: 10px;
     color: var(--white);
     cursor: pointer;
+    border-radius: 5px;
 }
 .btn-style2 {
     display: inline-block;
@@ -68,6 +69,7 @@ svg {
     border-radius: 10px;
     color: var(--black);
     cursor: pointer;
+    border-radius: 5px;
 }
 .btn-style3 {
     display: block;
@@ -77,6 +79,7 @@ svg {
     color: var(--black);
     padding: 0.8rem 2.5rem;
     cursor: pointer;
+    border-radius: 5px;
 }
 .btn-style4 {
     display: inline-block;
@@ -86,6 +89,7 @@ svg {
     color: var(--white);
     padding: 0.8rem 2.5rem;
     cursor: pointer;
+    border-radius: 5px;
 }
 .btn-style5 {
     display: inline-block;
@@ -96,6 +100,7 @@ svg {
     border-radius: 10px;
     color: var(--white);
     cursor: pointer;
+    border-radius: 5px;
 }
 
 /* 스크롤 스타일 */

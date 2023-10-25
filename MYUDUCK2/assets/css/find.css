@@ -18,6 +18,7 @@
     margin-bottom: 40px;
     font-size: 1.9rem;
 }
+
 .find__from span {
     margin-bottom: 40px;
     font-size: 0.9rem;
@@ -45,12 +46,11 @@
 }
 .find__inner button {
     margin: 60px auto;
-}
-.find__inner button:hover {
     background-color: var(--white);
     border: 1px solid var(--white);
-    color: var(--black);
 }
-.btn-style3:hover {
-    
+.find__inner button:hover {
+    background-color: var(--black999);
+    border: 1px solid var(--white);
+    color: var(--white);
 }

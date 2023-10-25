@@ -19,6 +19,20 @@
     font-size: 1.9rem;
     font-weight: bold;
 }
+.login_inner > h3 > span {
+    font-size: 1.4rem;
+    color: var(--black400);
+    padding-left: 10px;
+}
+.find__from h3 {
+    margin-bottom: 40px;
+    font-size: 1.9rem;
+}
+.find__from > h3 > span {
+    font-size: 1.4rem;
+    color: var(--black400);
+    padding-left: 10px;
+} 
 .find__from span {
     margin-bottom: 40px;
     font-size: 0.9rem;
