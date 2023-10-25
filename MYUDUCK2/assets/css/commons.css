@@ -20,6 +20,9 @@ svg {
     min-height: 100vh;
     height: auto;
     margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 @media (max-width: 800px) {
     .container {
@@ -33,6 +36,9 @@ svg {
     min-height: 100vh;
     height: auto;
     margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 @media (max-width: 800px) {
     .container {
