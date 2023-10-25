@@ -1,0 +1,1 @@
+<article class="blog_category">blog_category</article>

@@ -1,27 +1,32 @@
 <?php
-    include "../connect/connect.php";
-    include "../connect/session.php";
+include "../connect/connect.php";
+include "../connect/session.php";
 
-    $youId = mysqli_real_escape_string($connect, $_POST['youId']);
-    $youName = mysqli_real_escape_string($connect, $_POST['youName']);
-    $youEmail = mysqli_real_escape_string($connect, $_POST['youEmail']);
-    $youPass = mysqli_real_escape_string($connect, $_POST['youPass']);
-    $youPhone = mysqli_real_escape_string($connect, $_POST['youPhone']);
-    $youRegtime = time();
 
-    $sql = "INSERT INTO myMembers(youId, youName, youEmail, youPass, youPhone, youRegtime) VALUES('$youId', '$youName', '$youEmail', '$youPass', '$youPhone', '$youRegtime')";
-    $connect -> query($sql);
+$youId = mysqli_real_escape_string($connect, $_POST['youId']);
+$youName = mysqli_real_escape_string($connect, $_POST['youName']);
+$youEmail = mysqli_real_escape_string($connect, $_POST['youEmail']);
+$youPass = mysqli_real_escape_string($connect, $_POST['youPass']);
+$youAddress1 = mysqli_real_escape_string($connect, $_POST['youAddress1']);
+$youAddress2 = mysqli_real_escape_string($connect, $_POST['youAddress2']);
+$youAddress3 = mysqli_real_escape_string($connect, $_POST['youAddress3']);
+$youPhone = mysqli_real_escape_string($connect, $_POST['youPhone']);
+$youRegTime = time();
 
-    // 데이터베이스 연결 닫기
-    mysqli_close($connect);
+$sql = "INSERT INTO myMembers(youId, youName, youEmail, youPass, youAddress, youPhone, youRegTime) VALUES ('$youId', '$youName', '$youEmail', '$youPass', '$youAddress1 $youAddress2 $youAddress3', '$youPhone', '$youRegTime')";
+$connect->query($sql);
+
+//데이터 베이스 연결 닫기
+mysqli_close($connect);
 ?>
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PHP 블로그 만들기</title>
-    <?php include "../include/head.php"?>
+    <?php include "../include/head.php" ?>
 </head>
 
 
@@ -121,9 +126,10 @@
                 <button href="#" class="btn_style">로그인</button>
         </section>
     </main>
-<!-- //main -->
-    
+    <!-- //main -->
+
     <?php include "../include/footer.php" ?>
     <!-- footer -->
 </body>
+
 </html>

@@ -212,11 +212,11 @@
                     success: function (data) {
                         if (data.result == "good") {
                             $("#youEmailComment").text("사용 가능한 이메일입니다.");
-                            $("#youIdComment").addClass("blue");
+                            $("#youEmailComment").addClass("blue");
                             isEmailCheck = true;
                         } else {
                             $("#youEmailComment").text("이미 존재하는 이메일입니다.");
-                            $("#youIdComment").removeClass("blue");
+                            $("#youEmailComment").removeClass("blue");
                             isEmailCheck = false;
                         }
                     }
@@ -236,7 +236,7 @@
             if ($("#youName").val() == '') {
                 $("#youNameComment").text("이름을 입력해주세요.");
                 $("#youName").focus();
-                $("#youIdComment").removeClass("blue");
+                $("#youNameComment").removeClass("blue");
 
                 return false;
             } else {
@@ -246,7 +246,7 @@
                     $("#youNameComment").text("이름은 한글(2~5글자)만 사용할 수 있습니다.");
                     $("#youName").focus();
                     $("#youName").val('');
-                    $("#youIdComment").removeClass("blue");
+                    $("#youNameComment").removeClass("blue");
                     return false;
                 }
             }
@@ -266,15 +266,15 @@
 
                 if (getYouPass.length < 8 || getYouPass.length > 20) {
                     $("#youPassComment").text("➟ 8자리 ~ 20자리 이내로 입력해주세요");
-                    $("#youIdComment").removeClass("blue");
+                    $("#youPassComment").removeClass("blue");
                     return false;
                 } else if (getYouPass.search(/\s/) != -1) {
                     $("#youPassComment").text("➟ 비밀번호는 공백없이 입력해주세요.");
-                    $("#youIdComment").removeClass("blue");
+                    $("#youPassComment").removeClass("blue");
                     return false;
                 } else if (getYouPassNum < 0 || getYouPassEng < 0 || getYouPassSpe < 0) {
                     $("#youPassComment").text("➟ 영문, 숫자, 특수문자를 모두 사용하여 입력해주세요.");
-                    $("#youIdComment").removeClass("blue");
+                    $("#youPassComment").removeClass("blue");
                     return false;
                 }
             }
@@ -283,7 +283,7 @@
             if ($("#youPassC").val() == '') {
                 $("#youPassCComment").text("➟ 확인 비밀번호를 입력해주세요.");
                 $("#youPassC").focus();
-                $("#youIdComment").removeClass("blue");
+                $("#youPassCComment").removeClass("blue");
                 return false;
             }
 
@@ -291,7 +291,7 @@
             if ($("#youPass").val() !== $("#youPassC").val()) {
                 $("#youPassCComment").text("➟ 비밀번호가 일치하지 않습니다.");
                 $("#youPass").focus();
-                $("#youIdComment").removeClass("blue");
+                $("#youPassCComment").removeClass("blue");
                 return false;
             }
 
@@ -302,7 +302,7 @@
                 $("#youPhoneComment").text("➟ 휴대폰 번호가 정확하지 않습니다.( - 없이 숫자만 적어주세요.)");
                 $("#youPhone").val('');
                 $("#youPhone").focus();
-                $("#youIdComment").removeClass("blue");
+                $("#youPhoneComment").removeClass("blue");
             }
 
 
@@ -353,8 +353,8 @@
                     } else { // 사용자가 지번 주소를 선택했을 경우(J)
                         addr = data.jibunAddress;
                     }
-                     /*                     // 사용자가 선택한 주소가 도로명 타입일때 참고항목을 조합한다.                     if (data.userSelectedType === 'R') {                         // 법정동명이 있을 경우 추가한다. (법정리는 제외)                         // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.                         if (data.bname !== '' && /[동|로|가]$/g.test(data.bname)) {                             extraAddr += data.bname;                         }                         // 건물명이 있고, 공동주택일 경우 추가한다.                         if (data.buildingName !== '' && data.apartment === 'Y') {                             extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);                         }                         // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.                         if (extraAddr !== '') {                             extraAddr = ' (' + extraAddr + ')';                         }                         // 조합된 참고항목을 해당 필드에 넣는다.                         document.getElementById("sample2_extraAddress").value = extraAddr;
-                     } else {                         document.getElementById("sample2_extraAddress").value = '';                     }                     */
+                    /*                     // 사용자가 선택한 주소가 도로명 타입일때 참고항목을 조합한다.                     if (data.userSelectedType === 'R') {                         // 법정동명이 있을 경우 추가한다. (법정리는 제외)                         // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.                         if (data.bname !== '' && /[동|로|가]$/g.test(data.bname)) {                             extraAddr += data.bname;                         }                         // 건물명이 있고, 공동주택일 경우 추가한다.                         if (data.buildingName !== '' && data.apartment === 'Y') {                             extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);                         }                         // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.                         if (extraAddr !== '') {                             extraAddr = ' (' + extraAddr + ')';                         }                         // 조합된 참고항목을 해당 필드에 넣는다.                         document.getElementById("sample2_extraAddress").value = extraAddr;
+                    } else {                         document.getElementById("sample2_extraAddress").value = '';                     }                     */
 
 
                     document.querySelector('#youAddress1').value = data.zonecode; // 우편번호
