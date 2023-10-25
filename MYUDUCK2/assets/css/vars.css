@@ -32,3 +32,15 @@
         font-size: 14px;
     }
 }
+
+:root {
+    --nanum: "NanumSquareNeo";
+    --oleo: "OleoScript";
+    --hahm: "Hahmlet";
+    --mapo: "MapoGoldenPier";
+    --oswald: "Oswald";
+    
+
+    --primary-color: #D06958;
+    --primary-color2: #160A0C;
+}
