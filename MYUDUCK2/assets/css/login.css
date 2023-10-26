@@ -3,23 +3,42 @@
 .login_inner {
     padding-top: 70px;
     width: 100%;
+    height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     margin: 0 auto;
     color: var(--white);
     background-image: url(../img/login.jpg);
-    filter: brightness(0.5);
-    background-position: 100% 100%;
     background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
     font-family: var(--primary-Hahmlet);
+    position: relative;
 }
-.login_inner h3 {
+.background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url(../img/login.jpg);
+    filter: brightness(0.5); /* 이미지를 어둡게 만듭니다. */
+    /* backdrop-filter: brightness(0.5); */
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+.login__from {
+    z-index: 1;
+}
+.login__from h3 {
     margin-bottom: 40px;
     font-size: 1.9rem;
-    font-weight: bold;
+    background-color: var(--black999);
+    padding: 5px 10px;
 }
-.login_inner > h3 > span {
+.login__from > h3 > span {
     font-size: 1.4rem;
     color: var(--black400);
     padding-left: 10px;
@@ -27,6 +46,8 @@
 .find__from h3 {
     margin-bottom: 40px;
     font-size: 1.9rem;
+    background-color: var(--black999);
+    padding: 5px 10px;
 }
 .find__from > h3 > span {
     font-size: 1.4rem;
@@ -118,10 +139,9 @@
     margin: 20px auto 10px auto;
 }
 .login_inner button:hover {
-    /* border: 1px solid var(--white); */
-    color: var(--black);
-    background-color: var(--white);
-    font-weight: 600;
+    border: 1px solid var(--white);
+    color: var(--white);
+    background-color: var(--black999);
 }
 
 .login__btn {

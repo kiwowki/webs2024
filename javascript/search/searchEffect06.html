@@ -44,6 +44,7 @@
                     <li class="btn3">내림차순 정렬하기</li>
                     <li class="btn4">알파벳순(a~z)</li>
                     <li class="btn5">알파벳순(z~a)</li>
+                    <li class="btn6">랜덤 정렬하기</li>
                 </ul>
             </div>
             <div class="search_info">
@@ -219,6 +220,18 @@
         });
 
         // 랜덤 정렬하기
+        function randomArray(array) {
+            for (let i = 0; i < array.length; i++) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+        }
+
+        document.querySelector(".btn6").addEventListener("click", () => {
+            randomArray(cssProperty);
+            listUpdate();
+        });
+
 
     </script>
 </body>

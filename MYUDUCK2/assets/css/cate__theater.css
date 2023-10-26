@@ -28,7 +28,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 45vh;
+    height: 61vh;
 }
 .theater__map img {
     width: 92%;
@@ -70,6 +70,9 @@
     width: 25%;
     height: 14%;
     padding: 10px;
+}
+.theater__link > ul li a img {
+    border-radius: 15px;
 }
 .theater__link > ul li a:hover img{
     transform: scale(1.1);
@@ -128,6 +131,7 @@
 }
 .list__cont .img_name > a > img {
     margin-right: 1.2rem;
+    border-radius: 5px;
 }
 .list__cont .img_name > a > span {
     font-size: 0.9rem;

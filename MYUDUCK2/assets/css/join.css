@@ -1,3 +1,51 @@
+/* result */
+.joinResultWrap {
+    text-align: center;
+    color: #ffffff;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; /* 화면 전체 높이로 설정 */
+}
+.message1 {
+    margin-top: 50px;
+    font-size: 1.875rem;
+    margin-bottom: 10px;
+}
+.img.red{
+    display: block;
+    margin: 0 auto; 
+    width: 266px;
+    height: 250px;
+    background-image: url(../img/redduck.jpg);
+}
+.img.blue{
+    display: block;
+    margin: 0 auto; 
+    width: 266px;
+    height: 250px;
+    background-image: url(../img/blueduck.png);
+}
+.message2 {
+    margin-top: 20px;
+    font-size: 1.375rem;
+}
+.movehome {
+    margin-top: 15px;
+    width: 366px;
+    height: 50px;
+    border-radius: 10px;
+    background-color: #fff;
+    font-size: 1.25rem;
+}
+.movehome a {
+    display: inline-block;
+    padding: 10px;
+    color: #000;
+}
+
 /* join__inner */
 .join__inner {
     padding: 0 60px;
@@ -32,6 +80,8 @@
     padding: 120px 20%;
     display: flex;
     flex-direction: column;
+    background-color: var(--black999);
+    padding: 5px 10px;
 }
 
 .join__from h3 {
@@ -80,6 +130,8 @@
     width: 100%;
     display: flex;
     flex-direction: column;
+    background-color: var(--black999);
+    padding: 5px 10px;
 }
 
 .join__from2 h3 {
@@ -118,14 +170,14 @@
     border-radius: 5px;
     margin: 25px auto;
     border: 1px solid var(--white);
-    color: var(--white);
-    background-color: #000000b0;
+    color: var(--black);
+    background-color: var(--white);
 }
 
 .join__from2 .join_btn:hover {
     border: 1px solid var(--white);
-    color: var(--black);
-    background-color: var(--white);
+    color: var(--white);
+    background-color: var(--black800);
 }
 
 /* join__from2 -> check인 것들 */
@@ -195,6 +247,8 @@
 .join__from3 h3 {
     margin-bottom: 30px;
     font-size: 1.8rem;
+    background-color: var(--black999);
+    padding: 5px 10px;
 }
 
 .join__from3 h3 span {
@@ -276,14 +330,13 @@
     border: 1px solid var(--white);
 }
 
-/* join__inner text */
-.join__inner h2 {
+.join__agree h2 {
     margin-top: 70px;
     margin-bottom: 20px;
     font-size: 1.8rem;
 }
 
-.join__inner>h2>span {
+.join__agree>h2>span {
     font-size: 1.4rem;
     color: var(--black400);
     padding-left: 10px;

@@ -20,7 +20,7 @@
         <nav class="category">
             <ul>
                 <li><a href="category_theater.html">Theater</a></li>
-                <li><a href="http://jhyjhy968.dothome.co.kr/project2/kategorie_musical.html">Musical</a></li>
+                <li><a href="category_musical.html">Musical</a></li>
                 <li><a href="category_actor.html">Actor</a></li>
                 <li><a href="search.html">Search</a></li>
             </ul>
@@ -44,12 +44,13 @@
                         </ul>
                     </li>
 
-                    <li><a href="http://ljy16.dothome.co.kr/myuduck/html/login.html" class="m">로그인</a></li>
+                    <li><a href="http://ljy16.dothome.co.kr/myuduck2/html/login.html" class="m">로그인</a></li>
 
-                    <li><a href="http://jhyjhy968.dothome.co.kr/project2/QA_write.html" class="m">문의하기</a>
+                    <li><a href="#" class="m">문의하기</a>
                         <ul class="submenu">
-                            <li><a href="#" class="m">문의 글 쓰기</a></li>
-                            <li><a href="#" class="m">문의 글 목록</a></li>
+                            <li><a href="http://jhyjhy968.dothome.co.kr/myuduck2/QA_write.html" class="m">문의 글 쓰기</a>
+                            </li>
+                            <li><a href="http://jhyjhy968.dothome.co.kr/myuduck2/QA.html" class="m">문의 글 목록</a></li>
                         </ul>
                     </li>
 
@@ -65,6 +66,8 @@
             </div>
         </div>
     </header>
+    <!-- //header -->
+
 
     <div class="fix_image">
         <img src="../assets/img/category_musical.png" alt="이미지" class="intro_img">
@@ -81,7 +84,8 @@
                 <div class="actor_main">
                     <div class="actor-card">
                         <div class="info_actor">
-                            <a href="category_ac_detail.html"><img src="../assets/img/ac_JeonDong-seok.jpg" alt="전동석 사진"></a>
+                            <a href="category_ac_detail.html"><img src="../assets/img/ac_JeonDong-seok.jpg"
+                                    alt="전동석 사진"></a>
                             <h2><a href="category_ac_detail.html">전동석</a></h2>
                         </div>
                         <div class="info_occupation">
@@ -191,37 +195,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script>
 
-        // 사이드바가 작동하면 화면 어두워짐
-        const navbarBurger = document.querySelector('.navbar_burger');
-        const navbarburgerback = document.querySelector('.navbar_burger_back');
-        const navbarMenu = document.querySelector('.navbar_menu');
-        const navbarOverlay = document.querySelector('.navbar_overlay');
-
-        navbarBurger.addEventListener('click', () => {
-            navbarMenu.classList.toggle('active');
-            navbarOverlay.classList.toggle('active');
-        });
-
-        navbarburgerback.addEventListener('click', () => {
-            navbarMenu.classList.remove('active');
-            navbarOverlay.classList.remove('active');
-        });
-
-        navbarOverlay.addEventListener('click', () => {
-            navbarMenu.classList.remove('active');
-            navbarOverlay.classList.remove('active');
-        });
-
-
-
-
-        // 서브메뉴 슬라이드업다운
-        $(".navbar_menu li:first-child").mouseover(function () {
-            $(this).find(".submenu").stop().slideDown();
-        });
-        $(".navbar_menu li:first-child").mouseout(function () {
-            $(this).find(".submenu").stop().slideUp();
-        });
     </script>
 </body>
 
