@@ -35,11 +35,11 @@ $blogInfo = $connect -> query($blogSql);
     <main id="main" role="main">
         <div class="intro_inner blogStyle bmStyle container">
             <div class="intro_img main">
-                <img srcset="../assets/img/Frame11.jpg, ../assets/img/Frame11@2x.jpg, ../assets/img/Frame11@3x.jpg" alt="">
+                <img srcset="../assets/img/Frame6.jpg, ../assets/img/Frame11@2x.jpg, ../assets/img/Frame11@3x.jpg" alt="">
             </div>
             <div class="intro_text">
-                <h3>블로그 글쓰기</h3>
-                <p>최신 정보와 관련된 블로그 글을 쓸 수 있습니다.</p>
+                <h3>블로그 글목록</h3>
+                <p>관련 정보가 가득한 블로그 글들을 볼 수 있습니다.</p>
             </div>
         </div>
 
@@ -75,6 +75,9 @@ $blogInfo = $connect -> query($blogSql);
                 <section class="blog_write">blog_write</section>
             </div>
             <div class="blog_aside">
+                <?php include "blogAd.php" ?>
+                <!-- //blog_ad -->
+
                 <?php include "blogIntro.php" ?>
                 <!-- blog_intro -->
 

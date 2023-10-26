@@ -39,11 +39,11 @@
             </div>
             <div class="search_star">
                 <ul>
-                    <li>★☆☆☆☆ <span>사용 안함</span></li>
-                    <li>★★☆☆☆ <span>가끔 사용</span></li>
-                    <li>★★★☆☆ <span>보통 사용</span></li>
-                    <li>★★★★☆ <span>자주 사용</span></li>
-                    <li>★★★★★ <span>필수 사용</span></li>
+                    <li data-star="1" data-desc=" 사용 안함">★☆☆☆☆</li>
+                    <li data-star="2" data-desc=" 가끔 사용">★★☆☆☆</li>
+                    <li data-star="3" data-desc=" 보통 사용">★★★☆☆</li>
+                    <li data-star="4" data-desc=" 자주 사용">★★★★☆</li>
+                    <li data-star="5" data-desc=" 필수 사용">★★★★★</li>
                 </ul>
             </div>
             <div class="search_info">
@@ -158,42 +158,53 @@
         ]
 
         const searchList = document.querySelector(".search_list ul");
-        const searchInfo = document.querySelector(".search_info");
-        const searchBox = document.querySelector(".search_box input");
-        const searchBoxResult = document.querySelector(".search_box_result");
-        const searchButton = document.getElementById("searchBtn");
-
-        
-        // 별 표시하기
-        function generateStars(star){
-            let stars = "";
-            for(let i=1; i<=5; i++){
-                if(i <= star){
-                    stars += "★";
-                } else {
-                    stars += "☆";
-                }
-            }
-            return stars;
-        }
+        const searchStarItem = document.querySelectorAll(".search_star li");
+        const searchCount = document.querySelector(".search_info .num");
 
 
-        // 출력하기
-        function listUpdate(list){
+        // // 별 표시하기
+        // function generateStars(star){
+        //     let stars = "";
+        //     for(let i=1; i<=5; i++){
+        //         if(i <= star){
+        //             stars += "★";
+        //         } else {
+        //             stars += "☆";
+        //         }
+        //     }
+        //     return stars;
+        // }
+
+
+
+
+        // 출력하기 // view에서는 이런식으로 for of문 씀. 04에서는 map씀
+        function listUpdate(list) {
             let listItem = "";
 
-            for(const data of list){    // view에서는 이런식으로 for of문 씀. 04에서는 map씀
-                listItem += `<li><em>${data.name}</em> : ${data.desc}<i>${generateStars(data.star)}</i></li>`;
+            for(const data of list){
+                let listStar = searchStarItem[data.star-1].innerText;
+                // console.log(listStar)
+                listItem += `<li><strong>${data.name}</strong> : ${data.desc} <em>${listStar}</em></li>`;
             }
-            searchList.innerHTML += listItem;
-            // cssProperty.map((element, index) => {
-            //     searchList.innerHTML += `<li><em>${cssProperty[index].name}</em> : ${cssProperty[index].desc}<i>${cssProperty[index].star}</i></li>`;
-            // })
+            searchList.innerHTML = listItem;
+            searchCount.textContent = list.length;  // 개수까지 나오게
         }
-        listUpdate(cssProperty);
+        listUpdate(cssProperty)
 
-        
+        // 클릭하기
+        searchStarItem.forEach(star => {
+            star.addEventListener("click", () => {
+                const target = star.dataset.star;
+                // const filterList = cssProperty.filter(data => data.star == target);  // 해당 별 개수만 찾기
+                const filterList = cssProperty.filter(data => data.star >= target); // 해당 별 개수 이상 걸러내기(필터 매서드에 더 적합)
+                listUpdate(filterList);
+            })
+        });
+
+
 
     </script>
 </body>
+
 </html>

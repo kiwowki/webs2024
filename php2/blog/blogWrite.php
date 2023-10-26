@@ -39,9 +39,9 @@ include "../connect/session.php";
     <!-- header -->
 
     <main id="main" role="main">
-        <div class="intro_inner bmStyle container">
-            <div class="intro_img">
-                <img srcset="../assets/img/main.jpg, ../assets/img/main@2x.jpg, ../assets/img/main@3x.jpg" alt="">
+        <div class="intro_inner blogStyle bmStyle container">
+            <div class="intro_img main">
+                <img srcset="../assets/img/Frame11.jpg, ../assets/img/Frame11@2x.jpg, ../assets/img/Frame11@3x.jpg" alt="">
             </div>
             <div class="intro_text">
                 <h3>블로그 글쓰기</h3>

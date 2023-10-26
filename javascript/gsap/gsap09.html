@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GSAP scroll Effect07</title>
+
+    <link rel="stylesheet" href="https://webfontworld.github.io/NexonLv1Gothic/NexonLv1Gothic.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        body {
+            --bg-color: #222;
+            background-color: var(--bg-color);
+            color: #fff;
+            font-family: "NexonLv1Gothic";
+            font-weight: 300;
+        }
+
+        #parallax_title {
+            position: fixed;
+            left: 20px;
+            top: 20px;
+            z-index: 1000;
+        }
+
+        #parallax_title h1 {
+            font-size: 30px;
+            border-bottom: 1px dashed #fff;
+            margin-bottom: 10px;
+            padding-bottom: 5px;
+            font-weight: 400;
+            display: inline-block;
+        }
+
+        #parallax_title p {
+            font-size: 16px;
+        }
+
+        #parallax_title ul {
+            margin-top: 10px;
+        }
+
+        #parallax_title li {
+            display: inline;
+        }
+
+        #parallax_title li a {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            border: 1px dashed #fff;
+            display: inline-block;
+            text-align: center;
+            line-height: 20px;
+            font-size: 12px;
+        }
+
+        #parallax_title li.active a {
+            background: #fff;
+            color: #000;
+        }
+
+        /* parallax_cont */
+        #parallax_cont {
+            width: 100%;
+        }
+
+        .parallax_item {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .parallax_item_num {
+            position: absolute;
+            right: 20px;
+            bottom: 20px;
+            font-size: 1vw;
+        }
+
+        .parallax_item_imgWrap {
+            width: 50%;
+            margin-right: 30%;
+            padding-bottom: 26.25%;
+            background: #000;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .parallax_item_img {
+            position: absolute;
+            left: -5%;
+            top: -5%;
+            width: 110%;
+            height: 110%;
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-size: cover;
+            filter: saturate(0%);
+            transition: all 1s;
+        }
+
+        .parallax_item_img:hover {
+            filter: saturate(100%);
+            transform: scale(1.025);
+        }
+
+        .parallax_item_desc {
+            font-size: 3vw;
+            line-height: 1.4;
+            margin-top: 10vw;
+            margin-left: -4vw;
+            margin-right: 2vw;
+            z-index: 100;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            word-break: keep-all;
+        }
+
+        #section1 .parallax_item_img {
+            background-image: url(img/images01-min.jpg);
+        }
+
+        #section2 .parallax_item_img {
+            background-image: url(img/images02-min.jpg);
+        }
+
+        #section3 .parallax_item_img {
+            background-image: url(img/images03-min.jpg);
+        }
+
+        #section4 .parallax_item_img {
+            background-image: url(img/images04-min.jpg);
+        }
+
+        #section5 .parallax_item_img {
+            background-image: url(img/images05-min.jpg);
+        }
+
+        #section6 .parallax_item_img {
+            background-image: url(img/images06-min.jpg);
+        }
+
+        #section7 .parallax_item_img {
+            background-image: url(img/images07-min.jpg);
+        }
+
+        #section8 .parallax_item_img {
+            background-image: url(img/images08-min.jpg);
+        }
+
+        #section9 .parallax_item_img {
+            background-image: url(img/images09-min.jpg);
+        }
+
+        #parallax_nav {
+            position: fixed;
+            right: 20px;
+            top: 20px;
+            z-index: 1000;
+            background-color: rgba(0, 0, 0, 0.4);
+            padding: 15px 20px;
+            border-radius: 50px;
+        }
+
+        #parallax_nav li {
+            list-style: none;
+            display: inline;
+        }
+
+        #parallax_nav li a {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            padding: 5px;
+            text-align: center;
+            line-height: 30px;
+        }
+
+        #parallax_nav li a.active {
+            background-color: #fff;
+            color: #000;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+
+<body>
+    <header id="parallax_title">
+        <h1>GSAP Parallax Effect09</h1>
+        <p>GSAP scrollTrigger - 메뉴 이동 효과</p>
+        <ul>
+            <li><a href="gsap01.html">1</a></li>
+            <li><a href="gsap02.html">2</a></li>
+            <li><a href="gsap03.html">3</a></li>
+            <li><a href="gsap04.html">4</a></li>
+            <li><a href="gsap05.html">5</a></li>
+            <li><a href="gsap06.html">6</a></li>
+            <li><a href="gsap07.html">7</a></li>
+            <li><a href="gsap08.html">8</a></li>
+            <li class="active"><a href="gsap09.html">9</a></li>
+            <li><a href="gsap10.html">10</a></li>
+            <li><a href="gsap11.html">11</a></li>
+            <li><a href="gsap12.html">12</a></li>
+            <li><a href="gsap13.html">13</a></li>
+            <li><a href="gsap14.html">14</a></li>
+            <li><a href="gsap15.html">15</a></li>
+        </ul>
+    </header>
+    <nav id="parallax_nav">
+        <ul>
+            <li><a href="#section1" class="active">s1</a></li>
+            <li><a href="#section2">s2</a></li>
+            <li><a href="#section3">s3</a></li>
+            <li><a href="#section4">s4</a></li>
+            <li><a href="#section5">s5</a></li>
+            <li><a href="#section6">s6</a></li>
+            <li><a href="#section7">s7</a></li>
+            <li><a href="#section8">s8</a></li>
+            <li><a href="#section9">s9</a></li>
+        </ul>
+    </nav>
+    <main id="parallax_cont">
+        <section id="section1" class="parallax_item">
+            <span class="parallax_item_num">01</span>
+            <figure class="parallax_item_imgWrap">
+                <div class="parallax_item_img"></div>
+            </figure>
+            <p class="parallax_item_desc">높은 목표를 세우고, 스스로 채찍질 한다.</p>
+        </section>
+        <!-- //section1 -->
+
+        <section id="section2" class="parallax_item">
+            <span class="parallax_item_num">02</span>
+            <figure class="parallax_item_imgWrap">
+                <div class="parallax_item_img"></div>
+            </figure>
+            <p class="parallax_item_desc">결과도 중요하지만, 과정을 더 중요하게 생각한다.</p>
+        </section>
+        <!-- //section2 -->
+
+        <section id="section3" class="parallax_item">
+            <span class="parallax_item_num">03</span>
+            <figure class="parallax_item_imgWrap">
+                <div class="parallax_item_img"></div>
+            </figure>
+            <p class="parallax_item_desc">매 순간에 최선을 다하고, 끊임없이 변화한다.</p>
+        </section>
+        <!-- //section3 -->
+
+        <section id="section4" class="parallax_item">
+            <span class="parallax_item_num">04</span>
+            <figure class="parallax_item_imgWrap">
+                <div class="parallax_item_img"></div>
+            </figure>
+            <p class="parallax_item_desc">모든 일에는 기본을 중요하게 생각한다.</p>
+        </section>
+        <!-- //section4 -->
+
+        <section id="section5" class="parallax_item" data-bgcolor="#592624">
+            <span class="parallax_item_num">05</span>
+            <figure class="parallax_item_imgWrap">
+                <div class="parallax_item_img"></div>
+            </figure>
+            <p class="parallax_item_desc">열정을 잃지 않고 실패에서 실패로 걸어가는 것이 성공이다.</p>
+        </section>
+        <!-- //section5 -->
+
+        <section id="section6" class="parallax_item" data-bgcolor="#3f2459">
+            <span class="parallax_item_num">06</span>
+            <figure class="parallax_item_imgWrap">
+                <div class="parallax_item_img"></div>
+            </figure>
+            <p class="parallax_item_desc">천 마디 말보단 하나의 행동이 더 값지다.</p>
+        </section>
+        <!-- //section6 -->
+
+        <section id="section7" class="parallax_item">
+            <span class="parallax_item_num">07</span>
+            <figure class="parallax_item_imgWrap">
+                <div class="parallax_item_img"></div>
+            </figure>
+            <p class="parallax_item_desc">조그만 성공에 만족하지 않으며, 방심을 경계한다.</p>
+        </section>
+        <!-- //section7 -->
+
+        <section id="section8" class="parallax_item">
+            <span class="parallax_item_num">08</span>
+            <figure class="parallax_item_imgWrap">
+                <div class="parallax_item_img"></div>
+            </figure>
+            <p class="parallax_item_desc">나는 내가 더 노력할수록 운이 더 좋아진다는 걸 발견했다.</p>
+        </section>
+        <!-- //section8 -->
+
+        <section id="section9" class="parallax_item">
+            <span class="parallax_item_num">09</span>
+            <figure class="parallax_item_imgWrap">
+                <div class="parallax_item_img"></div>
+            </figure>
+            <p class="parallax_item_desc">꿈이 있다면, 그 꿈을 잡고 절대 놓아주지마라.</p>
+        </section>
+        <!-- //section9 -->
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.1/ScrollToPlugin.min.js"></script>
+    <script>
+        // 이건 ScrollToPlugin 필요
+
+        let links = gsap.utils.toArray("#parallax_nav ul li a");
+
+        links.forEach(link => {
+            let element = document.querySelector(link.getAttribute("href")),
+// console.log(element);   // id값 가져오기
+            linkST = ScrollTrigger.create({
+                trigger: element,
+                start: "top top"
+            });
+
+            ScrollTrigger.create({
+                trigger: element,
+                start: "top center",
+                end: "bottom center",
+                onToggle: self => setActive(link)
+            });
+
+            link.addEventListener("click", e => {
+                e.preventDefault();
+                gsap.to(window, {duration:0.5, scrollTo: linkST.start, overwrite: "auto"});
+            })
+            
+        });
+
+        function setActive(link){
+            links.forEach(el => el.classList.remove("active"));
+            link.classList.add("active");
+        }
+
+
+    </script>
+</body>
+
+</html>

@@ -246,6 +246,17 @@ i {
 
 .search_star li span {}
 
+.search_star li:hover {
+    background-color: #fff;
+    color: #000;
+    cursor: pointer;
+}
+.search_star li:hover span {
+    color: #000;
+}
+.search_star li::after {
+    content: attr(data-desc);
+}
 /* search_list */
 .search_list {
     width: 100%;

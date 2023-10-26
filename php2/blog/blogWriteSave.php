@@ -55,7 +55,9 @@
         }
     } else {
         echo "<script>alert('이미지 파일을 첨부하지 않았습니다.')</script>";
+        echo "<script>window.location.href = 'blog.php'</script>";
         $sql = "INSERT INTO blog(memberId, blogTitle, blogContents, blogCategory, blogAuthor, blogRegTime, blogView, blogLike, blogImgFile, blogImgSize, blogDelete) VALUES('$memberId', '$blogTitle', '$blogContents', '$blogCategory', '$blogAuthor', '$blogRegTime', '$blogView', '$blogLike', 'Img_default.jpg', '$blogImgSize', '$blogDelete')";
+        
     }
 
     // 이미지 사이즈 확인

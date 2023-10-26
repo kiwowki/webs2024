@@ -4,6 +4,11 @@
 
     --primary-color: #eff6ff;
     --btn: linear-gradient(to bottom, #eff6ff, #fffeef, #ffefef, #effff1);
+    --btn1-1: linear-gradient(to bottom, #eff6ff, #fffeef, #ffefef, #effff1);
+    --btn1-2: linear-gradient(to bottom, #eff6ff, #fffeef);
+    --btn1-3: linear-gradient(to bottom, #eff6ff, #ffefef);
+    --btn1-4: linear-gradient(to bottom, #fffeef, #ffefef);
+    --btn1-5: linear-gradient(to bottom, #ffefef, #effff1);
     --btn2-1: linear-gradient(to bottom, #deedff, #fffcd3, #ffd7d7, #d6ffda);
     --btn2-2: linear-gradient(to bottom, #deedff, #fffcd3);
     --btn2-3: linear-gradient(to bottom, #deedff, #ffd7d7);
