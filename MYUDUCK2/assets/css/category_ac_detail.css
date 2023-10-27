@@ -33,7 +33,7 @@
     transform: translateY(-10px) translateX(2px);
     z-index: 10000;
     font: 2em Arial, Helvetica, sans-serif;
-    color: #e6ff004a;
+    color: #ffffffad;
     pointer-events: none;
  }
  
@@ -49,6 +49,7 @@
  }
 
 
+ /* intro_actor */
 .intro_actor {
     z-index: 2; /* 이미지(z-index:1) 위에 배치하기 위해 z-index를 높게 설정 */
     width: 1280px;
@@ -71,6 +72,7 @@
     height: 400px;
 }
 
+/* intro_info */
 .intro_info {
     display: flex;
     flex-direction: column;
@@ -98,4 +100,19 @@
 .intro_info p {
     padding-top: 25px;
     font-size: 34px;
+}
+
+/* category_ac_wrap */
+.category_ac_wrap {
+
+}
+.category_ac_wrap {}
+.category_ac_inner {
+
+}
+.category_ac_inner h3 {
+    
+}
+.category_ac_inner span {
+    
 }

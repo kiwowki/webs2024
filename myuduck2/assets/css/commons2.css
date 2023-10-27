@@ -9,7 +9,14 @@
     height: auto;
     margin: 0 auto;
     position: relative;
+    
 }
+@media (max-width: 1280px) {
+    .container {
+        transform: scale(0.8);
+    }
+}
+
 
 /* 지영님 */
 .container2 {
