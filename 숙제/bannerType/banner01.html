@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>배너 유형 01</title>
+    <style>
+        /* fonts */
+        @import url('https://webfontworld.github.io/NexonLv1Gothic/NexonLv1Gothic.css');
+
+        .nexon {
+            font-family: 'NexonLv1Gothic';
+            font-weight: 400;
+        }
+
+        /* reset */
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        img {
+            width: 100%;
+        }
+        .blind {
+            width: 0;
+            height: 0;
+            line-height: 0;
+            overflow: hidden;
+            position: absolute;
+            text-indent: -999999px;
+        }
+        a {
+            text-decoration: none;
+            color: #fff;
+        }
+        /* common */
+        /* .section {
+            padding: 120px 0;
+        } */
+        /* bannerType */
+        .banner_wrap {
+            width: 100%;
+            background-color: #c0c0c0;
+        }
+        .banner_inner {
+            background: url(img/banner_bg01.jpg) no-repeat center center / cover;
+            height: 500px;
+            text-align: center;
+            color: #fff;
+        }
+        .banner_inner .title {
+            font-size: 50px;
+            font-weight: 300;
+            padding: 120px 0 40px 0;
+            line-height: 1;
+        }
+        .banner_inner .desc {
+            font-size: 24px;
+            font-weight: 300;
+            line-height: 1.5;
+            margin-bottom: 70px;
+        }
+        .banner_inner .desc a {
+            display: block;
+        }
+        .banner_inner .small {
+            text-decoration: underline;
+            line-height: 1.5;
+        }
+    </style>
+</head>
+
+<body>
+    <section id="bannerType" class="banner_wrap">
+        <h2 class="blind">배너 영역</h2>
+        <div class="banner_inner">
+            <h3 class="title">유튜버 하얀늑대들</h3>
+            <p class="desc">
+                더 다양한 강의는 유튜브를 통해 제공하고 있습니다.
+                <a href="/">youtube.com/c/wolves941110</a>
+            </p>
+            <span class="small">배너 유형01</span>
+        </div>
+    </section>
+</body>
+
+</html>

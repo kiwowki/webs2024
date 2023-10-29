@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>헤더 유형01</title>
+    <style>
+        /* fonts */
+        @import url('https://webfontworld.github.io/NexonLv1Gothic/NexonLv1Gothic.css');
+
+        .nexon {
+            font-family: 'NexonLv1Gothic';
+            font-weight: 400;
+        }
+        
+        /* reset */
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        a {
+            text-decoration: none;
+            color: black;
+        }
+        em {
+            font-style: normal;
+        }
+        li {
+            list-style: none;
+        }
+        /* headerType */
+        .header_inner {
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px;
+            border-bottom: 1px solid #000;
+            box-sizing: border-box;
+        }
+
+        .header_logo {
+            font-size: 30px;
+            font-weight: 700;
+            text-transform: uppercase;
+            width: 20%;
+        }
+        .header_logo em {
+            font-size: 18px;
+            font-weight: 400;
+        }
+        .header_menu {
+            width: 60%;
+            text-align: center;
+        }
+        .header_menu li {
+            display: inline;
+        }
+        .header_menu li a {
+            padding: 13px 30px;
+            margin: 0 5px;
+            transition: background-color 0.3s;
+        }
+        .header_menu li a:hover {
+            background-color: #f1f1f1;
+            border-radius: 5px;
+        }
+        .header_member {
+            width: 20%;
+            text-align: right;
+        }
+        .header_member a {
+            border: 1px solid #000;
+            padding: 10px 30px;
+            border-radius: 50px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <header id="headerType" class="header_wrap">
+        <div class="header_inner nexon">
+            <div class="header_logo"><a href="#">wolves <em>site</em></a></div>
+            <nav class="header_menu">
+                <ul>
+                    <li><a href="#">헤더 영역</a></li>
+                    <li><a href="#">슬라이드 영역</a></li>
+                    <li><a href="#">배너 영역</a></li>
+                    <li><a href="#">컨텐츠 영역</a></li>
+                    <li><a href="#">푸터 영역</a></li>
+                </ul>
+            </nav>
+            <div class="header_member">
+                <a href="#">로그인</a>
+            </div>
+        </div>
+    </header>
+</body>
+</html>

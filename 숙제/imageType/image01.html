@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이미지 유형01</title>
+    <style>
+        /* fonts */
+        @import url('https://webfontworld.github.io/NexonLv1Gothic/NexonLv1Gothic.css');
+
+        .nexon {
+            font-family: 'NexonLv1Gothic';
+            font-weight: 400;
+        }
+
+        /* reset */
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-weight: normal;
+        }
+
+        a {
+            text-decoration: none;
+            color: #000;
+        }
+
+        /* common */
+        .container {
+            width: 1160px;
+            padding: 0 20px;
+            margin: 0 auto;
+        }
+
+        .section {
+            padding: 120px 0;
+        }
+
+        .section>h2 {
+            font-size: 50px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .section>p {
+            font-size: 22px;
+            font-weight: 300;
+            margin-bottom: 70px;
+            text-align: center;
+            
+        }
+        
+
+        /* imageType */
+        .image_wrap {}
+
+        #imageType {
+            background-color: #979696;
+            height: 500px;
+        }
+
+        .image_wrap {}
+
+        .image_inner {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .image {
+            width: 49%;
+            height: 370px;
+            padding: 200px 20px 20px 20px;
+            box-sizing: border-box;
+            color: #fff;
+        }
+
+        .image.img1 {
+            background: url(img/Rectangle8.jpg) no-repeat center center / cover;
+        }
+
+        .image.img2 {
+            background: url(img/Rectangle9.jpg) no-repeat center center / cover;
+        }
+
+        .image_title {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        .image_desc {
+            margin-bottom: 10px;
+            line-height: 1.4;
+            font-weight: 300;
+            padding-right: 100px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+        }
+
+        .image_btn {
+            font-weight: 300;
+            color: #fff;
+            background-color: #B45A30;
+            padding: 10px 20px;
+            display: inline-block;
+        }
+        .image_btn.yellow {
+            background-color: #B59140;
+        }
+    </style>
+</head>
+
+<body>
+    <section id="imageType" class="image_wrap nexon section">
+        <h2>포트폴리오가 실력이다.</h2>
+        <p>이미지 유형입니다. 마우스 오버시 자세한 정보가 나오는 구조입니다.</p>
+        <div class="image_inner container">
+            <article class="image img1">
+                <h3 class="image_title">강아지계의 겸둥이</h3>
+                <p class="image_desc">무슨 종인지는 모르겠지만 귀여워서 넣어봤습니다. 큰 귀가 매력적입니다. <br />아주 아주 귀엽습니다.</p>
+                <!-- <img src="" alt="귀여운 강아지 이미지"> -->
+                <a href="/" class="image_btn">자세히 보기</a>
+            </article>
+            <article class="image img2">
+                <h3 class="image_title">강아지계의 사랑둥이</h3>
+                <p class="image_desc">새까만 눈이 마지 블랙 올리브 같습니다. 사랑둥이 인정입니다. <br />아주 아주 귀엽습니다.</p>
+                <!-- <img src="img/Rectangle9.jpg" alt="귀여운 강아지 이미지"> -->
+                <a href="/" class="image_btn yellow">자세히 보기</a>
+            </article>
+        </div>
+    </section>
+</body>
+
+</html>
