@@ -377,3 +377,7 @@
 .mr100 {
     margin-right: 100px !important;
 }
+
+.none {
+    display: none;
+}

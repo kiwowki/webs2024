@@ -9,24 +9,26 @@
             <a href="../main/main.php">Developer Blog</a>
         </div>
         <div class="right">
-            <?php if(isset($_SESSION['memberID'])){ ?>
-                <ul>
-                    <li><a href="#"><?=$_SESSION['youName']?>님 환영합니다.</a></li>
-                    <li><a href="../login/logout.php">로그아웃</a></li>
-                </ul>
+            <?php if (isset($_SESSION['memberID'])) { ?>
+            <ul>
+                <li><a href="#">
+                        <?= $_SESSION['youName'] ?>님 환영합니다.
+                    </a></li>
+                <li><a href="../login/logout.php">로그아웃</a></li>
+            </ul>
             <?php } else { ?>
-                <ul>
-                    <li><a href="../join/joinAgree.php">회원가입</a></li>
-                </ul>
+            <ul>
+                <li><a href="../join/joinAgree.php">회원가입</a></li>
+            </ul>
             <?php } ?>
         </div>
     </div>
     <nav class="nav_inner">
         <ul>
-            <li><a href="../join/joinAgree.php">회원가입</a></li>
-            <li><a href="../login/login.php">로그인</a></li>
-            <li><a href="../board/board.php">게시판</a></li>
-            <li><a href="../blog/blog.php">블로그</a></li>
+            <li><a href="../blog/blogCate.php?category=최신정보">최신 정보</a></li>
+            <li><a href="../blog/blogCate.php?category=강의정보">강의 정보</a></li>
+            <li><a href="../blog/blogCate.php?category=사이트정보">사이트 정보</a></li>
+            <li><a href="../board/board.php">공지 사항</a></li>
         </ul>
     </nav>
 </header>

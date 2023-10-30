@@ -13,8 +13,8 @@
     include "../connect/session.php";
     // $memberId = $_SESSION['memberId'];
     // $blogAuthor = $_SESSION['youName'];
-    $memberId = 1;              // 임시로 넣은 거임
-    $blogAuthor = "강서현";     // 임시로 넣은 거임
+    $memberId = 1; // 임시로 넣은 거임
+    $blogAuthor = "강서현"; // 임시로 넣은 거임
     $blogCategory = $_POST['blogCategory'];
     $blogTitle = $_POST['blogTitle'];
     $blogContents = nl2br($_POST['blogContents']);
@@ -35,15 +35,15 @@
     // echo "</pre>";
     
     if ($blogImgType) {
-        $fileTypeExtensioin = explode("/", $blogImgType); // 자바에서는 split
-        $fileType = $fileTypeExtensioin[0]; //image
-        $fileExtension = $fileTypeExtensioin[1]; //jpeg
+        $fileTypeExtension = explode("/", $blogImgType); // 자바에서는 split
+        $fileType = $fileTypeExtension[0]; //image
+        $fileExtension = $fileTypeExtension[1]; //jpeg
     
         // 이미지 타입 확인
         if ($fileType === "image") {
             if ($fileExtension === "jpg" || $fileExtension === "jpeg" || $fileExtension === "png" || $fileExtension === "webp") {
                 $blogImgDir = "../assets/blog/";
-                $blogImgName = "Img_" . time() . rand(1, 99999) . "." . "{$fileExtension}"; // 이미지 안 겹치게 랜덤 숫자 생성(random대신 rand)
+                $blogImgName = "Img_".time().rand(1, 99999)."."."{$fileExtension}"; // 이미지 안 겹치게 랜덤 숫자 생성(random대신 rand)
                 $sql = "INSERT INTO blog(memberId, blogTitle, blogContents, blogCategory, blogAuthor, blogRegTime, blogView, blogLike, blogImgFile, blogImgSize, blogDelete) VALUES('$memberId', '$blogTitle', '$blogContents', '$blogCategory', '$blogAuthor', '$blogRegTime', '$blogView', '$blogLike', '$blogImgName', '$blogImgSize', '$blogDelete')";
 
             } else {
@@ -63,12 +63,18 @@
         echo "<script>alert('이미지 파일 용량이 1MB를 초과했습니다. 사이즈를 줄여주세요.')</script>";
     }
 
-    $result = $connect->query($sql);
-    $result = move_uploaded_file($blogImgTmp, $blogImgDir . $blogImgName);
+    // 데이터베이스 쿼리 실행
+    $queryResult = $connect->query($sql);
 
-    if ($result) {
-        echo "<script>alert('저장이 완료되었습니다.')</script>";
-        echo "<script>window.location.href = 'blog.php'</script>";
+    // 파일 이동 작업 수행
+    
+    $fileMoveResult = move_uploaded_file($blogImgTmp, $blogImgDir.$blogImgName);
+    if ($fileMoveResult) {
+        // 파일 이동에 성공한 경우
+        echo '<script>window.location.href = "blog.php";</script>';
+    } else {
+        // 파일 이동에 실패한 경우
+        echo "File move failed with error: " . $_FILES['blogFile']['error'];
     }
     ?>
 </body>

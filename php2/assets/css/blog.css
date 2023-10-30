@@ -56,7 +56,225 @@
     text-align: right;
 }
 
-.ck-editor__editable {
+.ck-editor_editable {
     height: 600px;
     margin-bottom: 10px;
+}
+
+.blog_comment {
+    padding: 100px 0;
+}
+.blog_comment h4 {
+    width: 100%;
+    border-top: 2px solid var(--black);
+    border-bottom: 1px dashed var(--black);
+    text-align: center;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+.comment_view {
+    position: relative;
+    margin-bottom: 20px;
+}
+.comment_view .avata {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 2px solid var(--black);
+    background: url(../face/Awe.svg);
+    background-size: cover;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+.comment_view:nth-child(even) .avata {
+    left: auto;
+    right: 0;
+    transform: rotateY(180deg);
+}
+.comment_view:nth-child(even) .text {
+    text-align: right;
+    margin-right: 60px;
+}
+.comment_view:nth-child(even) .text p {
+    border-radius: 10px 0 10px 10px;
+    text-align-last: left;
+}
+.comment_view:nth-child(2) .avata {
+    background: url(../face/Blank.svg);
+    background-size: cover;
+}
+.comment_view:nth-child(3) .avata {
+    background: url(../face/Calm.svg);
+    background-size: cover;
+}
+.comment_view:nth-child(4) .avata {
+    background: url(../face/Cheeky.svg);
+    background-size: cover;
+}
+.comment_view:nth-child(5) .avata {
+    background: url(../face/Contempt.svg);
+    background-size: cover;
+}
+.comment_view .text {
+    margin-left: 60px;
+}
+.comment_view .text > span {
+    font-size: 14px;
+    display: block;
+    color: var(--black300);
+}
+.comment_view .text p {
+    background-color: #e6e6e6;
+    padding: 10px;
+    border-radius: 0 10px 10px 10px;
+    display: inline-block;
+    margin-top: 4px;
+}
+.text .modify {
+    text-decoration: underline;
+    text-underline-position: under;
+}
+.text .modify:hover {
+    border: var(--black);
+}
+.text .delete {
+    text-decoration: underline;
+    text-underline-position: under;
+}
+.text .delete:hover {
+    border: var(--black);
+}
+.comment_input {
+    margin-top: 50px;
+    padding-top: 50px;
+    border-top: 1px dashed var(--black);
+}
+.comment_input fieldset {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.comment_input #commentName {
+    width: 49.5%;
+}
+.comment_input #commentPass {
+    width: 49.5%;
+}
+.comment_input #commentWrite {
+    width: 100%;
+    margin-top: 10px;
+}
+
+
+
+#popupDelete {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 10000;
+}
+
+.comment_delete {
+    width: 400px;
+    height: 400px;
+    background-color: var(--black500);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    padding: 40px;
+    border: 2px solid var(--black);
+}
+
+.comment_delete h4 {
+    margin-bottom: 10px;
+}
+
+.comment_delete input {
+    border: 1px solid var(--black400);
+    padding: 1rem;
+    width: 100%;
+    font-size: 1rem;
+}
+
+.comment_delete p {
+    margin-top: 10px;
+    color: var(--black300);
+}
+
+.comment_delete .btn {
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+}
+
+.comment_delete .btn button {
+    background-color: var(--black);
+    color: var(--white);
+    padding: 5px 20px;
+    cursor: pointer;
+}
+
+
+#popupModify {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 10000;
+}
+
+.comment_modify {
+    width: 400px;
+    height: 400px;
+    background-color: var(--black500);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    padding: 40px;
+    border: 2px solid var(--black);
+}
+
+.comment_modify h4 {
+    margin-bottom: 10px;
+}
+
+.comment_modify textarea {
+    width: 100%;
+    height: 150px;
+    padding: 10px;
+    font-size: 1rem;
+    resize: none;
+}
+
+.comment_modify input {
+    border: 1px solid var(--black400);
+    padding: 1rem;
+    width: 100%;
+    font-size: 1rem;
+}
+
+.comment_modify p {
+    margin-top: 10px;
+    color: var(--black300);
+}
+
+.comment_modify .btn {
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+}
+
+.comment_modify .btn button {
+    background-color: var(--black);
+    color: var(--white);
+    padding: 5px 20px;
+    cursor: pointer;
 }

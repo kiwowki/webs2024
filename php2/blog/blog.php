@@ -7,7 +7,7 @@ include "../connect/session.php";
 // echo "</pre>";
 
 $blogSql = "SELECT * FROM blog WHERE blogDelete = 1 ORDER BY blogId DESC";
-$blogInfo = $connect -> query($blogSql);
+$blogInfo = $connect->query($blogSql);
 ?>
 
 <!DOCTYPE html>
@@ -29,13 +29,42 @@ $blogInfo = $connect -> query($blogSql);
     <?php include "../include/skip.php" ?>
     <!-- skip -->
 
-    <?php include "../include/header.php" ?>
-    <!-- header -->
+    <header id="header" role="banner">
+        <div class="container">
+            <div class="header_inner">
+                <div class="left">
+                    <a href="../index.html">
+                        <span class="blind">메인으로</span>
+                    </a>
+                </div>
+                <h1 class="logo">
+                    <a href="../main/main.php">Developer Blog</a>
+                </h1>
+                <div class="right">
+                    <ul>
+                        <li><a href="../login/login.php">로그인</a></li>
+                        <li><a href="../join/joinAgree.php">회원가입</a></li>
+                    </ul>
+
+                </div>
+            </div>
+            <nav class="nav_inner">
+                <ul>
+                    <li><a href="../blog/blogCate.php?category=최신정보">최신 정보</a></li>
+                    <li><a href="../blog/blogCate.php?category=강의정보">강의 정보</a></li>
+                    <li><a href="../blog/blogCate.php?category=사이트정보">사이트 정보</a></li>
+                    <li><a href="../board/board.php">공지 사항</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <!-- //header -->
 
     <main id="main" role="main">
         <div class="intro_inner blogStyle bmStyle container">
             <div class="intro_img main">
-                <img srcset="../assets/img/Frame11.jpg, ../assets/img/Frame11@2x.jpg, ../assets/img/Frame11@3x.jpg" alt="">
+                <img srcset="../assets/img/Frame11.jpg, ../assets/img/Frame11@2x.jpg, ../assets/img/Frame11@3x.jpg"
+                    alt="">
             </div>
             <div class="intro_text">
                 <h3>블로그 글쓰기</h3>
@@ -47,25 +76,26 @@ $blogInfo = $connect -> query($blogSql);
             <div class="blog_contents">
                 <section class="blog_card card_wrap">
                     <div class="card_inner column3">
-<?php foreach($blogInfo as $blog){ ?>
-    <div class="card">
-        <figure class="card_img">
-            <a href="blogView.php?blogId=<?=$blog['blogId']?>">
-                <img src="../assets/blog/<?=$blog['blogImgFile']?>" alt="<?=$blog['blogTitle']?>">  
-            </a>
-        </figure>
-        <div class="card_text">
-            <h3>
-                <a href="blogView.php?blogId=<?=$blog['blogId']?>">
-                    <?=$blog['blogTitle']?>
-                </a>
-            </h3>
-            <p>
-                <?=substr($blog['blogContents'], 0, 100)?>
-            </p>
-        </div>
-    </div>
-<?php } ?>
+                        <?php foreach ($blogInfo as $blog) { ?>
+                            <div class="card">
+                                <figure class="card_img">
+                                    <a href="blogView.php?blogId=<?= $blog['blogId'] ?>">
+                                        <img src="../assets/blog/<?= $blog['blogImgFile'] ?>"
+                                            alt="<?= $blog['blogTitle'] ?>">
+                                    </a>
+                                </figure>
+                                <div class="card_text">
+                                    <h3>
+                                        <a href="blogView.php?blogId=<?= $blog['blogId'] ?>">
+                                            <?= $blog['blogTitle'] ?>
+                                        </a>
+                                    </h3>
+                                    <p>
+                                        <?= substr($blog['blogContents'], 0, 100) ?>
+                                    </p>
+                                </div>
+                            </div>
+                        <?php } ?>
                     </div>
                 </section>
                 <section class="blog_pages">blog_pages</section>
@@ -74,25 +104,4 @@ $blogInfo = $connect -> query($blogSql);
                 <section class="blog_view">blog_view</section>
                 <section class="blog_write">blog_write</section>
             </div>
-            <div class="blog_aside">
-                <?php include "blogIntro.php" ?>
-                <!-- blog_intro -->
-
-                <?php include "blogCategory.php" ?>
-                <!-- blog_category -->
-
-                <?php include "blogPopular.php" ?>
-                <!-- blog_popular -->
-
-                <?php include "blogComment.php" ?>
-                <!-- blog_comment -->
-            </div>
-        </div>
-    </main>
-    <!-- main -->
-
-    <?php include "../include/footer.php" ?>
-    <!-- footer -->
-</body>
-
-</html>
+     
