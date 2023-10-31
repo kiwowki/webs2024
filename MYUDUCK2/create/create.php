@@ -9,15 +9,16 @@
     $sql .= "youAddress varchar(255) DEFAULT NULL,";
     $sql .= "youEmail varchar(40) DEFAULT NULL,";
     $sql .= "youPhone varchar(40) NOT NULL,";
+    $sql .= "youDelete int(10) DEFAULT 1,";
     $sql .= "regTime int(20) NOT NULL,";
     $sql .= "PRIMARY KEY(myuduckId)";
     $sql .= ") charset=utf8";
     
     $result = $connect -> query($sql);
 
-    if($result){
-        echo "Create Tables Complete";
-    } else {
-        echo "Create Tables False";
-    }
+    // if($result){
+    //     echo "Create Tables Complete";
+    // } else {
+    //     echo "Create Tables False";
+    // }
 ?>

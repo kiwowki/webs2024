@@ -4,10 +4,10 @@
     </h1>
     <nav class="category">
         <ul>
-            <li><a href="category_theater.html">Theater</a></li>
-            <li><a href="http://kiwowki.dothome.co.kr/project2/kategorie_musical.html">Musical</a></li>
-            <li><a href="category_actor.html">Actor</a></li>
-            <li><a href="search.html">Search</a></li>
+            <li><a href="../category_th/category_theater">Theater</a></li>
+            <li><a href="../category_mu/category_musical.php">Musical</a></li>
+            <li><a href="../category_ac/category_actor.php">Actor</a></li>
+            <li><a href="../search/search.php">Search</a></li>
         </ul>
     </nav>
 

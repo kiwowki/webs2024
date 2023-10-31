@@ -7,8 +7,9 @@
 
     <!-- CSS -->
     <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/commons.css">
 
-    <title>뮤지컬 회원가입 약관</title>
+    <title>MYUDUCK</title>
     <style>
     </style>
 </head>
@@ -21,7 +22,7 @@
     <main>
         <!-- join__inner -->
         <section class="join__inner container">
-            <h2 class="blind">이용약관</h2>
+            <h2>이용약관<span>MYUDUCK Service Agreement</span></h2>
             <div class="join__agree">
                 <div class="agree__box">
                     <div class="check">
@@ -128,12 +129,10 @@
                 </div>
                 <div class="agree__btn">
                     <button id="cancelButton" class="joindrop btn-style">취소</button>
-                    <button id="agreeButton" class="btn-style2">가입하기</button>
+                    <button id="agreeButton" class="join_btn btn-style2">가입하기</button>
                 </div>
             </div>
         </section>
-    
-    
     </main>
     <!-- //main-->
 

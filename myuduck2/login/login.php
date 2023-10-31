@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="../assets/css/style.css">
     <link rel="stylesheet" href="../assets/css/commons.css">
 
-    <title>뮤지컬 회원가입 약관</title>
+    <title>MYUDUCK</title>
     <style>
     </style>
 </head>
@@ -45,8 +45,8 @@
                         <div class="login__btn">
                             <a href="../join/joinAgree.php" class="joinbtn">회원가입</a>
                             <div class="findbtn">
-                                <a href="#" class="idfindbtn">아이디 찾기</a>
-                                <a href="#" class="passfindbtn">비밀번호 찾기</a>
+                                <a href="../find/id_findme.php" class="idfindbtn">아이디 찾기</a>
+                                <a href="../find/pass_find.php" class="passfindbtn">비밀번호 찾기</a>
                             </div>
                         </div>
                     </fieldset>

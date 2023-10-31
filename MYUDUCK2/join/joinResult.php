@@ -28,8 +28,9 @@
 
     <!-- CSS -->
     <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/commons.css">
 
-    <title>뮤지컬 회원가입 약관</title>
+    <title>MYUDUCK</title>
     <style>
     </style>
 </head>
@@ -39,7 +40,7 @@
     <!-- //header -->
 
 
-    <main>13480
+    <main>
         <div class="joinResultWrap container2">
             <div class="message1">회원 가입이 완료되었습니다!</div>
             <div class="img red"></div>
