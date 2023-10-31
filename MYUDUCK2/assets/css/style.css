@@ -4,7 +4,6 @@
 @import "fonts.css";
 @import "resets.css";
 @import "vars.css";
-@import "commons.css";
 
 
 /* 섹션별 설정 */
@@ -20,3 +19,8 @@
 @import "search.css";
 @import "category_actor.css";
 @import "category_ac_detail.css";
+
+/* 해연님 */
+@import "QA.css";
+/* @import "cm_detail.css"; */
+@import "cm.css";

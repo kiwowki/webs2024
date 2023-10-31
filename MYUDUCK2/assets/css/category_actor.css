@@ -1,6 +1,6 @@
 #category_wrap {
-    margin-top: 42vh; /* 이미지의 높이에 따라 조절 (예: 400px) */
-    width: 100vw;
+    margin-top: 476px; /* 이미지의 높이에 따라 조절 (예: 400px) */
+    width: 100%;
     margin-bottom: 70px;
     display: flex;
     flex-direction: column;
@@ -8,16 +8,19 @@
     z-index: 2;
     position: relative;
 }
+.container {
+    
+}
 .category_inner {
     
     margin-top: 70px;
-    align-items: center;
+    align-items: center;    
     background-color: var(--black);
 }
 .category_inner h1 {
     font-size: 2.5rem;
     color: var(--primary-color);
-    margin: 50px 100px;
+    margin: 50px 170px;
     display: inline-block;
     font-family: var(--hahm);
 }
@@ -25,8 +28,13 @@
 .actor_list {
     text-align: center;
 }
+.actor_title {
+    width: 100%;
+    background-color: #fff;
+}
 .actor_header {
     width: 100%;
+    text-align: center;
 }
 .actor_header span {
     border: 1px solid var(--black300);
@@ -69,13 +77,6 @@
 .info_actor h2 {
     width: 100px;
 }
-.info_actor h2 a {
-    font-size: 1.25rem;
-    font-family: var(--hahm);
-}
-.info_actor h2 a:hover {
-    border-bottom: 1px solid #fff;
-}
 
 .info_occupation {
     width: 308px;
@@ -84,7 +85,6 @@
 }
 .info_occupation p {
     display: inline-block;
-    color: var(--black500);
 }
 
 .info_perform {
@@ -94,6 +94,5 @@
 }
 .info_perform p {
     display: inline-block;
-    color: var(--black500);
 }
 /* //actor_list */

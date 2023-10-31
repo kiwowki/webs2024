@@ -21,6 +21,10 @@
     --black500: #d7d7d7;
     --black600: #e8e8e8;
     --black700: #f6f4f4;
+    --black800: #00000060;
+    --black900: #00000080; 
+    /* // 900이 제일 어두움(타이틀 전용) */
+    --black999: #00000060;
 
     font-size: 16px;
     line-height: 1.5;
@@ -31,4 +35,16 @@
     :root {
         font-size: 14px;
     }
+}
+
+:root {
+    --nanum: "NanumSquareNeo";
+    --oleo: "OleoScript";
+    --hahm: "Hahmlet";
+    --mapo: "MapoGoldenPier";
+    --oswald: "Oswald";
+    
+
+    --primary-color: #D06958;
+    --primary-color2: #160A0C;
 }

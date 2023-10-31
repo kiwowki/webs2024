@@ -5,7 +5,7 @@
     <nav class="category">
         <ul>
             <li><a href="category_theater.html">Theater</a></li>
-            <li><a href="http://jhyjhy968.dothome.co.kr/project2/kategorie_musical.html">Musical</a></li>
+            <li><a href="http://kiwowki.dothome.co.kr/project2/kategorie_musical.html">Musical</a></li>
             <li><a href="category_actor.html">Actor</a></li>
             <li><a href="search.html">Search</a></li>
         </ul>
@@ -22,23 +22,54 @@
         </div>
         <div class="navbar_menu">
             <ul>
-                <li><a href="#" class="m">마이페이지</a>
+                <!-- <li><a href="#" class="m">마이페이지</a>
                     <ul class="submenu">
                         <li><a href="#" class="m">나의 찜 목록</a></li>
                         <li><a href="#" class="m">회원 정보 수정</a></li>
                     </ul>
-                </li>
+                </li> -->
 
-                <li><a href="http://ljy16.dothome.co.kr/myuduck/html/login.html" class="m">로그인</a></li>
+                <?php if(isset($_SESSION['myuduckId'])){ ?>
+                    <li><a href="#" class="m">마이페이지</a>
+                        <ul class="submenu">
+                            <li><a href="#" class="m">나의 찜 목록</a></li>
+                            <li><a href="#" class="m">회원 정보 수정</a></li>
+                        </ul>
+                    </li>
 
-                <li><a href="#" class="m">문의하기</a>
+                    <li><a href="../login/logout.php" class="m">로그아웃</a></li>
+
+                    <li><a href="#" class="m">문의하기</a>
+                        <ul class="submenu">
+                            <li><a href="#" class="m">문의 글 쓰기</a>
+                            </li>
+                            <li><a href="#" class="m">문의 글 목록</a></li>
+                        </ul>
+                    </li>
+
+                    <li><a href="#" class="m">회원탈퇴</a></li>
+                <?php } else { ?> 
+                    <li><a href="../login/login.php" class="m">로그인</a></li>
+                    <li><a href="../join/joinAgree.php" class="m">회원가입</a></li>
+
+                    <li><a href="#" class="m">문의하기</a>
+                        <ul class="submenu">
+                            <li><a href="#" class="m">문의 글 쓰기</a>
+                            </li>
+                            <li><a href="#" class="m">문의 글 목록</a></li>
+                        </ul>
+                    </li>
+                <?php }?>
+
+                <!-- <li><a href="#" class="m">문의하기</a>
                     <ul class="submenu">
-                        <li><a href="http://jhyjhy968.dothome.co.kr/project2/QA_write.html" class="m">문의 글 쓰기</a></li>
-                        <li><a href="http://jhyjhy968.dothome.co.kr/project2/QA.html" class="m">문의 글 목록</a></li>
+                        <li><a href="#" class="m">문의 글 쓰기</a>
+                        </li>
+                        <li><a href="#" class="m">문의 글 목록</a></li>
                     </ul>
                 </li>
 
-                <li><a href="#" class="m">회원탈퇴</a></li>
+                <li><a href="#" class="m">회원탈퇴</a></li> -->
             </ul>
             <div class="navbar_burger_back">
                 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor"
@@ -50,4 +81,4 @@
         </div>
     </div>
 </header>
-
+<!-- //header -->

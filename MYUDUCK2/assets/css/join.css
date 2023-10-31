@@ -1,20 +1,70 @@
+/* result */
+.joinResultWrap {
+    text-align: center;
+    color: #ffffff;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; /* 화면 전체 높이로 설정 */
+}
+.message1 {
+    margin-top: 50px;
+    font-size: 1.875rem;
+    margin-bottom: 10px;
+}
+.img.red{
+    display: block;
+    margin: 0 auto; 
+    width: 266px;
+    height: 250px;
+    background-image: url(../img/redduck.jpg);
+}
+.img.blue{
+    display: block;
+    margin: 0 auto; 
+    width: 266px;
+    height: 250px;
+    background-image: url(../img/blueduck.png);
+}
+.message2 {
+    margin-top: 20px;
+    font-size: 1.375rem;
+}
+.movehome {
+    margin-top: 15px;
+    width: 366px;
+    height: 50px;
+    border-radius: 10px;
+    background-color: #fff;
+    font-size: 1.25rem;
+}
+.movehome a {
+    display: inline-block;
+    padding: 10px;
+    color: #000;
+}
+
 /* join__inner */
 .join__inner {
-    padding: 140px 60px 100px 60px;
+    padding: 0 60px;
     color: var(--white);
+    background-image: url(../img/join_bg.jpg);
+    font-family: var(--primary-Hahmlet);
 }
+
 .join__inner2 {
-    padding-top: 140px;
     display: block;
     margin: 0 auto;
     color: var(--white);
     background-position: 100% 100%;
     background-size: cover;
-    height: 80vh;
     font-family: var(--primary-Hahmlet);
+    background-image: url(../img/join_bg.jpg);
 }
+
 .join__inner3 {
-    padding-top: 70px;
     display: block;
     margin: 0 auto;
     color: var(--white);
@@ -30,11 +80,15 @@
     padding: 120px 20%;
     display: flex;
     flex-direction: column;
+    background-color: var(--black999);
+    padding: 5px 10px;
 }
+
 .join__from h3 {
     margin-bottom: 40px;
     font-size: 1.8rem;
 }
+
 .join__from h3 span {
     font-size: 1.7rem;
     color: var(--black400);
@@ -64,6 +118,7 @@
     border-radius: 5px;
     margin: 60px auto;
 }
+
 .join__from .join_btn:hover {
     border: 1px solid var(--black);
     color: var(--white);
@@ -75,11 +130,15 @@
     width: 100%;
     display: flex;
     flex-direction: column;
+    background-color: var(--black999);
+    padding: 5px 10px;
 }
+
 .join__from2 h3 {
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     font-size: 1.8rem;
 }
+
 .join__from2 h3 span {
     font-size: 1.7rem;
     color: var(--black400);
@@ -87,7 +146,7 @@
 
 .join__from2 fieldset {
     width: 100%;
-    height: 4rem;
+    height: 43rem;
 }
 
 .join__from2 label {
@@ -105,18 +164,20 @@
     /* background-color: var(--black);
     color: var(--white); */
 }
+
 .join__from2 .join_btn {
     font-family: var(--primary-Hahmlet);
     border-radius: 5px;
-    margin: 40px auto;
-    border: 1px solid var(--white);
-    color: var(--white);
-    background-color: #000000b0;
-}
-.join__from2 .join_btn:hover {
+    margin: 25px auto;
     border: 1px solid var(--white);
     color: var(--black);
     background-color: var(--white);
+}
+
+.join__from2 .join_btn:hover {
+    border: 1px solid var(--white);
+    color: var(--white);
+    background-color: var(--black800);
 }
 
 /* join__from2 -> check인 것들 */
@@ -124,9 +185,11 @@
     display: flex;
     flex-wrap: wrap;
 }
+
 .join__from2 .check label {
     width: 100%;
 }
+
 .join__from2 .check input {
     padding: 20px;
     color: var(--white);
@@ -139,6 +202,7 @@
     color: var(--white); */
 
 }
+
 .join__from2 .check .btn {
     border: 1px solid var(--white);
     background-color: var(--white);
@@ -153,6 +217,7 @@
     margin-left: 2%;
     border-radius: 5px;
 }
+
 .join__from2 .check .btn:hover {
     border: 1px solid var(--white);
     background-color: var(--black800);
@@ -163,11 +228,75 @@
     color: red;
     margin-bottom: 0.8rem;
 }
+
 .join__from2 #youIdComment.green {
     color: green
 }
+
 .join__from2 #youEmailComment.green {
     color: green
+}
+
+/* join__from3 */
+.join__from3 {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.join__from3 h3 {
+    margin-bottom: 30px;
+    font-size: 1.8rem;
+    background-color: var(--black999);
+    padding: 5px 10px;
+}
+
+.join__from3 h3 span {
+    font-size: 1.5rem;
+    color: var(--black400);
+}
+.join__from3 > h3 > span {
+    margin-left: 10px;
+}
+
+.join__from3 fieldset {
+    width: 100%;
+    height: 18rem;
+}
+
+.join__from3 label {
+    display: inline-block;
+    padding: 10px 0 5px 0;
+}
+
+.join__from3 input {
+    padding: 20px;
+    color: var(--white);
+    width: 100%;
+    height: 5vh;
+    border: 1px solid var(--white);
+    background: transparent;
+    /* background-color: var(--black);
+    color: var(--white); */
+    margin-bottom: -1px;
+}
+.join__from3 input:first-child {
+    margin-bottom: 100px;
+}
+
+.join__from3 .join_btn {
+    font-family: var(--primary-Hahmlet);
+    border-radius: 5px;
+    margin: 25px auto;
+    border: 1px solid var(--white);
+    color: var(--white);
+    background-color: #000000b0;
+}
+
+.join__from3 .join_btn:hover {
+    border: 1px solid var(--white);
+    color: var(--black);
+    background-color: var(--white);
 }
 
 .cancel__btn {
@@ -178,33 +307,61 @@
     text-align: center;
     margin: 5rem auto;
 }
+
 .cancel__btn button {
     margin: 10px;
+
+}
+.cancel__btn .cancel {
+    border: 1px solid var(--white);
 }
 .cancel__btn button:hover {
     /* border: 1px solid var(--black); */
     color: var(--white);
-    background-color: var(--black200);
+    background-color: var(--black999);
+    border: 1px solid var(--white);
+}
+.cancel__btn .deletebtn {
+    border: 1px solid var(--black999);
+}
+.cancel__btn .deletebtn:hover {
+    color: var(--black);
+    background-color: var(--white);
+    border: 1px solid var(--white);
 }
 
+.join__agree h2 {
+    margin-top: 70px;
+    margin-bottom: 20px;
+    font-size: 1.8rem;
+}
 
+.join__agree>h2>span {
+    font-size: 1.4rem;
+    color: var(--black400);
+    padding-left: 10px;
+}
 
 /* agree__box */
 .agree__box .check {
     margin-top: 10px;
 }
+
 .agree__box .check label {
     position: relative;
     padding-left: 30px;
 }
+
 .agree__box .check label span {
     color: red;
 }
+
 .agree__box .check input {
     position: absolute;
     z-index: -1;
     opacity: 0;
 }
+
 .agree__box .check .indicator {
     position: absolute;
     top: -1px;
@@ -215,6 +372,7 @@
     border: 1px solid var(--black);
     border-radius: 2px;
 }
+
 .agree__box .check .indicator::after {
     content: '';
     position: absolute;
@@ -226,10 +384,12 @@
     border-width: 0 2px 2px 0;
     transform: rotate(45deg);
 }
-.agree__box .check input:checked ~ .indicator {
+
+.agree__box .check input:checked~.indicator {
     background: var(--white);
 }
-.agree__box .check input:checked ~ .indicator::after {
+
+.agree__box .check input:checked~.indicator::after {
     display: block;
     content: '';
     position: absolute;
@@ -258,13 +418,48 @@
     margin-top: 30px;
     text-align: center;
 }
+
 .agree__btn .joindrop {
     margin-right: 10px;
+    padding: 0.7rem 6.7rem;
+    margin-top: 10px;
+}
+
+.agree__btn .joindrop:hover {
+    background-color: var(--white);
+    border: 1px solid var(--white);
+    color: var(--black);
+}
+
+.agree__btn .join_btn {
+    background-color: var(--white);
+    border: 1px solid var(--white);
+    padding: 0.7rem 6.7rem;
+    margin-top: 10px;
+}
+
+.agree__btn .join_btn:hover {
+    background-color: var(--black999);
+    border: 1px solid var(--white);
+    color: var(--white);
 }
 
 /* join__agree__cancel */
 .join__agree__cancel {
     margin: 0 auto;
+}
+
+/* agree__box  text */
+.agree__box h3 {
+    margin-top: 70px;
+    margin-bottom: 20px;
+    font-size: 1.8rem;
+}
+
+.agree__box>h3>span {
+    font-size: 1.4rem;
+    color: var(--black400);
+    padding-left: 10px;
 }
 
 /* agree__box scroll2 */
@@ -278,20 +473,21 @@
     max-height: 300px;
     font-family: var(--primary-Hahmlet);
 }
+
 .agree__box .scroll2 span {
     font-size: 1rem;
     color: red;
 }
+
 .join__agree__cancel .agree__box h3 {
     font-family: var(--primary-Hahmlet);
-    font-weight: bold;
     font-size: 1.7rem;
     margin-bottom: 40px;
 }
-.join__agree__cancel .agree__box > span {
+
+.join__agree__cancel .agree__box>span {
     font-size: 0.9rem;
     color: var(--black500);
-
 }
 
 /* email찾기 */
@@ -301,6 +497,7 @@
     z-index: 1;
     -webkit-overflow-scrolling: touch
 }
+
 #layer img {
     position: absolute;
     right: -3px;

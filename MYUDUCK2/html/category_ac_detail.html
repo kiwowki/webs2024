@@ -6,10 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MYUDUCK</title>
     <link rel="stylesheet" href="../assets/css/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
-    <style>
-
-    </style>
+    <link rel="stylesheet" href="../assets/css/commons2.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
 
 <body>
@@ -20,7 +18,7 @@
         <nav class="category">
             <ul>
                 <li><a href="category_theater.html">Theater</a></li>
-                <li><a href="http://jhyjhy968.dothome.co.kr/project2/kategorie_musical.html">Musical</a></li>
+                <li><a href="category_musical.html">Musical</a></li>
                 <li><a href="category_actor.html">Actor</a></li>
                 <li><a href="search.html">Search</a></li>
             </ul>
@@ -44,12 +42,13 @@
                         </ul>
                     </li>
 
-                    <li><a href="http://ljy16.dothome.co.kr/myuduck/html/login.html" class="m">로그인</a></li>
+                    <li><a href="login.html" class="m">로그인</a></li>
 
-                    <li><a href="http://jhyjhy968.dothome.co.kr/project2/QA_write.html" class="m">문의하기</a>
+                    <li><a href="#" class="m">문의하기</a>
                         <ul class="submenu">
-                            <li><a href="#" class="m">문의 글 쓰기</a></li>
-                            <li><a href="#" class="m">문의 글 목록</a></li>
+                            <li><a href="QA_write.html" class="m">문의 글 쓰기</a>
+                            </li>
+                            <li><a href="QA.html" class="m">문의 글 목록</a></li>
                         </ul>
                     </li>
 
@@ -67,18 +66,18 @@
     </header>
     <!-- //header -->
 
+
     <div class="dtail_fix_image">
         <img src="../assets/img/detail_image.jpg" alt="이미지" class="intro_img">
         <div class="intro_actor">
-            
+
             <div class="image_wrap">
                 <div>
                     <button class="like-button">☆ 찜버튼</button>
                 </div>
-                <img src="../assets/img/acd_JeonDong-Seok.jpg" alt="전동석 사진2">
+                <img src="../assets/img/actor/acd_JeonDong-Seok.jpg" alt="전동석 사진2">
             </div>
             <div class="intro_info">
-                
                 <div class="name">
                     <h1>전동석</h1>
                     <h1>Jeon Dong Suk</h1>
@@ -87,7 +86,6 @@
                 <p class="birthdate">생년월일 : 1988.02.06</p>
                 <div class="rating">
                     <span class="rating_result">
-
                     </span>
                     <i class="rating_star far fa-star"></i>
                     <i class="rating_star far fa-star"></i>
@@ -96,19 +94,60 @@
                     <i class="rating_star far fa-star"></i>
                 </div>
             </div>
-            
         </div>
     </div>
 
     <main id="category_ac_wrap">
-        <div class="category_ac_inner container">
-            <div class="main_actor">
-                <h1>뮤지컬 배우</h1>
+        <div class="category_ac_inner">
+            <div class="main_actor container">
+                <h3>배우 정보 <span>Actor information</span></h3>
+                <div class="main_actor_title">
+                    <h4>현재 출연작 & 출연 예정작</h4>
+                </div>
+                <div class="recent_work">
+                    <div class="work-card">
+                        <div class="ac_img_wrap">
+                            <img src="../assets/img/actor/ac_work01.jpg" alt="ac_work01">
+                        </div>
+                        <div class="ac_text_wrap">
+                            <h3 class="ac_musical">드라큘라</h3>
+                            <p class="ac_date">2023.12.06 ~ 2023.03.03</p>
+                            <p class="ac_theater">샤롯데씨어터</p>
+                            <p class="ac_role">드라큘라 역</p>
+                        </div>
+                    </div>
+                    <!-- //work-card t1 -->
 
+                    <div class="work-card">
+                        <div class="ac_img_wrap">
+                            <img src="../assets/img/actor/ac_work02.jpg" alt="ac_work02">
+                        </div>
+                        <div class="ac_text_wrap">
+                            <h3 class="ac_musical">브랜든 리 심포니 OST 콘서트</h3>
+                            <p class="ac_date">2023.10.17 ~ 2023.10.18</p>
+                            <p class="ac_theater">세종문화회관 대극장</p>
+                            <p class="ac_role">바이올린 역</p>
+                        </div>
+                    </div>
+                    <!-- //work-card t2 -->
+
+                    <div class="work-card">
+                        <div class="ac_img_wrap">
+                            <img src="../assets/img/actor/ac_work03.jpg" alt="ac_work03">
+                        </div>
+                        <div class="ac_text_wrap">
+                            <h3 class="ac_musical">오페라의 유령</h3>
+                            <p class="ac_date">2023.07.21 ~ 2023.11.19</p>
+                            <p class="ac_theater">샤롯데씨어터</p>
+                            <p class="ac_role">오페라의 유령 역</p>
+                        </div>
+                    </div>
+                    <!-- //work-card t2 -->
+                </div>
             </div>
         </div>
     </main>
-    <main id="category_ac_wrap">
+    <!-- <main id="category_ac_wrap">
         <div class="category_ac_inner container">
             <div class="main_actor">
                 <div class="actor-card">
@@ -125,7 +164,7 @@
                 </div>
             </div>
         </div>
-    </main>
+    </main> -->
 
 
 
@@ -157,52 +196,9 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="../script/commons.js"></script>
     <script>
-        //별점기능
-        const ratingStars = [...document.getElementsByClassName("rating_star")];
-        const ratingResult = document.querySelector(".rating_result");
 
-        printRatingResult(ratingResult);
-
-        function executeRating(stars, result) {
-            const starClassActive = "rating_star fas fa-star";
-            const starClassUnactive = "rating_star far fa-star";
-            const starsLength = stars.length;
-            let i;
-            stars.map((star) => {
-                star.onclick = () => {
-                    i = stars.indexOf(star);
-
-                    if (star.className.indexOf(starClassUnactive) !== -1) {
-                        printRatingResult(result, i + 1);
-                        for (i; i >= 0; --i) stars[i].className = starClassActive;
-                    } else {
-                        printRatingResult(result, i);
-                        for (i; i < starsLength; ++i) stars[i].className = starClassUnactive;
-                    }
-                };
-            });
-        }
-
-        function printRatingResult(result, num = 0) {
-            result.textContent = `${num}/5`;
-        }
-
-        executeRating(ratingStars, ratingResult);
-
-        //찜버튼
-        const likeButton = document.querySelector('.like-button');
-
-        likeButton.addEventListener('click', function () {
-            this.classList.toggle('clicked');
-
-            if (this.classList.contains('clicked')) {
-                this.innerHTML = '★ 찜버튼';
-            } else {
-                this.innerHTML = '☆ 찜버튼';
-            }
-        });
-    </script>
     </script>
 </body>
 

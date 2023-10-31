@@ -10,7 +10,7 @@ navbarBurger.addEventListener('click', () => {
 });
 
 navbarburgerback.addEventListener('click', () => {
-    navbarMenu.classList.remove('active'); 
+    navbarMenu.classList.remove('active');
     navbarOverlay.classList.remove('active');
 });
 
@@ -31,42 +31,90 @@ $(".navbar_menu li").mouseout(function () {
 });
 
 
- // 03. 스냅 고정 효과 만들기 (이런건 검색해서 찾아서 복사하셈)
 
- let panels = gsap.utils.toArray(".parallax_item");
- let tops = panels.map(panel => ScrollTrigger.create({ trigger: panel, start: "top top" }));
 
- panels.forEach((panel, i) => {
-     ScrollTrigger.create({
-         trigger: panel,
-         start: () => panel.offsetHeight < window.innerHeight ? "top top" : "bottom bottom",
-         pin: true,
-         pinSpacing: false
-     });
- });
+// 이미지 고정 스크롤 스무스 효과
+let panels = gsap.utils.toArray(".parallax_item");
+let tops = panels.map(panel => ScrollTrigger.create({ trigger: panel, start: "top top" }));
 
- ScrollTrigger.create({
-     snap: {
-         snapTo: (progress, self) => {
-             let panelStarts = tops.map(st => st.start),
-                 snapScroll = gsap.utils.snap(panelStarts, self.scroll());
-             return gsap.utils.normalize(0, ScrollTrigger.maxScroll(window), snapScroll);
-         },
-         duration: 0.5
-     }
- });
+panels.forEach((panel, i) => {
+    ScrollTrigger.create({
+        trigger: panel,
+        start: () => panel.offsetHeight < window.innerHeight ? "top top" : "bottom bottom",
+        pin: true,
+        pinSpacing: false
+    });
+});
 
- // 02. 여러개 이질감 표현하기
- gsap.utils.toArray(".parallax_item_desc").forEach(item => {
-     gsap.to(item, {
-         yPercent: -400,
-         duration: 0.5,
-         scrollTrigger: {
-             trigger: item,
-             start: "top bottom",
-             end: "bottom top",
-             markers: true,
-             scrub: 0.5
-         }
-     })
- });
+ScrollTrigger.create({
+    snap: {
+        snapTo: (progress, self) => {
+            let panelStarts = tops.map(st => st.start),
+                snapScroll = gsap.utils.snap(panelStarts, self.scroll());
+            return gsap.utils.normalize(0, ScrollTrigger.maxScroll(window), snapScroll);
+        },
+        duration: 0.5
+    }
+});
+
+// 텍스트 여러개 이질감효과
+gsap.utils.toArray(".parallax_text").forEach(item => {
+    gsap.to(item, {
+        yPercent: -200,
+        duration: 0.5,
+        scrollTrigger: {
+            trigger: item,
+            start: "top bottom",
+            end: "bottom top",
+            scrub: 0.5
+        }
+    })
+});
+
+
+
+
+//별점기능
+const ratingStars = [...document.getElementsByClassName("rating_star")];
+const ratingResult = document.querySelector(".rating_result");
+
+printRatingResult(ratingResult);
+
+function executeRating(stars, result) {
+    const starClassActive = "rating_star fas fa-star";
+    const starClassUnactive = "rating_star far fa-star";
+    const starsLength = stars.length;
+    let i;
+    stars.map((star) => {
+        star.onclick = () => {
+            i = stars.indexOf(star);
+
+            if (star.className.indexOf(starClassUnactive) !== -1) {
+                printRatingResult(result, i + 1);
+                for (i; i >= 0; --i) stars[i].className = starClassActive;
+            } else {
+                printRatingResult(result, i);
+                for (i; i < starsLength; ++i) stars[i].className = starClassUnactive;
+            }
+        };
+    });
+}
+
+function printRatingResult(result, num = 0) {
+    result.textContent = `${num}/5`;
+}
+
+executeRating(ratingStars, ratingResult);
+
+//찜버튼
+const likeButton = document.querySelector('.like-button');
+
+likeButton.addEventListener('click', function () {
+    this.classList.toggle('clicked');
+
+    if (this.classList.contains('clicked')) {
+        this.innerHTML = '★ 찜버튼';
+    } else {
+        this.innerHTML = '☆ 찜버튼';
+    }
+});

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -21,10 +22,10 @@
             text-align: center;
             font-size: 20px;
         }
-
     </style>
 
 </head>
+
 <body class="fixed">
     <header id="header">
         <h1>
@@ -65,35 +66,35 @@
         let quizInfo = [];
         let currentIndex = 0;
         let quizScore = 0;
-        
+
         // 문제 가져오기
         const fetchQuiz = () => {
             fetch("https://kiwowki.github.io/webs2024/json/gineungsaJC2011_05.json")
-            .then(res => res.json())
-            .then(items => {
-                quizInfo = items.map((item, index) => {
-                    const formattedQuiz = {
-                        infoDate: "2011년 5회",
-                        infoType: item.subject,
-                        infoQuestion: item.question,
-                        infoDesc: item.desc,
-                        infoAnswer: item.correct_answer
-                    }
-                    // 보기 가져오기
-                    const choices = [...item.incorrect_answers, item.correct_answer];
+                .then(res => res.json())
+                .then(items => {
+                    quizInfo = items.map((item, index) => {
+                        const formattedQuiz = {
+                            infoDate: "2011년 5회",
+                            infoType: item.subject,
+                            infoQuestion: item.question,
+                            infoDesc: item.desc,
+                            infoAnswer: item.correct_answer
+                        }
+                        // 보기 가져오기
+                        const choices = [...item.incorrect_answers, item.correct_answer];
 
-                    // 보기 랜덤 섞기
-                    for (let i = choices.length - 1; i > 0; i--) {
+                        // 보기 랜덤 섞기
+                        for (let i = choices.length - 1; i > 0; i--) {
                             const j = Math.floor(Math.random() * (i + 1));
                             [choices[i], choices[j]] = [choices[j], choices[i]];
-                    }
+                        }
 
-                    formattedQuiz.infoChoice = choices;
-                    return formattedQuiz;
-                });
-                console.log(quizInfo)
-                updataQuiz();
-            })
+                        formattedQuiz.infoChoice = choices;
+                        return formattedQuiz;
+                    });
+                    console.log(quizInfo)
+                    updataQuiz();
+                })
         };
 
         // 문제 출력
@@ -107,7 +108,7 @@
                     
                         <div class="quiz_main">
                             <div class="quiz_question">
-                                ${number+1}. ${quiz.infoQuestion}  
+                                ${number + 1}. ${quiz.infoQuestion}  
                             </div>
                             <div class="quiz_choice">
                                 <label for="choice1-${number}">
@@ -139,6 +140,8 @@
         }
 
         // 정답 확인
+        // 선택자    - 로딩이 된 후 나와야하는 선택자들
+        const quizConfirm = quizWrap.querySelector(".quiz_confirm");
         quizConfirm.addEventListener("click", () => {
             const quizElements = document.querySelectorAll(".quiz");
 
@@ -147,14 +150,14 @@
                 const quizAnswer = quizElement.querySelector(".quiz_answer");
                 const quizDesc = quizElement.querySelector(".quiz_desc");
 
-                if(selectedChoice){
+                if (selectedChoice) {
                     const userAnswer = selectedChoice.value;
                     const correctAnswer = quizAnswer.innerText;
                     console.log((userAnswer))
                     console.log((correctAnswer))
-                   
 
-                    if(userAnswer === correctAnswer){
+
+                    if (userAnswer === correctAnswer) {
                         console.log("정답!");
                         quizElement.classList.add("good")
                         quizDesc.classList.remove("none")
@@ -168,7 +171,7 @@
                 }
             });
 
-         
+
         });
 
 
@@ -181,4 +184,5 @@
     </script>
 
 </body>
+
 </html>
