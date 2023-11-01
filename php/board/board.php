@@ -31,7 +31,6 @@ include "../connect/session.php";
 
     $boardTotalCount = $result->fetch_array(MYSQLI_ASSOC);
     $boardTotalCount = $boardTotalCount['count(boardID)'];
-
     ?>
 
     <main id="main" role="main">

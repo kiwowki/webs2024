@@ -1,6 +1,7 @@
 <?php
 include "../connect/connect.php";
 
+
 ?>
 
 <!DOCTYPE html>
@@ -28,7 +29,7 @@ include "../connect/connect.php";
             <div class="search_logo">
                 <img src="../assets/img/duck_all_search.png" alt="오페라글래스낀뮤덕로고">
             </div>
-            <form action="search_result.html" method="GET">
+            <form action="search_result.php" method="GET">
                 <fieldset class="all_search">
                     <legend class="blind">검색 영역</legend>
                     <input type="search" name="searchKeyword" id="searchKeyword" placeholder="검색어를 입력하세요." required>

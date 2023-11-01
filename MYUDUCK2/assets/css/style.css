@@ -17,6 +17,7 @@
 /* 섹션별 설정(서현) */
 @import "main.css";
 @import "search.css";
+@import "search_result.css";
 @import "category_actor.css";
 @import "category_ac_detail.css";
 @import "my_page.css";
