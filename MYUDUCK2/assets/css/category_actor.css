@@ -1,15 +1,12 @@
 #category_wrap {
     margin-top: 476px; /* 이미지의 높이에 따라 조절 (예: 400px) */
     width: 100%;
-    margin-bottom: 70px;
+    padding-bottom: 70px;
     display: flex;
     flex-direction: column;
     background-color: var(--black);
     z-index: 2;
     position: relative;
-}
-.container {
-    
 }
 .category_inner {
     

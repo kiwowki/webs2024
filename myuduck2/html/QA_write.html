@@ -7,6 +7,7 @@
 
     <!-- CSS -->
     <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/commons.css">
 
     <title>문의하기</title>
 </head>
@@ -19,7 +20,7 @@
         <nav class="category">
             <ul>
                 <li><a href="category_theater.html">Theater</a></li>
-                <li><a href="category_musical.html">Musical</a></li>
+                <li><a href="http://kiwowki.dothome.co.kr/project2/kategorie_musical.html">Musical</a></li>
                 <li><a href="category_actor.html">Actor</a></li>
                 <li><a href="search.html">Search</a></li>
             </ul>
@@ -70,22 +71,23 @@
     <main>
         <div class="boardWrap">
             <img src="../assets/img/QA.jpg" alt="이미지" class="intro__img">
-            <div class="board__search">
-                <div class="board__T1">
-                    <span>문의작성</span><span class="en">Q&A</span>
+
+            <div class="board__write container">
+                <div class="board__search">
+                    <div class="board__T1">
+                        <span>문의작성</span><span class="en">Q&A</span>
+                    </div>
                 </div>
-            </div>
-            <div class="board__write">
                 <form action="#" name="#" method="post">
                     <fieldset>
                         <legend class="blind">게시글 작성하기</legend>
                         <div>
-                            <label for="boardTitle">제목<span>Title</span></label>
+                            <label for="boardTitle" class="boardTitle">제목<span class="ent">Title</span></label>
                             <div class="line1"></div>
                             <input type="text" id="boardTitle" name="boardTitle" placeholder='글 제목을 입력해주세요'>
                         </div>
                         <div>
-                            <label for="boardContents">내용<span>Message</span></label>
+                            <label for="boardContents" class="boardContents">내용<span class="ent">Message</span></label>
                             <div class="line2"></div>
                             <textarea name="boardContents" id="boardContents" placeholder='내용을 입력해 주세요'
                                 rows="20"></textarea>
@@ -97,22 +99,6 @@
                 </form>
             </div>
 
-
-            <div class="board__pages">
-                <ul>
-                    <li class="first"><a href="#">처음으로</a></li>
-                    <li class="prev"><a href="#">이전</a></li>
-                    <li class="active"><a href="#">1</a></li>
-                    <li><a href="#">2</a></li>
-                    <li><a href="#">3</a></li>
-                    <li><a href="#">4</a></li>
-                    <li><a href="#">5</a></li>
-                    <li><a href="#">6</a></li>
-                    <li><a href="#">7</a></li>
-                    <li class="next"><a href="#">다음</a></li>
-                    <li class="last"><a href="#">마지막으로</a></li>
-                </ul>
-            </div>
         </div>
     </main>
     <!-- //main-->
@@ -138,7 +124,6 @@
                     </p>
                 </div>
             </div>
-
         </div>
     </footer>
     <!-- //footer -->
@@ -147,6 +132,6 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-<script src="/script/commons.js"></script>
+<script src="./script/commons.js"></script>
 
 </html>

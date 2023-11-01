@@ -40,12 +40,10 @@ svg {
     }
 }
 .container2 {
-    max-width: 520px;
-    width: 96%;
+    width: 520px;
     min-height: 100vh;
     height: auto;
     margin: 0 auto;
-    padding: 0;
     display: flex;
     flex-direction: column;
     justify-content: center;

@@ -2,36 +2,42 @@
 .joinResultWrap {
     text-align: center;
     color: #ffffff;
-    
+
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 100vh; /* 화면 전체 높이로 설정 */
+    height: 100vh;
+    /* 화면 전체 높이로 설정 */
 }
+
 .message1 {
     margin-top: 50px;
     font-size: 1.875rem;
     margin-bottom: 10px;
 }
-.img.red{
+
+.img.red {
     display: block;
-    margin: 0 auto; 
+    margin: 0 auto;
     width: 266px;
     height: 250px;
     background-image: url(../img/redduck.jpg);
 }
-.img.blue{
+
+.img.blue {
     display: block;
-    margin: 0 auto; 
+    margin: 0 auto;
     width: 266px;
     height: 250px;
     background-image: url(../img/blueduck.png);
 }
+
 .message2 {
     margin-top: 20px;
     font-size: 1.375rem;
 }
+
 .movehome {
     margin-top: 15px;
     width: 366px;
@@ -40,6 +46,7 @@
     background-color: #fff;
     font-size: 1.25rem;
 }
+
 .movehome a {
     display: inline-block;
     padding: 10px;
@@ -66,7 +73,8 @@
 
 .join__inner3 {
     display: block;
-    margin: 0 auto;
+    margin: 70px auto auto auto;
+    padding: 20px 0;
     color: var(--white);
     background-image: url(../img/join_bg.jpg);
     background-position: 100% 100%;
@@ -131,7 +139,6 @@
     display: flex;
     flex-direction: column;
     background-color: var(--black999);
-    padding: 5px 10px;
 }
 
 .join__from2 h3 {
@@ -146,7 +153,6 @@
 
 .join__from2 fieldset {
     width: 100%;
-    height: 43rem;
 }
 
 .join__from2 label {
@@ -187,7 +193,7 @@
 }
 
 .join__from2 .check label {
-    width: 100%;
+    /* width: 100%; */
 }
 
 .join__from2 .check input {
@@ -255,7 +261,8 @@
     font-size: 1.5rem;
     color: var(--black400);
 }
-.join__from3 > h3 > span {
+
+.join__from3>h3>span {
     margin-left: 10px;
 }
 
@@ -280,6 +287,7 @@
     color: var(--white); */
     margin-bottom: -1px;
 }
+
 .join__from3 input:first-child {
     margin-bottom: 100px;
 }
@@ -312,18 +320,22 @@
     margin: 10px;
 
 }
+
 .cancel__btn .cancel {
     border: 1px solid var(--white);
 }
+
 .cancel__btn button:hover {
     /* border: 1px solid var(--black); */
     color: var(--white);
     background-color: var(--black999);
     border: 1px solid var(--white);
 }
+
 .cancel__btn .deletebtn {
     border: 1px solid var(--black999);
 }
+
 .cancel__btn .deletebtn:hover {
     color: var(--black);
     background-color: var(--white);
@@ -506,4 +518,32 @@
     height: 20px;
     z-index: 1;
     cursor: pointer;
+}
+
+
+@media (max-width: 800px) {
+    .agree__btn .joindrop {
+        font-size: 1rem;
+        padding: 0.7rem 3.5rem;
+    }
+
+    .agree__btn .join_btn {
+        font-size: 1rem;
+        padding: 0.7rem 3.5rem;
+    }
+
+    .agree__box .check label {
+        padding-left: 20px;
+    }
+
+    .agree__box .check .indicator {
+        width: 15px;
+        height: 15px;
+        top: 4px;
+    }
+
+    .agree__box .check input:checked~.indicator::after {
+        width: 4px;
+        height: 8px;
+    }
 }

@@ -14,7 +14,7 @@
     padding: 0 40px;
     width: 20%;
     height: 70px;
-    font-family: 'OleoScript';
+    font-family: var(--primary-Oleo);
     font-size: 2.8rem;
 
 }
@@ -24,7 +24,7 @@
 }
 
 #header .category {
-    font-family: 'Hahmlet';
+    font-family: var(--primary-Hahmlet);
     font-weight: 400;
     width: 80%;
     height: 70px;
@@ -138,7 +138,7 @@
     color: #ffffff;
     font-size: 1.2rem;
     transition: background-color 0.3s;
-    font-family: var(--mapo);
+    font-family: var(--primary-Mapo);
     padding: 21px;
     display: block;
 }
@@ -188,4 +188,44 @@
 }
 .submenu li a:hover {
     background-color: #622c34;
+}
+
+
+
+@media (max-width: 1000px) {
+    #header .logo {
+        padding: 0 20px;
+        width: auto;
+    }
+
+    #header .category ul {
+        padding: 30px 10px 30px 10px;
+    }
+
+    #header .category ul li {
+        padding: 10px 20px;
+        font-size: 1rem;
+    }
+
+    .navbar_menu {
+        width: 40%;
+    }
+
+    .navbar_menu a.m {
+        padding: 10px;
+    }
+}
+
+@media (max-width: 600px) {
+    #header .logo {
+        padding: 10px 10px;
+        width: auto;
+        font-size: 2rem;
+    }
+    .navbar_menu {
+        width: 50%;
+    }
+    #header .category ul li {
+        padding: 0px 8px;
+    }
 }
