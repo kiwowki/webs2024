@@ -5,10 +5,10 @@
     $youId = $_POST['youId'];
     $youPass = $_POST['youPass'];
 
-    $loginSql = "SELECT myuduckId, youId, youPass, youName, youEmail, youPhone FROM myuduck WHERE youId='$youId' AND youPass='$youPass'";
+    $loginSql = "SELECT myuduckId, youId, youPass, youName, youEmail, youPhone FROM myuduck WHERE youId='$youId' AND youPass='$youPass' AND youDelete=1";
     $result = $connect -> query($loginSql);
 
-    // echo $loginSql;
+    echo $loginSql;
 
     if($result){
         $count = $result -> num_rows;

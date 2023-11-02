@@ -29,7 +29,7 @@ include "../connect/connect.php";
             <div class="search_result_logo">
                 <img src="../assets/img/redduck.jpg" alt="오페라글래스낀뮤덕로고">
             </div>
-            <form action="search_result.php" method="GET">
+            <form action="search_result.php" name="search_result" method="get">
                 <fieldset class="all_search">
                     <legend class="blind">검색 영역</legend>
                     <input type="search" name="searchKeyword" id="searchKeyword" placeholder="검색어를 입력하세요." required>
@@ -39,7 +39,7 @@ include "../connect/connect.php";
                         <option value="musical">뮤지컬</option>
                         <option value="actor">배우</option>
                     </select>
-                    <button type="submit">검색</button>
+                    <button type="submit" id="searchButton">검색</button>
                 </fieldset>
             </form>
             <div class="category">
@@ -54,11 +54,36 @@ include "../connect/connect.php";
                         <div class="img1 imgcontainer">
                             <a href="#"><img src="../assets/img/musical/ca_mu_img1.jpg" alt=""></a>
                             <div class="text">
-                                <div class="t1">빨래</div>
-                                <div class="t2">샤롯데씨어터</div>
+                                <?php
+                                error_reporting(E_ALL);
+                                ini_set('display_errors', 1);
+
+                                if (isset($_GET['searchKeyword']) && isset($_GET['searchOption'])) {
+                                    $searchKeyword = $_GET['searchKeyword'];
+                                    $searchOption = $_GET['searchOption'];
+
+                                    $searchKeyword = $connect->real_escape_string(trim($searchKeyword));
+                                    $searchOption = $connect->real_escape_string(trim($searchOption));
+
+                                    if ($searchOption === 'musical' || $searchOption === 'all') {
+                                        $sql = "SELECT muNameKo, muPlace FROM musical WHERE muNameKo LIKE '%$searchKeyword%'";
+                                        $result = $connect->query($sql);
+
+                                        if ($result) {
+                                            while ($row = $result->fetch_assoc()) {
+                                                $muNameKo = $row['muNameKo'];
+                                                $muPlace = $row['muPlace'];
+                                                echo '<div class="t1">' . $muNameKo . '</div>';
+                                                echo '<div class="t2">' . $muPlace . '</div>';
+                                            }
+                                        } else {
+                                            echo "검색 결과가 없습니다.";
+                                        }
+                                    }
+                                }
+                                ?>
                             </div>
                         </div>
-
                         <div class="img2 imgcontainer">
                             <a href="#"><img src="../assets/img/musical/ca_mu_img2.jpg" alt=""></a>
                             <div class="text">
@@ -66,12 +91,11 @@ include "../connect/connect.php";
                                 <div class="t2">샤롯데씨어터</div>
                             </div>
                         </div>
-                        insert_data.php
                         <div class="img3 imgcontainer">
                             <a href="#"><img src="../assets/img/musical/ca_mu_img3.jpg" alt=""></a>
                             <div class="text">
                                 <div class="t1">레미제라블</div>
-                                <div class="t2">블루스퀘어</div>    
+                                <div class="t2">블루스퀘어</div>
                             </div>
                         </div>
 
@@ -103,8 +127,49 @@ include "../connect/connect.php";
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="../script/commons.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
+        // $(document).ready(function() {
+        $("#searchButton").click(function() {
+            if ($("#searchKeyword").val() == "") {
+                alert("검색어를 작성해주세요.");
+                $("#searchKeyword").focus();
+            } else {
+                const searchKeyword = $("#searchKeyword").val();
+                const searchOption = $("#searchOption").val();
+                alert(searchKeyword)
+                $.ajax({
+                    url: "search_musical.php",
+                    method: "GET",
+                    dataType: "json",
+                    data: {
+                        searchKeyword: searchKeyword,
+                        searchOption: searchOption
+                    },
+                    success: function(results) {
+                        displayResults(results);
+                    },
+                });
+            }
+        });
+        // });
 
+        function displayResults(results) {
+            console.log(results);
+            const resultContainer = $(".search_result_inner");
+            resultContainer.empty();
+
+            results.forEach(function(result) {
+                const muNameKo = result.muNameKo;
+                const muPlace = result.muPlace;
+
+                const resultItem = $(
+                    "<div class='imgcontainer'><a href='#'><img src='../assets/img/musical/ca_mu_img1.jpg'></a><div class='text'><div class='t1'>" + muNameKo + "</div><div class='t2'>" + muPlace + "</div></div></div>");
+
+                resultContainer.append(resultItem);
+            });
+            console.log(results)
+        }
     </script>
 </body>
 

@@ -29,6 +29,18 @@ $jsonData = '[
         "muNameEn": "The devil",
         "muPlace": "충무아트센터",
         "muDate": "2022"
+    },
+    {
+        "muNameKo": "프랑켄슈타인",
+        "muNameEn": "Frankenstein",
+        "muPlace": "블루스퀘어",
+        "muDate": "2021"
+    },
+    {
+        "muNameKo": "레미제라블",
+        "muNameEn": "Les Miserables",
+        "muPlace": "블루스퀘어",
+        "muDate": "2022"
     }
 ]';
 
@@ -41,7 +53,7 @@ foreach ($data as $item) {
     $muDate = $item['muDate'];
     $unique_identifier = $muNameKo . '_' . $muDate;
 
-    $sql = "INSERT INTO musical (muNameKo, muNameEn, muPlace, muDate, unique_identifier) VALUES ('$muNameKo', '$muNameEn', '$muPlace', '$muDate', '$unique_identifier')";
+    $sql = "INSERT INTO musical (muNameKo, muNameEn, muPlace, muDate, unique_identifier) VALUES ('$muNameKo', '$muNameEn', '$muPlace', '$muDate', '$unique_identifier') ON DUPLICATE KEY UPDATE muNameKo = VALUES(muNameKo), muNameEn = VALUES(muNameEn), muPlace = VALUES(muPlace), muDate = VALUES(muDate);";
 
     if ($connect->query($sql) === TRUE) {
         echo "데이터가 성공적으로 입력되었습니다.<br>";

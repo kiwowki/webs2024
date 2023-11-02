@@ -39,7 +39,7 @@
                             <label for="youEmail" class="required blind">이메일</label>
                             <input type="email" name="youEmail" id="youEmail" placeholder="이메일을 입력하세요" class="input__style" required>
                         </div>
-                            <button type="submit" class="btn-style3">찾기</button>
+                            <button type="submit" id="passBtn" class="btn-style3">찾기</button>
                     </fieldset>
                 </form>
             </div>
@@ -52,8 +52,6 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="../script/commons.js"></script>
-    <script>
-        
-    </script>
+    <script src="../script/passfind.js"></script>
 </body>
 </html>

@@ -28,11 +28,11 @@
                     <fieldset>
                         <div>
                             <label for="youId" class="required blind">아이디</label>
-                            <input type="text" name="youId" id="youId" placeholder="아이디" class="input__style">
+                            <input type="text" name="youId" id="youId" placeholder="아이디" class="input__style" required>
                         </div>
                         <div>
                             <label for="youPass" class="required blind">비밀번호</label>
-                            <input type="password" name="youPass" id="youPass" placeholder="비밀번호" class="input__style">
+                            <input type="password" name="youPass" id="youPass" placeholder="비밀번호" class="input__style" required>
                         </div>
                         <div class="check">
                             <label for="loginCheck1">
@@ -41,7 +41,7 @@
                                 <span class="indicator"></span>
                             </label>
                         </div>
-                        <button type="submit" class="btn-style3">로그인</button>
+                        <button type="submit" id="loginBtn" class="btn-style3">로그인</button>
                         <div class="login__btn">
                             <a href="../join/joinAgree.php" class="joinbtn">회원가입</a>
                             <div class="findbtn">
@@ -61,8 +61,6 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="../script/commons.js"></script>
-    <script>
-        
-    </script>
+    <script src="../script/login.js"></script>
 </body>
 </html>
