@@ -51,9 +51,18 @@ foreach ($data as $item) {
     $muNameEn = isset($item['muNameEn']) ? $item['muNameEn'] : '';
     $muPlace = $item['muPlace'];
     $muDate = $item['muDate'];
-    $unique_identifier = $muNameKo . '_' . $muDate;
+    $mu_unique_identifier = $muNameKo . '_' . $muDate;
+    $imagePath = ''; // 초기화
 
-    $sql = "INSERT INTO musical (muNameKo, muNameEn, muPlace, muDate, unique_identifier) VALUES ('$muNameKo', '$muNameEn', '$muPlace', '$muDate', '$unique_identifier') ON DUPLICATE KEY UPDATE muNameKo = VALUES(muNameKo), muNameEn = VALUES(muNameEn), muPlace = VALUES(muPlace), muDate = VALUES(muDate);";
+    // 이미지를 뮤지컬 이름에 맞게 찾음
+    foreach ($data as $imgItem) {
+        if ($imgItem['muNameKo'] === $muNameKo) {
+            $imagePath = '../assets/img/musical/ca_mu_img' . (array_search($imgItem, $data) + 1) . '.jpg';
+            break;
+        }
+    }
+
+    $sql = "INSERT INTO musical (muNameKo, muNameEn, muPlace, muDate, muImage, mu_unique_identifier) VALUES ('$muNameKo', '$muNameEn', '$muPlace', '$muDate', '$imagePath', '$mu_unique_identifier') ON DUPLICATE KEY UPDATE muNameKo = VALUES(muNameKo), muNameEn = VALUES(muNameEn), muPlace = VALUES(muPlace), muDate = VALUES(muDate), muImage = VALUES(muImage);";
 
     if ($connect->query($sql) === TRUE) {
         echo "데이터가 성공적으로 입력되었습니다.<br>";

@@ -15,6 +15,10 @@
 }
 
 /* search_result */
+.search_result {
+    width: 100%;
+}
+
 .search_result h2 {
     font-size: 1.5rem;
     margin: 30px 0;
@@ -22,6 +26,7 @@
     display: inline-block;
     font-family: var(--main-nanum);
 }
+
 .search_result h2 span {
     font-size: 2.5rem;
     margin: 30px 0;
@@ -86,4 +91,14 @@
     opacity: 1;
     filter: blur(0px);
     box-shadow: 0 0 0 2px var(--white);
+}
+.no_result {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.no_result img {
+    width: 100px;
+    height: 100px;
 }

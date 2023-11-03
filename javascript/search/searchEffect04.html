@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>서치</title>
     <link href="https://webfontworld.github.io/Rebecca/Rebecca.css" rel="stylesheet">
-    <link href="https://webfontworld.github.io/Cafe24Classictype/Cafe24ClassicType.css" rel="stylesheet">
     <link href="https://webfontworld.github.io/NanumSquareNeo/NanumSquareNeo.css" rel="stylesheet">
     <link href="https://webfontworld.github.io/score/SCoreDream.css" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/search.css">
@@ -142,7 +141,7 @@
         const searchBox = document.querySelector(".search_box input");
         const searchBoxResult = document.querySelector(".search_box_result");
         const searchButton = document.getElementById("searchBtn");
-        
+
 
         // 출력하기
         cssProperty.map((element, index) => {   // return 생략이라 중괄호
@@ -153,21 +152,21 @@
         // });
 
         // 검색하기
-        function findProperty(searchKeyword){
+        function findProperty(searchKeyword) {
             const targetData = cssProperty.find((data) => data.name === searchKeyword);
             const listItem = searchList.querySelectorAll("span")
 
             // active 제거
             listItem.forEach(item => item.classList.remove("active"))
 
-            if(targetData == null){
+            if (targetData == null) {
                 searchBoxResult.textContent = "해당 속성이 존재하지 않습니다.";
                 return
             } else {
                 searchBoxResult.textContent = targetData.desc;
 
                 listItem.forEach((item) => {
-                    if(item.textContent === searchKeyword){
+                    if (item.textContent === searchKeyword) {
                         // active 추가
                         item.classList.add("active");
                     }
@@ -237,4 +236,5 @@
         // }
     </script>
 </body>
+
 </html>

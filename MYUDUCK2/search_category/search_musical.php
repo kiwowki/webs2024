@@ -3,15 +3,20 @@ include "../connect/connect.php";
 
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
+
 if (isset($_GET['searchKeyword']) && isset($_GET['searchOption'])) {
-    $searchKeyword = $_GET['searchKeyword']; // 검색어
-    $searchOption = $_GET['searchOption'];   // 검색 옵션 (예: "musical")
-    echo "$searchKeyword";
+    $searchKeyword = $_GET['searchKeyword'];
+    $searchOption = $_GET['searchOption'];
+    
+    // 검색어를 모두 소문자로 변환하고 띄어쓰기 제거하기
+    $searchKeyword = strtolower(str_replace(' ', '', $searchKeyword));
 
-    $sql = "SELECT muNameKo FROM musical WHERE muNameKo LIKE '%$searchKeyword'";
+    $sql = "SELECT muNameKo FROM musical WHERE REPLACE(LOWER(muNameKo), ' ', '') LIKE '%$searchKeyword' 
+            OR REPLACE(LOWER(muNameEn), ' ', '') LIKE '%$searchKeyword'";
 
-    if ($searchOption === 'musical') {
-        $sql = "SELECT muNameKo FROM musical WHERE muNameKo LIKE '%$searchKeyword'";
+    if ($searchOption === 'musical' || $searchOption === 'all') {
+        $sql = "SELECT muNameKo, muNameEn FROM musical WHERE REPLACE(LOWER(muNameKo), ' ', '') LIKE '%$searchKeyword' 
+                OR REPLACE(LOWER(muNameEn), ' ', '') LIKE '%$searchKeyword'";
 
         $result = $connect->query($sql);
 
