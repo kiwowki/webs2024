@@ -60,11 +60,13 @@
     cursor: pointer;
     margin: 20px 15px 20px 0px;
 }
+
 .board__viewpages {
     margin-top: 100px;
     display: flex;
     justify-content: space-around
 }
+
 /* board */
 .boardwrap {
     display: flex;
@@ -207,6 +209,7 @@
     outline: none;
     resize: none;
 }
+
 .boardTitle .ent {
     margin-left: 10px;
     font-size: 1.3rem;
@@ -233,11 +236,13 @@
     outline: none;
     resize: none;
 }
+
 .boardContents .ent {
     margin-left: 10px;
     font-size: 1.3rem;
     color: #ccc;
 }
+
 .board__write .line2 {
     width: 150px;
 
@@ -258,6 +263,7 @@
     outline: none;
 
 }
+
 .boardPass .ent {
     margin-left: 10px;
     font-size: 1.3rem;
@@ -326,7 +332,10 @@ tbody {
 
 
 /* .board__pages */
-
+.board__viewpages .prev,
+.board__viewpages .next {
+    border-bottom: 1px solid var(--white);
+}
 
 .board__pages ul {
     display: flex;
@@ -383,4 +392,281 @@ tbody {
     .board__pages li a {
         padding: 7px 8px;
     }
+}
+
+
+/* comment__input */
+.blog__comment {
+    padding: 100px 0;
+}
+
+.blog__comment h4 {
+    width: 100%;
+    border-top: 2px solid var(--black100);
+    border-bottom: 1px dashed var(--black100);
+    text-align: center;
+    padding: 15px;
+    margin-bottom: 20px;
+}
+
+.comment__view {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.comment__view .avata {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-image: url(../face/Cyclops.svg);
+    background-size: cover;
+    border: 2px solid var(--white);
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.comment__view:nth-child(even) .avata {
+    left: auto;
+    right: 0;
+    transform: rotateY(180deg);
+}
+
+.comment__view:nth-child(even) .text {
+    text-align: right;
+}
+
+.comment__view:nth-child(even) .text p {
+    border-radius: 10px 0 10px 10px;
+    text-align: left;
+}
+
+/* .comment__view:nth-child(2) .avata {
+    background-image: url(../face/Cute.svg);
+}
+
+.comment__view:nth-child(3) .avata {
+    background-image: url(../face/Fear.svg);
+}
+
+.comment__view:nth-child(4) .avata {
+    background-image: url(../face/Cheeky.svg);
+}
+
+.comment__view:nth-child(5) .avata {
+    background-image: url(../face/Hectic.svg);
+} */
+
+.comment__view .text {
+    margin-left: 60px;
+    margin-right: 60px;
+}
+
+.comment__view .text > span {
+    display: block;
+    font-size: 14px;
+    color: var(--black700);
+}
+
+
+.comment__view .text p {
+    padding: 10px;
+    border-radius: 0px 10px 10px 10px;
+    display: inline-block;
+    margin-top: 4px;
+    color: var(--black700);
+    border: 2px solid var(--black700);
+}
+
+.comment__view .text .Btn .modify {
+    display: inline-block;
+    text-decoration: underline;
+    text-underline-position: under;
+    color: var(--black400);
+}
+
+.comment__view .text .Btn .modify:hover {
+    color: var(--white);
+}
+
+.comment__view .text .Btn .delete {
+    display: inline-block;
+    text-decoration: underline;
+    text-underline-position: under;
+    color: var(--black400);
+}
+
+.comment__view .text .Btn .delete:hover {
+    color: var(--white);
+}
+
+.comment__input {
+    margin-top: 50px;
+    padding-top: 50px;
+    border-top: 1px dashed var(--black100);
+    /* display: flex; */
+}
+
+.comment__input fieldset {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+/* .comment__input #commentName {
+    width: 49.5%;
+}
+
+.comment__input #commentPass {
+    width: 49.5%;
+} */
+
+.comment__input #commentWrite {
+    width: 84%;
+    margin-top: 10px;
+    background-color: var(--black);
+    border-radius: 5px;
+    padding: 1rem 1.4rem;
+    font-weight: 300;
+    font-size: 1.2rem;
+    border: 1px solid var(--black700);
+    color: var(--white);
+}
+.commentBtn {
+    width: 15%;
+    margin-top: 10px;
+    border-radius: 5px;
+    padding: 1rem 1.4rem;
+    font-weight: 300;
+    font-size: 1rem;
+    color: var(--black);
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#popupDelete {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 99999;
+}
+#popupDelete.none {
+    display: none;
+}
+
+.comment__delete {
+    width: 400px;
+    height: 400px;
+    background-color: var(--black);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    padding: 40px;
+    border: 2px solid var(--white);
+}
+
+.comment__delete h4 {
+    margin-bottom: 10px;
+    color: var(--white);
+}
+
+.comment__delete input {
+    border: 2px solid var(--black300);
+    padding: 1rem;
+    width: 100%;
+    font-size: 1rem;
+}
+
+.comment__delete p {
+    margin-top: 10px;
+    color: var(--black300);
+}
+
+.comment__delete .btn {
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+}
+
+.comment__delete .btn button {
+    background-color: var(--white);
+    color: var(--black);
+    padding: 5px 20px;
+    cursor: pointer;
+}
+.comment__delete .btn button:hover {
+    background-color: var(--black999);
+    color: var(--white);
+}
+
+#popupModify {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 99999;
+}
+#popupModify.none {
+    display: none;
+}
+
+.comment__modify {
+    width: 400px;
+    height: 400px;
+    background-color: var(--black);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    padding: 40px;
+    border: 2px solid var(--white);
+}
+
+.comment__modify h4 {
+    margin-bottom: 10px;
+    color: var(--white);
+}
+
+.comment__modify textarea {
+    width: 100%;
+    height: 150px;
+    padding: 10px;
+    font-size: 1rem;
+    resize: none;
+    border: 2px solid var(--black300);
+}
+
+.comment__modify input {
+    border: 2px solid var(--black300);
+    padding: 1rem;
+    width: 100%;
+    font-size: 1rem;
+}
+
+.comment__modify p {
+    margin-top: 10px;
+    color: var(--black300);
+}
+
+.comment__modify .btn {
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+}
+
+.comment__modify .btn button {
+    background-color: var(--white);
+    color: var(--black);
+    padding: 5px 20px;
+    cursor: pointer;
+}
+.comment__modify .btn button:hover {
+    background-color: var(--black999);
+    color: var(--white);
 }

@@ -1,5 +1,13 @@
+<?php
+    include "../connect/connect.php";
+    include "../connect/session.php";
+
+    // echo "<pre>";
+    // var_dump($_SESSION);
+    // echo "</pre>";
+?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 
 <head>
     <meta charset="UTF-8">
@@ -57,6 +65,6 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-<script src="./script/commons.js"></script>
+<script src="../script/commons.js"></script>
 
 </html>

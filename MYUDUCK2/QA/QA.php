@@ -1,17 +1,17 @@
 <?php
-include "../connect/connect.php";
-include "../connect/session.php";
+    include "../connect/connect.php";
+    include "../connect/session.php";
 
-// echo "<pre>";
-// var_dump($_SESSION);
-// echo "</pre>";
+    // echo "<pre>";
+    // var_dump($_SESSION);
+    // echo "</pre>";
 
-//총 페이지 갯수
-$sql = "SELECT count(boardID) FROM QAboard";
-$result = $connect->query($sql);
+    //총 페이지 갯수
+    $sql = "SELECT count(boardID) FROM QAboard";
+    $result = $connect->query($sql);
 
-$boardTotalCount = $result->fetch_array(MYSQLI_ASSOC);
-$boardTotalCount = $boardTotalCount['count(boardID)'];
+    $boardTotalCount = $result->fetch_array(MYSQLI_ASSOC);
+    $boardTotalCount = $boardTotalCount['count(boardID)'];
 ?>
 <!DOCTYPE html>
 <html lang="ko">
@@ -102,6 +102,7 @@ $boardTotalCount = $boardTotalCount['count(boardID)'];
     //b와 m이라는 별칭을 사용해 SQL 문에서 각 테이블에 접근할 때 b와 m 별칭을 사용할 수 있습니다.
 
     $result = $connect->query($sql);
+    
 
     if ($result) {
         $count = $result->num_rows;
@@ -177,10 +178,10 @@ $boardTotalCount = $boardTotalCount['count(boardID)'];
     <?php include "../include/footer.php" ?>
     <!-- //footer -->
 
-</body>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-<script src="../script/commons.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="../script/commons.js"></script>
 
+</body>
 </html>

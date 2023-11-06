@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="ko">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,20 +11,18 @@
     <style>
     </style>
 </head>
-
 <body>
-
 <?php
     include "../connect/connect.php";
     include "../connect/session.php";
-
+    
     $boardTitle = $_POST['boardTitle'];
     $boardContents = $_POST['boardContents'];
     $boardView = 1;
     $regTime = time();
     $memberID = $_SESSION['youId'];
 
-    //echo  $boardTitle, $boardContents, $memberID;
+    echo  $boardTitle, $boardContents, $memberID;
 
     //제목이나 콘텐츠 내용이 없으면 게시글 등록 X
 
@@ -43,7 +40,7 @@
             $boardTitle = $connect -> real_escape_string($boardTitle);
             $boardContents = $connect -> real_escape_string($boardContents);
         
-            $sql = "INSERT INTO board(youId, boardTitle, boardContents, boardView, regTime) VALUES('$youId', '$boardTitle','$boardContents', '$boardView', '$regTime')";
+            $sql = "INSERT INTO QAboard(youId, boardTitle, boardContents, boardView, regTime) VALUES('$memberID', '$boardTitle','$boardContents', '$boardView', '$regTime')";
             $connect -> query($sql);
             
             echo "<script>alert('게시글이 작성되었습니다.');</script>";
