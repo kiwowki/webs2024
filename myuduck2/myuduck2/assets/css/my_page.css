@@ -1,0 +1,92 @@
+/* mypage_wrap */
+#mypage_wrap {}
+.mypage_inner {
+    padding-top: 70px;
+    display: flex;
+    justify-content: space-evenly;
+}
+.mypage_side_img {
+    width: 30%;
+    height: 93vh;
+    max-height: 1452px; 
+    max-width: 100%;
+    background-image: url(../img/my_page_side_img.jpg);
+    
+    margin-right: 50px;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+}
+
+/* mypage_info */
+.mypage_info {
+    width: 55%;
+    padding-top: 20px;
+}
+
+.my_profile {}
+.my_profile h3 {
+    width: 80%;
+    border-bottom: 2px solid var(--black400);
+    font-size: 1.4rem;
+    font-family: var(--hahm);
+    padding: 0 0 10px 5px;
+}
+
+/* my_info */
+.my_info {
+    padding: 15px 0 30px 5px;
+}
+.my_info p {}
+.my_info button {}
+
+/* my_favorites */
+.my_favorites {}
+.my_favorites h3 {
+    width: 80%;
+    border-bottom: 2px solid var(--black400);
+    font-size: 1.4rem;
+    font-family: var(--hahm);
+    padding: 0 0 10px 5px;
+}
+
+
+
+/* favorites_list */
+.favorites_list {}
+.favorites-card {
+    padding: 15px 0 0 5px;
+    display: block;
+}
+.favorites-card > a {
+    width: 32%;
+    height: 205px;
+    padding-bottom: 30px;
+}
+.favorites-card img {
+    
+    
+}
+.favorites-card p {
+    display: block;
+}
+.my_mu_title {
+    display: inline-block;
+}
+.my_mu_theater {
+    display: inline-block;
+}
+
+
+
+/* 글자 길이에 */
+/* .mypage_side_img {
+    width: 522px;
+    min-height: 1452px;
+    background-image: url(../img/my_page_side_img.jpg);
+    max-height: 100%;
+    margin-right: 50px;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+} */

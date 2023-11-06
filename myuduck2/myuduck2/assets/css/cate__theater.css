@@ -1,0 +1,304 @@
+.theater__ineer {
+    padding: 100px 60px 100px 60px;
+    color: var(--white);
+}
+
+.theater__ineer h1 {
+    font-size: 2rem;
+    font-family: var(--primary-Oswald);
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.theater__ineer h1 span {
+    font-size: 1.6rem;
+    font-family: var(--primary-Oswald);
+    font-weight: normal;
+}
+
+
+
+/* theater__info */
+.theater__info {
+    margin: 0 auto;
+    /* background-color: var(--white); */
+    /* color: var(--black); */
+    position: relative;
+}
+
+/* theater__map */
+.theater__map {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 51vh;
+}
+
+.theater__map img {
+    width: 80%;
+    height: 85%;
+}
+
+.theater__map .pin {
+    position: absolute;
+    right: 13.5rem;
+    top: 15.9rem;
+    width: 18px;
+    height: 30px;
+    background-image: url(../img/pin.svg);
+    background-position: -15px -10px;
+    display: block;
+}
+
+/* theater__link */
+.theater__link {
+    width: 92%;
+    height: 30vh;
+    display: flex;
+    margin: 0 auto;
+
+}
+
+.theater__link>ul {
+    display: flex;
+    flex-wrap: wrap;
+    border: 1px solid var(--black200);
+    /* background-color: var(--black500); */
+    padding: 10px;
+    box-sizing: border-box;
+    justify-content: space-between;
+}
+
+.theater__link>ul li {
+    width: 25%;
+    height: 14%;
+    padding: 10px;
+}
+
+.theater__link>ul li a:hover img {
+    transform: scale(1.1);
+    transition: transform 0.4s;
+}
+
+.theater__list {
+    margin: 1.6rem auto;
+}
+
+/* list__cont */
+.list__cont {
+    width: 92%;
+    margin: 0 auto;
+    table-layout: fixed;
+}
+
+.list__cont tr {
+    border-bottom: 1px solid var(--black200);
+    width: 100%;
+}
+
+.list_cont_header {
+    /* display: flex; */
+
+}
+
+.list__cont th {
+    padding: 0.8rem;
+    /* background-color: var(--black500); */
+    font-size: 1.4rem;
+    font-weight: bold;
+}
+
+
+.list__cont .rounded-left {
+    /* display: block; */
+    border: 1px solid var(--white);
+    border-radius: 30px 0 0 0;
+    width: 100%;
+}
+
+.list__cont .rounded-center {
+    /* display: block;/ */
+    border: 1px solid var(--white);
+    width: 70%;
+}
+
+.list__cont .rounded-right {
+    /* display: block; */
+    border: 1px solid var(--white);
+    border-radius: 0 10px 0 0;
+    width: 100%;
+}
+
+.list__cont td {
+    margin: 1.3rem auto;
+}
+
+.list__cont .img_name {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.list__cont .img_name>a>img {
+    margin-right: 1.2rem;
+}
+
+.list__cont .img_name>a>span {
+    font-size: 0.9rem;
+    margin-left: 1.2rem;
+}
+
+.theater__location span {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+.theater__musical ul {
+    padding: 1.3rem;
+}
+
+
+/* star_rating */
+.rating {
+    margin-top: 80px;
+    position: relative;
+    width: 210px;
+    background: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.3em;
+    padding: 5px;
+    /* overflow: hidden; */
+    border-radius: 20px;
+    box-shadow: 0 0 2px var(--white);
+    padding-left: 55px;
+}
+
+.rating_result {
+    position: absolute;
+    top: 8px;
+    left: 10px;
+    transform: translateY(-10px) translateX(2px);
+    z-index: 10000;
+    font: 2em Arial, Helvetica, sans-serif;
+    color: #ffffffad;
+    pointer-events: none;
+}
+
+.rating_star {
+    font-size: 1.3em;
+    cursor: pointer;
+    color: yellow;
+    transition: filter linear .3s;
+}
+
+.rating_star:hover {
+    filter: drop-shadow(1px 1px 4px gold);
+}
+
+
+
+
+/* theater__detail */
+
+.th__detail_info {
+    border: 1px solid var(--black);
+    display: flex;
+    background-image: url(../img/theater/detail_image.jpg);
+    background-position: center center;
+    background-size: cover;
+    margin: 1.2rem 0;
+    box-sizing: border-box;
+    height: 33.75rem;
+}
+
+.th__detail_info .theater_detail {
+    max-width: 1260px;
+    width: 96%;
+    margin: 70px auto 10px auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.theater_detail .logo_img {
+    width: 49%;
+}
+
+.theater_detail .logo_img img {
+    width: 80%;
+}
+
+.theater__detail__title {
+    width: 49%;
+}
+
+.theater__detail__title h2 {
+    font-size: 2.25em;
+    margin-bottom: 20px;
+}
+
+.theater__detail__title .logo_cont {
+    font-size: 1.5rem;
+}
+
+.theater__detail__info {
+    padding: 10px auto;
+    /* color: var(--white); */
+}
+
+.theater__detail__info h1 {
+    font-size: 2rem;
+    font-family: var(--primary-Oswald);
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.theater__detail__info h1 span {
+    font-size: 1.6rem;
+    font-family: var(--primary-Oswald);
+    font-weight: normal;
+}
+
+.theater__detail__cont {
+
+    padding: 10px;
+}
+
+.theater_transport {
+    margin-bottom: 1.2rem;
+}
+
+.theater_transport h3 {
+    font-weight: bold;
+    font-size: 1.4rem;
+    padding: 10px;
+    border-bottom: 2px solid var(--black400);
+    margin-bottom: 1.1rem;
+}
+
+.theater_transport .transport_info {
+    white-space: pre-line;
+    font-size: 0.9rem;
+    padding: 10px;
+}
+
+.theater_seat_info {
+    margin-bottom: 1.3rem;
+}
+
+.theater_seat_info h3 {
+    font-weight: bold;
+    font-size: 1.4rem;
+    padding: 10px;
+    border-bottom: 2px solid var(--black400);
+    margin-bottom: 1.1rem;
+}
+
+.theater_seat_info .seat_img {
+    margin-top: 20px;
+    padding: 10px;
+}
