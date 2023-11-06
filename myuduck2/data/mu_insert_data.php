@@ -70,7 +70,6 @@ foreach ($data as $item) {
     $muNameEn = isset($item['muNameEn']) ? $item['muNameEn'] : '';
     $muPlace = $item['muPlace'];
     $muDate = $item['muDate'];
-    // $mu_unique_identifier = $muNameKo . '_' . $muDate;
 
     // 이미지 파일 경로 생성
     $imageFileName = 'ca_mu_img' . (array_search($item, $data) + 1) . '.jpg';
@@ -85,7 +84,7 @@ foreach ($data as $item) {
         echo "오류: 이미지 파일이 존재하지 않습니다. 경로를 확인하세요.";
     }
 
-    $sql = "INSERT INTO musical (muNameKo, muNameEn, muPlace, muDate, muImg) VALUES ('$muNameKo', '$muNameEn', '$muPlace', '$muDate', '$imageFileName') ON DUPLICATE KEY UPDATE muNameKo = VALUES(muNameKo), muNameEn = VALUES(muNameEn), muPlace = VALUES(muPlace), muDate = VALUES(muDate), muImg = VALUES(muImg);";
+    // $sql = "INSERT INTO musical (muNameKo, muNameEn, muPlace, muDate, muImg) VALUES ('$muNameKo', '$muNameEn', '$muPlace', '$muDate', '$imageFileName') ON DUPLICATE KEY UPDATE muNameKo = VALUES(muNameKo), muNameEn = VALUES(muNameEn), muPlace = VALUES(muPlace), muDate = VALUES(muDate), muImg = VALUES(muImg);";
 
     if ($connect->query($sql) === TRUE) {
         echo "데이터가 성공적으로 입력되었습니다.<br>";

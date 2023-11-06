@@ -1,7 +1,7 @@
 <footer id="footer">
     <div class="footer_inner">
         <div class="footer1">
-            <img src="../assets/img/footermyuduck2.jpg" alt="뮤덕이로고">
+            <img src="../assets/img/footerMyuduck2.jpg" alt="뮤덕이로고">
         </div>
         <div class="footer2">
             <div class="footer2-1">

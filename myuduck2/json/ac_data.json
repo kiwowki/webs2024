@@ -1,7 +1,4 @@
-<?php
-include "../connect/connect.php";
-
-$jsonData = '[
+[
     {
         "acNameKo": "조승우",
         "acNameEn": "Cho Seung Woo",
@@ -158,40 +155,4 @@ $jsonData = '[
             }
         ]
     }
-]';
-
-$data = json_decode($jsonData, true);
-
-foreach ($data as $item) {
-    $acNameKo = $item['acNameKo'];
-    $acNameEn = $item['acNameEn'];
-    $acOccupation = $item['acOccupation'];
-    $acDOB = $item['acDOB'];
-    $acPerforms = $item['acPerform'];
-
-    // 배우 정보를 데이터베이스에 저장
-    $sql = "INSERT INTO actor (acNameKo, acNameEn, acOccupation, acDOB) VALUES ('$acNameKo', '$acNameEn', '$acOccupation', '$acDOB') ON DUPLICATE KEY UPDATE acNameKo = VALUES(acNameKo), acNameEn = VALUES(acNameEn), acOccupation = VALUES(acOccupation), acDOB = VALUES(acDOB);";
-
-    if ($connect->query($sql) !== TRUE) {
-        echo "오류: " . $sql . "<br>" . $connect->error;
-    }
-
-    $actorId = $connect->insert_id; // 삽입된 배우의 ID 가져오기
-
-    // 배우의 연극 정보를 데이터베이스에 저장
-    foreach ($acPerforms as $perform) {
-        $acPerformName = $perform['acPerformName'];
-        $acPerformDate = $perform['acPerformDate'];
-        $acPerformPlace = $perform['acPerformPlace'];
-        $acPerformRole = $perform['acPerformRole'];
-
-        $sql = "INSERT INTO ac_perform (actorId, acPerformName, acPerformDate, acPerformPlace, acPerformRole) VALUES ($actorId, '$acPerformName', '$acPerformDate', '$acPerformPlace', '$acPerformRole');";
-
-        if ($connect->query($sql) !== TRUE) {
-            echo "오류: " . $sql . "<br>" . $connect->error;
-        }
-    }
-}
-
-$connect->close();
-?>
+]

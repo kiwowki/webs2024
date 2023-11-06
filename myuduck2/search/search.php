@@ -58,14 +58,18 @@ include "../connect/connect.php";
     <script src="../script/commons.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
-        $(document).ready(function() {
-            $("#searchButton").click(function() {
+        $("#searchButton").click(function() {
+            if ($("#searchKeyword").val() == "") {
+                // alert("검색어를 작성해주세요.");
+                $("#searchKeyword").focus();
+            } else {
                 const searchKeyword = $("#searchKeyword").val();
                 const searchOption = $("#searchOption").val();
                 alert(searchKeyword)
                 $.ajax({
-                    type: "GET",
                     url: "search_musical.php",
+                    method: "GET",
+                    dataType: "json",
                     data: {
                         searchKeyword: searchKeyword,
                         searchOption: searchOption
@@ -73,9 +77,8 @@ include "../connect/connect.php";
                     success: function(results) {
                         displayResults(results);
                     },
-                    dataType: "json"
                 });
-            });
+            }
         });
 
         function displayResults(results) {
@@ -88,11 +91,10 @@ include "../connect/connect.php";
                 const muPlace = result.muPlace;
 
                 const resultItem = $(
-                    "<div class='imgcontainer'><a href='#'><img src='../assets/img/musical/ca_mu_img1.jpg'></a><div class='text'><div class='t1'>" + muNameKo + "</div><div class='t2'>" + muPlace + "</div></div></div>");
+                    "<div class='imgcontainer'><a href='#'><img src='" + result.muImage + "' alt=''></a><div class='text'><div class='t1'>" + muNameKo + "</div><div class='t2'>" + muPlace + "</div></div></div>");
 
                 resultContainer.append(resultItem);
             });
-            console.log(results)
         }
     </script>
 </body>

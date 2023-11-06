@@ -6,7 +6,7 @@
         <ul>
             <li><a href="../category_th/category_theater">Theater</a></li>
             <li><a href="../category_mu/category_musical.php">Musical</a></li>
-            <li><a href="../category_ac/category_actor.php">Actor</a></li>
+            <li><a href="../actor/category_actor.php">Actor</a></li>
             <li><a href="../search/search.php">Search</a></li>
         </ul>
     </nav>

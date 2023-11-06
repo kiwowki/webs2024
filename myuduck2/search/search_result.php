@@ -51,69 +51,82 @@ include "../connect/connect.php";
                 <h2><span>뮤지컬</span> 검색결과</h2>
                 <div class="search_result_inner">
                     <div class="result_img">
-                        <div class="img1 imgcontainer">
-                            <a href="#"><img src="../assets/img/musical/ca_mu_img1.jpg" alt=""></a>
-                            <div class="text">
-                                <?php
-                                error_reporting(E_ALL);
-                                ini_set('display_errors', 1);
+                        <?php
+                        error_reporting(E_ALL);
+                        ini_set('display_errors', 1);
+ 
+                        // $jsonData = file_get_contents("../json/mu_data.json");
+                        // $data = json_decode($jsonData, true);
 
-                                if (isset($_GET['searchKeyword']) && isset($_GET['searchOption'])) {
-                                    $searchKeyword = $_GET['searchKeyword'];
-                                    $searchOption = $_GET['searchOption'];
+                        if (isset($_GET['searchKeyword']) && isset($_GET['searchOption'])) {
+                            $searchKeyword = $connect->real_escape_string(trim($_GET['searchKeyword']));
+                            $searchOption = $connect->real_escape_string(trim($_GET['searchOption']));
 
-                                    $searchKeyword = $connect->real_escape_string(trim($searchKeyword));
-                                    $searchOption = $connect->real_escape_string(trim($searchOption));
+                            // 띄어쓰기 제거 및 소문자 변환
+                            $cleanedSearchKeyword = strtolower(str_replace(" ", "", $searchKeyword));
 
-                                    if ($searchOption === 'musical' || $searchOption === 'all') {
-                                        $sql = "SELECT muNameKo, muPlace FROM musical WHERE muNameKo LIKE '%$searchKeyword%'";
-                                        $result = $connect->query($sql);
 
-                                        if ($result) {
-                                            while ($row = $result->fetch_assoc()) {
-                                                $muNameKo = $row['muNameKo'];
-                                                $muPlace = $row['muPlace'];
-                                                echo '<div class="t1">' . $muNameKo . '</div>';
+
+                            if ($searchOption === 'musical' || $searchOption === 'all') {
+                                $filteredResults = array();
+                                $resultsDisplayed = false;
+
+                                // 한글로 검색
+                                $sqlKorean = "SELECT muNameKo, muPlace, muImg FROM musical WHERE REPLACE(LOWER(muNameKo), ' ', '') LIKE '%$cleanedSearchKeyword%'";
+                                $resultKorean = $connect->query($sqlKorean);
+
+                                // 영어로 검색
+                                $sqlEnglish = "SELECT muNameEn, muPlace, muImg FROM musical WHERE REPLACE(LOWER(muNameEn), ' ', '') LIKE '%$cleanedSearchKeyword%'";
+                                $resultEnglish = $connect->query($sqlEnglish);
+
+                                $displayedMuNameEn = false; // 영어 결과 표시 플래그
+                                $koreanResults = array(); // 한글 검색 결과 저장 배열
+                                $englishResults = array(); // 영어 검색 결과 저장 배열
+
+                                while ($row = $resultKorean->fetch_assoc()) {
+                                    $filteredResults[] = $row;
+                                }
+
+                                while ($row = $resultEnglish->fetch_assoc()) {
+                                    $filteredResults[] = $row;
+                                }
+
+                                if (empty($filteredResults)) {
+                                    echo '<div class="no_result"><p>' . "검색 결과가 없습니다." . '</p><img src="../assets/img/blueduck.png" alt="검색결과 없음 이미지"></div>';
+                                } else {
+                                    foreach ($filteredResults as $row) {
+                                        $muPlace = $row['muPlace'];
+                                        $imagePath = $row['muImg'];
+
+                                        if ($searchOption === 'all' || $searchOption === 'musical') {
+                                            $displayedMuNameEn = true;
+
+                                            if (isset($row['muNameEn'])) {
+                                                $muNameEn = $row['muNameEn'];
+                                                echo '<div class="imgcontainer">';
+                                                echo '<a href="#"><img src="' . $imagePath . '" alt=""></a>';
+                                                echo '<div class="text">';
+                                                echo '<div class="t1">' . $muNameEn . '</div>'; // 영어 결과의 경우 muNameEn 사용
                                                 echo '<div class="t2">' . $muPlace . '</div>';
+                                                echo '</div>';
+                                                echo '</div>';
+                                            } else {
+                                                $muNameEn = ''; // muNameEn 값이 없는 경우 빈 문자열로 설정
+                                                $muNameKo = $row['muNameKo'];
+                                                echo '<div class="imgcontainer">';
+                                                echo '<a href="#"><img src="' . $imagePath . '" alt=""></a>';
+                                                echo '<div class="text">';
+                                                echo '<div class="t1">' . $muNameKo . '</div>'; // 한글 결과의 경우 muNameKo 사용
+                                                echo '<div class="t2">' . $muPlace . '</div>';
+                                                echo '</div>';
+                                                echo '</div>';
                                             }
-                                        } else {
-                                            echo "검색 결과가 없습니다.";
                                         }
                                     }
                                 }
-                                ?>
-                            </div>
-                        </div>
-                        <div class="img2 imgcontainer">
-                            <a href="#"><img src="../assets/img/musical/ca_mu_img2.jpg" alt=""></a>
-                            <div class="text">
-                                <div class="t1">오페라의 유령</div>
-                                <div class="t2">샤롯데씨어터</div>
-                            </div>
-                        </div>
-                        <div class="img3 imgcontainer">
-                            <a href="#"><img src="../assets/img/musical/ca_mu_img3.jpg" alt=""></a>
-                            <div class="text">
-                                <div class="t1">레미제라블</div>
-                                <div class="t2">블루스퀘어</div>
-                            </div>
-                        </div>
-
-                        <div class="img4 imgcontainer">
-                            <a href="#"><img src="../assets/img/musical/ca_mu_img4.jpg" alt=""></a>
-                            <div class="text">
-                                <div class="t1">웃는 남자</div>
-                                <div class="t2">예술의전당</div>
-                            </div>
-                        </div>
-
-                        <div class="img5 imgcontainer">
-                            <a href="#"><img src="../assets/img/musical/ca_mu_img5.jpg" alt=""></a>
-                            <div class="text">
-                                <div class="t1">더 데빌</div>
-                                <div class="t2">충무아트센터</div>
-                            </div>
-                        </div>
+                            }
+                        }
+                        ?>
                     </div>
                 </div>
             </div>
@@ -129,47 +142,53 @@ include "../connect/connect.php";
     <script src="../script/commons.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
-        // $(document).ready(function() {
-        $("#searchButton").click(function() {
-            if ($("#searchKeyword").val() == "") {
-                alert("검색어를 작성해주세요.");
-                $("#searchKeyword").focus();
-            } else {
-                const searchKeyword = $("#searchKeyword").val();
-                const searchOption = $("#searchOption").val();
-                alert(searchKeyword)
-                $.ajax({
-                    url: "search_musical.php",
-                    method: "GET",
-                    dataType: "json",
-                    data: {
-                        searchKeyword: searchKeyword,
-                        searchOption: searchOption
-                    },
-                    success: function(results) {
-                        displayResults(results);
-                    },
-                });
-            }
-        });
+        // $("#searchButton").click(function() {
+        //     if ($("#searchKeyword").val() == "") {
+        //         alert("검색어를 작성해주세요.");
+        //         $("#searchKeyword").focus();
+        //     } else {
+        //         const searchKeyword = $("#searchKeyword").val();
+        //         const searchOption = $("#searchOption").val(); // searchOption 변수 추가
+        //         alert(searchKeyword)
+        //         $.ajax({
+        //             url: "search_musical.php",
+        //             method: "GET",
+        //             dataType: "json",
+        //             data: {
+        //                 searchKeyword: searchKeyword,
+        //                 searchOption: searchOption
+        //             },
+        //             success: function(results) {
+        //                 displayResults(results, searchOption); // searchOption 변수를 displayResults 함수로 전달
+        //             },
+        //         });
+        //     }
         // });
 
-        function displayResults(results) {
-            console.log(results);
-            const resultContainer = $(".search_result_inner");
-            resultContainer.empty();
+        // JSON 데이터를 화면에 표시하는 JavaScript 함수
+        // function displayResults(results, searchOption) {
+        //     console.log(results);
+        //     const resultContainer = $(".search_result_inner");
+        //     resultContainer.empty();
 
-            results.forEach(function(result) {
-                const muNameKo = result.muNameKo;
-                const muPlace = result.muPlace;
+        //     results.forEach(function(result) {
+        //         const muNameKo = result.muNameKo;
+        //         const muNameEn = result.muNameEn;
+        //         const muPlace = result.muPlace;
+        //         let t1Content = ""; // t1 내용 초기화
 
-                const resultItem = $(
-                    "<div class='imgcontainer'><a href='#'><img src='../assets/img/musical/ca_mu_img1.jpg'></a><div class='text'><div class='t1'>" + muNameKo + "</div><div class='t2'>" + muPlace + "</div></div></div>");
+        //         if (searchOption === 'musical' || searchOption === 'all') {
+        //             t1Content = muNameKo; // 한글 결과 표시
+        //         } else {
+        //             t1Content = muNameEn; // 영어 결과 표시
+        //         }
 
-                resultContainer.append(resultItem);
-            });
-            console.log(results)
-        }
+        //         const resultItem = $(
+        //             "<div class='imgcontainer'><a href='#'><img src='" + result.muImage + "' alt=''></a><div class='text'><div class='t1'>" + t1Content + "</div><div class='t2'>" + muPlace + "</div></div></div>");
+
+        //         resultContainer.append(resultItem);
+        //     });
+        // }
     </script>
 </body>
 
