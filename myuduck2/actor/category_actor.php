@@ -15,6 +15,8 @@ if ($result->num_rows > 0) {
         $acNameEn = $row['acNameEn'];
         $acOccupation = $row['acOccupation'];
         $acDOB = $row['acDOB'];
+        $acImg = $row['acImg']; 
+        $acImgDetail = $row['acImgDetail']; 
 
         // 연극 정보 가져오기
         $sql2 = "SELECT * FROM ac_perform WHERE actorId = $actorId";
@@ -44,7 +46,9 @@ if ($result->num_rows > 0) {
             'acNameEn' => $acNameEn,
             'acOccupation' => $acOccupation,
             'acDOB' => $acDOB,
-            'performances' => $performances
+            'performances' => $performances,
+            'acImg' => $acImg,
+            'acImgDetail' => $acImgDetail
         );
     }
 }
@@ -58,6 +62,7 @@ if ($result->num_rows > 0) {
     <title>MYUDUCK</title>
     <link rel="stylesheet" href="../assets/css/style.css">
     <link rel="stylesheet" href="../assets/css/commons2.css">
+    <link rel="icon" href="../assets/img/favicon.png" type="image/x-icon">
     <style>
 
     </style>
@@ -84,7 +89,7 @@ if ($result->num_rows > 0) {
                         <div class="actor-card">
                             <div class="info_actor">
                                 <a href="category_ac_detail.php?actorId=<?= $actorInfo['actorId'] ?>">
-                                    <img src="../assets/img/actor/ac_JeonDong-seok.jpg" alt="<?= $actorInfo['acNameKo'] ?> 사진">
+                                    <img src="<?= $actorInfo['acImg'] ?>" alt="<?= $actorInfo['acNameKo'] ?> 사진">
                                 </a>
                                 <h2><a href="category_ac_detail.php?actorId=<?= $actorInfo['actorId'] ?>"><?= $actorInfo['acNameKo'] ?></a></h2>
                             </div>

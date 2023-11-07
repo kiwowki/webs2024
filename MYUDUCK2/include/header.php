@@ -81,4 +81,5 @@
         </div>
     </div>
 </header>
+<link rel="icon" href="../assets/img/favicon.png" type="image/x-icon">
 <!-- //header -->

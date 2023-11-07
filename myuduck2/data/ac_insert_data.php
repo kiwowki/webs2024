@@ -169,14 +169,21 @@ foreach ($data as $item) {
     $acDOB = $item['acDOB'];
     $acPerforms = $item['acPerform'];
 
-    // 배우 정보를 데이터베이스에 저장
-    $sql = "INSERT INTO actor (acNameKo, acNameEn, acOccupation, acDOB) VALUES ('$acNameKo', '$acNameEn', '$acOccupation', '$acDOB') ON DUPLICATE KEY UPDATE acNameKo = VALUES(acNameKo), acNameEn = VALUES(acNameEn), acOccupation = VALUES(acOccupation), acDOB = VALUES(acDOB);";
+    // 이미지 파일 경로 설정
+    $acImg = "../assets/img/actor/ac_" . ($actorId+1) . ".jpg";
+    $acImgDetail = "../assets/img/actor/ac_detail_" . ($actorId+1) . ".jpg";
+
+
+    // 배우 정보를 데이터베이스에 삽입 또는 업데이트
+    $sql = "INSERT INTO actor (acNameKo, acNameEn, acOccupation, acDOB, acImg, acImgDetail) VALUES ('$acNameKo', '$acNameEn', '$acOccupation', '$acDOB', '$acImg', '$acImgDetail') ON DUPLICATE KEY UPDATE acNameKo = VALUES(acNameKo), acNameEn = VALUES(acNameEn), acOccupation = VALUES(acOccupation), acDOB = VALUES(acDOB), acImg = VALUES(acImg), acImgDetail = VALUES(acImgDetail)";
 
     if ($connect->query($sql) !== TRUE) {
         echo "오류: " . $sql . "<br>" . $connect->error;
     }
 
-    $actorId = $connect->insert_id; // 삽입된 배우의 ID 가져오기
+
+    $actorId = mysqli_insert_id($connect); // 삽입된 배우의 ID 가져오기
+
 
     // 배우의 연극 정보를 데이터베이스에 저장
     foreach ($acPerforms as $perform) {
@@ -194,4 +201,3 @@ foreach ($data as $item) {
 }
 
 $connect->close();
-?>

@@ -1,38 +1,38 @@
 <?php
-    include "../connect/connect.php";
-    include "../connect/session.php";
+include "../connect/connect.php";
+include "../connect/session.php";
 
-    if(isset($_SESSION['youId'])){
-        $youId = $_SESSION['youId'];
-        $youPass = $_SESSION['youPass'];
-    } else {
-        $youId = '';
-        $youPass = '';
-    }
-    // echo "<pre>";
-    // var_dump($_SESSION);
-    // echo "</pre>";
+if (isset($_SESSION['youId'])) {
+    $youId = $_SESSION['youId'];
+    $youPass = $_SESSION['youPass'];
+} else {
+    $youId = '';
+    $youPass = '';
+}
+// echo "<pre>";
+// var_dump($_SESSION);
+// echo "</pre>";
 
-    if (isset($_GET['boardID'])) {
-        $boardID = $_GET['boardID'];
-    } else {
-        Header("Location: QA.php");
-    }
+if (isset($_GET['boardID'])) {
+    $boardID = $_GET['boardID'];
+} else {
+    Header("Location: QA.php");
+}
 
-    // 이전글 가져오기
-    $prevQASql = "SELECT * FROM QAboard WHERE boardID < '$boardID' ORDER BY boardID DESC LIMIT 1";
-    $prevQAResult = $connect->query($prevQASql);
-    $prevQAInfo = $prevQAResult->fetch_array(MYSQLI_ASSOC);
+// 이전글 가져오기
+$prevQASql = "SELECT * FROM QAboard WHERE boardID < '$boardID' ORDER BY boardID DESC LIMIT 1";
+$prevQAResult = $connect->query($prevQASql);
+$prevQAInfo = $prevQAResult->fetch_array(MYSQLI_ASSOC);
 
-    // 다음글 가져오기
-    $nextQASql = "SELECT * FROM QAboard WHERE boardID > '$boardID' ORDER BY boardID ASC LIMIT 1";
-    $nextQAResult = $connect->query($nextQASql);
-    $nextQAInfo = $nextQAResult->fetch_array(MYSQLI_ASSOC);
+// 다음글 가져오기
+$nextQASql = "SELECT * FROM QAboard WHERE boardID > '$boardID' ORDER BY boardID ASC LIMIT 1";
+$nextQAResult = $connect->query($nextQASql);
+$nextQAInfo = $nextQAResult->fetch_array(MYSQLI_ASSOC);
 
-    // 댓글 정보 가져오기
-    $commentSql = "SELECT * FROM QAcomment WHERE boardId = '$boardID' AND commentDelete = '1' ORDER BY commentId ASC";
-    $commentResult = $connect -> query($commentSql);
-    $commentInfo = $commentResult -> fetch_array(MYSQLI_ASSOC);
+// 댓글 정보 가져오기
+$commentSql = "SELECT * FROM QAcomment WHERE boardId = '$boardID' AND commentDelete = '1' ORDER BY commentId ASC";
+$commentResult = $connect->query($commentSql);
+$commentInfo = $commentResult->fetch_array(MYSQLI_ASSOC);
 
 ?>
 <!DOCTYPE html>
@@ -70,26 +70,26 @@
                                 <col style="width: 80%">
                             </colgroup>
                             <tbody>
-<?php 
-$boardID = $_GET['boardID'];
+                                <?php
+                                $boardID = $_GET['boardID'];
 
-// 보드 뷰 + 1
-$sql = "UPDATE QAboard SET boardview = boardview + 1 WHERE boardID = {$boardID}";
-$connect -> query($sql);
+                                // 보드 뷰 + 1
+                                $sql = "UPDATE QAboard SET boardview = boardview + 1 WHERE boardID = {$boardID}";
+                                $connect->query($sql);
 
-$sql = "SELECT b.boardTitle, m.youId, b.regTime, b.boardView, b.boardContents FROM QAboard b JOIN myuduck m ON(b.youId = m.youId) WHERE b.boardID = {$boardID}";
-$result = $connect->query($sql);
+                                $sql = "SELECT b.boardTitle, m.youId, b.regTime, b.boardView, b.boardContents FROM QAboard b JOIN myuduck m ON(b.youId = m.youId) WHERE b.boardID = {$boardID}";
+                                $result = $connect->query($sql);
 
-if ($result) {
-    $info = $result->fetch_array(MYSQLI_ASSOC);
+                                if ($result) {
+                                    $info = $result->fetch_array(MYSQLI_ASSOC);
 
-    echo "<tr><th>제목</th><td>" . $info['boardTitle'] . "</td></tr>";
-    echo "<tr><th>등록자</th><td>" . $info['youId'] . "</td></tr>";
-    echo "<tr><th>등록일</th><td>" . date('Y-m-d', $info['regTime']) . "</td></tr>";
-    echo "<tr><th>조회수</th><td>" . $info['boardView'] . "</td></tr>";
-    echo "<tr><th>내용</th><td>" . $info['boardContents'] . "</td></tr>";
-}
-?>
+                                    echo "<tr><th>제목</th><td>" . $info['boardTitle'] . "</td></tr>";
+                                    echo "<tr><th>등록자</th><td>" . $info['youId'] . "</td></tr>";
+                                    echo "<tr><th>등록일</th><td>" . date('Y-m-d', $info['regTime']) . "</td></tr>";
+                                    echo "<tr><th>조회수</th><td>" . $info['boardView'] . "</td></tr>";
+                                    echo "<tr><th>내용</th><td>" . $info['boardContents'] . "</td></tr>";
+                                }
+                                ?>
                             </tbody>
                         </table>
                     </div>
@@ -124,36 +124,36 @@ if ($result) {
                 <section id="blogComment" class="blog__comment">
                     <h4>댓글 쓰기</h4>
                     <div class="comment">
-                    <?php
-    if($commentResult->num_rows == 0){ ?>
-        <div class="comment__view">
-            <div class="avata"></div>
-            <div class="text">
-                <span>
-                    아무런 흔적이 없습니다.
-                </span>
-                <p>댓글이 없습니다. 작성해 주세요.</p>
-            </div>
-        </div>
-   <?php } else { 
-        foreach($commentResult as $comment){ ?>
-            <div class="comment__view">
-                <div class="avata"></div>
-                <div class="text">
-                    <span>
-                        <span class="author"><?=$comment['commentName']?></span>
-                        <span class="date"><?=date('Y-m-d H:i', $comment['regTime'])?></span>
-                        <div class="Btn">
-                            <a href="#" class="modify" data-comment-id="<?=$comment['commentId']?>">수정</a>
-                            <a href="#" class="delete" data-comment-id="<?=$comment['commentId']?>">삭제</a>
-                        </div>
-                    </span>
-                    <p><?=$comment['commentMsg']?></p>
-                </div>
-            </div>
-    <?php } 
-    }
-?>
+                        <?php
+                        if ($commentResult->num_rows == 0) { ?>
+                            <div class="comment__view">
+                                <div class="avata"></div>
+                                <div class="text">
+                                    <span>
+                                        아무런 흔적이 없습니다.
+                                    </span>
+                                    <p>댓글이 없습니다. 작성해 주세요.</p>
+                                </div>
+                            </div>
+                            <?php } else {
+                            foreach ($commentResult as $comment) { ?>
+                                <div class="comment__view">
+                                    <div class="avata"></div>
+                                    <div class="text">
+                                        <span>
+                                            <span class="author"><?= $comment['commentName'] ?></span>
+                                            <span class="date"><?= date('Y-m-d H:i', $comment['regTime']) ?></span>
+                                            <div class="Btn">
+                                                <a href="#" class="modify" data-comment-id="<?= $comment['commentId'] ?>">수정</a>
+                                                <a href="#" class="delete" data-comment-id="<?= $comment['commentId'] ?>">삭제</a>
+                                            </div>
+                                        </span>
+                                        <p><?= $comment['commentMsg'] ?></p>
+                                    </div>
+                                </div>
+                        <?php }
+                        }
+                        ?>
                         <!-- <div class="comment__view">
                             <div class="avata"></div>
                             <div class="text">
@@ -164,18 +164,18 @@ if ($result) {
                             </div>
                         </div> -->
                         <div class="comment__input">
-                        <form action="#">
-                            <fieldset>
-                            <legend class="blind">댓글쓰기</legend>
-                                <label for="commentName" class="blind">이름</label>
-                                <input type="text" id="commentName" name="commentName" class="input__style blind" value="<?=$youId?>" required>
-                                <label for="commentPass" class="blind">비밀번호</label>
-                                <input type="password" id="commentPass" name="commentPass" class="input__style blind" value="<?=$youPass?>" required>
-                                <label for="commentWrite" class="blind">댓글쓰기</label>
-                                <input type="text" id="commentWrite" name="commentWrite" class="input__style" placeholder="댓글을 입력해주세요" required>
-                                <button type="button" id="commentWriteBtn" class="commentBtn">댓글쓰기</button>                                
-                            </fieldset>
-                        </form>
+                            <form action="#">
+                                <fieldset>
+                                    <legend class="blind">댓글쓰기</legend>
+                                    <label for="commentName" class="blind">이름</label>
+                                    <input type="text" id="commentName" name="commentName" class="input__style blind" value="<?= $youId ?>" required>
+                                    <label for="commentPass" class="blind">비밀번호</label>
+                                    <input type="password" id="commentPass" name="commentPass" class="input__style blind" value="<?= $youPass ?>" required>
+                                    <label for="commentWrite" class="blind">댓글쓰기</label>
+                                    <input type="text" id="commentWrite" name="commentWrite" class="input__style" placeholder="댓글을 입력해주세요" required>
+                                    <button type="button" id="commentWriteBtn" class="commentBtn">댓글쓰기</button>
+                                </fieldset>
+                            </form>
                         </div>
                     </div>
                 </section>
@@ -222,41 +222,45 @@ if ($result) {
         let commentId = "";
 
         // 댓글 쓰기 버튼
-        $("#commentWriteBtn").click(function(){
-            if($("#commentWrite").val() == ""){
+        $("#commentWriteBtn").click(function() {
+            if ($("#commentWrite").val() == "") {
                 alert("댓글을 작성해주세요.");
                 $("#commentWriteBtn").focus();
             } else {
-                $.ajax({
-                    url: "QACommentWrite.php",
-                    method: "POST",
-                    dataType: "json",
-                    data: {
-                        "boardID": <?= $boardID ?>,
-                        "youId": $("#commentName").val(),
-                        "name": $("#commentName").val(),
-                        "pass": $("#commentPass").val(),
-                        "msg": $("#commentWrite").val()
-                    },
-                    success: function(data) {
-                        if (data && data.success) {
-                            console.log("댓글이 성공적으로 등록되었습니다.");
-                            location.reload();
-                        } else {
-                            console.log("댓글 등록 중 오류가 발생했습니다.");
+                if ("<?= $youId ?>" === "admin" || "<?= $youId ?>" === "<?= $info['youId'] ?>") {
+                    $.ajax({
+                        url: "QACommentWrite.php",
+                        method: "POST",
+                        dataType: "json",
+                        data: {
+                            "boardID": <?= $boardID ?>,
+                            "youId": $("#commentName").val(),
+                            "name": $("#commentName").val(),
+                            "pass": $("#commentPass").val(),
+                            "msg": $("#commentWrite").val()
+                        },
+                        success: function(data) {
+                            if (data && data.success) {
+                                console.log("댓글이 성공적으로 등록되었습니다.");
+                                location.reload();
+                            } else {
+                                console.log("댓글 등록 중 오류가 발생했습니다.");
+                            }
+                        },
+                        error: function(request, status, error) {
+                            console.log("request: ", request);
+                            console.log("status: ", status);
+                            console.log("error: ", error);
                         }
-                    },
-                    error: function(request, status, error){
-                        console.log("request: ", request);
-                        console.log("status: ", status);
-                        console.log("error: ", error);
-                    }
-                })
+                    })
+                } else {
+                    alert("댓글 작성 권한이 없습니다.");
+                }
             }
         });
 
         // 댓글 삭제 버튼
-       $(".comment__view .delete").click(function(e){
+        $(".comment__view .delete").click(function(e) {
             e.preventDefault();
             $("#popupDelete").removeClass("none");
             commentId = $(this).data("comment-id");
@@ -264,13 +268,13 @@ if ($result) {
         });
 
         // 댓글 삭제 버튼 --> 취소 버튼
-        $("#commentDeleteCancel").click(function(){
+        $("#commentDeleteCancel").click(function() {
             $("#popupDelete").addClass("none");
         });
- 
+
         // 댓글 삭제 버튼 --> 삭제 버튼
-        $("#commentDeleteButton").click(function(){
-            if($("#commentDeletePass").val() == ""){
+        $("#commentDeleteButton").click(function() {
+            if ($("#commentDeletePass").val() == "") {
                 alert("댓글 작성시 비밀번호를 작성해주세요!");
                 $("#commentDeletePass").focus();
             } else {
@@ -282,16 +286,16 @@ if ($result) {
                         "commentPass": $("#commentDeletePass").val(),
                         "commentId": commentId,
                     },
-                    success: function(data){
+                    success: function(data) {
                         console.log("data : ", data);
-                        if(data.result == "bad"){
+                        if (data.result == "bad") {
                             alert("비밀번호가 일치하지 않습니다.");
                         } else {
                             alert("댓글이 삭제되었습니다.");
                         }
                         location.reload();
                     },
-                    error: function(request, status, error){
+                    error: function(request, status, error) {
                         console.log("request" + request);
                         console.log("status" + status);
                         console.log("error" + error);
@@ -301,7 +305,7 @@ if ($result) {
         });
 
         // 댓글 수정 버튼
-       $(".comment__view .modify").click(function(e){
+        $(".comment__view .modify").click(function(e) {
             e.preventDefault();
             $("#popupModify").removeClass("none");
             commentId = $(this).data("comment-id");
@@ -311,13 +315,13 @@ if ($result) {
         });
 
         // 댓글 수정 버튼 --> 취소 버튼
-        $("#commentModifyCancel").click(function(){
+        $("#commentModifyCancel").click(function() {
             $("#popupModify").addClass("none");
         });
 
         // 댓글 수정 버튼 --> 수정 버튼
-        $("#commentModifyButton").click(function(){
-            if($("#commentModifyPass").val() == ""){
+        $("#commentModifyButton").click(function() {
+            if ($("#commentModifyPass").val() == "") {
                 alert("댓글 작성시 비밀번호를 작성해주세요!");
                 $("#commentModifyPass").focus();
             } else {
@@ -330,16 +334,16 @@ if ($result) {
                         "commentPass": $("#commentModifyPass").val(),
                         "commentId": commentId,
                     },
-                    success: function(data){
+                    success: function(data) {
                         console.log(data);
-                        if(data.result == "bad"){
+                        if (data.result == "bad") {
                             alert("비밀번호가 일치하지 않습니다.");
                         } else {
                             alert("댓글이 수정되었습니다.");
                         }
                         location.reload();
                     },
-                    error: function(request, status, error){
+                    error: function(request, status, error) {
                         console.log("request" + request);
                         console.log("status" + status);
                         console.log("error" + error);
@@ -347,8 +351,8 @@ if ($result) {
                 })
             }
         });
-        
-</script>
+    </script>
 
 </body>
+
 </html>

@@ -1,28 +1,25 @@
 <?php
 include "../connect/connect.php";
 
-if (isset($_GET['actorId'])) {
-    $actorId = $_GET['actorId'];
-} else {
-    // actorId가 지정되지 않은 경우의 기본값 설정
-    $actorId = 0;
-}
+// URL에서 actorId를 가져옴
+$actorId = $_GET['actorId'];
 
-// 배우 상세 정보 가져오기
-$actorsWithPerformances = array();
-
-$sql = "SELECT * FROM actor WHERE actorId = $actorId"; 
+// 해당 actorId에 대한 배우 정보 가져오기
+$sql = "SELECT * FROM actor WHERE actorId = $actorId";
 $result = $connect->query($sql);
 
 if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
+        $actorId = $row['actorId'];
         $acNameKo = $row['acNameKo'];
         $acNameEn = $row['acNameEn'];
         $acOccupation = $row['acOccupation'];
         $acDOB = $row['acDOB'];
+        $acImg = $row['acImg'];
+        $acImgDetail = $row['acImgDetail'];
 
         // 연극 정보 가져오기
-        $sql2 = "SELECT * FROM ac_perform WHERE actorId = " . $row['actorId'];
+        $sql2 = "SELECT * FROM ac_perform WHERE actorId = $actorId";
         $result2 = $connect->query($sql2);
         $performances = array();
 
@@ -33,6 +30,10 @@ if ($result->num_rows > 0) {
                 $acPerformPlace = $row2['acPerformPlace'];
                 $acPerformRole = $row2['acPerformRole'];
 
+                // 연도만 추출
+                preg_match('/\d{4}/', $acPerformDate, $matches);
+                $year = $matches[0];
+
                 // 배우와 연극 정보를 배열에 추가
                 $performances[] = "$acPerformName($year)";
             }
@@ -40,12 +41,14 @@ if ($result->num_rows > 0) {
 
         // 배우 정보와 연극 정보를 묶어서 배열에 저장
         $actorsWithPerformances[] = array(
-            'actorId' => $row['actorId'],
+            'actorId' => $actorId,
             'acNameKo' => $acNameKo,
             'acNameEn' => $acNameEn,
             'acOccupation' => $acOccupation,
             'acDOB' => $acDOB,
-            'performances' => $performances
+            'performances' => $performances,
+            'acImg' => $acImg,
+            'acImgDetail' => $acImgDetail
         );
     }
 }
@@ -60,10 +63,12 @@ if ($result->num_rows > 0) {
     <link rel="stylesheet" href="../assets/css/style.css">
     <link rel="stylesheet" href="../assets/css/commons2.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    
 </head>
 
 <body>
     <?php include "../include/header.php" ?>
+    
     <!-- //header -->
 
 
@@ -75,7 +80,7 @@ if ($result->num_rows > 0) {
                 <div>
                     <button class="like-button">☆ 찜버튼</button>
                 </div>
-                <img src="../assets/img/actor/acd_JeonDong-Seok.jpg" alt="전동석 사진2">
+                <img src="<?= $acImgDetail ?>" alt="<?= $acNameKo ?>상세 사진">
             </div>
             <div class="intro_info">
                 <div class="name">
@@ -84,6 +89,7 @@ if ($result->num_rows > 0) {
                 </div>
                 <p class="occupation">직업 : <?= $acOccupation ?></p>
                 <p class="birthdate">생년월일 : <?= $acDOB ?></p>
+                
                 <div class="rating">
                     <span class="rating_result">
                     </span>
@@ -93,6 +99,7 @@ if ($result->num_rows > 0) {
                     <i class="rating_star far fa-star"></i>
                     <i class="rating_star far fa-star"></i>
                 </div>
+                <!-- <a href="https://www.instagram.com/actor.zooooo/" class="sns"><img src="../assets/img/instar.svg" alt="">배우 인스타 바로가기</a> -->
             </div>
         </div>
     </div>
@@ -107,13 +114,13 @@ if ($result->num_rows > 0) {
                 <div class="recent_work">
                     <div class="work-card">
                         <div class="ac_img_wrap">
-                            <img src="../assets/img/actor/ac_work0<?=$actorsWithPerformances['actorId'].$actorId?>.jpg" alt="ac_work0<?=$actorsWithPerformances['actorId'].$actorId?>">
+                            <img src="../assets/img/actor/ac_work0<?= $actorsWithPerformances['actorId'] . $actorId ?>.jpg" alt="ac_work0<?= $actorsWithPerformances['actorId'] . $actorId ?>">
                         </div>
                         <div class="ac_text_wrap">
-                            <h3 class="ac_musical"><?= $actorsWithPerformances['performances'].$acPerformName ?></h3>
-                            <p class="ac_date"><?= $actorsWithPerformances['performances'].$acPerformDate ?></p>
-                            <p class="ac_theater"><?= $actorsWithPerformances['performances'].$acPerformPlace ?></p>
-                            <p class="ac_role"><?= $actorsWithPerformances['performances'].$acPerformRole ?></p>
+                            <h3 class="ac_musical"><?= $actorsWithPerformances['performances'] . $acPerformName ?></h3>
+                            <p class="ac_date"><?= $actorsWithPerformances['performances'] . $acPerformDate ?></p>
+                            <p class="ac_theater"><?= $actorsWithPerformances['performances'] . $acPerformPlace ?></p>
+                            <p class="ac_role"><?= $actorsWithPerformances['performances'] . $acPerformRole ?></p>
                         </div>
                     </div>
                     <!-- //work-card t1 -->
