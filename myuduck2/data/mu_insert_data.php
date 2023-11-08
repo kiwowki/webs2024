@@ -61,13 +61,6 @@ $jsonData = '[
         "muPlace": "한전아트센터",
         "muDate": "2023"
     },
-
-
-
-
-
-
-
     {
         "muNameKo": "헤드윅",
         "muNameEn": "Hedwig and the Angry Inch",

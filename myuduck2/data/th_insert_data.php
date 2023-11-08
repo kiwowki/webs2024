@@ -160,15 +160,22 @@ $jsonData = '[
 
 $data = json_decode($jsonData, true);
 
-foreach ($data as $item) {
-    $thName = $item['thName'];
-    $thAddress = $item['thAddress'];
-    $thCall = $item['thCall'];
-    $thHomepage = $item['thHomepage'];
-    $thTransport = $item['thTransport'];
-    $thPerform = implode(", ", $item['thPerform']); // 배열을 쉼표로 구분된 문자열로 변환
+if (json_last_error() !== JSON_ERROR_NONE) {
+    die("JSON 디코딩 오류: " . json_last_error_msg());
+}
 
-    $sql = "INSERT INTO theater (thName, thAddress, thCall, thHomepage, thTransport, thPerform) VALUES ('$thName', '$thAddress', '$thCall', '$thHomepage', '$thTransport', '$thPerform')";
+foreach ($data as $item) {
+    $thName = mysqli_real_escape_string($connect, $item['thName']);
+    $thAddress = mysqli_real_escape_string($connect, $item['thAddress']);
+    $thCall = mysqli_real_escape_string($connect, $item['thCall']);
+    $thHomepage = mysqli_real_escape_string($connect, $item['thHomepage']);
+    $thTransport = mysqli_real_escape_string($connect, $item['thTransport']);
+    $thPerform = mysqli_real_escape_string($connect, implode(", ", $item['thPerform'])); // 배열을 쉼표로 구분된 문자열로 변환
+
+    $thLogo = mysqli_real_escape_string($connect, $item['thLogo']);
+    $thSeatImg = mysqli_real_escape_string($connect, $item['thSeatImg']);
+
+    $sql = "INSERT INTO theater (thName, thAddress, thCall, thHomepage, thTransport, thPerform, thLogo, thSeatImg) VALUES ('$thName', '$thAddress', '$thCall', '$thHomepage', '$thTransport', '$thPerform', '$thLogo', '$thSeatImg')";
 
     if ($connect->query($sql) === TRUE) {
         echo "데이터가 성공적으로 입력되었습니다.<br>";
@@ -178,3 +185,4 @@ foreach ($data as $item) {
 }
 
 $connect->close();
+?>

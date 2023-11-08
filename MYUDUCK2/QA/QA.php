@@ -56,7 +56,7 @@
                                     <option value="name">등록자</option>
                                 </select>
                                 <button type="submit">검색</button>
-                                <a href="QAWrite.php">글쓰기</a>
+                                <a href="#" class="writeBtn">글쓰기</a>
                             </fieldset>
                         </form>
                     </div>
@@ -182,6 +182,30 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="../script/commons.js"></script>
+    
+    <script>
+        $(document).ready(function() {
+            const writeBtn = $(".writeBtn");
+
+            writeBtn.on("click", function() {
+                // 이벤트 핸들러에서 세션을 확인
+                $.ajax({
+                    type: "POST",
+                    url: "check_session.php", // 세션 확인을 수행하는 PHP 스크립트의 경로
+                    success: function(response) {
+                        if (response === "not_logged_in") {
+                            alert("로그인 해주세요.");
+                            window.location.href = '../login/login.php';
+                        } else {
+                            window.location.href = '../QA/QAWrite.php';
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+
+
 
 </body>
 </html>

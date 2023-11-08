@@ -1,3 +1,44 @@
+<?php
+include "../connect/connect.php";
+
+$theaterId = $_GET['theaterId'];
+
+$sql = "SELECT * FROM theater ORDER BY theaterId ASC";
+
+$performances = array();
+
+if ($result->num_rows > 0) {
+    while ($row = $result->fetch_assoc()) {
+        $thLogo = $row['thLogo'];
+        $thName = $row['thName'];
+        $thAddress = $row['thAddress'];
+        $thCall = $row['thCall'];
+        $thHomepage = $row['thHomepage'];
+        $thTransport = $row['thTransport']; 
+        $thSeatImg = $row['thSeatImg']; 
+        $thPerform = $row['thPerform']; 
+
+
+        
+
+        
+
+        // 배우 정보와 연극 정보를 묶어서 배열에 저장
+        $performances[] = array(
+            'thLogo' => $thLogo,
+            'thName' => $thName,
+            'thAddress' => $thAddress,
+            'thCall' => $thCall,
+            'thHomepage' => $thHomepage,
+            'thTransport' => $thTransport,
+            'thSeatImg' => $thSeatImg,
+            'thPerform' => $thPerform
+        );
+    }
+}
+
+
+?>
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -16,15 +57,9 @@
 </head>
 
 <body>
+
     <?php include "../include/header.php" ?>
     <!-- //header -->
-
-    <?php
-    // JSON 파일을 읽어옵니다.
-    $jsonString = file_get_contents('theaterdata.json');
-    $theaterdata = json_decode($jsonString, true);
-    ?>
-    
 
     <main>
         <div class="theater__ineer container">
@@ -54,7 +89,6 @@
                         </li>
                         <li><a href="#"><img class="im11" src="../assets/img/theater/theater11.jpg" alt="우리금융아트홀"></a>
                         </li>
-                        <li></li>
                     </ul>
                 </div>
                 <div class="theater__list">

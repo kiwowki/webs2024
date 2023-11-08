@@ -10,13 +10,13 @@ $sql .= "thCall VARCHAR(20),";
 $sql .= "thHomepage VARCHAR(255),";
 $sql .= "thTransport TEXT,";
 $sql .= "thSeatImg VARCHAR(255),";
+$sql .= "thPerform VARCHAR(255),";
 $sql .= "PRIMARY KEY (theaterId)";
-
 $sql .= ") CHARACTER SET utf8";
 
 $result = $connect->query($sql);
 
-if($result){
+if ($result) {
     echo "Create Tables Complete";
 } else {
     echo "Create Tables False";

@@ -579,6 +579,7 @@ tbody {
     padding: 1rem;
     width: 100%;
     font-size: 1rem;
+    color: var(--black);
 }
 
 .comment__delete p {
@@ -633,6 +634,15 @@ tbody {
     color: var(--white);
 }
 
+/* .comment__modify textarea {
+    width: 100%;
+    height: 150px;
+    padding: 10px;
+    font-size: 1rem;
+    resize: none;
+    border: 2px solid var(--black300);
+} */
+
 .comment__modify textarea {
     width: 100%;
     height: 150px;
@@ -640,6 +650,7 @@ tbody {
     font-size: 1rem;
     resize: none;
     border: 2px solid var(--black300);
+    color: var(--black);
 }
 
 .comment__modify input {
@@ -647,6 +658,7 @@ tbody {
     padding: 1rem;
     width: 100%;
     font-size: 1rem;
+    color: var(--black);
 }
 
 .comment__modify p {

@@ -5,7 +5,7 @@
 
 .theater__ineer h1 {
     font-size: 2rem;
-    font-family: var(--primary-Oswald);
+    font-family: var(--primary-Hahmlet);
     font-weight: bold;
     margin-bottom: 10px;
 }
@@ -16,7 +16,18 @@
     font-weight: normal;
 }
 
-
+/* map */
+.mapwrap {
+    display: flex;
+    justify-content: space-around
+}
+#map {
+    width: 90%;
+    height: 550px;
+    border-radius: 20px;
+    margin: 20px;
+    
+}
 
 /* theater__info */
 .theater__info {
@@ -27,17 +38,13 @@
 }
 
 /* theater__map */
-.theater__map {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 51vh;
-}
-
 .theater__map img {
     width: 80%;
     height: 85%;
+    /* border-top: 2px solid var(--black600);
+    border-bottom: 2px solid var(--black600); */
+    /* margin: 10px;
+    padding: 10px; */
 }
 
 .theater__map .pin {
@@ -65,9 +72,9 @@
     flex-wrap: wrap;
     border: 1px solid var(--black200);
     /* background-color: var(--black500); */
-    padding: 10px;
+    padding: 1.1rem;
     box-sizing: border-box;
-    justify-content: space-between;
+    justify-content: flex-start;
 }
 
 .theater__link>ul li {
@@ -76,6 +83,9 @@
     padding: 10px;
 }
 
+.theater__link>ul li a img {
+    border-radius: 15px;
+}
 .theater__link>ul li a:hover img {
     transform: scale(1.1);
     transition: transform 0.4s;
@@ -140,13 +150,24 @@
     align-items: center;
 }
 
+.list__cont .img_name > a:nth-child(1) {
+    width: 60%;
+}
+.list__cont .img_name > a:nth-child(2) {
+    width: 39%;
+    text-align: center;
+}
+
 .list__cont .img_name>a>img {
-    margin-right: 1.2rem;
+    width: 95%;
+    /* margin-right: 1.2rem; */
+    border-radius: 5px;
 }
 
 .list__cont .img_name>a>span {
+    width: 100%;
     font-size: 0.9rem;
-    margin-left: 1.2rem;
+    /* margin-left: 1.2rem; */
 }
 
 .theater__location span {
@@ -207,7 +228,7 @@
 .th__detail_info {
     border: 1px solid var(--black);
     display: flex;
-    background-image: url(../img/theater/detail_image.jpg);
+    background-image: url(../img/detail_image.jpg);
     background-position: center center;
     background-size: cover;
     margin: 1.2rem 0;
@@ -222,6 +243,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    
 }
 
 .theater_detail .logo_img {
@@ -229,7 +251,8 @@
 }
 
 .theater_detail .logo_img img {
-    width: 80%;
+    width: 70%;
+    border-radius: 25px;
 }
 
 .theater__detail__title {
@@ -301,4 +324,61 @@
 .theater_seat_info .seat_img {
     margin-top: 20px;
     padding: 10px;
+}
+
+/* theater */
+@media (max-width: 1210px){
+    .list__cont th {
+        padding: 0.8rem;
+        /* background-color: var(--black500); */
+        font-size: 1rem;
+        font-weight: bold;
+    }
+    
+    
+    .list__cont .rounded-left {
+        /* display: block; */
+        border: 1px solid var(--white);
+        border-radius: 30px 0 0 0;
+        width: 100%;
+    }
+    
+    .list__cont .rounded-center {
+        /* display: block;/ */
+        border: 1px solid var(--white);
+        width: 70%;
+    }
+    
+    .list__cont .rounded-right {
+        /* display: block; */
+        border: 1px solid var(--white);
+        border-radius: 0 10px 0 0;
+        width: 100%;
+    }
+
+    .list__cont .img_name > a:nth-child(1) {
+        width: 50%;
+    }
+    .list__cont .img_name > a:nth-child(2) {
+        width: 49%;
+        text-align: center;
+    }
+    
+    .list__cont .img_name > a > span {
+        font-size: 0.7rem;
+    }
+
+    .theater__location span {
+        font-size: 0.7rem;
+    }
+    .theater__musical ul {
+        font-size: 0.7rem;
+        padding: 1rem;
+    }
+}
+@media (max-width: 1060px){
+    
+    .theater__link>ul {
+        padding: 0.5rem;
+    }
 }

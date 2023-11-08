@@ -82,14 +82,26 @@
     width: 100%;
     transform: translate(-50%, -50%);
     text-align: center;
+
+    
 }
 
 .text .t1 {
     font-family: var(--hahm);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
 }
 
 .text .t2 {
     color: var(--black200);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
 }
 
 .result_img .imgcontainer:hover .text {
