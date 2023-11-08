@@ -93,7 +93,7 @@ $jsonData = '[
                 "acPerformRole": "구하리 역"
             },
             {
-                "acPerformName": "시크릿쥬쥬 별의여신",
+                "acPerformName": "시크릿쥬쥬 별의여신 시즌3 <마지막 콘서트>",
                 "acPerformDate": "2022.08.20 ~ 2022.08.28",
                 "acPerformPlace": "이화여자대학교 삼성홀",
                 "acPerformRole": "신디 역"

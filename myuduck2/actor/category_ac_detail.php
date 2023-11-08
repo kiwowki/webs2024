@@ -8,6 +8,8 @@ $actorId = $_GET['actorId'];
 $sql = "SELECT * FROM actor WHERE actorId = $actorId";
 $result = $connect->query($sql);
 
+$actorsWithPerformances = array();
+
 if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
         $actorId = $row['actorId'];
@@ -30,26 +32,42 @@ if ($result->num_rows > 0) {
                 $acPerformPlace = $row2['acPerformPlace'];
                 $acPerformRole = $row2['acPerformRole'];
 
+                $sql3 = "SELECT muImg FROM musical WHERE muNameKo = '$acPerformName'";
+                $result3 = $connect->query($sql3);
+                $muImg = '';
+
+                if ($result3->num_rows > 0) {
+                    $row3 = $result3->fetch_assoc();
+                    $muImg = $row3['muImg'];
+                }
+
                 // 연도만 추출
                 preg_match('/\d{4}/', $acPerformDate, $matches);
                 $year = $matches[0];
 
                 // 배우와 연극 정보를 배열에 추가
-                $performances[] = "$acPerformName($year)";
+                $performances[] = array(
+                    'acPerformName' => $acPerformName,
+                    'acPerformDate' => $acPerformDate,
+                    'acPerformPlace' => $acPerformPlace,
+                    'acPerformRole' => $acPerformRole,
+                    'muImg' => $muImg,
+                );
             }
         }
 
-        // 배우 정보와 연극 정보를 묶어서 배열에 저장
-        $actorsWithPerformances[] = array(
+        $actorData = array(
             'actorId' => $actorId,
             'acNameKo' => $acNameKo,
             'acNameEn' => $acNameEn,
             'acOccupation' => $acOccupation,
             'acDOB' => $acDOB,
-            'performances' => $performances,
             'acImg' => $acImg,
-            'acImgDetail' => $acImgDetail
+            'acImgDetail' => $acImgDetail,
+            'performances' => $performances
         );
+
+        $actorsWithPerformances[] = $actorData;
     }
 }
 ?>
@@ -63,12 +81,12 @@ if ($result->num_rows > 0) {
     <link rel="stylesheet" href="../assets/css/style.css">
     <link rel="stylesheet" href="../assets/css/commons2.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    
+
 </head>
 
 <body>
     <?php include "../include/header.php" ?>
-    
+
     <!-- //header -->
 
 
@@ -89,7 +107,7 @@ if ($result->num_rows > 0) {
                 </div>
                 <p class="occupation">직업 : <?= $acOccupation ?></p>
                 <p class="birthdate">생년월일 : <?= $acDOB ?></p>
-                
+
                 <div class="rating">
                     <span class="rating_result">
                     </span>
@@ -112,44 +130,20 @@ if ($result->num_rows > 0) {
                     <h4>현재 출연작 & 출연 예정작</h4>
                 </div>
                 <div class="recent_work">
-                    <div class="work-card">
-                        <div class="ac_img_wrap">
-                            <img src="../assets/img/actor/ac_work0<?= $actorsWithPerformances['actorId'] . $actorId ?>.jpg" alt="ac_work0<?= $actorsWithPerformances['actorId'] . $actorId ?>">
+                    <?php foreach ($actorData['performances'] as $performance) : ?>
+                        <div class="work-card">
+                            <div class="ac_img_wrap">
+                                <img src=<?= $performance['muImg'] ?> alt="<?= $performance['acPerformName'] ?> 이미지">
+                            </div>
+                            <div class="ac_text_wrap">
+                                <h3 class="ac_musical"><?= $performance['acPerformName'] ?></h3>
+                                <p class="ac_date"><?= $performance['acPerformDate'] ?></p>
+                                <p class="ac_theater"><?= $performance['acPerformPlace'] ?></p>
+                                <p class="ac_role"><?= $performance['acPerformRole'] ?></p>
+                            </div>
                         </div>
-                        <div class="ac_text_wrap">
-                            <h3 class="ac_musical"><?= $actorsWithPerformances['performances'] . $acPerformName ?></h3>
-                            <p class="ac_date"><?= $actorsWithPerformances['performances'] . $acPerformDate ?></p>
-                            <p class="ac_theater"><?= $actorsWithPerformances['performances'] . $acPerformPlace ?></p>
-                            <p class="ac_role"><?= $actorsWithPerformances['performances'] . $acPerformRole ?></p>
-                        </div>
-                    </div>
-                    <!-- //work-card t1 -->
-
-                    <div class="work-card">
-                        <div class="ac_img_wrap">
-                            <img src="../assets/img/actor/ac_work02.jpg" alt="ac_work02">
-                        </div>
-                        <div class="ac_text_wrap">
-                            <h3 class="ac_musical">브랜든 리 심포니 OST 콘서트</h3>
-                            <p class="ac_date">2023.10.17 ~ 2023.10.18</p>
-                            <p class="ac_theater">세종문화회관 대극장</p>
-                            <p class="ac_role">바이올린 역</p>
-                        </div>
-                    </div>
-                    <!-- //work-card t2 -->
-
-                    <div class="work-card">
-                        <div class="ac_img_wrap">
-                            <img src="../assets/img/actor/ac_work03.jpg" alt="ac_work03">
-                        </div>
-                        <div class="ac_text_wrap">
-                            <h3 class="ac_musical">오페라의 유령</h3>
-                            <p class="ac_date">2023.07.21 ~ 2023.11.19</p>
-                            <p class="ac_theater">샤롯데씨어터</p>
-                            <p class="ac_role">오페라의 유령 역</p>
-                        </div>
-                    </div>
-                    <!-- //work-card t2 -->
+                    <?php endforeach ?>
+                    <!-- //work-card -->
                 </div>
             </div>
         </div>

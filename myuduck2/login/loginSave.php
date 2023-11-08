@@ -22,6 +22,7 @@
             $myuduckId = $result-> fetch_array(MYSQLI_ASSOC);
 
             $_SESSION['myuduckId'] = $myuduckId['myuduckId'];
+            $_SESSION['youPass'] = $myuduckId['youPass'];
             $_SESSION['youName'] = $myuduckId['youName'];
             $_SESSION['youEmail'] = $myuduckId['youEmail'];
             $_SESSION['youPhone'] = $myuduckId['youPhone'];
@@ -29,4 +30,3 @@
             echo "<script>window.location.href='../main/main.php';</script>";
         }
     }
-?>

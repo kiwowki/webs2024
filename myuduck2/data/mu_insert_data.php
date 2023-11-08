@@ -103,6 +103,11 @@ $jsonData = '[
         "muDate": "2021"
     },
     {
+        "muNameKo": "82년생 김지영",
+        "muPlace": "백암아트홀",
+        "muDate": "2022"
+    },
+    {
         "muNameKo": "데스노트",
         "muNameEn": "Death Note",
         "muPlace": "샤롯데씨어터",
@@ -113,13 +118,7 @@ $jsonData = '[
         "muNameEn": "Xcalibur",
         "muPlace": "세종문화회관",
         "muDate": "2022"
-    },
-    {
-        "muNameKo": "82년생 김지영",
-        "muPlace": "백암아트홀",
-        "muDate": "2022"
     }
-
 ]';
 
 $data = json_decode($jsonData, true);

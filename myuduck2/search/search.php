@@ -58,44 +58,7 @@ include "../connect/connect.php";
     <script src="../script/commons.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
-        $("#searchButton").click(function() {
-            if ($("#searchKeyword").val() == "") {
-                // alert("검색어를 작성해주세요.");
-                $("#searchKeyword").focus();
-            } else {
-                const searchKeyword = $("#searchKeyword").val();
-                const searchOption = $("#searchOption").val();
-                alert(searchKeyword)
-                $.ajax({
-                    url: "search_musical.php",
-                    method: "GET",
-                    dataType: "json",
-                    data: {
-                        searchKeyword: searchKeyword,
-                        searchOption: searchOption
-                    },
-                    success: function(results) {
-                        displayResults(results);
-                    },
-                });
-            }
-        });
 
-        function displayResults(results) {
-            console.log(results);
-            const resultContainer = $(".search_result_inner");
-            resultContainer.empty();
-
-            results.forEach(function(result) {
-                const muNameKo = result.muNameKo;
-                const muPlace = result.muPlace;
-
-                const resultItem = $(
-                    "<div class='imgcontainer'><a href='#'><img src='" + result.muImage + "' alt=''></a><div class='text'><div class='t1'>" + muNameKo + "</div><div class='t2'>" + muPlace + "</div></div></div>");
-
-                resultContainer.append(resultItem);
-            });
-        }
     </script>
 </body>
 
