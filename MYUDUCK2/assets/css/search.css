@@ -13,11 +13,14 @@
     height: 320px;
     text-align: center;
     margin-bottom: 125px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
 }
 
 .search_logo img {
-    width: 670px;
-    height: 320px;
+    width: 62vw;
+    max-width: 600px;
 }
 
 .all_search {
@@ -28,7 +31,8 @@
 }
 
 .all_search input {
-    width: 630px;
+    max-width: 600px;
+    width: 46vw;
     height: 65px;
     font-size: 1.3rem;
     border: 5px solid var(--primary-color);
@@ -39,13 +43,13 @@
 }
 
 .all_search select {
+    max-width: 150px;
+    width: 15vw;
     height: 65px;
     font-size: 1.5rem;
     border: 2px solid var(--white);
     background-color: var(--black);
     color: var(--primary-color);
-    padding: 0 10px;
-    width: 187px;
     padding: 10px 21px;
     margin-right: 5px;
     cursor: pointer;
@@ -58,7 +62,8 @@
 }
 
 .all_search button {
-    width: 125px;
+    max-width: 150px;
+    width: 15vw;
     height: 65px;
     font-size: 1.5rem;
     border: 2px solid var(--white);
@@ -81,7 +86,6 @@
 }
 
 .category span {
-    width: 100%;
     text-align: center;
     padding: 2px 5px;
     margin-right: 10px;
@@ -92,4 +96,25 @@
 
 .category span a:hover {
     color: var(--primary-color);
+}
+
+@media (max-width: 1080px) {
+    .search_inner .category {
+        font-size: 1.5em;
+    }
+    
+}
+@media (max-width: 850px) {
+    .all_search select {
+        font-size: 1.2rem;
+        padding: 0px 10px;
+    }
+    .all_search button {
+        font-size: 1.2rem;
+        padding: 0px 10px;
+    }
+    .search_inner .category {
+        font-size: 1.2em;
+    }
+    
 }

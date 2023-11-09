@@ -14,6 +14,7 @@
     height: 200px;
 }
 
+
 /* search_result */
 .search_result {
     width: 100%;
@@ -51,11 +52,19 @@
     filter: blur(1.1px);
     transition: all 0.4s ease;
     position: relative;
-    display: flex;
-    justify-content: center;
-    /* 수평 중앙 정렬 */
-    align-items: center;
     overflow: hidden;
+    display: block;
+}
+.result_img .imgcontainer.theaterimg {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.result_img .imgcontainer.theaterimg a {
+    width: 250px;
+}
+.result_img .imgcontainer.theaterimg a > img {
+    width: 250px;
 }
 
 
@@ -77,13 +86,13 @@
     background-color: #ffffff79;
     padding: 10px 20px;
     position: absolute;
-    top: 40%;
+    top: 50%;
     left: 50%;
     width: 100%;
     transform: translate(-50%, -50%);
     text-align: center;
-
-    
+    z-index: 1;
+    pointer-events: none;
 }
 
 .text .t1 {
@@ -103,12 +112,17 @@
     -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;
 }
+.imgcontainer a {
+    display: block;
+    position: relative;
+    z-index: 1; /* 링크가 텍스트 위로 나타나도록 설정 */
+}
 
 .result_img .imgcontainer:hover .text {
     display: block;
 }
 
-.result_img .imgcontainer:hover {
+.imgcontainer:hover {
     opacity: 1;
     filter: blur(0px);
 }

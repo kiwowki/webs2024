@@ -4,7 +4,8 @@
 
 
 .container {
-    width: 1280px;
+    max-width: 1280px;
+    width: 96%;
     min-height: 100vh;
     height: auto;
     margin: 0 auto;
@@ -13,7 +14,7 @@
 }
 @media (max-width: 1280px) {
     .container {
-        transform: scale(0.8);
+        transform: scale(0.95);
     }
 }
 

@@ -15,7 +15,7 @@
 </head>
 
 <body>
-    <?php include "../include/header.php"?>
+    <?php include "../include/header.php" ?>
     <!-- //header -->
 
 
@@ -78,21 +78,49 @@
             </div>
 
         </section>
-    
-    
+
+
     </main>
     <!-- //main-->
 
-    <?php include "../include/footer.php"?>
+    <?php include "../include/footer.php" ?>
     <!-- //footer -->
-    
+
     <div id="layer">
-    <img src="//t1.daumcdn.net/postcode/resource/images/close.png" id="btnCloseLayer" alt="닫기 버튼">
+        <img src="//t1.daumcdn.net/postcode/resource/images/close.png" id="btnCloseLayer" alt="닫기 버튼">
     </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
     <script src="../script/commons.js"></script>
     <script src="../script/join.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // input 값이 변경될 때마다 호출되는 함수
+            function updateJsonResult() {
+                var youId = document.getElementById("youId").value;
+
+                // 서버에 요청 보내기
+                var xhr = new XMLHttpRequest();
+                xhr.open("POST", "your_php_script.php", true);
+                xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                xhr.onreadystatechange = function() {
+                    if (xhr.readyState === 4 && xhr.status === 200) {
+                        var result = JSON.parse(xhr.responseText);
+                        if (result.result === "good") {
+                            document.getElementById("youIdComment").innerText = "사용 가능한 아이디입니다.";
+                        } else {
+                            document.getElementById("youIdComment").innerText = "이미 사용 중인 아이디입니다.";
+                        }
+                    }
+                };
+                xhr.send("type=isIdCheck&youId=" + encodeURIComponent(youId));
+            }
+
+            // input 값 변경 이벤트에 대한 리스너 등록
+            document.getElementById("youId").addEventListener("input", updateJsonResult);
+        });
+    </script>
 </body>
+
 </html>

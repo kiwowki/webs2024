@@ -43,9 +43,9 @@ include "../connect/connect.php";
                 </fieldset>
             </form>
             <div class="category">
-                <span><a href="theater.html">극장</a></span>
-                <span><a href="musical.html">뮤지컬</a></span>
-                <span><a href="actor.html">배우</a></span>
+                <span><a href="../theater/category_theater.php">극장</a></span>
+                <span><a href="../musical/category_musical.php">뮤지컬</a></span>
+                <span><a href="../actor/category_actor.php">배우</a></span>
             </div>
         </div>
     </main>

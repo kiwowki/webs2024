@@ -61,9 +61,9 @@ if (isset($_GET['searchKeyword']) && isset($_GET['searchOption'])) {
                 </fieldset>
             </form>
             <div class="category">
-                <span><a href="theater.html">극장</a></span>
-                <span><a href="musical.html">뮤지컬</a></span>
-                <span><a href="actor.html">배우</a></span>
+                <span><a href="../theater/category_theater.php">극장</a></span>
+                <span><a href="../musical/category_musical.php">뮤지컬</a></span>
+                <span><a href="../actor/category_actor.php">배우</a></span>
             </div>
             <div class="search_result">
 
@@ -73,9 +73,6 @@ if (isset($_GET['searchKeyword']) && isset($_GET['searchOption'])) {
                         <?php
                         error_reporting(E_ALL);
                         ini_set('display_errors', 1);
-
-                        // $jsonData = file_get_contents("../json/mu_data.json");
-                        // $data = json_decode($jsonData, true);
 
                         if (isset($_GET['searchKeyword']) && isset($_GET['searchOption'])) {
                             $searchKeyword = $connect->real_escape_string(trim($_GET['searchKeyword']));
@@ -91,11 +88,11 @@ if (isset($_GET['searchKeyword']) && isset($_GET['searchOption'])) {
                                 $musicalResults = array();
 
                                 // 한글로 검색
-                                $sqlKorean = "SELECT muNameKo, muPlace, muImg FROM musical WHERE REPLACE(LOWER(muNameKo), ' ', '') LIKE '%$cleanedSearchKeyword%'";
+                                $sqlKorean = "SELECT muNameKo, muPlace, muImg, musicalId FROM musical WHERE REPLACE(LOWER(muNameKo), ' ', '') LIKE '%$cleanedSearchKeyword%'";
                                 $resultKorean = $connect->query($sqlKorean);
 
                                 // 영어로 검색
-                                $sqlEnglish = "SELECT muNameEn, muPlace, muImg FROM musical WHERE REPLACE(LOWER(muNameEn), ' ', '') LIKE '%$cleanedSearchKeyword%'";
+                                $sqlEnglish = "SELECT muNameEn, muPlace, muImg, musicalId FROM musical WHERE REPLACE(LOWER(muNameEn), ' ', '') LIKE '%$cleanedSearchKeyword%'";
                                 $resultEnglish = $connect->query($sqlEnglish);
 
                                 while ($row = $resultKorean->fetch_assoc()) {
@@ -111,6 +108,7 @@ if (isset($_GET['searchKeyword']) && isset($_GET['searchOption'])) {
                                     foreach ($musicalResults as $row) {
                                         $muPlace = $row['muPlace'];
                                         $imagePath = $row['muImg'];
+                                        $musicalId = $row['musicalId'];
 
                                         if ($searchOption === 'all' || $searchOption === 'musical') {
                                             $displayedMuNameEn = true;
@@ -118,7 +116,9 @@ if (isset($_GET['searchKeyword']) && isset($_GET['searchOption'])) {
                                             if (isset($row['muNameEn'])) {
                                                 $muNameEn = $row['muNameEn'];
                                                 echo '<div class="imgcontainer">';
-                                                echo '<a href="#"><img src="' . $imagePath . '" alt=""></a>';
+                                                echo '<a href="../musical/category_mu_detail.php?musicalId=' . $musicalId . '">';
+                                                echo '<img src="' . $imagePath . '" alt="' . $muNameEn . ' 이미지">';
+                                                echo '</a>';
                                                 echo '<div class="text">';
                                                 echo '<div class="t1">' . $muNameEn . '</div>';
                                                 echo '<div class="t2">' . $muPlace . '</div>';
@@ -128,7 +128,9 @@ if (isset($_GET['searchKeyword']) && isset($_GET['searchOption'])) {
                                                 $muNameEn = ''; // muNameEn 값이 없는 경우 빈 문자열로 설정
                                                 $muNameKo = $row['muNameKo'];
                                                 echo '<div class="imgcontainer">';
-                                                echo '<a href="#"><img src="' . $imagePath . '" alt=""></a>';
+                                                echo '<a href="../musical/category_mu_detail.php?musicalId=' . $musicalId . '">';
+                                                echo '<img src="' . $imagePath . '" alt="' . $muNameKo . ' 이미지">';
+                                                echo '</a>';
                                                 echo '<div class="text">';
                                                 echo '<div class="t1">' . $muNameKo . '</div>';
                                                 echo '<div class="t2">' . $muPlace . '</div>';
@@ -145,11 +147,11 @@ if (isset($_GET['searchKeyword']) && isset($_GET['searchOption'])) {
                                 $actorResults = array();
 
                                 // 한글로 검색
-                                $sqlKorean = "SELECT acNameKo, acImgDetail FROM actor WHERE REPLACE(LOWER(acNameKo), ' ', '') LIKE '%$cleanedSearchKeyword%'";
+                                $sqlKorean = "SELECT acNameKo, acImgDetail, actorId FROM actor WHERE REPLACE(LOWER(acNameKo), ' ', '') LIKE '%$cleanedSearchKeyword%'";
                                 $resultKorean = $connect->query($sqlKorean);
 
                                 // 영어로 검색
-                                $sqlEnglish = "SELECT acNameEn, acImgDetail FROM actor WHERE REPLACE(LOWER(acNameEn), ' ', '') LIKE '%$cleanedSearchKeyword%'";
+                                $sqlEnglish = "SELECT acNameEn, acImgDetail, actorId FROM actor WHERE REPLACE(LOWER(acNameEn), ' ', '') LIKE '%$cleanedSearchKeyword%'";
                                 $resultEnglish = $connect->query($sqlEnglish);
 
                                 while ($row = $resultKorean->fetch_assoc()) {
@@ -164,6 +166,7 @@ if (isset($_GET['searchKeyword']) && isset($_GET['searchOption'])) {
                                     $resultsExist = true;
                                     foreach ($actorResults as $row) {
                                         $imagePath = $row['acImgDetail'];
+                                        $actorId = $row['actorId'];
 
                                         if ($searchOption === 'all' || $searchOption === 'actor') {
                                             $displayedAcNameEn = true;
@@ -171,7 +174,9 @@ if (isset($_GET['searchKeyword']) && isset($_GET['searchOption'])) {
                                             if (isset($row['acNameEn'])) {
                                                 $acNameEn = $row['acNameEn'];
                                                 echo '<div class="imgcontainer">';
-                                                echo '<a href="#"><img src="' . $imagePath . '" alt=""></a>';
+                                                echo '<a href="../actor/category_ac_detail.php?actorId=' . $actorId . '">';
+                                                echo '<img src="' . $imagePath . '" alt="' . $acNameEn . ' 이미지">';
+                                                echo '</a>';
                                                 echo '<div class="text">';
                                                 echo '<div class="t1">' . $acNameEn . '</div>';
                                                 echo '</div>';
@@ -180,7 +185,9 @@ if (isset($_GET['searchKeyword']) && isset($_GET['searchOption'])) {
                                                 $acNameEn = ''; // acNameEn 값이 없는 경우 빈 문자열로 설정
                                                 $acNameKo = $row['acNameKo'];
                                                 echo '<div class="imgcontainer">';
-                                                echo '<a href="#"><img src="' . $imagePath . '" alt=""></a>';
+                                                echo '<a href="../actor/category_ac_detail.php?actorId=' . $actorId . '">';
+                                                echo '<img src="' . $imagePath . '" alt="' . $acNameKo . ' 이미지">';
+                                                echo '</a>';
                                                 echo '<div class="text">';
                                                 echo '<div class="t1">' . $acNameKo . '</div>';
                                                 echo '</div>';
@@ -189,10 +196,43 @@ if (isset($_GET['searchKeyword']) && isset($_GET['searchOption'])) {
                                         }
                                     }
                                 }
+                            }
+                            // 극장(+all) 검색
+                            if ($searchOption === 'theater' || $searchOption === 'all') {
+                                $theaterResults = array();
 
-                                if (!$resultsExist) {
-                                    echo '<div class="no_result"><p>' . "검색 결과가 없습니다." . '</p><img src="../assets/img/blueduck.png" alt="검색결과 없음 이미지"></div>';
+                                // 한글로 검색
+                                $sql = "SELECT thName, thLogo, theaterId FROM theater WHERE REPLACE(LOWER(thName), ' ', '') LIKE '%$cleanedSearchKeyword%'";
+                                $result = $connect->query($sql);
+
+                                while ($row = $result->fetch_assoc()) {
+                                    $theaterResults[] = $row;
                                 }
+
+                                if (!empty($theaterResults)) {
+                                    $resultsExist = true;
+                                    foreach ($theaterResults as $row) {
+                                        $imagePath = $row['thLogo'];
+                                        $thName = $row['thName'];
+                                        $theaterId = $row['theaterId'];
+
+                                        $thName = $row['thName'];
+                                        echo '<div class="imgcontainer theaterimg">';
+                                        echo '<a href="../theater/category_th_detail.php?theaterId=' . $theaterId . '">';
+                                        echo '<img src="' . $imagePath . '" alt="' . $thName . ' 이미지">';
+                                        echo '</a>';
+                                        echo '<div class="text">';
+                                        echo '<div class="t1">' . $thName . '</div>';
+                                        echo '</div>';
+                                        echo '</div>';
+                                    }
+                                }
+                            }
+
+
+                            // 노 결과
+                            if (!$resultsExist) {
+                                echo '<div class="no_result"><p>' . "검색 결과가 없습니다." . '</p><img src="../assets/img/blueduck.png" alt="검색결과 없음 이미지"></div>';
                             }
                         }
 

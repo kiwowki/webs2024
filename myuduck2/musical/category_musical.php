@@ -57,7 +57,7 @@ if ($result->num_rows > 0) {
                     <div class="ca__imgs">
                         <?php foreach ($muCategory as $muInfo) : ?>
                             <div class="img1 imgcontainer">
-                                <a href="http://kiwowki.dothome.co.kr/myuduck2/musical/category_mu_detail.php?id=<?php echo $muInfo['musicalId']; ?>"><img src="<?php echo $muInfo['muImg']; ?>" alt="<?php echo $muInfo['muNameKo']; ?>"></a>
+                                <a href="http://kiwowki.dothome.co.kr/myuduck2/musical/category_mu_detail.php?musicalId=<?php echo $muInfo['musicalId']; ?>"><img src="<?php echo $muInfo['muImg']; ?>" alt="<?php echo $muInfo['muNameKo']; ?>"></a>
                                 <div class="text">
                                     <div class="t1"><?php echo $muInfo['muNameKo']; ?></div>
                                     <div class="t2"><?php echo $muInfo['muPlace']; ?></div>
