@@ -1,3 +1,43 @@
+<?php
+include "../connect/connect.php";
+
+$theaterId = $_GET['theaterId'];
+
+$sql = "SELECT * FROM theater WHERE theaterId = $theaterId";
+$result = $connect->query($sql);
+
+$theaterAllInfo = array();
+
+if ($result->num_rows > 0) {
+    while ($row = $result->fetch_assoc()) {
+        $theaterId = $row['theaterId'];
+        $thLogo = $row['thLogo'];
+        $thName = $row['thName'];
+        $thAddress = $row['thAddress'];
+        $thCall = $row['thCall'];
+        $thHomepage = $row['thHomepage'];
+        $thTransport = $row['thTransport'];
+        $thSeatImg = $row['thSeatImg'];
+        $thPerform = $row['thPerform'];
+
+
+        $thPerform = json_decode($row['thPerform'], true);
+
+        $theaterAllInfo[] = array(
+            'theaterId' => $theaterId,
+            'thLogo' => $thLogo,
+            'thName' => $thName,
+            'thAddress' => $thAddress,
+            'thCall' => $thCall,
+            'thHomepage' => $thHomepage,
+            'thTransport' => $thTransport,
+            'thSeatImg' => $thSeatImg,
+            'thPerform' => $thPerform
+        );
+    }
+}
+
+?>
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -21,22 +61,6 @@
     <?php include "../include/header.php" ?>
     <!-- //header -->
 
-    <?php
-    if (isset($_GET['thIndex'])) {
-        $thIndex = $_GET['thIndex'];
-
-        // JSON 파일을 읽어옵니다.
-        $jsonString = file_get_contents('theaterdata.json');
-        $theaterdata = json_decode($jsonString, true);
-
-        // thIndex가 배열의 인덱스이므로 0부터 시작하므로 1을 빼줍니다.
-        $thIndex--;
-
-        // $thIndex에 해당하는 극장의 정보를 가져옵니다.
-        $selectedTheater = $theaterdata[$thIndex];
-    }
-    ?>
-
     <main>
         <div class="theater__inners">
             <div class="theater__info">
@@ -46,19 +70,17 @@
                             <div>
                                 <button class="like-button">☆ 찜버튼</button>
                             </div>
-                            <img src=<?php echo $selectedTheater['thLogo']; ?> alt="<?php echo $selectedTheater['thName']; ?>">
+                            <img src=<?= $thLogo ?> alt="<?= $thName ?>">
                         </div>
                         <div class="theater__detail__title">
-                            <h2 class="logo">
-                                <h2 class="logo"><?php echo $selectedTheater['thName']; ?></h2>
-                            </h2>
+                            <h2 class="logo"><?= $thName ?></h2>
                             <div class="logo_cont">
-                                <div class="theater__address">주소 : <span><?php echo $selectedTheater['thAddress']; ?></span></div>
-                                <div class="theater__callnumber">전 화 : <span><?php echo $selectedTheater['thCall']; ?></span></div>
-                                <div class="theater__homepage">홈페이지 : <span><?php echo $selectedTheater['thHomepage']; ?></span>
+                                <div class="theater__address">주소 : <span><?= $thAddress ?></span></div>
+                                <div class="theater__callnumber">전 화 : <span><?= $thCall ?></span></div>
+                                <div class="theater__homepage"><a href="<?= $thHomepage ?>">공식 홈페이지 바로가기</a>
                                 </div>
                             </div>
-                            <div class="rating">
+                            <div class="rating mt20">
                                 <span class="rating_result">
                                 </span>
                                 <i class="rating_star far fa-star"></i>
@@ -75,15 +97,20 @@
                     <h1>공연장 정보 <span>theater information</span></h1>
                     <div class="theater__detail__cont">
                         <section class="theater_transport">
-                            <h3>오시는 길</h3>
+                            <div class="main_theater_title">
+                                <h3>오시는 길</h3>
+                            </div>
                             <div class="transport_info">
-                                <?php echo $selectedTheater['thTransport']; ?>
+                                <?= $thTransport ?>
                             </div>
                         </section>
                         <section class="theater_seat_info">
-                            <h3>좌석 정보</h3>
+
+                            <div class="main_theater_title">
+                                <h3>좌석 정보</h3>
+                            </div>
                             <div class="seat_img">
-                                <img src=<?php echo $selectedTheater['thSeatImg']; ?> alt="좌석 정보">
+                                <img src=<?= $thSeatImg ?> alt="좌석 정보">
                             </div>
                         </section>
                     </div>

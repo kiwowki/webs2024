@@ -260,12 +260,31 @@
 }
 
 .theater__detail__title h2 {
-    font-size: 2.25em;
-    margin-bottom: 20px;
+    margin-bottom: 70px;
+    font-size: 2.4em;
+    font-family: var(--mapo);
+    font-weight: bold;
 }
 
 .theater__detail__title .logo_cont {
     font-size: 1.5rem;
+    
+}
+
+.theater__callnumber {
+    padding-top: 20px;
+}
+.theater__detail__title.rating {
+    margin-top: 20px;
+}
+.theater__homepage a {
+    padding-top: 40px;
+    color: var(--black400);
+    display: inline-block;
+}
+.theater__homepage a:hover {
+    color: var(--black500);
+    text-decoration: underline;
 }
 
 .theater__detail__info {
@@ -274,33 +293,35 @@
 }
 
 .theater__detail__info h1 {
-    font-size: 2rem;
-    font-family: var(--primary-Oswald);
-    font-weight: bold;
-    margin-bottom: 10px;
+    font-size: 35px;
+    padding: 50px 0;
+    display: inline-block;
+    font-family: var(--hahm);
 }
 
 .theater__detail__info h1 span {
-    font-size: 1.6rem;
-    font-family: var(--primary-Oswald);
-    font-weight: normal;
+    font-size: 1.4rem;
+    color: var(--black400);
+    padding-left: 10px;
 }
 
 .theater__detail__cont {
 
     padding: 10px;
 }
-
+.theater__detail__cont .main_theater_title {
+    border-bottom: 1px solid var(--white);
+}
+.theater__detail__cont .main_theater_title h3 {
+    display: inline-block;
+    font-size: 24px;
+    padding: 10px 20px 10px 10px;
+    border-bottom: 2px solid var(--white);
+    font-family: var(--hahm);
+    color: var(--black500);
+}
 .theater_transport {
     margin-bottom: 1.2rem;
-}
-
-.theater_transport h3 {
-    font-weight: bold;
-    font-size: 1.4rem;
-    padding: 10px;
-    border-bottom: 2px solid var(--black400);
-    margin-bottom: 1.1rem;
 }
 
 .theater_transport .transport_info {
@@ -314,11 +335,11 @@
 }
 
 .theater_seat_info h3 {
-    font-weight: bold;
-    font-size: 1.4rem;
+    font-size: 24px;
     padding: 10px;
-    border-bottom: 2px solid var(--black400);
-    margin-bottom: 1.1rem;
+    border-bottom: 2px solid var(--white);
+    font-family: var(--hahm);
+    color: var(--black500);
 }
 
 .theater_seat_info .seat_img {

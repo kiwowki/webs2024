@@ -4,8 +4,8 @@
     </h1>
     <nav class="category">
         <ul>
-            <li><a href="../category_th/category_theater">Theater</a></li>
-            <li><a href="../category_mu/category_musical.php">Musical</a></li>
+            <li><a href="../theater/category_theater.php">Theater</a></li>
+            <li><a href="../musical/category_musical.php">Musical</a></li>
             <li><a href="../actor/category_actor.php">Actor</a></li>
             <li><a href="../search/search.php">Search</a></li>
         </ul>

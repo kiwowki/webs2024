@@ -33,7 +33,7 @@ $jsonData = '[
         "muDate": "2023"
     },
     {
-        "muNameKo": "일테로네",
+        "muNameKo": "일테로레",
         "muNameEn": "IL TENORE",
         "muPlace": "예술의전당",
         "muDate": "2023"

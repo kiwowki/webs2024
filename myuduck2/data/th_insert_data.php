@@ -170,7 +170,9 @@ foreach ($data as $item) {
     $thCall = mysqli_real_escape_string($connect, $item['thCall']);
     $thHomepage = mysqli_real_escape_string($connect, $item['thHomepage']);
     $thTransport = mysqli_real_escape_string($connect, $item['thTransport']);
-    $thPerform = mysqli_real_escape_string($connect, implode(", ", $item['thPerform'])); // 배열을 쉼표로 구분된 문자열로 변환
+
+    $thPerform = mysqli_real_escape_string($connect, json_encode($item['thPerform'], JSON_UNESCAPED_UNICODE));
+
 
     $thLogo = mysqli_real_escape_string($connect, $item['thLogo']);
     $thSeatImg = mysqli_real_escape_string($connect, $item['thSeatImg']);
