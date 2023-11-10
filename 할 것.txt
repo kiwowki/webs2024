@@ -1,0 +1,28 @@
+vite-project 파비콘 수정 확인 
+포트폴리오 사이트 수정하기( 인트로 hover, contact 높이 수정)
+이미지 10개 넣어놓기
+
+
+
+뮤덕
+
+뮤지컬 상세정보 페이지에 상세정보 이미지 넣고 완성하기
+
+극장 category_theater.php 수정하기
+
+극장 서치 적용하기
+
+극장 완성하기
+
+
+cm.css cm_detail.css 수정
+서치, 서치 리절트.css 수정
+액터, 디테일 수정ss
+commons2css
+
+
+ca_mu_디테일php
+카뮤php
+search_result.php
+search.php
+category_th_detail.php
