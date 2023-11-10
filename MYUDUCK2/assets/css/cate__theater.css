@@ -228,7 +228,7 @@
 .th__detail_info {
     border: 1px solid var(--black);
     display: flex;
-    background-image: url(../img/detail_image.jpg);
+    background-image: url(../img/aaa.jpg);
     background-position: center center;
     background-size: cover;
     margin: 1.2rem 0;

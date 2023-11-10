@@ -41,11 +41,12 @@ if ($result->num_rows > 0) {
     <!-- CSS -->
     <link rel="stylesheet" href="../assets/css/style.css">
     <link rel="stylesheet" href="../assets/css/commons2.css">
+    <link rel="icon" href="../assets/img/favicon.png" type="image/x-icon">
 
     <!-- rating -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
 
-    <title>문의하기</title>
+    <title>MYUDUCK</title>
 </head>
 
 <body>

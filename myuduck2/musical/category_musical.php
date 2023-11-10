@@ -35,8 +35,9 @@ if ($result->num_rows > 0) {
     <!-- CSS -->
     <link rel="stylesheet" href="../assets/css/style.css">
     <link rel="stylesheet" href="../assets/css/commons.css">
+    <link rel="icon" href="../assets/img/favicon.png" type="image/x-icon">
 
-    <title>뮤지컬</title>
+    <title>MYUDUCK</title>
 </head>
 
 <body>

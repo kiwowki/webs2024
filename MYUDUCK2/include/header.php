@@ -1,6 +1,6 @@
 <header id="header">
     <h1 class="logo">
-        <a href="main.html">myuduck</a>
+        <a href="../main/main.php">myuduck</a>
     </h1>
     <nav class="category">
         <ul>
@@ -30,10 +30,11 @@
                 </li> -->
 
                 <?php if(isset($_SESSION['myuduckId'])){ ?>
-                    <li><a href="#" class="m">마이페이지</a>
+                    <li>
+                        <a href="#" class="m">마이페이지</a>
                         <ul class="submenu">
-                            <li><a href="#" class="m">나의 찜 목록</a></li>
-                            <li><a href="#" class="m">회원 정보 수정</a></li>
+                            <li><a href="mypage/mypage.php" class="m">나의 찜 목록</a></li>
+                            <li><a href="mypage/mypage_info.php" class="m">회원 정보 수정</a></li>
                         </ul>
                     </li>
 
@@ -41,9 +42,8 @@
 
                     <li><a href="#" class="m">문의하기</a>
                         <ul class="submenu">
-                            <li><a href="#" class="m">문의 글 쓰기</a>
-                            </li>
-                            <li><a href="#" class="m">문의 글 목록</a></li>
+                            <li><a href="../QA/QAWrite.php" class="m">문의 글 쓰기</a></li>
+                            <li><a href="../QA/QA.php" class="m">문의 글 목록</a></li>
                         </ul>
                     </li>
 
@@ -54,8 +54,6 @@
 
                     <li><a href="#" class="m">문의하기</a>
                         <ul class="submenu">
-                            <li><a href="#" class="m">문의 글 쓰기</a>
-                            </li>
                             <li><a href="#" class="m">문의 글 목록</a></li>
                         </ul>
                     </li>

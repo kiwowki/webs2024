@@ -32,6 +32,13 @@
     }
 }
 
+.container3 {
+    width: 100%;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 16px;
+}
+
 
 .fix_image img {
     position: fixed;
@@ -42,8 +49,9 @@
     display: block;
     object-fit: cover;
     width: 100%;
-    height: 540px;
+    height: 270px;
     padding-top: 70px;
+    filter: brightness(0.6);
 }
 
 

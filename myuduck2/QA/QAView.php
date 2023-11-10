@@ -46,7 +46,7 @@ $commentInfo = $commentResult->fetch_array(MYSQLI_ASSOC);
     <link rel="stylesheet" href="../assets/css/style.css">
     <link rel="stylesheet" href="../assets/css/commons3.css">
 
-    <title>문의하기</title>
+    <title>MYUDUCK</title>
 </head>
 
 <body>

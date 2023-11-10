@@ -32,6 +32,7 @@ if (isset($_GET['searchKeyword']) && isset($_GET['searchOption'])) {
     <!-- CSS -->
     <link rel="stylesheet" href="../assets/css/style.css">
     <link rel="stylesheet" href="../assets/css/commons2.css">
+    <link rel="icon" href="../assets/img/favicon.png" type="image/x-icon">
 
     <title>MYUDUCK</title>
     <style>
