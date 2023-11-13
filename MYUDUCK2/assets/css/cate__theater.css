@@ -226,7 +226,6 @@
 /* theater__detail */
 
 .th__detail_info {
-    border: 1px solid var(--black);
     display: flex;
     background-image: url(../img/aaa.jpg);
     background-position: center center;
@@ -257,6 +256,7 @@
 
 .theater__detail__title {
     width: 49%;
+    color: var(--black);
 }
 
 .theater__detail__title h2 {
@@ -318,7 +318,7 @@
     padding: 10px 20px 10px 10px;
     border-bottom: 2px solid var(--white);
     font-family: var(--hahm);
-    color: var(--black500);
+    color: var(--black200);
 }
 .theater_transport {
     margin-bottom: 1.2rem;
@@ -339,7 +339,7 @@
     padding: 10px;
     border-bottom: 2px solid var(--white);
     font-family: var(--hahm);
-    color: var(--black500);
+    color: var(--black200);
 }
 
 .theater_seat_info .seat_img {

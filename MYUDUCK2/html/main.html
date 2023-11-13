@@ -72,14 +72,17 @@
                 <div class="swiper-wrapper">
                     <div class="swiper-slide">
                         <div class="slider_img">
+                            <img src="../assets/img/slide01.jpg" alt="">
                         </div>
                     </div>
                     <div class="swiper-slide">
                         <div class="slider_img">
+                            <img src="../assets/img/slide02.jpg" alt="">
                         </div>
                     </div>
                     <div class="swiper-slide">
                         <div class="slider_img">
+                            <img src="../assets/img/slide03.jpg" alt="">
                         </div>
                     </div>
                 </div>
@@ -250,7 +253,33 @@
     <script src="../script/commons.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
     <script>
+        // let swiper = new Swiper(".swiper", {
+        //     navigation: {
+        //         nextEl: ".swiper-button-next",
+        //         prevEl: ".swiper-button-prev",
+        //     },
+        //     autoplay: {
+        //         delay: 4000,
+        //         disableOnInteraction: false,
+        //     },
+        //     pagination: {
+        //         el: ".swiper-pagination",
+        //         clickable: true,
+        //     },
+        // });
+
+        // const btnStop = document.querySelector(".swiper-button-play")
+        // const btnPlay = document.querySelector(".swiper-button-stop")
+
+        // btnStop.addEventListener("click", () => {
+        //     swiper.autoplay.stop();
+        // })
+        // btnPlay.addEventListener("click", () => {
+        //     swiper.autoplay.start();
+        // })
+
         let swiper = new Swiper(".swiper", {
+            loop: true, // 무한 루프 활성화
             navigation: {
                 nextEl: ".swiper-button-next",
                 prevEl: ".swiper-button-prev",
@@ -271,6 +300,7 @@
         btnStop.addEventListener("click", () => {
             swiper.autoplay.stop();
         })
+
         btnPlay.addEventListener("click", () => {
             swiper.autoplay.start();
         })

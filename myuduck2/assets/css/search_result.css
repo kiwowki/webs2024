@@ -102,10 +102,11 @@
     display: -webkit-box;
     -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;
+    color: var(--white);
 }
 
 .text .t2 {
-    color: var(--black200);
+    color: var(--black100);
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
@@ -137,4 +138,5 @@
 .no_result img {
     width: 100px;
     height: 100px;
+    margin-left: 20px;
 }

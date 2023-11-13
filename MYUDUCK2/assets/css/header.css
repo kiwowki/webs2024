@@ -41,8 +41,11 @@
 
 #header .category ul li {
     padding: 15px 45px;
-    display: block;
+    display: flex;
     font-size: 1.15rem;
+}
+#header .category ul li a {
+    display: flex;
 }
 
 

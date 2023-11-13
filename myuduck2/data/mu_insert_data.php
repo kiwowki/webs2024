@@ -96,11 +96,6 @@ $jsonData = '[
         "muDate": "2021"
     },
     {
-        "muNameKo": "82년생 김지영",
-        "muPlace": "백암아트홀",
-        "muDate": "2022"
-    },
-    {
         "muNameKo": "데스노트",
         "muNameEn": "Death Note",
         "muPlace": "샤롯데씨어터",
@@ -136,7 +131,7 @@ foreach ($data as $item) {
         } else {
             // 중복 데이터가 없으므로 데이터를 삽입 또는 업데이트
             // 이미지 파일 경로 생성 및 데이터베이스 삽입 또는 업데이트 코드
-            $imageFileName = 'ca_mu_img' . (array_search($item, $data) + 1) . '.jpg';
+            $imageFileName = 'ca_mu_img'  . ($musicalId+1) .  '.jpg';
             $imagePath = '../assets/img/musical/' . $imageFileName;
 
             if (file_exists($imagePath)) {

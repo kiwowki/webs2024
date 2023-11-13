@@ -28,7 +28,7 @@ include "../connect/connect.php";
     <main id="search">
         <div class="search_inner container">
             <div class="search_logo">
-                <img src="../assets/img/duck_all_search.png" alt="오페라글래스낀뮤덕로고">
+                <img src="../assets/img/duck_all_search_2.png" alt="오페라글래스낀뮤덕로고">
             </div>
             <form action="search_result.php" name="search_result" method="get">
                 <fieldset class="all_search">

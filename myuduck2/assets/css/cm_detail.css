@@ -14,9 +14,8 @@ a {
 
 /* desc1 */
 .desc1 {
-    border: 1px solid var(--black);
     display: flex;
-    background-image: url(../img/detail_image.jpg);
+    background-image: url(../img/aaa.jpg);
     background-position: center center;
     background-size: cover;
     margin: 1.2rem 0;
@@ -31,15 +30,16 @@ a {
 }
 .ts {
     width: 49%;
+    color: var(--black);
 }
 
 .like-button {
     padding: 10px 20px;
     margin-bottom: 10px;
     background-color: transparent;
-    border: 2px solid var(--white);
+    border: 2px solid var(--black);
     border-radius: 20px;
-    color: var(--white);
+    color: var(--black);
     cursor: pointer;
     font-size: 16px;
 
@@ -104,7 +104,7 @@ a {
     padding: 5px;
     /* overflow: hidden; */
     border-radius: 20px;
-    box-shadow: 0 0 2px var(--white);
+    box-shadow: 0 0 2px var(--black);
     padding-left: 55px;
 }
 

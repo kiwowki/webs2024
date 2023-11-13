@@ -7,7 +7,7 @@
             <li><a href="../theater/category_theater.php">Theater</a></li>
             <li><a href="../musical/category_musical.php">Musical</a></li>
             <li><a href="../actor/category_actor.php">Actor</a></li>
-            <li><a href="../search/search.php">Search</a></li>
+            <li><a href="../search/search.php"><img src="../assets/img/search.svg" alt=""> Search</a></li>
         </ul>
     </nav>
 

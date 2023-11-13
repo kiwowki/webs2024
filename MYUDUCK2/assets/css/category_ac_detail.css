@@ -80,6 +80,7 @@
     line-height: 1;
     text-align: left;
     padding-left: 400px;
+    color: var(--black);
 }
 .intro_info .name {
     display: flex;
@@ -91,6 +92,7 @@
     font-weight: bold;
     display: flex;
     padding-left: 20px;
+    
 }
 .intro_info .name h1:first-child {
     border-right: 4px solid var(--black400);
@@ -143,7 +145,7 @@
     padding: 10px;
     border-bottom: 2px solid var(--white);
     font-family: var(--hahm);
-    color: var(--black500);
+    color: var(--black300);
 }
 .recent_work {}
 .work-card {
