@@ -1,3 +1,17 @@
+// lenis 스무스 효과
+const lenis = new Lenis();
+
+lenis.on('scroll', (e) => {
+    console.log(e);
+})
+
+function raf(time) {
+    lenis.raf(time)
+    requestAnimationFrame(raf);
+}
+
+requestAnimationFrame(raf);
+
 // 사이드바가 작동하면 화면 어두워짐
 const navbarBurger = document.querySelector('.navbar_burger');
 const navbarburgerback = document.querySelector('.navbar_burger_back');
@@ -31,42 +45,3 @@ $(".navbar_menu li").mouseout(function () {
 });
 
 
-
-
-// 이미지 고정 스크롤 스무스 효과
-let panels = gsap.utils.toArray(".parallax_item");
-let tops = panels.map(panel => ScrollTrigger.create({ trigger: panel, start: "top top" }));
-
-panels.forEach((panel, i) => {
-    ScrollTrigger.create({
-        trigger: panel,
-        start: () => panel.offsetHeight < window.innerHeight ? "top top" : "bottom bottom",
-        pin: true,
-        pinSpacing: false
-    });
-});
-
-ScrollTrigger.create({
-    snap: {
-        snapTo: (progress, self) => {
-            let panelStarts = tops.map(st => st.start),
-                snapScroll = gsap.utils.snap(panelStarts, self.scroll());
-            return gsap.utils.normalize(0, ScrollTrigger.maxScroll(window), snapScroll);
-        },
-        duration: 0.5
-    }
-});
-
-// 텍스트 여러개 이질감효과
-gsap.utils.toArray(".parallax_text").forEach(item => {
-    gsap.to(item, {
-        yPercent: -200,
-        duration: 0.5,
-        scrollTrigger: {
-            trigger: item,
-            start: "top bottom",
-            end: "bottom top",
-            scrub: 0.5
-        }
-    })
-});
