@@ -46,7 +46,7 @@ if (isset($_GET['searchKeyword']) && isset($_GET['searchOption'])) {
     <main id="search">
         <div class="search_inner container">
             <div class="search_result_logo">
-                <img src="../assets/img/redduck.jpg" alt="오페라글래스낀뮤덕로고">
+                <img src="../assets/img/redduck-removebg-preview.png" alt="오페라글래스낀뮤덕로고">
             </div>
             <form action="search_result.php" name="search_result" method="get">
                 <fieldset class="all_search">
@@ -166,12 +166,13 @@ if (isset($_GET['searchKeyword']) && isset($_GET['searchOption'])) {
                                 if (!empty($actorResults)) {
                                     $resultsExist = true;
                                     foreach ($actorResults as $row) {
+                                        
                                         $imagePath = $row['acImgDetail'];
                                         $actorId = $row['actorId'];
 
+
                                         if ($searchOption === 'all' || $searchOption === 'actor') {
                                             $displayedAcNameEn = true;
-
                                             if (isset($row['acNameEn'])) {
                                                 $acNameEn = $row['acNameEn'];
                                                 echo '<div class="imgcontainer">';
@@ -233,7 +234,7 @@ if (isset($_GET['searchKeyword']) && isset($_GET['searchOption'])) {
 
                             // 노 결과
                             if (!$resultsExist) {
-                                echo '<div class="no_result"><p>' . "검색 결과가 없습니다." . '</p><img src="../assets/img/blueduck.png" alt="검색결과 없음 이미지"></div>';
+                                echo '<div class="no_result"><p>' . "검색 결과가 없습니다." . '</p><img src="../assets/img/blueduck-removebg-preview.png" alt="검색결과 없음 이미지"></div>';
                             }
                         }
 

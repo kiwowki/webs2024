@@ -4,7 +4,7 @@ include "../connect/connect.php";
 $muCategory = array();
 
 // 뮤지컬 테이블 정보 가져오기
-$sql = "SELECT * FROM musical ORDER BY musicalId ASC";
+$sql = "SELECT * FROM musical ORDER BY musicalId DESC";
 $result = $connect->query($sql);
 
 

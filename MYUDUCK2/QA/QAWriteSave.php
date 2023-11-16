@@ -7,7 +7,7 @@
     <!-- CSS -->
     <link rel="stylesheet" href="../assets/css/style.css">
 
-    <title>MYUDUCK</title>
+    <title>문의하기</title>
     <style>
     </style>
 </head>

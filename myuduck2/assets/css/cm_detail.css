@@ -4,8 +4,8 @@
 }
 
 main {
-    background-color: var(--black);
-    color: var(--white);
+    background-color: var(--white);
+    color: var(--black);
 }
 
 a {
@@ -15,7 +15,7 @@ a {
 /* desc1 */
 .desc1 {
     display: flex;
-    background-image: url(../img/aaa.jpg);
+    background-image: url(../img/악보.jpg);
     background-position: center center;
     background-size: cover;
     margin: 1.2rem 0;
@@ -37,9 +37,9 @@ a {
     padding: 10px 20px;
     margin-bottom: 10px;
     background-color: transparent;
-    border: 2px solid var(--black);
+    border: 2px solid var(--white);
     border-radius: 20px;
-    color: var(--black);
+    color: var(--white);
     cursor: pointer;
     font-size: 16px;
 
@@ -88,46 +88,6 @@ a {
     .d1t2 {
         font-size: 16px;
     }
-}
-
-/* star_rating */
-.rating {
-    z-index: 10;
-    margin-top: 80px;
-    position: relative;
-    width: 210px;
-    background: transparent;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 0.3em;
-    padding: 5px;
-    /* overflow: hidden; */
-    border-radius: 20px;
-    box-shadow: 0 0 2px var(--black);
-    padding-left: 55px;
-}
-
-.rating__result {
-    position: absolute;
-    top: 8px;
-    left: 10px;
-    transform: translateY(-10px) translateX(2px);
-    z-index: 10000;
-    font: 2em Arial, Helvetica, sans-serif;
-    color: #ffffffad;
-    pointer-events: none;
-}
-
-.rating__star {
-    font-size: 1.3em;
-    cursor: pointer;
-    color: yellow;
-    transition: filter linear .3s;
-}
-
-.rating__star:hover {
-    filter: drop-shadow(1px 1px 4px gold);
 }
 
 

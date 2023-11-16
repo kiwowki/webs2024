@@ -20,7 +20,7 @@ if ($result->num_rows > 0) {
         $thSeatImg = $row['thSeatImg'];
         $thPerform = $row['thPerform'];
 
-
+        
         $thPerform = json_decode($row['thPerform'], true);
 
         $theaterAllInfo[] = array(

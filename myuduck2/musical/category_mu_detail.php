@@ -19,14 +19,18 @@ if ($result->num_rows > 0) {
         $musicalId = $row['musicalId'];
         $muNameKo = $row['muNameKo'];
         $muPlace = $row['muPlace'];
+        $muDate = $row['muDate'];
+        $muTime = $row['muTime'];
+        $muAge = $row['muAge'];
         $muImg = $row['muImg'];
+        $muDetailImg = $row['muDetailImg'];
 
-        $musicalAllInfo[] = array(
-            'musicalId' => $musicalId,
-            'muNameKo' => $muNameKo,
-            'muPlace' => $muPlace,
-            'muImg' => $muImg,
-        );
+        // $musicalAllInfo[] = array(
+        //     'musicalId' => $musicalId,
+        //     'muNameKo' => $muNameKo,
+        //     'muPlace' => $muPlace,
+        //     'muImg' => $muImg,
+        // );
     }
 }
 
@@ -66,10 +70,10 @@ if ($result->num_rows > 0) {
                     <div class="ts">
                         <div class="d1t1">뮤지컬 〈<?= $muNameKo ?>〉</div>
                         <div class="d1t2">
-                            장소 : 샤롯데씨어터<br>
-                            공연기간 : 2023.07.21 ~2023.11.19<br>
-                            공연시간 : 150분(인터미션 20분 포함)<br>
-                            관람연령 : 초등학생이상 관람가
+                            장소 : <?= $muPlace ?><br>
+                            공연기간 : <?= $muDate ?><br>
+                            공연시간 : <?= $muTime ?><br>
+                            관람연령 : <?= $muAge ?>
                         </div>
                         <div class="rating mt20">
                             <span class="rating_result"></span>
@@ -93,7 +97,7 @@ if ($result->num_rows > 0) {
                         <div class="line2"></div>
                     </div>
                     <div class="infoimg">
-                        <img src="../assets/img/musical/info01.jpg" alt="">
+                        <img src="<?= $muDetailImg ?>" alt="<?= $muNameKo ?> 상세 이미지">
                     </div>
                 </div>
 

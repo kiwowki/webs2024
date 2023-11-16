@@ -1,5 +1,7 @@
 /* swiper_slide */
-.swiper-slide {}
+.swiper-slide {
+    position: relative;
+}
 
 
 .slider_img {
@@ -20,7 +22,7 @@
     height: 15px !important;
     background-color: transparent !important;
     opacity: 1 !important;
-    border: 4px solid var(--black) !important;
+    border: 4px solid var(--white) !important;
 }
 
 .swiper-button {
@@ -53,14 +55,14 @@
 }
 
 .swiper-pagination-bullet-active {
-    background-color: var(--black) !important;
+    background-color: var(--white) !important;
 }
 
     @media (max-width: 840px) {
         .swiper-pagination-bullet {
             width: 10px !important;
             height: 10px !important;
-            border: 2px solid var(--black) !important;
+            border: 2px solid var(--white) !important;
         }
         .swiper-button-play,
         .swiper-button-stop {
@@ -243,7 +245,7 @@
 .link_img>div figcaption a {
     padding: 10px 20px;
     font-size: 1.5rem;
-    color: var(--black);
+    color: var(--white);
 }
 
 .link_img>div figure:hover img {
@@ -460,7 +462,7 @@
     overflow: hidden;
     justify-content: space-between;
     border: 1px solid var(--black600);
-    background-color: var(--black);
+    background-color: var(--white);
     border-radius: 10px;
 }
 .ticket > p {

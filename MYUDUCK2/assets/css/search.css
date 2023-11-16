@@ -36,7 +36,7 @@
     height: 65px;
     font-size: 1.3rem;
     border: 5px solid var(--primary-color);
-    background-color: var(--black);
+    background-color: var(--white);
     color: var(--black400);
     padding: 0 20px;
     margin-right: 5px;
@@ -47,8 +47,8 @@
     width: 15vw;
     height: 65px;
     font-size: 1.5rem;
-    border: 2px solid var(--white);
-    background-color: var(--black);
+    border: 2px solid var(--black);
+    background-color: var(--white);
     color: var(--primary-color);
     padding: 10px 21px;
     margin-right: 5px;
@@ -66,8 +66,8 @@
     width: 15vw;
     height: 65px;
     font-size: 1.5rem;
-    border: 2px solid var(--white);
-    background-color: var(--black);
+    border: 2px solid var(--black);
+    background-color: var(--white);
     color: var(--primary-color);
     cursor: pointer;
 

@@ -1,3 +1,33 @@
+<?php
+include "../connect/connect.php";
+
+
+$sql = "SELECT * FROM musical ORDER BY musicalId DESC";
+$result = $connect->query($sql);
+
+
+if ($result->num_rows > 0) {
+    while ($row = $result->fetch_assoc()) {
+        $musicalId = $row['musicalId'];
+        $muNameKo = $row['muNameKo'];
+        $muPlace = $row['muPlace'];
+        $muDate = $row['muDate'];
+        $muTime = $row['muTime'];
+        $muAge = $row['muAge'];
+        $muImg = $row['muImg'];
+
+        $musicalMainInfo[] = array(
+            'musicalId' => $musicalId,
+            'muNameKo' => $muNameKo,
+            'muPlace' => $muPlace,
+            'muDate' => $muDate,
+            'muImg' => $muImg,
+        );
+    }
+}
+
+
+?>
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -11,7 +41,7 @@
 </head>
 
 <body>
-<?php include "../include/header.php" ?>
+    <?php include "../include/header.php" ?>
     <!-- //header -->
 
     <main id="main" role="main">
@@ -60,70 +90,23 @@
         <section id="introWrap">
             <div class="intro_inner">
                 <div class="container3">
-                    <h2><span>new</span> 뮤지컬!</h2>
+                    <h2><span>new</span> 개봉예정 뮤지컬!</h2>
                     <div class="new_muWrap">
-                        <div class="new_musical n1">
-                            <div class="new_imgWrap">
-                                <img src="../assets/img/musical/ca_mu_img1.jpg" alt="ca_mu_img1 이미지">
-                                <div class="new_overlay"></div>
+                        <?php for ($i = 0; $i < 5; $i++) : ?>
+                            <?php $muInfo = $musicalMainInfo[$i]; ?>
+                            <div class="new_musical n<?php echo $i + 1; ?>">
+                                <div class="new_imgWrap">
+                                    <img src="<?php echo $muInfo['muImg']; ?>" alt="<?php echo $muInfo['muNameKo']; ?> 이미지">
+                                    <div class="new_overlay"></div>
+                                </div>
+                                <div class="new_text">
+                                    <h3><?php echo $muInfo['muNameKo']; ?></h3>
+                                    <span><?php echo $muInfo['muPlace']; ?></span>
+                                    <p><?php echo $muInfo['muDate']; ?></p>
+                                </div>
                             </div>
-                            <div class="new_text">
-                                <h3>뮤지컬 <오페라의 유령>
-                                </h3>
-                                <span>샤롯데씨어터</span>
-                                <p>2023.07.21 ~2023.11.19</p>
-                            </div>
-                        </div>
-                        <div class="new_musical n2">
-                            <div class="new_imgWrap">
-                                <img src="../assets/img/musical/ca_mu_img1.jpg" alt="ca_mu_img1 이미지">
-                                <div class="new_overlay"></div>
-                            </div>
-                            <div class="new_text">
-                                <h3>뮤지컬 <오페라의 유령>
-                                </h3>
-                                <span>샤롯데씨어터</span>
-                                <p>2023.07.21 ~2023.11.19</p>
-                            </div>
-                        </div>
-                        <div class="new_musical n3">
-                            <div class="new_imgWrap">
-                                <img src="../assets/img/musical/ca_mu_img1.jpg" alt="ca_mu_img1 이미지">
-                                <div class="new_overlay"></div>
-                            </div>
-                            <div class="new_text">
-                                <h3>뮤지컬 <오페라의 유령>
-                                </h3>
-                                <span>샤롯데씨어터</span>
-                                <p>2023.07.21 ~2023.11.19</p>
-                            </div>
-                        </div>
-                        <div class="new_musical n4">
-                            <div class="new_imgWrap">
-                                <img src="../assets/img/musical/ca_mu_img1.jpg" alt="ca_mu_img1 이미지">
-                                <div class="new_overlay"></div>
-                            </div>
-                            <div class="new_text">
-                                <h3>뮤지컬 <오페라의 유령>
-                                </h3>
-                                <span>샤롯데씨어터</span>
-                                <p>2023.07.21 ~2023.11.19</p>
-                            </div>
-                        </div>
-                        <div class="new_musical n5">
-                            <div class="new_imgWrap">
-                                <img src="../assets/img/musical/ca_mu_img1.jpg" alt="ca_mu_img1 이미지">
-                                <div class="new_overlay"></div>
-                            </div>
-                            <div class="new_text">
-                                <h3>뮤지컬 <오페라의 유령>
-                                </h3>
-                                <span>샤롯데씨어터</span>
-                                <p>2023.07.21 ~2023.11.19</p>
-                            </div>
-                        </div>
+                        <?php endfor; ?>
                     </div>
-
                 </div>
             </div>
         </section>
@@ -137,21 +120,21 @@
                             <p><em>Theater</em></p>
                             <figure>
                                 <img src="../assets/img/link_theater.jpg" alt="극장 바로가기">
-                                <figcaption>극장 카테고리<a href="category_theater.html">바로가기</a></figcaption>
+                                <figcaption>극장 카테고리<a href="../theater/category_theater.php">바로가기</a></figcaption>
                             </figure>
                         </div>
                         <div class="img2">
                             <p><em>Musical</em></p>
                             <figure>
                                 <img src="../assets/img/link_musical.jpg" alt="뮤지컬 바로가기">
-                                <figcaption>뮤지컬 카테고리<a href="category_mu.html">바로가기</a></figcaption>
+                                <figcaption>뮤지컬 카테고리<a href="../musical/category_musical.php">바로가기</a></figcaption>
                             </figure>
                         </div>
                         <div class="img3">
                             <p><em>Actor</em></p>
                             <figure>
                                 <img src="../assets/img/link_actor.jpg" alt="배우 바로가기">
-                                <figcaption>배우 카테고리<a href="category_actor.html">바로가기</a></figcaption>
+                                <figcaption>배우 카테고리<a href="../actor/category_actor.php">바로가기</a></figcaption>
                             </figure>
                         </div>
                     </div>

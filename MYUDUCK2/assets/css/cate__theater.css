@@ -1,13 +1,13 @@
 .theater__ineer {
-    padding: 100px 60px 100px 60px;
-    color: var(--white);
+    padding: 150px 60px 100px 60px;
+    color: var(--black);
 }
 
 .theater__ineer h1 {
-    font-size: 2rem;
+    font-size: 2.5rem;
     font-family: var(--primary-Hahmlet);
-    font-weight: bold;
-    margin-bottom: 10px;
+    color: var(--primary-color);
+    margin-bottom: 50px;
 }
 
 .theater__ineer h1 span {
@@ -32,7 +32,7 @@
 /* theater__info */
 .theater__info {
     margin: 0 auto;
-    /* background-color: var(--white); */
+    /* background-color: var(--black); */
     /* color: var(--black); */
     position: relative;
 }
@@ -71,7 +71,7 @@
     display: flex;
     flex-wrap: wrap;
     border: 1px solid var(--black200);
-    /* background-color: var(--black500); */
+    background-color: var(--black500);
     padding: 1.1rem;
     box-sizing: border-box;
     justify-content: flex-start;
@@ -122,20 +122,20 @@
 
 .list__cont .rounded-left {
     /* display: block; */
-    border: 1px solid var(--white);
+    border: 1px solid var(--black);
     border-radius: 30px 0 0 0;
     width: 100%;
 }
 
 .list__cont .rounded-center {
     /* display: block;/ */
-    border: 1px solid var(--white);
+    border: 1px solid var(--black);
     width: 70%;
 }
 
 .list__cont .rounded-right {
     /* display: block; */
-    border: 1px solid var(--white);
+    border: 1px solid var(--black);
     border-radius: 0 10px 0 0;
     width: 100%;
 }
@@ -194,7 +194,7 @@
     padding: 5px;
     /* overflow: hidden; */
     border-radius: 20px;
-    box-shadow: 0 0 2px var(--white);
+    box-shadow: 0 0 2px var(--black);
     padding-left: 55px;
 }
 
@@ -227,7 +227,7 @@
 
 .th__detail_info {
     display: flex;
-    background-image: url(../img/aaa.jpg);
+    background-image: url(../img/악보.jpg);
     background-position: center center;
     background-size: cover;
     margin: 1.2rem 0;
@@ -289,7 +289,7 @@
 
 .theater__detail__info {
     padding: 10px auto;
-    /* color: var(--white); */
+    /* color: var(--black); */
 }
 
 .theater__detail__info h1 {
@@ -310,13 +310,13 @@
     padding: 10px;
 }
 .theater__detail__cont .main_theater_title {
-    border-bottom: 1px solid var(--white);
+    border-bottom: 1px solid var(--black);
 }
 .theater__detail__cont .main_theater_title h3 {
     display: inline-block;
     font-size: 24px;
     padding: 10px 20px 10px 10px;
-    border-bottom: 2px solid var(--white);
+    border-bottom: 2px solid var(--black);
     font-family: var(--hahm);
     color: var(--black200);
 }
@@ -325,7 +325,7 @@
 }
 
 .theater_transport .transport_info {
-    white-space: pre-line;
+    black-space: pre-line;
     font-size: 0.9rem;
     padding: 10px;
 }
@@ -337,7 +337,7 @@
 .theater_seat_info h3 {
     font-size: 24px;
     padding: 10px;
-    border-bottom: 2px solid var(--white);
+    border-bottom: 2px solid var(--black);
     font-family: var(--hahm);
     color: var(--black200);
 }
@@ -359,20 +359,20 @@
     
     .list__cont .rounded-left {
         /* display: block; */
-        border: 1px solid var(--white);
+        border: 1px solid var(--black);
         border-radius: 30px 0 0 0;
         width: 100%;
     }
     
     .list__cont .rounded-center {
         /* display: block;/ */
-        border: 1px solid var(--white);
+        border: 1px solid var(--black);
         width: 70%;
     }
     
     .list__cont .rounded-right {
         /* display: block; */
-        border: 1px solid var(--white);
+        border: 1px solid var(--black);
         border-radius: 0 10px 0 0;
         width: 100%;
     }

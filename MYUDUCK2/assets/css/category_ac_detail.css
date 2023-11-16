@@ -80,7 +80,7 @@
     line-height: 1;
     text-align: left;
     padding-left: 400px;
-    color: var(--black);
+    color: var(--white);
 }
 .intro_info .name {
     display: flex;
@@ -92,7 +92,7 @@
     font-weight: bold;
     display: flex;
     padding-left: 20px;
-    
+    color: var(--white);
 }
 .intro_info .name h1:first-child {
     border-right: 4px solid var(--black400);
@@ -137,13 +137,13 @@
     
 }
 .main_actor_title {
-    border-bottom: 1px solid var(--white);
+    border-bottom: 1px solid var(--black);
 }
 .main_actor_title > h4 {
     display: inline-block;
     font-size: 24px;
     padding: 10px;
-    border-bottom: 2px solid var(--white);
+    border-bottom: 2px solid var(--black);
     font-family: var(--hahm);
     color: var(--black300);
 }

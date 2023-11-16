@@ -2,7 +2,7 @@
 #footer {
     width: 100%;
     text-align: center;
-    background-color: var(--white);
+    background-color: var(--black);
     position: relative;
     display: inline-block;
     z-index: 2;

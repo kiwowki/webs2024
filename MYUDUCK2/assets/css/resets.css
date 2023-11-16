@@ -5,8 +5,8 @@ body {
     -webkit-text-size-adjust: none;
 	-moz-text-size-adjust: none;
 	-ms-text-size-adjust: none;
-    color: var(--white);
-    background-color: var(--black);
+    color: var(--black);
+    background-color: var(--white);
 }
 
 /* 여백 초기화 */
