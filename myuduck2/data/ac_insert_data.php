@@ -671,7 +671,7 @@ $jsonData = '[
                 "acPerformRole": "아라미스 역"
             },
             {
-                "acPerformName": "여신님이 보고계셔",
+                "acPerformName": "여신님이 보고 계셔",
                 "acPerformDate": "2018/05/12 ~ 2018/05/12",
                 "acPerformPlace": "의정부예술의전당 대극장",
                 "acPerformRole": "한영범 역"
