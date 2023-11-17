@@ -11,7 +11,7 @@
     $sql .= "PRIMARY KEY(noticeID)";
     $sql .= ") charset=utf8";
 
-    $connect -> query($sql);
+    $result = $connect->query($sql);
 
     if($result){
         echo "Create noticeboard Complete";

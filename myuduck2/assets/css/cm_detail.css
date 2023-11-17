@@ -26,28 +26,29 @@ a {
 .poster {
     display: flex;
     flex-direction: column;
-    width: 49%;
+    width: 47vw;
 }
+
 .ts {
-    width: 49%;
+    width: 47vw;
     color: var(--black);
 }
 
 .like-button {
-    padding: 10px 20px;
+    padding: 0.5vw 1vw;
     margin-bottom: 10px;
     background-color: transparent;
     border: 2px solid var(--white);
     border-radius: 20px;
     color: var(--white);
     cursor: pointer;
-    font-size: 16px;
-
+    font-size: 1vw;
 }
 
 .desc1 img {
-    width: 258px;
-    height: 344px;
+    max-width: 299px;
+    max-height: 400px;
+    width: 20vw;
 }
 
 .mu__container {
@@ -60,13 +61,13 @@ a {
 }
 
 .d1t1 {
-    margin-top: 30px;
     margin-bottom: 20px;
     font-size: 2.25rem;
     font-family: var(--mapo);
     font-size: 40px;
     font-weight: bold;
     word-break: keep-all;
+    color: var(--white);
 }
 
 .d1t2 {
@@ -74,17 +75,18 @@ a {
     font-size: 1.5rem;
     line-height: 1.9;
     word-break: keep-all;
+    color: var(--white);
 }
 
 @media (max-width: 950px) {
     .ts {
-        max-height: 20vh;
         margin-left: 25px;
-        margin-top: 20px;
     }
+
     .d1t1 {
         font-size: 20px;
     }
+
     .d1t2 {
         font-size: 16px;
     }
@@ -173,4 +175,43 @@ a {
 /* info */
 .infoimg {
     margin: 20px;
+}
+
+/* star_rating */
+.rating {
+    margin-top: 80px;
+    position: relative;
+    width: 210px;
+    background: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.3em;
+    padding: 5px;
+    /* overflow: hidden; */
+    border-radius: 20px;
+    box-shadow: 0 0 2px var(--white);
+    padding-left: 55px;
+}
+
+.rating_result {
+    position: absolute;
+    top: 8px;
+    left: 10px;
+    transform: translateY(-10px) translateX(2px);
+    z-index: 10000;
+    font: 2em Arial, Helvetica, sans-serif;
+    color: #ffffffad;
+    pointer-events: none;
+}
+
+.rating_star {
+    font-size: 1.3em;
+    cursor: pointer;
+    color: yellow;
+    transition: filter linear .3s;
+}
+
+.rating_star:hover {
+    filter: drop-shadow(1px 1px 4px gold);
 }

@@ -4,7 +4,7 @@
     padding-bottom: 70px;
     display: flex;
     flex-direction: column;
-    background-color: var(--black);
+    background-color: var(--white);
     z-index: 2;
     position: relative;
 }
@@ -12,7 +12,7 @@
     
     margin-top: 70px;
     align-items: center;    
-    background-color: var(--black);
+    background-color: var(--white);
 }
 .category_inner h1 {
     font-size: 2.5rem;
@@ -39,6 +39,7 @@
     font-size: 1.1rem;
     display: inline-block;
     margin-right: -1px;
+    font-weight: bold;
 }
 .actor_header span:first-child {
     border-radius: 10px 0 0 0;
@@ -55,7 +56,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    border-bottom: 1px solid var(--white);
+    border-bottom: 1px solid var(--black);
     padding: 20px 0;
 }
 .info_actor {
@@ -73,6 +74,7 @@
 }
 .info_actor h2 {
     width: 100px;
+    font-weight: bold;
 }
 
 .info_occupation {

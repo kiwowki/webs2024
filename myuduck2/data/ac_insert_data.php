@@ -87,7 +87,7 @@ $jsonData = '[
         "acDOB": "1997.11.03",
         "acPerform": [
             {
-                "acPerformName": "신비아파트 〈붉은 눈의 저주〉",
+                "acPerformName": "신비아파트 <붉은 눈의 저주>",
                 "acPerformDate": "2023.12.23 ~ 2024.01.07",
                 "acPerformPlace": "유니버설아트센터",
                 "acPerformRole": "구하리 역"

@@ -1,55 +1,4 @@
-.like-button {
-    padding: 5px 15px;
-    margin-bottom: 10px;
-    background-color: transparent;
-    border: 2px solid var(--white);
-    border-radius: 20px;
-    color: var(--white);
-    cursor: pointer;
-    font-size: 16px;
-}
-
-/* star_rating */
-.rating {
-    margin-top: 80px;
-    position: relative;
-    width: 210px;
-    background: transparent;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 0.3em;
-    padding: 5px;
-    /* overflow: hidden; */
-    border-radius: 20px;
-    box-shadow: 0 0 2px var(--white);
-    padding-left: 55px;
- }
- 
- .rating_result {
-    position: absolute;
-    top: 8px;
-    left: 10px;
-    transform: translateY(-10px) translateX(2px);
-    z-index: 10000;
-    font: 2em Arial, Helvetica, sans-serif;
-    color: #ffffffad;
-    pointer-events: none;
- }
- 
- .rating_star {
-    font-size: 1.3em;
-    cursor: pointer;
-    color: yellow;
-    transition: filter linear .3s;
- }
- 
- .rating_star:hover {
-    filter: drop-shadow(1px 1px 4px gold);
- }
-
-
- /* intro_actor */
+/* intro_actor */
 .intro_actor {
     z-index: 2; /* 이미지(z-index:1) 위에 배치하기 위해 z-index를 높게 설정 */
     width: 1280px;
@@ -68,8 +17,9 @@
     justify-content: center;
 }
 .intro_actor .image_wrap img {
-    width: 299px;
-    height: 400px;
+    max-width: 299px;
+    max-height: 400px;
+    width: 20vw;
 }
 
 /* intro_info */
@@ -182,7 +132,3 @@
     padding: 5px 50px;
     box-sizing: border-box;
 }
-/* .ac_text_wrap .ac_musical {}
-.ac_text_wrap .ac_date {}
-.ac_text_wrap .ac_theater {}
-.ac_text_wrap .ac_role {} */

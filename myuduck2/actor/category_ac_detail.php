@@ -107,16 +107,6 @@ if ($result->num_rows > 0) {
                 </div>
                 <p class="occupation">직업 : <?= $acOccupation ?></p>
                 <p class="birthdate">생년월일 : <?= $acDOB ?></p>
-
-                <div class="rating">
-                    <span class="rating_result">
-                    </span>
-                    <i class="rating_star far fa-star"></i>
-                    <i class="rating_star far fa-star"></i>
-                    <i class="rating_star far fa-star"></i>
-                    <i class="rating_star far fa-star"></i>
-                    <i class="rating_star far fa-star"></i>
-                </div>
                 <!-- <a href="https://www.instagram.com/actor.zooooo/" class="sns"><img src="../assets/img/instar.svg" alt="">배우 인스타 바로가기</a> -->
             </div>
         </div>
@@ -158,8 +148,8 @@ if ($result->num_rows > 0) {
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="../script/star.js"></script>
     <script src="../script/commons.js"></script>
+    <script src="../script/checkBox.js"></script>
     <script>
 
     </script>

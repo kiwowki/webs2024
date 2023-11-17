@@ -11,5 +11,5 @@
     $sql .= "PRIMARY KEY(boardID)";
     $sql .= ") charset=utf8";
 
-    $connect -> query($sql);
+    $result = $connect->query($sql);
 ?>

@@ -18,7 +18,7 @@ a {
 
 .categorieWrap {
     width: 100%;
-    margin-bottom: px;
+    /* margin-bottom: 0px; */
     display: flex;
     flex-direction: column;
 }

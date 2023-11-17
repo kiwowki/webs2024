@@ -166,7 +166,6 @@ if (isset($_GET['searchKeyword']) && isset($_GET['searchOption'])) {
                                 if (!empty($actorResults)) {
                                     $resultsExist = true;
                                     foreach ($actorResults as $row) {
-                                        
                                         $imagePath = $row['acImgDetail'];
                                         $actorId = $row['actorId'];
 

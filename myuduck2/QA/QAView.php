@@ -95,7 +95,7 @@ $commentInfo = $commentResult->fetch_array(MYSQLI_ASSOC);
                     </div>
                 </div>
                 <div class="viewbtns__wrap">
-                    <?php if (($_SESSION['youId']) ==  $info['youId'] ) { ?>
+                    <?php if (($_SESSION['youId']) ==  $info['youId'] || ($_SESSION['youId']) == "admin") { ?>
                         <div class="board__btns viewbtns">
                             <a href="QAModify.php?boardID=<?= $_GET['boardID'] ?>" class="viewbtn">수정</a>
                             <a href="QA.php" class="viewbtn">목록</a>
@@ -223,6 +223,7 @@ $commentInfo = $commentResult->fetch_array(MYSQLI_ASSOC);
 
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1/bundled/lenis.min.js"></script>
     <script src="../script/commons.js"></script>
     <script>
         // 얼굴 표정 랜덤으로 들어가기
@@ -313,6 +314,7 @@ $commentInfo = $commentResult->fetch_array(MYSQLI_ASSOC);
         });
 
         // 댓글 삭제 버튼
+
         $(".comment__view .delete").click(function (e) {
             e.preventDefault();
             $("#popupDelete").removeClass("none");

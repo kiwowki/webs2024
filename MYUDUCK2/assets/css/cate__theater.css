@@ -180,49 +180,6 @@
     padding: 1.3rem;
 }
 
-
-/* star_rating */
-.rating {
-    margin-top: 80px;
-    position: relative;
-    width: 210px;
-    background: transparent;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 0.3em;
-    padding: 5px;
-    /* overflow: hidden; */
-    border-radius: 20px;
-    box-shadow: 0 0 2px var(--black);
-    padding-left: 55px;
-}
-
-.rating_result {
-    position: absolute;
-    top: 8px;
-    left: 10px;
-    transform: translateY(-10px) translateX(2px);
-    z-index: 10000;
-    font: 2em Arial, Helvetica, sans-serif;
-    color: #ffffffad;
-    pointer-events: none;
-}
-
-.rating_star {
-    font-size: 1.3em;
-    cursor: pointer;
-    color: yellow;
-    transition: filter linear .3s;
-}
-
-.rating_star:hover {
-    filter: drop-shadow(1px 1px 4px gold);
-}
-
-
-
-
 /* theater__detail */
 
 .th__detail_info {
@@ -256,7 +213,7 @@
 
 .theater__detail__title {
     width: 49%;
-    color: var(--black);
+    color: var(--white);
 }
 
 .theater__detail__title h2 {
@@ -264,6 +221,7 @@
     font-size: 2.4em;
     font-family: var(--mapo);
     font-weight: bold;
+    color: var(--white);
 }
 
 .theater__detail__title .logo_cont {

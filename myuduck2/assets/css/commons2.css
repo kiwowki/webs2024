@@ -12,11 +12,7 @@
     position: relative;
     
 }
-@media (max-width: 1280px) {
-    .container {
-        transform: scale(0.95);
-    }
-}
+
 
 
 /* 지영님 */

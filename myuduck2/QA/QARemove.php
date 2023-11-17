@@ -14,7 +14,7 @@
         $boardOwnerID = $info['youId'];
 
         // 로그인 memberID와 게시글 memberID 일치 여부
-        if($youId == $boardOwnerID){
+        if($youId == $boardOwnerID || $youId == "admin"){
             $sql = "DELETE FROM QAboard WHERE boardID = {$boardID}";
             $connect -> query($sql);
             echo "<script>alert('게시글이 삭제 되었습니다.');</script>";

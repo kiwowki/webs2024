@@ -1,11 +1,13 @@
 let isIdCheck = false;
 let isEmailCheck = false;
 
+$("#youIdComment").hide();
 function idChecking() {
     let youId = $("#youId").val();
 
     if (youId == null || youId == '') {
         $("#youIdComment").text("-> 아이디를 입력해주세요.")
+        $("#youIdComment").show();
     } else {
         let getYouId = RegExp(/^(?=.*[A-Za-z\d])[A-Za-z\d]*$/);
 
@@ -13,6 +15,8 @@ function idChecking() {
             $("#youIdComment").text("아이디는 영어와 숫자를 포함하여 4~20글자 이내로 작성해야 합니다.")
             $("#youId").val('')
             $("#youId").focus();
+            $("#youIdComment").show();
+            resetIdCheck();
             return false;
         } else {
             $("#youIdComment").text("멋진 아이디입니다.");
@@ -27,16 +31,23 @@ function idChecking() {
             success: function (data) {
                 if (data.result == "good") {
                     $("#youIdComment").text("사용 가능한 아이디입니다.");
+                    $("#youIdComment").show();
                     isIdCheck = true;
                 } else {
                     $("#youIdComment").removeClass("green");
                     $("#youIdComment").text("이미 존재하는 아이디입니다.");
                     isIdCheck = false;
+                    $("#youIdComment").show();
                 }
             }
         })
     }
 }
+
+$("#youId").on("input", function () {
+    resetIdCheck();
+    $("#youIdComment").hide();
+});
 
 function emailChecking() {
     let youEmail = $("#youEmail").val();
@@ -74,6 +85,13 @@ function emailChecking() {
         })
     }
 }
+
+function resetIdCheck() {
+    isIdCheck = false;
+    $("#youIdComment").removeClass("green");
+    $("#youIdComment").text("아이디 중복 검사를 다시 진행해주세요.");
+}
+
 
 
 function joinChecks() {
@@ -135,15 +153,23 @@ function joinChecks() {
         }
     }
 
-    //연락처 
-    let getYouPhone = RegExp(/^[0-9]{10,11}$/);
+    // 연락처 
+    let getYouPhonePattern = /^[0-9]{10,11}$/;
+    let youPhoneValue = $("#youPhone").val();
 
-    if (!getYouPhone.test($("#youPhone").val())) {
-        $("#youPhoneComment").text("➟ 휴대폰 번호가 정확하지 않습니다.(하이픈 없이 숫자만 적어주세요!)");
+    // 휴대폰 번호가 비어있지 않고, 패턴에 맞지 않을 경우에만 처리
+    if (youPhoneValue.trim() !== "" && !getYouPhonePattern.test(youPhoneValue)) {
+        $("#youPhoneComment").text("➟ 휴대폰 번호가 정확하지 않습니다. (하이픈 없이 숫자만 적어주세요!)");
         $("#youPhone").val('');
         $("#youPhone").focus();
+
+        return false;
     }
 
+    if (!isIdCheck) {
+        alert("아이디 중복 검사를 진행해주세요");
+        return false;
+    }
 }
 
 // 우편번호 찾기 화면을 넣을 element

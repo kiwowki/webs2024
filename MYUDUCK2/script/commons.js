@@ -1,17 +1,3 @@
-// lenis 스무스 효과
-const lenis = new Lenis();
-
-lenis.on('scroll', (e) => {
-    console.log(e);
-})
-
-function raf(time) {
-    lenis.raf(time)
-    requestAnimationFrame(raf);
-}
-
-requestAnimationFrame(raf);
-
 // 사이드바가 작동하면 화면 어두워짐
 const navbarBurger = document.querySelector('.navbar_burger');
 const navbarburgerback = document.querySelector('.navbar_burger_back');

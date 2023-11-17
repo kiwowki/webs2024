@@ -92,15 +92,7 @@ $boardTotalCount = $boardTotalCount['count(noticeID)'];
                                 $viewNum = 10;
                                 $viewLimit = ($viewNum * $page) - $viewNum;
 
-                                //1~10  LIMIT 0,  10  --> page1 ($viewNum * 1) - $viewNum
-                                //11~20 LIMIT 10, 10  --> page2 ($viewNum * 2) - $viewNum
-                                //21~30 LIMIT 20, 10  --> page3 ($viewNum * 3) - $viewNum
-                                //31~40 LIMIT 30, 10  --> page4 ($viewNum * 4) - $viewNum
-
                                 $sql = "SELECT n.noticeID, n.noticeTitle, m.youId, m.youName, n.regTime, n.noticeView FROM noticeboard n JOIN myuduck m ON(n.youId = m.youName) ORDER BY noticeID DESC LIMIT {$viewLimit}, {$viewNum}";
-                                //ON(b.memberID = m.memberID) board 테이블과 members 테이블, 두 테이블의 memberID 값이 일치하는 레코드들을 하나로 합칠 수 있습니다.
-                                //JOIN 작업에서 어떤 조건 아래에서 두 테이블을 결합할지를 나타내는 부분으로 여기서는 memberID를 기준으로 사용했습니다 
-                                //b와 m이라는 별칭을 사용해 SQL 문에서 각 테이블에 접근할 때 b와 m 별칭을 사용할 수 있습니다.
 
                                 $result = $connect->query($sql);
 
@@ -181,6 +173,7 @@ $boardTotalCount = $boardTotalCount['count(noticeID)'];
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1/bundled/lenis.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="../script/commons.js"></script>
 

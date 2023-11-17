@@ -98,7 +98,7 @@ $nextQAInfo = $nextQAResult->fetch_array(MYSQLI_ASSOC);
                         </div>
                     <?php } else { ?>
                         <div class="board__btns viewbtns">
-                            <a href="QA.php" class="viewbtn">목록</a>
+                            <a href="notice.php" class="viewbtn">목록</a>
                         </div>
                     <?php } ?>
                 </div>
@@ -134,6 +134,7 @@ $nextQAInfo = $nextQAResult->fetch_array(MYSQLI_ASSOC);
     <!-- //footer -->
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1/bundled/lenis.min.js"></script>
     <script src="../script/commons.js"></script>
 
 
