@@ -18,3 +18,5 @@ http://kiwowki.github.io/webs2024/sql
 ## SITE
 웹표준을 준수한 사이트를 제작합니다.
 http://kiwowki.github.io/webs2024/site
+
+<p>$\bf{\large{\color{#6580DD}두꺼운\ 글씨체,\ 큰글씨,\ 파란색}}$</p>
