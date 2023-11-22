@@ -19,4 +19,4 @@ http://kiwowki.github.io/webs2024/sql
 웹표준을 준수한 사이트를 제작합니다.
 http://kiwowki.github.io/webs2024/site
 
-<p>${\color{#d3d3d3}}$</p>
+<p>${\color{#d3d3d3}냐세요}$</p>
