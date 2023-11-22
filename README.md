@@ -18,5 +18,3 @@ http://kiwowki.github.io/webs2024/sql
 ## SITE
 웹표준을 준수한 사이트를 제작합니다.
 http://kiwowki.github.io/webs2024/site
-
-<p>$\rm{\color{#808080}냐세요}$</p>
