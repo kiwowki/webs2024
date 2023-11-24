@@ -5,14 +5,24 @@ include "../connect/sessionCheck.php";
 
 $loginId = $_SESSION['youId'];
 
+// 배우 찜목록
+// $likeactorlist = array();
+
+// $ACsql = "SELECT * FROM likeActor WHERE likeStatus = 1  AND youId = $loginId ORDER BY likeActorId DESC LIMIT 3";
+// $ACresult = $connect->query($ACsql);
 $likeactorlist = array();
 
-$ACsql = "SELECT * FROM likeActor WHERE likeStatus = 1 AND youId = ? ORDER BY likeActorId DESC LIMIT 3";
+$MUsql = "SELECT likeMusicalIdNum, youId, likemuImg, likemuName, likemuPlace, likeStatus FROM likeMusical WHERE likeStatus = 1 AND youId = ? ORDER BY likeMusicalId DESC LIMIT 3";
 
-$stmt = $connect->prepare($ACsql);
-$stmt->bind_param("s", $loginId);
-$stmt->execute();
-$ACresult = $stmt->get_result();
+$stmtMU = $connect->prepare($MUsql);
+if (!$stmtMU) {
+    die('Query preparation failed: ' . htmlspecialchars($connect->error));
+}
+
+$stmtMU->bind_param("s", $loginId);
+
+$stmtMU->execute();
+$MUresult = $stmtMU->get_result();
 
 
 
@@ -36,21 +46,19 @@ if ($ACresult->num_rows > 0) {
 }
 
 // 뮤지컬 찜목록
+// $likemusiclist = array();
+
+// $MUsql = "SELECT * FROM likeMusical WHERE likeStatus = 1  AND youId = $loginId ORDER BY likeMusicalId DESC LIMIT 3";
+// $MUresult = $connect->query($MUsql);
 
 $likemusiclist = array();
 
-// $MUsql = "SELECT * FROM likeMusical WHERE likeStatus = 1  AND youId = ? ORDER BY likeMusicalId DESC LIMIT 3";
+$MUsql = "SELECT * FROM likeMusical WHERE likeStatus = 1  AND youId = ? ORDER BY likeMusicalId DESC LIMIT 3";
 
-$MUsql = "SELECT lm.*, t.theaterId 
-          FROM likeMusical lm
-          INNER JOIN theater t ON TRIM(lm.likemuPlace) = TRIM(t.thName)
-          WHERE lm.likeStatus = 1 AND lm.youId = ? 
-          ORDER BY lm.likeMusicalId DESC LIMIT 3";
-
-$stmt = $connect->prepare($MUsql);
-$stmt->bind_param("s", $loginId);
-$stmt->execute();
-$MUresult = $stmt->get_result();
+$stmtMU = $connect->prepare($MUsql);
+$stmtMU->bind_param("s", $loginId);
+$stmtMU->execute();
+$MUresult = $stmtMU->get_result();
 
 
 if ($MUresult->num_rows > 0) {
@@ -61,7 +69,6 @@ if ($MUresult->num_rows > 0) {
         $likemuName = $MUrow['likemuName'];
         $likemuPlace = $MUrow['likemuPlace'];
         $likemuStatus = $MUrow['likeStatus'];
-        $theaterId = $MUrow['theaterId']; // 추가된 부분
 
         // 데이터 배열 추가
         $likemusiclist[] = array(
@@ -70,8 +77,7 @@ if ($MUresult->num_rows > 0) {
             'likemuImg' => $likemuImg,
             'likemuName' => $likemuName,
             'likemuPlace' => $likemuPlace,
-            'likemuStatus' => $likemuStatus,
-            'theaterId' => $theaterId // 추가된 부분
+            'likemuStatus' => $likemuStatus
         );
     }
 }
@@ -127,40 +133,35 @@ if ($MUresult->num_rows > 0) {
                             <a href="favorites_actor.php" class="favorites_list_title actor">배우 찜목록</a>
                             <a href="favorites_actor.php" class="favorites_list_more">+ 더보기</a>
                         </div>
-
-                        <?php if ($ACresult->num_rows > 0) { ?>
-                            <?php for ($i = 0; $i < count($likeactorlist); $i++) { ?>
-                                <?php if ($likeactorlist[$i]['likeACStatus'] == 1) { ?>
-                                    <div class="favorites-card">
-                                        <a href="../actor/category_ac_detail.php?actorId=<?= $likeactorlist[$i]['likeActorIdNum'] ?>" class="favorites_img"><img src="<?= $likeactorlist[$i]['likeACImg'] ?>" alt="<?= $likeactorlist[$i]['likeACName'] ?>"></a>
-                                        <p><a href="../actor/category_ac_detail.php?actorId=<?= $likeactorlist[$i]['likeActorIdNum'] ?>" class="my_ac_title"><?= $likeactorlist[$i]['likeACName'] ?></a></p>
+                        
+                        <?php for ($i = 0; $i < count($likeactorlist); $i++) {
+                            if ($likeactorlist[$i]['likeACStatus'] == 1) { ?>
+                                <div class="favorites-card">
+                                    <a href="../actor/category_ac_detail.php?actorId=<?= $likeactorlist[$i]['likeActorIdNum'] ?>" class="favorites_img"><img src="<?= $likeactorlist[$i]['likeACImg']?>" alt="<?= $likeactorlist[$i]['likeACName']?>"></a>
+                                    <p><a href="../actor/category_ac_detail.php?actorId=<?= $likeactorlist[$i]['likeActorIdNum'] ?>" class="my_ac_title"><?= $likeactorlist[$i]['likeACName']?></a></p>
                                     </div>
-                                <?php } ?>
-                            <?php } ?>
-                        <?php } else { ?>
-                            <span>배우 찜 목록이 비어있습니다.</span>
+                            <?php } else { ?>
+                                <span>찜 목록이 비어있습니다.</span>
                         <?php } ?>
-
+                        <?php } ?>
+                        
                     </div>
                     <div class="favorites_list">
                         <div class="favorites_list_info_title">
                             <a href="favorites_music.php" class="favorites_list_title music">뮤지컬 찜목록</a>
                             <a href="favorites_music.php" class="favorites_list_more">+ 더보기</a>
                         </div>
-
-                        <?php if ($MUresult->num_rows > 0) { ?>
-                            <?php for ($i = 0; $i < count($likemusiclist); $i++) { ?>
-                                <?php if ($likemusiclist[$i]['likemuStatus'] == 1) { ?>
-                                    <div class="favorites-card">
-                                        <a href="../musical/category_mu_detail.php?musicalId=<?= $likemusiclist[$i]['likeMusicalIdNum'] ?>" class="favorites_img"><img src="<?= $likemusiclist[$i]['likemuImg'] ?>" alt="<?= $likemusiclist[$i]['likemuName'] ?>"></a>
-                                        <p><a href="../musical/category_mu_detail.php?musicalId=<?= $likemusiclist[$i]['likeMusicalIdNum'] ?>" class="my_mu_title"><?= $likemusiclist[$i]['likemuName'] ?></a></p>
-                                        <p><a href="../theater/category_th_detail.php?theaterId=<?= $likemusiclist[$i]['theaterId'] ?>" class="my_mu_theater"><?= $likemusiclist[$i]['likemuPlace'] ?></a></p>
-                                    </div>
-                                <?php } ?>
+                        
+                        <?php for ($i = 0; $i < count($likemusiclist); $i++) {
+                            if ($likemusiclist[$i]['likemuStatus'] == 1) { ?>
+                                <div class="favorites-card">
+                                    <a href="../musical/category_mu_detail.php?musicalId=<?= $likemusiclist[$i]['likeMusicalIdNum'] ?>" class="favorites_img"><img src="<?= $likemusiclist[$i]['likemuImg']?>" alt="<?= $likemusiclist[$i]['likemuName']?>"></a>
+                                    <p><a href="../musical/category_mu_detail.php?musicalId=<?= $likemusiclist[$i]['likeMusicalIdNum'] ?>" class="my_mu_title"><?= $likemusiclist[$i]['likemuName']?></a></p>
+                                    <p><a href="../musical/category_mu_detail.php?musicalId=<?= $likemusiclist[$i]['likeMusicalIdNum'] ?>" class="my_mu_theater"><?= $likemusiclist[$i]['likemuPlace']?></a></p>
+                                </div>
                             <?php } ?>
-                        <?php } else { ?>
-                            <span>뮤지컬 찜 목록이 비어있습니다.</span>
                         <?php } ?>
+                        
                     </div>
                 </div>
             </div>
