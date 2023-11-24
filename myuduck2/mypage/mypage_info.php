@@ -108,6 +108,7 @@ $address = substr($addressAll, 5);
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1/bundled/lenis.min.js"></script>
     <script src="../script/commons.js"></script>
     <script src="../script/mypage_info.js"></script>
 </body>

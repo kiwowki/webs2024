@@ -1,10 +1,81 @@
 <?php
 include "../connect/connect.php";
 include "../connect/session.php";
+include "../connect/sessionCheck.php";
 
-// echo "<pre>";
-// var_dump($_SESSION);
-// echo "</pre>";
+$loginId = $_SESSION['youId'];
+
+// 배우 찜목록
+// $likeactorlist = array();
+
+// $ACsql = "SELECT * FROM likeActor WHERE likeStatus = 1  AND youId = $loginId ORDER BY likeActorId DESC LIMIT 3";
+// $ACresult = $connect->query($ACsql);
+$likeactorlist = array();
+
+$ACsql = "SELECT * FROM likeActor WHERE likeStatus = 1 AND youId = ? ORDER BY likeActorId DESC LIMIT 3";
+
+$stmt = $connect->prepare($ACsql);
+$stmt->bind_param("s", $loginId);
+$stmt->execute();
+$ACresult = $stmt->get_result();
+
+
+
+if ($ACresult->num_rows > 0) {
+    while ($ACrow = $ACresult->fetch_assoc()) {
+        $likeActorIdNum = $ACrow['likeActorIdNum'];
+        $youId = $ACrow['youId'];
+        $likeACImg = $ACrow['likeACImg'];
+        $likeACName = $ACrow['likeACName'];
+        $likeACStatus = $ACrow['likeStatus'];
+
+        // 데이터 배열 추가
+        $likeactorlist[] = array(
+            'likeActorIdNum' => $likeActorIdNum,
+            'youId' => $youId,
+            'likeACImg' => $likeACImg,
+            'likeACName' => $likeACName,
+            'likeACStatus' => $likeACStatus
+        );
+    }
+}
+
+// 뮤지컬 찜목록
+// $likemusiclist = array();
+
+// $MUsql = "SELECT * FROM likeMusical WHERE likeStatus = 1  AND youId = $loginId ORDER BY likeMusicalId DESC LIMIT 3";
+// $MUresult = $connect->query($MUsql);
+
+$likemusiclist = array();
+
+$MUsql = "SELECT * FROM likeMusical WHERE likeStatus = 1  AND youId = ? ORDER BY likeMusicalId DESC LIMIT 3";
+
+$stmt = $connect->prepare($MUsql);
+$stmt->bind_param("s", $loginId);
+$stmt->execute();
+$MUresult = $stmt->get_result();
+
+
+if ($MUresult->num_rows > 0) {
+    while ($MUrow = $MUresult->fetch_assoc()) {
+        $likeMusicalIdNum = $MUrow['likeMusicalIdNum'];
+        $youId = $MUrow['youId'];
+        $likemuImg = $MUrow['likemuImg'];
+        $likemuName = $MUrow['likemuName'];
+        $likemuPlace = $MUrow['likemuPlace'];
+        $likemuStatus = $MUrow['likeStatus'];
+
+        // 데이터 배열 추가
+        $likemusiclist[] = array(
+            'likeMusicalIdNum' => $likeMusicalIdNum,
+            'youId' => $youId,
+            'likemuImg' => $likemuImg,
+            'likemuName' => $likemuName,
+            'likemuPlace' => $likemuPlace,
+            'likemuStatus' => $likemuStatus
+        );
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -27,7 +98,6 @@ include "../connect/session.php";
     <?php include "../include/header.php" ?>
     <!-- //header -->
 
-
     <main id="mypage_wrap">
         <div class="mypage_inner container">
             <div class="mypage_side_img"></div>
@@ -43,7 +113,7 @@ include "../connect/session.php";
                         <p class="my_name"><img src="../assets/img/Nam.jpg" alt="ID" aria-hidden="true">이름 :
                             <span><?= $_SESSION['youName'] ?></span>
                         </p>
-                        <p class="my_email"><img src="../assets/img/Email.jpg" alt="ID" aria-hidden="true">아이디 :
+                        <p class="my_email"><img src="../assets/img/Email.jpg" alt="ID" aria-hidden="true">이메일 :
                             <span><?= $_SESSION['youEmail'] ?></span>
                         </p>
                         <div class="button">
@@ -52,26 +122,39 @@ include "../connect/session.php";
                     </div>
                 </div>
                 <div class="my_favorites">
-                    <h3>즐겨찾기 목록</h3>
+                    <h3>찜 목록</h3>
                     <div class="favorites_list">
-                        <div class="favorites-card">
-                            <a href="#"><img src="../assets/img/my_page01.jpg" alt="my_page01"></a>
-                            <!-- php엔 이런식으로 <img src="" alt="my_page01"> -->
-                            <p><a href="#" class="my_mu_title">위키드</a></p>
-                            <p><a href="#" class="my_mu_theater">블루스퀘어</a></p>
+                        <div class="favorites_list_info_title">
+                            <a href="favorites_actor.php" class="favorites_list_title actor">배우 찜목록</a>
+                            <a href="favorites_actor.php" class="favorites_list_more">+ 더보기</a>
                         </div>
-                        <div class="favorites-card">
-                            <a href="#"><img src="../assets/img/my_page01.jpg" alt="my_page01"></a>
-                            <!-- php엔 이런식으로 <img src="" alt="my_page01"> -->
-                            <p><a href="#" class="my_mu_title">위키드</a></p>
-                            <p><a href="#" class="my_mu_theater">블루스퀘어</a></p>
+                        
+                        <?php for ($i = 0; $i < count($likeactorlist); $i++) {
+                            if ($likeactorlist[$i]['likeACStatus'] == 1) { ?>
+                                <div class="favorites-card">
+                                    <a href="../actor/category_ac_detail.php?actorId=<?= $likeactorlist[$i]['likeActorIdNum'] ?>" class="favorites_img"><img src="<?= $likeactorlist[$i]['likeACImg']?>" alt="<?= $likeactorlist[$i]['likeACName']?>"></a>
+                                    <p><a href="../actor/category_ac_detail.php?actorId=<?= $likeactorlist[$i]['likeActorIdNum'] ?>" class="my_ac_title"><?= $likeactorlist[$i]['likeACName']?></a></p>
+                                    </div>
+                                <?php } ?>
+                        <?php } ?>
+                        
+                    </div>
+                    <div class="favorites_list">
+                        <div class="favorites_list_info_title">
+                            <a href="favorites_music.php" class="favorites_list_title music">뮤지컬 찜목록</a>
+                            <a href="favorites_music.php" class="favorites_list_more">+ 더보기</a>
                         </div>
-                        <div class="favorites-card">
-                            <a href="#"><img src="../assets/img/my_page01.jpg" alt="my_page01"></a>
-                            <!-- php엔 이런식으로 <img src="" alt="my_page01"> -->
-                            <p><a href="#" class="my_mu_title">위키드</a></p>
-                            <p><a href="#" class="my_mu_theater">블루스퀘어</a></p>
-                        </div>
+                        
+                        <?php for ($i = 0; $i < count($likemusiclist); $i++) {
+                            if ($likemusiclist[$i]['likemuStatus'] == 1) { ?>
+                                <div class="favorites-card">
+                                    <a href="../musical/category_mu_detail.php?musicalId=<?= $likemusiclist[$i]['likeMusicalIdNum'] ?>" class="favorites_img"><img src="<?= $likemusiclist[$i]['likemuImg']?>" alt="<?= $likemusiclist[$i]['likemuName']?>"></a>
+                                    <p><a href="../musical/category_mu_detail.php?musicalId=<?= $likemusiclist[$i]['likeMusicalIdNum'] ?>" class="my_mu_title"><?= $likemusiclist[$i]['likemuName']?></a></p>
+                                    <p><a href="../musical/category_mu_detail.php?musicalId=<?= $likemusiclist[$i]['likeMusicalIdNum'] ?>" class="my_mu_theater"><?= $likemusiclist[$i]['likemuPlace']?></a></p>
+                                </div>
+                            <?php } ?>
+                        <?php } ?>
+                        
                     </div>
                 </div>
             </div>
@@ -83,6 +166,7 @@ include "../connect/session.php";
     <!-- //footer -->
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1/bundled/lenis.min.js"></script>
     <script src="../script/commons.js"></script>
 </body>
 

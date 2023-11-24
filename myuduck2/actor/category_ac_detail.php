@@ -32,14 +32,13 @@ if ($result->num_rows > 0) {
                 $acPerformPlace = $row2['acPerformPlace'];
                 $acPerformRole = $row2['acPerformRole'];
 
-                $sql3 = "SELECT muImg FROM musical WHERE muNameKo = '$acPerformName'";
+                // muNameKo를 기반으로 musicalId와 muImg 가져오기
+                $sql3 = "SELECT musicalId, muImg FROM musical WHERE muNameKo = '$acPerformName'";
                 $result3 = $connect->query($sql3);
-                $muImg = '';
+                $musicalData = $result3->fetch_assoc();
 
-                if ($result3->num_rows > 0) {
-                    $row3 = $result3->fetch_assoc();
-                    $muImg = $row3['muImg'];
-                }
+                $musicalId = $musicalData['musicalId'];
+                $muImg = $musicalData['muImg'];
 
                 // 연도만 추출
                 preg_match('/\d{4}/', $acPerformDate, $matches);
@@ -52,6 +51,7 @@ if ($result->num_rows > 0) {
                     'acPerformPlace' => $acPerformPlace,
                     'acPerformRole' => $acPerformRole,
                     'muImg' => $muImg,
+                    'musicalId' => $musicalId,
                 );
             }
         }
@@ -123,10 +123,10 @@ if ($result->num_rows > 0) {
                     <?php foreach ($actorData['performances'] as $performance) : ?>
                         <div class="work-card">
                             <div class="ac_img_wrap">
-                                <img src="<?= $performance['muImg']?>" alt="<?= $performance['acPerformName'] ?> 이미지">
+                                <a href="../musical/category_mu_detail.php?musicalId=<?= $performance['musicalId'] ?>"><img src="<?= $performance['muImg'] ?>" alt="<?= $performance['acPerformName'] ?> 이미지"></a>
                             </div>
                             <div class="ac_text_wrap">
-                                <h3 class="ac_musical"><?= $performance['acPerformName'] ?></h3>
+                                <h3 class="ac_musical"><a href="../musical/category_mu_detail.php?musicalId=<?= $performance['musicalId'] ?>"><?= $performance['acPerformName'] ?></a></h3>
                                 <p class="ac_date"><?= $performance['acPerformDate'] ?></p>
                                 <p class="ac_theater"><?= $performance['acPerformPlace'] ?></p>
                                 <p class="ac_role"><?= $performance['acPerformRole'] ?></p>
@@ -149,9 +149,106 @@ if ($result->num_rows > 0) {
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="../script/commons.js"></script>
-    <script src="../script/checkBox.js"></script>
     <script>
+        // 찜하기
+        window.addEventListener('load', getInitialLikeStatus);
 
+        const likeButton = document.querySelector(".like-button");
+        let checkcount = <?= $count ?>;
+
+        likeButton.addEventListener('click', function() {
+            // if(<?= $loggedIn ? 'true' : 'false' ?>){
+            if (!likeButton.disabled) {
+                likeButton.disabled = true;
+
+                const isClicked = likeButton.classList.contains('clicked');
+
+                if (checkcount > 0) {
+                    likeButton.classList.remove('clicked');
+                    this.innerHTML = '☆ 찜버튼';
+                    sendLikeData(true);
+                    checkcount = 0;
+                } else {
+                    likeButton.classList.add('clicked');
+                    this.innerHTML = '★ 찜버튼';
+                    sendLikeData(true);
+                    checkcount = 1;
+                }
+
+                // 이미 AJAX 요청 이후에 getInitialLikeStatus를 호출하므로 여기서는 호출하지 않아도 됩니다.
+            }
+            // } else {
+            //     alert("로그인을 해주세요.");
+            //     window.location.href = '../login/login.php';
+            // }
+        });
+
+        function sendLikeData(isClicked) {
+            const likeMusicalIdNum = <?= $musicalId ?>;
+            const likemuImg = '<?= $muImg ?>';
+            const likemuName = '<?= $muNameKo ?>';
+            const likemuPlace = '<?= $muPlace ?>';
+
+            $.ajax({
+                type: 'POST',
+                url: '../like/likeMu.php',
+                data: {
+                    likeMusicalIdNum: likeMusicalIdNum,
+                    likemuImg: likemuImg,
+                    likemuName: likemuName,
+                    likemuPlace: likemuPlace,
+                    isClicked: isClicked
+                },
+                success: function(response) {
+                    console.log(response);
+
+                    if (response.status === 'success') {
+                        // AJAX 응답을 성공적으로 처리
+                    } else {
+                        // 에러 응답을 처리
+                    }
+
+                    likeButton.disabled = false;
+                    getInitialLikeStatus(); // like 상태를 업데이트한 후에 getInitialLikeStatus를 호출합니다.
+                },
+                error: function(xhr, status, error) {
+                    console.error('AJAX 요청 실패:', error);
+                    likeButton.disabled = false;
+                }
+            });
+        }
+
+        function getInitialLikeStatus() {
+            $.ajax({
+                type: 'POST',
+                url: '../like/likeMuStatus.php',
+                data: {
+                    likeMusicalIdNum: <?= $musicalId ?>
+                },
+                success: function(response) {
+                    console.log(response);
+
+                    if (response.status === 'success') {
+                        const initialLikeStatus = response.initialLikeStatus;
+
+                        if (initialLikeStatus && initialLikeStatus.likeStatus === '1') {
+                            likeButton.classList.add('clicked');
+                            likeButton.innerHTML = '★ 찜버튼';
+                            checkcount = 1;
+                        } else {
+                            likeButton.classList.remove('clicked');
+                            likeButton.innerHTML = '☆ 찜버튼';
+                            checkcount = 0;
+                        }
+                    } else {
+                        // 에러 응답을 처리
+                    }
+                },
+                error: function(xhr, status, error) {
+                    console.error('AJAX 요청 실패:', error);
+                }
+            });
+        }
     </script>
 </body>
 
