@@ -1,5 +1,5 @@
 $(function(){
-    // 이미지 슬라이드
+    // 이미지 슬라이드 하 -> 상
     let currentIndex = 0;
     $(".sliderWrap").append($(".slider").first().clone(true));
 

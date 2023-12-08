@@ -1,5 +1,6 @@
 <?php
 include "../connect/connect.php";
+include "../connect/session.php";
 
 
 $sql = "SELECT * FROM musical ORDER BY musicalId DESC";
@@ -26,6 +27,43 @@ if ($result->num_rows > 0) {
     }
 }
 
+$QAsql = "SELECT * FROM QAboard ORDER BY boardID ASC LIMIT 3";
+$QAresult = $connect->query($QAsql);
+
+if($QAresult -> num_rows > 0) {
+    while($QArow = $QAresult -> fetch_assoc()){
+        $boardID = $QArow['boardID'];
+        $boardTitle = $QArow['boardTitle'];
+        $boardContents = $QArow['boardContents'];
+
+
+        $QAInfo[] = array(
+            'boardID' => $boardID,
+            'boardTitle' => $boardTitle,
+            'boardContents' => $boardContents,
+        );
+    }
+}
+
+
+$noticeSql = "SELECT * FROM noticeboard ORDER BY noticeID ASC LIMIT 7";
+$noticeresult = $connect->query($noticeSql);
+
+if($noticeresult -> num_rows > 0) {
+    while($noticerow = $noticeresult -> fetch_assoc()){
+        $noticeID = $noticerow['noticeID'];
+        $noticeTitle = $noticerow['noticeTitle'];
+        $noticeContents = $noticerow['noticeContents'];
+        $regTime = $noticerow['regTime'];
+
+        $noticeInfo[] = array(
+            'noticeID' => $noticeID,
+            'noticeTitle' => $noticeTitle,
+            'noticeContents' => $noticeContents,
+            'regTime' => $regTime,
+        );
+    }
+}
 
 ?>
 <!DOCTYPE html>
@@ -150,31 +188,23 @@ if ($result->num_rows > 0) {
                     <div class="main_review_wrap_img">
                         <figure>
                             <img src="../assets/img/aaa11.jpg" alt="후기 게시판 바로가기">
-                            <figcaption>후기 게시판<a href="#">바로가기</a></figcaption>
+                            <figcaption>후기 게시판<a href="../QA/QA.php">바로가기</a></figcaption>
                         </figure>
                     </div>
                     <div class="main_review_text">
-                        <div class="text t1">
-                            <h3><a href="#"><em>💬</em> 안녕하세요 "뮤덕" 후기입니다.</a></h3>
-                            <p><a href="#">안녕하세요. 오늘도 행복했던 순간입니다. <br>
-                                    뮤덕을 관람한 후 놀라운 음악과 아름다운 무대 연출에 감탄했습니다. 감동적인 스토리와 캐릭터들의 흥미진진한 모험이 펼쳐져, 관객들은 마음을 울리는 여정에 몰입했습니다.<br>
-                                    뛰어난 연기력과 다채로운 무대 설정은 전체적으로 뮤지컬을 통해 특별한 순간을 만들어냈습니다.<br>
-                                    "뮤덕"은 음악과 이야기의 조화로운 조합으로, 뮤지컬 팬들에게 꼭 추천하고 싶은 작품입니다.</a></p>
-                        </div>
-                        <div class="text t2">
-                            <h3><a href="#"><em>💬</em> 안녕하세요 "오페라의 유령" 후기입니다!</a></h3>
-                            <p><a href="#">안녕하세요. 오늘도 행복했던 순간입니다. <br>
-                                    뮤덕을 관람한 후 놀라운 음악과 아름다운 무대 연출에 감탄했습니다. 감동적인 스토리와 캐릭터들의 흥미진진한 모험이 펼쳐져, 관객들은 마음을 울리는 여정에 몰입했습니다.<br>
-                                    뛰어난 연기력과 다채로운 무대 설정은 전체적으로 뮤지컬을 통해 특별한 순간을 만들어냈습니다.<br>
-                                    "뮤덕"은 음악과 이야기의 조화로운 조합으로, 뮤지컬 팬들에게 꼭 추천하고 싶은 작품입니다.</a></p>
-                        </div>
-                        <div class="text t3">
-                            <h3><a href="#"><em>💬</em> 안녕하세요 "레미제라블" 후기입니다!!!</a></h3>
-                            <p><a href="#">안녕하세요. 오늘도 행복했던 순간입니다. <br>
-                                    뮤덕을 관람한 후 놀라운 음악과 아름다운 무대 연출에 감탄했습니다. 감동적인 스토리와 캐릭터들의 흥미진진한 모험이 펼쳐져, 관객들은 마음을 울리는 여정에 몰입했습니다.<br>
-                                    뛰어난 연기력과 다채로운 무대 설정은 전체적으로 뮤지컬을 통해 특별한 순간을 만들어냈습니다.<br>
-                                    "뮤덕"은 음악과 이야기의 조화로운 조합으로, 뮤지컬 팬들에게 꼭 추천하고 싶은 작품입니다.</a></p>
-                        </div>
+                        <?php for ($i = 0; $i < 3; $i++) { 
+                            if (isset($QAInfo[$i]['boardID'])) { ?>
+                                <div class="text t<?= $i + 1 ?>">
+                                    <h3><a href="http://ljy16.dothome.co.kr/myuduck/QA/QAView.php?boardID=<?= $QAInfo[$i]['boardID'] ?>"><em>💬</em> <?php echo $QAInfo[$i]['boardTitle']; ?> </a></h3>
+                                    <p><a href="http://ljy16.dothome.co.kr/myuduck/QA/QAView.php?boardID=<?= $QAInfo[$i]['boardID'] ?>"> <?php echo $QAInfo[$i]['boardContents']; ?> </a></p>
+                                </div>
+                                <?php } else { ?>
+                                    <div class="text t<?= $i + 1 ?>">
+                                        <h3><em>💬</em> 작성된 후기가 없습니다. </h3>
+                                        <p> 작성된 후기가 없습니다. </p>
+                                    </div>
+                            <?php }
+                        } ?>
                     </div>
                 </div>
                 <!-- </div> -->
@@ -185,30 +215,27 @@ if ($result->num_rows > 0) {
         <section id="mainBoard2">
             <div class="mainBoard_inner">
                 <!-- <div class="container3"> -->
-                    <div class="main_notice_wrap">
-                        <h2 class="container3"><span>new</span> 공지사항 최신글!</h2>
-                        <div class="main_notice_text">
-                            <div class="text n1">
-                                <h3><a href="#">후기게시판 관련 공지사항입니다.</a><span>2023.11.17</span></h3>
-                            </div>
-                            <div class="text n2">
-                                <h3><a href="#">뮤지컬 일 테노레(IL TENORE)2차 티켓오픈안내</a><span>2023.11.17</span></h3>
-                            </div>
-                            <div class="text n3">
-                                <h3><a href="#">뮤지컬 〈렌트〉 3차 티켓오픈 안내</a><span>2023.11.17</span></h3>
-                            </div>
-                            <div class="text n4">
-                                <h3><a href="#">뮤지컬 〈레베카〉 10주년 기념 공연 앙코르 티켓오픈 안내</a><span>2023.11.17</span></h3>
-                            </div>
-                        </div>
-                        <div class="main_notice_wrap_img">
-                            <figure>
-                                <img src="../assets/img/aaa11.jpg" alt="공지사항 바로가기">
-                                <figcaption>공지사항<a href="#">바로가기</a></figcaption>
-                            </figure>
-                        </div>
+                <div class="main_notice_wrap">
+                    <h2 class="container3"><span>new</span> 공지사항 최신글!</h2>
+                    <div class="main_notice_text">
+                        <?php for ($i = 0; $i < 7; $i++) { 
+                            if (isset($noticeInfo[$i]['noticeID'])) { ?>
+                                <div class="text n<?= $i + 1 ?>">
+                                    <h3><a href="#"><?php echo $noticeInfo[$i]['noticeTitle'] ?></a><span><?php echo date('Y-m-d', $noticeInfo[$i]['regTime']) ?></span></h3>
+                                </div>
+                            <?php } else { ?>
+                                <div class="text n<?= $i + 1 ?>">
+                                    <h3>작성된 공지사항이 없습니다.</h3>
+                                </div>
+                            <?php }
+                         } ?>
                     </div>
-
+                    <div class="main_notice_wrap_img">
+                        <figure>
+                            <img src="../assets/img/aaa11.jpg" alt="공지사항 바로가기">
+                            <figcaption>공지사항<a href="../notice/notice.php">바로가기</a></figcaption>
+                        </figure>
+                    </div>
                 </div>
             </div>
         </section>
