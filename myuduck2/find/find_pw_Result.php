@@ -26,8 +26,8 @@
     <!-- //header -->
 
 
-    <main>
-    <div class="joinResultWrap">
+    <main class="bg">
+    <div class="findResultWrap">
             <div class="message1">비밀번호 찾기 완료!</div>
             <div class="img red"></div>
             <div class="message2">회원가입 시 사용한 비밀번호는 <?=$_SESSION['youPass']?>입니다.</div>

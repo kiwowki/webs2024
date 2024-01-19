@@ -26,8 +26,8 @@
     <!-- //header -->
 
 
-    <main>
-        <div class="joinResultWrap">
+    <main class="bg">
+        <div class="findResultWrap">
             <div class="message1">아이디 찾기 완료!</div>
             <div class="img red"></div>
             <div class="message2">회원가입 시 사용한 아이디는 <?=$_SESSION['youId']?>입니다.</div>

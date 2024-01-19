@@ -30,8 +30,8 @@ if ($result->num_rows > 0) {
 $QAsql = "SELECT * FROM QAboard ORDER BY boardID ASC LIMIT 3";
 $QAresult = $connect->query($QAsql);
 
-if($QAresult -> num_rows > 0) {
-    while($QArow = $QAresult -> fetch_assoc()){
+if ($QAresult->num_rows > 0) {
+    while ($QArow = $QAresult->fetch_assoc()) {
         $boardID = $QArow['boardID'];
         $boardTitle = $QArow['boardTitle'];
         $boardContents = $QArow['boardContents'];
@@ -49,8 +49,8 @@ if($QAresult -> num_rows > 0) {
 $noticeSql = "SELECT * FROM noticeboard ORDER BY noticeID ASC LIMIT 7";
 $noticeresult = $connect->query($noticeSql);
 
-if($noticeresult -> num_rows > 0) {
-    while($noticerow = $noticeresult -> fetch_assoc()){
+if ($noticeresult->num_rows > 0) {
+    while ($noticerow = $noticeresult->fetch_assoc()) {
         $noticeID = $noticerow['noticeID'];
         $noticeTitle = $noticerow['noticeTitle'];
         $noticeContents = $noticerow['noticeContents'];
@@ -133,12 +133,14 @@ if($noticeresult -> num_rows > 0) {
                         <?php for ($i = 0; $i < 5; $i++) : ?>
                             <?php $muInfo = $musicalMainInfo[$i]; ?>
                             <div class="new_musical n<?php echo $i + 1; ?>">
-                                <div class="new_imgWrap">
-                                    <img src="<?php echo $muInfo['muImg']; ?>" alt="<?php echo $muInfo['muNameKo']; ?> 이미지">
-                                    <div class="new_overlay"></div>
-                                </div>
+                                <a href="http://kiwowki.dothome.co.kr/myuduck2/musical/category_mu_detail.php?musicalId=<?= $muInfo['musicalId'] ?>">
+                                    <div class="new_imgWrap">
+                                        <img src="<?php echo $muInfo['muImg']; ?>" alt="<?php echo $muInfo['muNameKo']; ?> 이미지">
+                                        <div class="new_overlay"></div>
+                                    </div>
+                                </a>
                                 <div class="new_text">
-                                    <h3><?php echo $muInfo['muNameKo']; ?></h3>
+                                    <a href="http://kiwowki.dothome.co.kr/myuduck2/musical/category_mu_detail.php?musicalId=<?= $muInfo['musicalId'] ?>"><h3><?php echo $muInfo['muNameKo']; ?></h3></a>
                                     <span><?php echo $muInfo['muPlace']; ?></span>
                                     <p><?php echo $muInfo['muDate']; ?></p>
                                 </div>
@@ -192,18 +194,18 @@ if($noticeresult -> num_rows > 0) {
                         </figure>
                     </div>
                     <div class="main_review_text">
-                        <?php for ($i = 0; $i < 3; $i++) { 
+                        <?php for ($i = 0; $i < 3; $i++) {
                             if (isset($QAInfo[$i]['boardID'])) { ?>
                                 <div class="text t<?= $i + 1 ?>">
-                                    <h3><a href="http://ljy16.dothome.co.kr/myuduck/QA/QAView.php?boardID=<?= $QAInfo[$i]['boardID'] ?>"><em>💬</em> <?php echo $QAInfo[$i]['boardTitle']; ?> </a></h3>
-                                    <p><a href="http://ljy16.dothome.co.kr/myuduck/QA/QAView.php?boardID=<?= $QAInfo[$i]['boardID'] ?>"> <?php echo $QAInfo[$i]['boardContents']; ?> </a></p>
+                                    <h3><a href="http://kiwowki.dothome.co.kr/myuduck2/QA/QAView.php?boardID=<?= $QAInfo[$i]['boardID'] ?>"><em>💬</em> <?php echo $QAInfo[$i]['boardTitle']; ?> </a></h3>
+                                    <p><a href="http://kiwowki.dothome.co.kr/myuduck2/QA/QAView.php?boardID=<?= $QAInfo[$i]['boardID'] ?>"> <?php echo $QAInfo[$i]['boardContents']; ?> </a></p>
                                 </div>
-                                <?php } else { ?>
-                                    <div class="text t<?= $i + 1 ?>">
-                                        <h3><em>💬</em> 작성된 후기가 없습니다. </h3>
-                                        <p> 작성된 후기가 없습니다. </p>
-                                    </div>
-                            <?php }
+                            <?php } else { ?>
+                                <div class="text t<?= $i + 1 ?>">
+                                    <h3><em>💬</em> 작성된 후기가 없습니다. </h3>
+                                    <p> 작성된 후기가 없습니다. </p>
+                                </div>
+                        <?php }
                         } ?>
                     </div>
                 </div>
@@ -218,17 +220,17 @@ if($noticeresult -> num_rows > 0) {
                 <div class="main_notice_wrap">
                     <h2 class="container3"><span>new</span> 공지사항 최신글!</h2>
                     <div class="main_notice_text">
-                        <?php for ($i = 0; $i < 7; $i++) { 
+                        <?php for ($i = 0; $i < 7; $i++) {
                             if (isset($noticeInfo[$i]['noticeID'])) { ?>
                                 <div class="text n<?= $i + 1 ?>">
-                                    <h3><a href="#"><?php echo $noticeInfo[$i]['noticeTitle'] ?></a><span><?php echo date('Y-m-d', $noticeInfo[$i]['regTime']) ?></span></h3>
+                                    <h3><a href="http://kiwowki.dothome.co.kr/myuduck2/notice/notice_View.php?noticeID=<?= $noticeInfo[$i]['noticeID'] ?>"><?php echo $noticeInfo[$i]['noticeTitle'] ?></a><span><?php echo date('Y-m-d', $noticeInfo[$i]['regTime']) ?></span></h3>
                                 </div>
                             <?php } else { ?>
                                 <div class="text n<?= $i + 1 ?>">
                                     <h3>작성된 공지사항이 없습니다.</h3>
                                 </div>
-                            <?php }
-                         } ?>
+                        <?php }
+                        } ?>
                     </div>
                     <div class="main_notice_wrap_img">
                         <figure>
@@ -281,24 +283,25 @@ if($noticeresult -> num_rows > 0) {
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="../script/commons.js"></script>
     <script>
-        // lenis 스무스 효과
-        const lenis = new Lenis();
+        // // lenis 스무스 효과
+        // const lenis = new Lenis();
 
-        lenis.on('scroll', (e) => {
-            console.log(e);
-        })
+        // lenis.on('scroll', (e) => {
+        // //    console.log(e);
+        // })
 
-        function raf(time) {
-            lenis.raf(time)
-            requestAnimationFrame(raf);
-        }
+        // function raf(time) {
+        //    lenis.raf(time)
+        //    requestAnimationFrame(raf);
+        // }
 
-        requestAnimationFrame(raf);
+        // requestAnimationFrame(raf);
 
 
         // swiper
         let swiper = new Swiper(".swiper", {
             loop: true, // 무한 루프 활성화
+            touchStartPreventDefault: false,
             navigation: {
                 nextEl: ".swiper-button-next",
                 prevEl: ".swiper-button-prev",
