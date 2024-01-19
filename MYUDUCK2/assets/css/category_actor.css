@@ -32,7 +32,8 @@
 .actor_header {
     width: 100%;
     text-align: center;
-}
+    white-space: nowrap;
+  }
 .actor_header span {
     border: 1px solid var(--black300);
     padding: 1vw 9.6vw;

@@ -241,40 +241,40 @@
 
         // 02. 여러개 섹션 고정시키기
 
-        // gsap.utils.toArray(".parallax_item").forEach((panel, i) => {
-        //     ScrollTrigger.create({
-        //         trigger: panel,
-        //         start: "top top",
-        //         pin: true,
-        //         pinSpacing: false
-        //     })
-        // });
+        gsap.utils.toArray(".parallax_item").forEach((panel, i) => {
+            ScrollTrigger.create({
+                trigger: panel,
+                start: "top top",
+                pin: true,
+                pinSpacing: false
+            })
+        });
 
 
         // 03. 스냅 고정 효과 만들기 (이런건 검색해서 찾아서 복사하셈)
 
-        let panels = gsap.utils.toArray(".parallax_item");
-        let tops = panels.map(panel => ScrollTrigger.create({trigger: panel, start: "top top"}));
+        // let panels = gsap.utils.toArray(".parallax_item");
+        // let tops = panels.map(panel => ScrollTrigger.create({trigger: panel, start: "top top"}));
 
-        panels.forEach((panel, i) => {
-            ScrollTrigger.create({
-                trigger: panel,
-                start: () => panel.offsetHeight < window.innerHeight ? "top top" : "bottom bottom",
-                pin: true, 
-                pinSpacing: false 
-            });
-        });
+        // panels.forEach((panel, i) => {
+        //     ScrollTrigger.create({
+        //         trigger: panel,
+        //         start: () => panel.offsetHeight < window.innerHeight ? "top top" : "bottom bottom",
+        //         pin: true, 
+        //         pinSpacing: false 
+        //     });
+        // });
 
-        ScrollTrigger.create({
-            snap: {
-                snapTo: (progress, self) => {
-                    let panelStarts = tops.map(st => st.start), 
-                    snapScroll = gsap.utils.snap(panelStarts, self.scroll()); 
-                    return gsap.utils.normalize(0, ScrollTrigger.maxScroll(window), snapScroll); 
-                },
-                duration: 0.5
-            }
-        });
+        // ScrollTrigger.create({
+        //     snap: {
+        //         snapTo: (progress, self) => {
+        //             let panelStarts = tops.map(st => st.start), 
+        //             snapScroll = gsap.utils.snap(panelStarts, self.scroll()); 
+        //             return gsap.utils.normalize(0, ScrollTrigger.maxScroll(window), snapScroll); 
+        //         },
+        //         duration: 0.5
+        //     }
+        // });
 
     </script>
 </body>

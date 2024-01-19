@@ -2,6 +2,16 @@
     width: 100%;
 }
 
+.findResultWrap {
+    text-align: center;
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
 /* find__inner */
 .find__inner {
     width: 100%;

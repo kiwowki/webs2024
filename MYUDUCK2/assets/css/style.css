@@ -24,6 +24,6 @@
 
 /* 해연님 */
 @import "QA.css";
-/* @import "cm_detail.css"; */
+@import "joinResult.css";
 @import "cm.css";
 @import "cm_detail.css";

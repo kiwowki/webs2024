@@ -40,7 +40,7 @@
     <!-- //header -->
 
 
-    <main>
+    <main class="bg">
         <div class="joinResultWrap container2">
             <div class="message1">회원 가입이 완료되었습니다!</div>
             <div class="img red"></div>
@@ -50,7 +50,6 @@
             </div>
         </div>
     </main>
-    <!-- //main-->
 
     <?php include "../include/footer.php"?>
     <!-- //footer -->
