@@ -88,27 +88,27 @@ if ($noticeresult->num_rows > 0) {
                 <div class="swiper-wrapper">
                     <div class="swiper-slide">
                         <div class="slider_img">
-                            <img src="../assets/img/slide01.jpg" alt="">
+                            <a href="http://kiwowki.dothome.co.kr/myuduck2/musical/category_mu_detail.php?musicalId=57"><img src="../assets/img/slide01.jpg" alt="뮤지컬 레베카"></a>
                         </div>
                     </div>
                     <div class="swiper-slide">
                         <div class="slider_img">
-                            <img src="../assets/img/slide02.jpg" alt="">
+                            <a href="http://kiwowki.dothome.co.kr/myuduck2/musical/category_mu_detail.php?musicalId=62"><img src="../assets/img/slide02.jpg" alt="뮤지컬 시스터즈"></a>
                         </div>
                     </div>
                     <div class="swiper-slide">
                         <div class="slider_img">
-                            <img src="../assets/img/slide03.jpg" alt="">
+                            <a href="http://kiwowki.dothome.co.kr/myuduck2/musical/category_mu_detail.php?musicalId=70"><img src="../assets/img/slide03.jpg" alt="뮤지컬 레미제라블"></a>
                         </div>
                     </div>
                     <div class="swiper-slide">
                         <div class="slider_img">
-                            <img src="../assets/img/slide04.jpg" alt="">
+                            <a href="http://kiwowki.dothome.co.kr/myuduck2/musical/category_mu_detail.php?musicalId=72"><img src="../assets/img/slide04.jpg" alt="뮤지컬 드라큘라"></a>
                         </div>
                     </div>
                     <div class="swiper-slide">
                         <div class="slider_img">
-                            <img src="../assets/img/slide05.jpg" alt="">
+                            <a href="http://kiwowki.dothome.co.kr/myuduck2/musical/category_mu_detail.php?musicalId=65"><img src="../assets/img/slide05.jpg" alt="뮤지컬 렌트"></a>
                         </div>
                     </div>
                 </div>
